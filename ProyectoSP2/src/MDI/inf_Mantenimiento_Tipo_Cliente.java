@@ -84,7 +84,7 @@ public class inf_Mantenimiento_Tipo_Cliente extends javax.swing.JInternalFrame {
         setIconifiable(true);
         setMaximizable(true);
         setResizable(true);
-        setTitle("Ejemplo");
+        setTitle("Mantenimiento Tipo Cliente");
         setVisible(true);
 
         btnBuscar.setText("Buscar");
