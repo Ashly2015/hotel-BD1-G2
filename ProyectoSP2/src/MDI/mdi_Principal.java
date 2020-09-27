@@ -66,6 +66,7 @@ public class mdi_Principal extends javax.swing.JFrame {
         jMenuItem8 = new javax.swing.JMenuItem();
         jMenuItem9 = new javax.swing.JMenuItem();
         jMenuItem10 = new javax.swing.JMenuItem();
+        jMenuItem11 = new javax.swing.JMenuItem();
         helpMenu = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -197,6 +198,14 @@ public class mdi_Principal extends javax.swing.JFrame {
             }
         });
         fileMenu.add(jMenuItem10);
+
+        jMenuItem11.setText("Mantenimiento Sucursal");
+        jMenuItem11.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem11ActionPerformed(evt);
+            }
+        });
+        fileMenu.add(jMenuItem11);
 
         menuBar.add(fileMenu);
 
@@ -364,6 +373,15 @@ System.exit(0);
         ventana1.setLocation((desktopSize.width - FrameSize.width) / 2, (desktopSize.height - FrameSize.height) / 2);
     }//GEN-LAST:event_jMenuItem10ActionPerformed
 
+    private void jMenuItem11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem11ActionPerformed
+        // TODO add your handling code here:
+        inf_Mantenimiento_Sucursal ventana1 = new inf_Mantenimiento_Sucursal();
+        desktopPane.add(ventana1);
+        Dimension desktopSize = desktopPane.getSize();
+        Dimension FrameSize = ventana1.getSize();
+        ventana1.setLocation((desktopSize.width - FrameSize.width) / 2, (desktopSize.height - FrameSize.height) / 2);
+    }//GEN-LAST:event_jMenuItem11ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -408,6 +426,7 @@ System.exit(0);
     private javax.swing.JMenu helpMenu;
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem10;
+    private javax.swing.JMenuItem jMenuItem11;
     private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JMenuItem jMenuItem4;

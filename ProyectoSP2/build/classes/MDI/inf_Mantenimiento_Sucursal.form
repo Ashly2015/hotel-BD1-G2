@@ -50,12 +50,9 @@
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="label6" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="label7" alignment="0" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace min="14" pref="14" max="-2" attributes="0"/>
-                      <Component id="txt_hora" pref="305" max="32767" attributes="0"/>
+                      <Component id="label7" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
+                      <Component id="txt_telefono" pref="305" max="32767" attributes="0"/>
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
@@ -65,16 +62,15 @@
                       </Group>
                       <EmptySpace min="-2" pref="23" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                          <Component id="txt_descripcion" alignment="0" pref="263" max="32767" attributes="0"/>
-                          <Component id="txt_cantidad" alignment="0" max="32767" attributes="0"/>
-                          <Component id="txt_fecha" alignment="0" min="-2" pref="120" max="-2" attributes="0"/>
+                          <Component id="txt_direccion" alignment="0" pref="263" max="32767" attributes="0"/>
+                          <Component id="txt_nombre" alignment="0" max="32767" attributes="0"/>
                       </Group>
                   </Group>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
               <Component id="lb" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
-              <Component id="jScrollPane1" pref="529" max="32767" attributes="0"/>
+              <Component id="jScrollPane1" pref="503" max="32767" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
           </Group>
           <Group type="102" alignment="0" attributes="0">
@@ -92,22 +88,17 @@
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="txt_cantidad" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="txt_nombre" alignment="0" min="-2" max="-2" attributes="0"/>
                           <Component id="label3" alignment="0" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="txt_descripcion" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="txt_direccion" alignment="0" min="-2" max="-2" attributes="0"/>
                           <Component id="label5" alignment="0" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="24" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="label6" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="txt_fecha" alignment="0" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace min="-2" pref="25" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="txt_hora" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="txt_telefono" alignment="0" min="-2" max="-2" attributes="0"/>
                           <Component id="label7" alignment="0" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace max="32767" attributes="0"/>
@@ -152,10 +143,10 @@
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Century Gothic" size="12" style="1"/>
         </Property>
-        <Property name="text" type="java.lang.String" value="Hora"/>
+        <Property name="text" type="java.lang.String" value="Telefono:"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JTextField" name="txt_cantidad">
+    <Component class="javax.swing.JTextField" name="txt_nombre">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Century Gothic" size="12" style="0"/>
@@ -178,7 +169,7 @@
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnBuscarActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JTextField" name="txt_hora">
+    <Component class="javax.swing.JTextField" name="txt_telefono">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Century Gothic" size="12" style="0"/>
@@ -193,7 +184,7 @@
         <Property name="opaque" type="boolean" value="false"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JTextField" name="txt_descripcion">
+    <Component class="javax.swing.JTextField" name="txt_direccion">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Century Gothic" size="12" style="0"/>
@@ -221,7 +212,7 @@
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Century Gothic" size="12" style="1"/>
         </Property>
-        <Property name="text" type="java.lang.String" value="Prenda"/>
+        <Property name="text" type="java.lang.String" value="Sucursal"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="lb">
@@ -237,7 +228,7 @@
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Century Gothic" size="12" style="1"/>
         </Property>
-        <Property name="text" type="java.lang.String" value="Descripcion:"/>
+        <Property name="text" type="java.lang.String" value="Direccion:"/>
       </Properties>
     </Component>
     <Container class="javax.swing.JScrollPane" name="jScrollPane1">
@@ -278,22 +269,12 @@
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnModificarActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JLabel" name="label6">
-      <Properties>
-        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-          <Font name="Century Gothic" size="12" style="1"/>
-        </Property>
-        <Property name="text" type="java.lang.String" value="Fecha:"/>
-      </Properties>
-    </Component>
-    <Component class="com.toedter.calendar.JDateChooser" name="txt_fecha">
-    </Component>
     <Component class="javax.swing.JLabel" name="label3">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Century Gothic" size="12" style="1"/>
         </Property>
-        <Property name="text" type="java.lang.String" value="Cantidad:"/>
+        <Property name="text" type="java.lang.String" value="Nombre:"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JButton" name="btnEliminar">

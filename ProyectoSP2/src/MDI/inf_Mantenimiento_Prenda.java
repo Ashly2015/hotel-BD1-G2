@@ -414,7 +414,7 @@ public class inf_Mantenimiento_Prenda extends javax.swing.JInternalFrame {
             String ID = txtbuscado.getText().trim();
 
             Connection cn = DriverManager.getConnection(mdi_Principal.BD, mdi_Principal.Usuario, mdi_Principal.Contraseña);
-            PreparedStatement pst = cn.prepareStatement("update cliente set  cantidad =?, descripcion = ?,fecha_fin = ?, hora = ? where id_prenda =" + ID);
+            PreparedStatement pst = cn.prepareStatement("update prenda set  cantidad =?, descripcion = ?,fecha_fin = ?, hora = ? where id_prenda =" + ID);
 
             pst.setString(1, lb.getText());
             pst.setString(2, txt_cantidad.getText());

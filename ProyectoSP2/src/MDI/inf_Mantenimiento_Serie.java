@@ -435,7 +435,7 @@ public class inf_Mantenimiento_Serie extends javax.swing.JInternalFrame {
             String ID = txtbuscado.getText().trim();
 
             Connection cn = DriverManager.getConnection(mdi_Principal.BD, mdi_Principal.Usuario, mdi_Principal.Contraseña);
-            PreparedStatement pst = cn.prepareStatement("update cliente set  id_tipo_cliente = ?,nombre_cliente =?, correo = ?,telefono = ?, direccion = ? where id_cliente =" + ID);
+            PreparedStatement pst = cn.prepareStatement("update serie set  id_tipo_cliente = ?,nombre_cliente =?, correo = ?,telefono = ?, direccion = ? where id_cliente =" + ID);
 
             pst.setString(1, lb.getText());
             pst.setString(2, txt_nombre.getText());
