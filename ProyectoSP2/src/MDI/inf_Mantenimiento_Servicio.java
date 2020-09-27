@@ -355,14 +355,27 @@ public class inf_Mantenimiento_Servicio extends javax.swing.JInternalFrame {
 
     private void btnModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModificarActionPerformed
         // TODO add your handling code here:
+        String buscar = txtbuscado.getText().trim();
+        if (buscar.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "¡No se ingreso el campo de busqueda!", "Advertencia", JOptionPane.WARNING_MESSAGE);
+            return;
+        }
         try {
             String ID = txtbuscado.getText().trim();
 
             Connection cn = DriverManager.getConnection(mdi_Principal.BD, mdi_Principal.Usuario, mdi_Principal.Contraseña);
             PreparedStatement pst = cn.prepareStatement("update servicios set  nombre_servicio = ?, estatus_servicio = ?  where id_servicio =" + ID);
-
+            String mensaje = "";
             pst.setString(1, txt_nombre.getText());
-            pst.setString(2, txt_estado.getText());
+            
+            
+             if (activo.isSelected()) {
+                mensaje = "A";
+            } else if (inactivo.isSelected()) {
+                mensaje = "I";
+
+            }
+            pst.setString(2, mensaje);
 
             pst.executeUpdate();
 
