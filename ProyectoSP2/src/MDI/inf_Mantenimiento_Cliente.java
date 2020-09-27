@@ -400,7 +400,12 @@ public class inf_Mantenimiento_Cliente extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_btnRegistrarActionPerformed
 
     private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
-        // TODO add your handling code here:
+        
+        String buscar = txtbuscado.getText().trim();
+        if (buscar.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "¡No se ingreso el campo de busqueda!", "Advertencia", JOptionPane.WARNING_MESSAGE);
+            return;
+        }
         try {
             Connection cn = DriverManager.getConnection(mdi_Principal.BD, mdi_Principal.Usuario, mdi_Principal.Contraseña);
             PreparedStatement pst = cn.prepareStatement("select * from cliente where id_cliente =?");
@@ -428,7 +433,7 @@ public class inf_Mantenimiento_Cliente extends javax.swing.JInternalFrame {
         } catch (Exception e) {
 
         }
-        refrescar();
+        
         // tablas();
         // bitacora_busqueda();
     }//GEN-LAST:event_btnBuscarActionPerformed
@@ -482,6 +487,8 @@ public class inf_Mantenimiento_Cliente extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_btnLimpiarActionPerformed
 
     private void cbox_tipo_clienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbox_tipo_clienteActionPerformed
+     
+        
         try {
             Connection cn = DriverManager.getConnection(mdi_Principal.BD, mdi_Principal.Usuario, mdi_Principal.Contraseña);
 
