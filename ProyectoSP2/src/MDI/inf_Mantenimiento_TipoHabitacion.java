@@ -22,22 +22,28 @@ public class inf_Mantenimiento_TipoHabitacion extends javax.swing.JInternalFrame
     /**
      * Creates new form inf_Mantenimiento_TipoHabitacion
      */
-      public void tablas() {
+    public void tablas() {
         try {
             Connection cn = DriverManager.getConnection(mdi_Principal.BD, mdi_Principal.Usuario, mdi_Principal.Contraseña);
-            PreparedStatement pstt4 = cn.prepareStatement("select * from tipo_cliente");
+            PreparedStatement pstt4 = cn.prepareStatement("select * from tipo_habitacion");
             ResultSet rss4 = pstt4.executeQuery();
 
             DefaultTableModel modelo = new DefaultTableModel();
-            modelo.addColumn("ID Tipo");
-            modelo.addColumn("Nombre Tipo");
-            modelo.addColumn("Estado");
+            modelo.addColumn("Id Tipo");
+            modelo.addColumn("Nombre");
+            modelo.addColumn("Descripción");
+            modelo.addColumn("Características");
+            modelo.addColumn("Precio Diario");
+            modelo.addColumn("Cupo Máximo");
             tbl.setModel(modelo);
-            String[] dato = new String[3];
+            String[] dato = new String[6];
             while (rss4.next()) {
                 dato[0] = rss4.getString(1);
                 dato[1] = rss4.getString(2);
                 dato[2] = rss4.getString(3);
+                dato[3] = rss4.getString(4);
+                dato[4] = rss4.getString(5);
+                dato[5] = rss4.getString(6);
 
                 modelo.addRow(dato);
             }
@@ -85,6 +91,11 @@ public class inf_Mantenimiento_TipoHabitacion extends javax.swing.JInternalFrame
         txt_CupoMaximo = new javax.swing.JTextField();
 
         setBackground(javax.swing.UIManager.getDefaults().getColor("Button.light"));
+        setClosable(true);
+        setIconifiable(true);
+        setMaximizable(true);
+        setResizable(true);
+        setVisible(true);
 
         btnBuscar.setText("Buscar");
         btnBuscar.addActionListener(new java.awt.event.ActionListener() {
@@ -308,14 +319,18 @@ public class inf_Mantenimiento_TipoHabitacion extends javax.swing.JInternalFrame
         }
         try {
             Connection cn = DriverManager.getConnection(mdi_Principal.BD, mdi_Principal.Usuario, mdi_Principal.Contraseña);
-            PreparedStatement pst = cn.prepareStatement("select * from tipo_cliente where id_tipo_cliente =?");
+            PreparedStatement pst = cn.prepareStatement("select * from tipo_habitacion where id_tipo_habitacion =?");
             pst.setString(1, txtbuscado.getText().trim());
 
             ResultSet rs = pst.executeQuery();
 
             if (rs.next()) {
-                txt_idTipoHabitacion.setText(rs.getString("nombre"));
-                
+                txt_idTipoHabitacion.setText(rs.getString("id_tipo_habitacion"));
+                txt_Nombre.setText(rs.getString("nombre"));
+                txta_Descripcion.setText(rs.getString("descripcion"));
+                txta_Caracteristicas.setText(rs.getString("caracteristicas"));
+                txt_PrecioDiario.setText(rs.getString("precio_diario"));
+                txt_CupoMaximo.setText(rs.getString("cupo_maximo"));
 
                 btnModificar.setEnabled(true);
                 btnEliminar.setEnabled(true);
@@ -323,7 +338,7 @@ public class inf_Mantenimiento_TipoHabitacion extends javax.swing.JInternalFrame
                 tablas();
 
             } else {
-                JOptionPane.showMessageDialog(null, "Tipo CLiente no registrado.");
+                JOptionPane.showMessageDialog(this, "Tipo Hbitación no registrada.", "Mensaje", JOptionPane.WARNING_MESSAGE);
             }
 
         } catch (Exception e) {
@@ -334,10 +349,14 @@ public class inf_Mantenimiento_TipoHabitacion extends javax.swing.JInternalFrame
     }//GEN-LAST:event_btnBuscarActionPerformed
 
     private void btnLimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimpiarActionPerformed
-        
-        txt_idTipoHabitacion.setText("");
 
-       
+        txt_idTipoHabitacion.setText("");
+        txt_Nombre.setText("");
+        txta_Descripcion.setText("");
+        txta_Caracteristicas.setText("");
+        txt_PrecioDiario.setText("");
+        txt_CupoMaximo.setText("");
+
         txtbuscado.setText("");
         btnRegistrar.setEnabled(true);
         btnModificar.setEnabled(false);
@@ -350,17 +369,18 @@ public class inf_Mantenimiento_TipoHabitacion extends javax.swing.JInternalFrame
         // TODO add your handling code here:
         try {
             Connection cn = DriverManager.getConnection(mdi_Principal.BD, mdi_Principal.Usuario, mdi_Principal.Contraseña);
-            PreparedStatement pst = cn.prepareStatement("delete from tipo_cliente where id_tipo_cliente = ?");
-
+            PreparedStatement pst = cn.prepareStatement("delete from tipo_habitacion where id_tipo_habitacion = ?");
             pst.setString(1, txtbuscado.getText().trim());
             pst.executeUpdate();
 
             // bitacora_eliminar();
             JOptionPane.showMessageDialog(this, "¡ELIMINACION EXITOSA!", "Mensaje", JOptionPane.INFORMATION_MESSAGE);
             txt_idTipoHabitacion.setText("");
-
-            // cmbxCodigo_Empleado.setSelectedIndex(0);
-           
+            txt_Nombre.setText("");
+            txta_Descripcion.setText("");
+            txta_Caracteristicas.setText("");
+            txt_PrecioDiario.setText("");
+            txt_CupoMaximo.setText("");
             txtbuscado.setText("");
             btnRegistrar.setEnabled(true);
             btnModificar.setEnabled(false);
@@ -368,7 +388,7 @@ public class inf_Mantenimiento_TipoHabitacion extends javax.swing.JInternalFrame
             tablas();
 
         } catch (SQLException e) {
-            JOptionPane.showMessageDialog(this, "Error en Eliminacion", "Warning", JOptionPane.WARNING_MESSAGE);
+            JOptionPane.showMessageDialog(this, "Error en Eliminación", "Warning", JOptionPane.WARNING_MESSAGE);
         }
     }//GEN-LAST:event_btnEliminarActionPerformed
 
@@ -377,20 +397,26 @@ public class inf_Mantenimiento_TipoHabitacion extends javax.swing.JInternalFrame
         try {
             Connection cn = DriverManager.getConnection(mdi_Principal.BD, mdi_Principal.Usuario, mdi_Principal.Contraseña);
             //localhost es 127.0.0.1
-            PreparedStatement pst = cn.prepareStatement("insert into tipo_cliente values(?,?,?)");
+            PreparedStatement pst = cn.prepareStatement("insert into tipo_habitacion values(?,?,?,?,?,?)");
 
-            pst.setString(1,"0");
-            pst.setString(2, txt_idTipoHabitacion.getText());
-            pst.setString(3, "A");
-
+            pst.setString(1, txt_idTipoHabitacion.getText());
+            pst.setString(2, txt_Nombre.getText());
+            pst.setString(3, txta_Descripcion.getText());
+            pst.setString(4, txta_Caracteristicas.getText());
+            pst.setString(5, txt_PrecioDiario.getText());
+            pst.setString(6, txt_CupoMaximo.getText());
             //bitacora_guardar();
             pst.executeUpdate();
 
             JOptionPane.showMessageDialog(this, "¡REGISTRO EXITOSO!", "Mensaje", JOptionPane.INFORMATION_MESSAGE);
             txt_idTipoHabitacion.setText("");
-           
+            txt_Nombre.setText("");
+            txta_Descripcion.setText("");
+            txta_Caracteristicas.setText("");
+            txt_PrecioDiario.setText("");
+            txt_CupoMaximo.setText("");
             txtbuscado.setText("");
-          
+
             tablas();
         } catch (SQLException e) {
             JOptionPane.showMessageDialog(this, "Error en registro", "Warning", JOptionPane.WARNING_MESSAGE);
@@ -403,18 +429,23 @@ public class inf_Mantenimiento_TipoHabitacion extends javax.swing.JInternalFrame
             String ID = txtbuscado.getText().trim();
 
             Connection cn = DriverManager.getConnection(mdi_Principal.BD, mdi_Principal.Usuario, mdi_Principal.Contraseña);
-            PreparedStatement pst = cn.prepareStatement("update tipo_cliente set  nombre = ?, estatus = ?  where id_tipo_cliente =" + ID);
+            PreparedStatement pst = cn.prepareStatement("update tipo_habitacion set  id_tipo_habitacion = ?, nombre = ?, descripcion = ?, caracteristicas = ?, precio_diario = ?, cupo_maximo = ?  where id_tipo_habitacion =" + ID);
             pst.setString(1, txt_idTipoHabitacion.getText());
-
-            
-
+            pst.setString(2, txt_Nombre.getText());
+            pst.setString(3, txta_Descripcion.getText());
+            pst.setString(4, txta_Caracteristicas.getText());
+            pst.setString(5, txt_PrecioDiario.getText());
+            pst.setString(6, txt_CupoMaximo.getText());
             pst.executeUpdate();
 
             //bitacora_modificar();
             JOptionPane.showMessageDialog(this, "¡MODIFICACION EXITOSA!", "Mensaje", JOptionPane.INFORMATION_MESSAGE);
             txt_idTipoHabitacion.setText("");
-            
-
+            txt_Nombre.setText("");
+            txta_Descripcion.setText("");
+            txta_Caracteristicas.setText("");
+            txt_PrecioDiario.setText("");
+            txt_CupoMaximo.setText("");
             txtbuscado.setText("");
             btnRegistrar.setEnabled(true);
             btnModificar.setEnabled(false);
