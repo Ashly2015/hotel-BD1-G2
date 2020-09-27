@@ -96,6 +96,8 @@ public class inf_Mantenimiento_Lavanderia extends javax.swing.JInternalFrame {
      */
     public inf_Mantenimiento_Lavanderia() {
         initComponents();
+        tablas();
+        iniciar_combo();
     }
 
     /**
@@ -108,16 +110,12 @@ public class inf_Mantenimiento_Lavanderia extends javax.swing.JInternalFrame {
     private void initComponents() {
 
         btnBuscar = new javax.swing.JButton();
-        txt_correo = new javax.swing.JTextField();
+        txt_estatus = new javax.swing.JTextField();
         label5 = new javax.swing.JLabel();
         btnModificar = new javax.swing.JButton();
-        label6 = new javax.swing.JLabel();
         label3 = new javax.swing.JLabel();
-        txt_telefono = new javax.swing.JTextField();
         txtbuscado = new javax.swing.JTextField();
-        label7 = new javax.swing.JLabel();
         txt_nombre = new javax.swing.JTextField();
-        txt_direccion = new javax.swing.JTextField();
         btnLimpiar = new javax.swing.JButton();
         lb = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
@@ -141,12 +139,12 @@ public class inf_Mantenimiento_Lavanderia extends javax.swing.JInternalFrame {
             }
         });
 
-        txt_correo.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
-        txt_correo.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(204, 204, 204)));
-        txt_correo.setOpaque(false);
+        txt_estatus.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
+        txt_estatus.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(204, 204, 204)));
+        txt_estatus.setOpaque(false);
 
         label5.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
-        label5.setText("Correo Cliente:");
+        label5.setText("Estatus:");
 
         btnModificar.setText("Modificar");
         btnModificar.setEnabled(false);
@@ -156,26 +154,12 @@ public class inf_Mantenimiento_Lavanderia extends javax.swing.JInternalFrame {
             }
         });
 
-        label6.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
-        label6.setText("Telefono Cliente:");
-
         label3.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
-        label3.setText("Nombre Cliente:");
-
-        txt_telefono.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
-        txt_telefono.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(204, 204, 204)));
-        txt_telefono.setOpaque(false);
-
-        label7.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
-        label7.setText("Direccion Cliente:");
+        label3.setText("Nombre:");
 
         txt_nombre.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
         txt_nombre.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(204, 204, 204)));
         txt_nombre.setOpaque(false);
-
-        txt_direccion.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
-        txt_direccion.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(204, 204, 204)));
-        txt_direccion.setOpaque(false);
 
         btnLimpiar.setText("Limpiar");
         btnLimpiar.addActionListener(new java.awt.event.ActionListener() {
@@ -245,7 +229,7 @@ public class inf_Mantenimiento_Lavanderia extends javax.swing.JInternalFrame {
                         .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(19, 19, 19)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
@@ -263,26 +247,18 @@ public class inf_Mantenimiento_Lavanderia extends javax.swing.JInternalFrame {
                                         .addComponent(btnModificar, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE))))
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(label6)
-                                    .addComponent(label7))
-                                .addGap(14, 14, 14)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(txt_telefono)
-                                    .addComponent(txt_direccion)))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(label3)
                                     .addComponent(label5)
                                     .addComponent(label4))
                                 .addGap(23, 23, 23)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(txt_correo)
+                                    .addComponent(txt_estatus)
                                     .addComponent(txt_nombre)
                                     .addComponent(cbox_tipo_cliente, javax.swing.GroupLayout.PREFERRED_SIZE, 263, javax.swing.GroupLayout.PREFERRED_SIZE))))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(lb)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 483, Short.MAX_VALUE)))
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 502, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -299,16 +275,8 @@ public class inf_Mantenimiento_Lavanderia extends javax.swing.JInternalFrame {
                             .addComponent(label3))
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txt_correo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txt_estatus, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(label5))
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(label6)
-                            .addComponent(txt_telefono, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(28, 28, 28)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txt_direccion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(label7))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(btnRegistrar)
@@ -339,18 +307,17 @@ public class inf_Mantenimiento_Lavanderia extends javax.swing.JInternalFrame {
         }
         try {
             Connection cn = DriverManager.getConnection(mdi_Principal.BD, mdi_Principal.Usuario, mdi_Principal.Contraseña);
-            PreparedStatement pst = cn.prepareStatement("select * from cliente where id_cliente =?");
+            PreparedStatement pst = cn.prepareStatement("select * from lavanderia where id_lavanderia =?");
             pst.setString(1, txtbuscado.getText().trim());
 
             ResultSet rs = pst.executeQuery();
 
             if (rs.next()) {
-                lb.setText(rs.getString("id_tipo_cliente"));
-                txt_nombre.setText(rs.getString("nombre_cliente"));
+                lb.setText(rs.getString("id_sucursal"));
+                txt_nombre.setText(rs.getString("nombre_lavanderia"));
 
-                txt_correo.setText(rs.getString("correo"));
-                txt_telefono.setText(rs.getString("telefono"));
-                txt_direccion.setText(rs.getString("direccion"));
+                txt_estatus.setText(rs.getString("estatus_lavanderia"));
+               
 
                 btnModificar.setEnabled(true);
                 btnEliminar.setEnabled(true);
@@ -375,23 +342,20 @@ public class inf_Mantenimiento_Lavanderia extends javax.swing.JInternalFrame {
             String ID = txtbuscado.getText().trim();
 
             Connection cn = DriverManager.getConnection(mdi_Principal.BD, mdi_Principal.Usuario, mdi_Principal.Contraseña);
-            PreparedStatement pst = cn.prepareStatement("update cliente set  id_tipo_cliente = ?,nombre_cliente =?, correo = ?,telefono = ?, direccion = ? where id_cliente =" + ID);
+            PreparedStatement pst = cn.prepareStatement("update lavanderia set  id_sucursal = ?,nombre_lavanderia =?,estatus_lavanderia = ? where id_lavanderia =" + ID);
 
             pst.setString(1, lb.getText());
             pst.setString(2, txt_nombre.getText());
-            pst.setString(3, txt_correo.getText());
-            pst.setString(4, txt_telefono.getText());
-            pst.setString(5, txt_direccion.getText());
+            pst.setString(3, txt_estatus.getText());
+           
 
             pst.executeUpdate();
 
             //bitacora_modificar();
             JOptionPane.showMessageDialog(this, "¡MODIFICACION EXITOSA!", "Mensaje", JOptionPane.INFORMATION_MESSAGE);
             txt_nombre.setText("");
-            txt_correo.setText("");
-            txt_telefono.setText("");
-            txt_direccion.setText("");
-
+            txt_estatus.setText("");
+           
             txtbuscado.setText("");
             btnRegistrar.setEnabled(true);
             btnModificar.setEnabled(false);
@@ -405,9 +369,8 @@ public class inf_Mantenimiento_Lavanderia extends javax.swing.JInternalFrame {
 
     private void btnLimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimpiarActionPerformed
         txt_nombre.setText("");
-        txt_correo.setText("");
-        txt_telefono.setText("");
-        txt_direccion.setText("");
+        txt_estatus.setText("");
+    
         cbox_tipo_cliente.setSelectedIndex(0);
         txtbuscado.setText("");
         btnRegistrar.setEnabled(true);
@@ -421,7 +384,7 @@ public class inf_Mantenimiento_Lavanderia extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
         try {
             Connection cn = DriverManager.getConnection(mdi_Principal.BD, mdi_Principal.Usuario, mdi_Principal.Contraseña);
-            PreparedStatement pst = cn.prepareStatement("delete from cliente where id_cliente = ?");
+            PreparedStatement pst = cn.prepareStatement("delete from lavanderia where id_lavanderia = ?");
 
             pst.setString(1, txtbuscado.getText().trim());
             pst.executeUpdate();
@@ -431,9 +394,8 @@ public class inf_Mantenimiento_Lavanderia extends javax.swing.JInternalFrame {
             txt_nombre.setText("");
 
             cbox_tipo_cliente.setSelectedIndex(0);
-            txt_correo.setText("");
-            txt_telefono.setText("");
-            txt_direccion.setText("");
+            txt_estatus.setText("");
+         
             txtbuscado.setText("");
             btnRegistrar.setEnabled(true);
             btnModificar.setEnabled(false);
@@ -451,19 +413,18 @@ public class inf_Mantenimiento_Lavanderia extends javax.swing.JInternalFrame {
         try {
             Connection cn = DriverManager.getConnection(mdi_Principal.BD, mdi_Principal.Usuario, mdi_Principal.Contraseña);
 
-            PreparedStatement pst2 = cn.prepareStatement("select id_tipo_cliente from tipo_cliente where nombre = ?");
+            PreparedStatement pst2 = cn.prepareStatement("select id_sucursal from sucursal where nombre = ?");
             pst2.setString(1, cbox_tipo_cliente.getSelectedItem().toString());
             ResultSet rs2 = pst2.executeQuery();
 
             if (rs2.next()) {
-                lb.setText(rs2.getString("id_tipo_cliente"));
+                lb.setText(rs2.getString("id_sucursal"));
 
             } else {
                 if (cbox_tipo_cliente.getSelectedItem().toString().contains("Seleccione una opción")) {
                     txt_nombre.setText("");
-                    txt_correo.setText("");
-                    txt_telefono.setText("");
-                    txt_direccion.setText("");
+                    txt_estatus.setText("");
+               
                 }
             }
 
@@ -479,26 +440,23 @@ public class inf_Mantenimiento_Lavanderia extends javax.swing.JInternalFrame {
         try {
             Connection cn = DriverManager.getConnection(mdi_Principal.BD, mdi_Principal.Usuario, mdi_Principal.Contraseña);
             //localhost es 127.0.0.1
-            PreparedStatement pst = cn.prepareStatement("insert into cliente values(?,?,?,?,?,?)");
+            PreparedStatement pst = cn.prepareStatement("insert into lavanderia values(?,?,?,?)");
 
             pst.setString(1, "0");
-            pst.setString(2, lb.getText());
-            pst.setString(3, txt_nombre.getText());
-            pst.setString(4, txt_correo.getText());
-            pst.setString(5, txt_telefono.getText());
-            pst.setString(6, txt_direccion.getText());
+            pst.setString(2, txt_nombre.getText());
+            pst.setString(3, lb.getText());
+            pst.setString(4, txt_estatus.getText());
+            
 
             //bitacora_guardar();
             pst.executeUpdate();
 
             JOptionPane.showMessageDialog(this, "¡REGISTRO EXITOSO!", "Mensaje", JOptionPane.INFORMATION_MESSAGE);
             txt_nombre.setText("");
-            txt_correo.setText("");
-            txt_telefono.setText("");
-            txt_direccion.setText("");
-
+            txt_estatus.setText("");
+          
             txtbuscado.setText("");
-            txt_correo.setText("");
+            txt_estatus.setText("");
             tablas();
         } catch (SQLException e) {
             JOptionPane.showMessageDialog(this, "Error en registro", "Warning", JOptionPane.WARNING_MESSAGE);
@@ -519,14 +477,10 @@ public class inf_Mantenimiento_Lavanderia extends javax.swing.JInternalFrame {
     private javax.swing.JLabel label3;
     private javax.swing.JLabel label4;
     private javax.swing.JLabel label5;
-    private javax.swing.JLabel label6;
-    private javax.swing.JLabel label7;
     private javax.swing.JLabel lb;
     private javax.swing.JTable tbl;
-    private javax.swing.JTextField txt_correo;
-    private javax.swing.JTextField txt_direccion;
+    private javax.swing.JTextField txt_estatus;
     private javax.swing.JTextField txt_nombre;
-    private javax.swing.JTextField txt_telefono;
     private javax.swing.JTextField txtbuscado;
     // End of variables declaration//GEN-END:variables
 }
