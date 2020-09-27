@@ -283,7 +283,6 @@ public class inf_Mantenimiento_Sucursal extends javax.swing.JInternalFrame {
             PreparedStatement pst = cn.prepareStatement("insert into sucursal values(?,?,?,?)");
 
             pst.setString(1, "0");
-
             pst.setString(2, txt_nombre.getText());
             pst.setString(3, txt_direccion.getText());
             pst.setString(4, txt_telefono.getText());
