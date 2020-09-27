@@ -373,9 +373,16 @@ public class inf_Mantenimiento_Tipo_Cliente extends javax.swing.JInternalFrame {
 
             Connection cn = DriverManager.getConnection(mdi_Principal.BD, mdi_Principal.Usuario, mdi_Principal.Contraseña);
             PreparedStatement pst = cn.prepareStatement("update tipo_cliente set  nombre = ?, estatus = ?  where id_tipo_cliente =" + ID);
-
+            String mensaje = "";
             pst.setString(1, txt_nombre.getText());
-            pst.setString(2, txt_estado.getText());
+            
+             if (activo.isSelected()) {
+                mensaje = "A";
+            } else if (inactivo.isSelected()) {
+                mensaje = "I";
+
+            }
+            pst.setString(2, mensaje);
 
             pst.executeUpdate();
 
