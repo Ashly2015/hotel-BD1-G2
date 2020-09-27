@@ -10,28 +10,28 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.Calendar;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 /**
  *
- * @author ranbr
+ * @author SEBAS
  */
-public class inf_Mantenimiento_Cliente extends javax.swing.JInternalFrame {
-
-    public void tablas() {
+public class inf_Mantenimiento_Prenda extends javax.swing.JInternalFrame {
+  public void tablas() {
         try {
             Connection cn = DriverManager.getConnection(mdi_Principal.BD, mdi_Principal.Usuario, mdi_Principal.Contraseña);
-            PreparedStatement pstt4 = cn.prepareStatement("select * from cliente");
+            PreparedStatement pstt4 = cn.prepareStatement("select * from prenda");
             ResultSet rss4 = pstt4.executeQuery();
 
             DefaultTableModel modelo = new DefaultTableModel();
-            modelo.addColumn("ID Cliente");
-            modelo.addColumn("ID Tipo Cliente");
-            modelo.addColumn("Nombre Cliente");
-            modelo.addColumn("Correo");
-            modelo.addColumn("Telefono");
-            modelo.addColumn("Direccion");
+            modelo.addColumn("ID Prenda");
+            modelo.addColumn("Cantidad");
+            modelo.addColumn("Descripcion");
+            modelo.addColumn("Fecha Fin");
+            modelo.addColumn("Hora");
+            
             tbl.setModel(modelo);
             String[] dato = new String[6];
             while (rss4.next()) {
@@ -40,7 +40,7 @@ public class inf_Mantenimiento_Cliente extends javax.swing.JInternalFrame {
                 dato[2] = rss4.getString(3);
                 dato[3] = rss4.getString(4);
                 dato[4] = rss4.getString(5);
-                dato[5] = rss4.getString(6);
+                
 
                 modelo.addRow(dato);
             }
@@ -60,11 +60,6 @@ public class inf_Mantenimiento_Cliente extends javax.swing.JInternalFrame {
             PreparedStatement psttt = cn.prepareStatement("select nombre from tipo_cliente ");
             ResultSet rss = psttt.executeQuery();
 
-            cbox_tipo_cliente.removeAllItems();
-            cbox_tipo_cliente.addItem("Seleccione una opción");
-            while (rss.next()) {
-                cbox_tipo_cliente.addItem(rss.getString("nombre"));
-            }
             tablas();
         } catch (Exception e) {
             e.printStackTrace();
@@ -77,29 +72,15 @@ public class inf_Mantenimiento_Cliente extends javax.swing.JInternalFrame {
      * Funcion para poblar el combobox con la informacion correspondiente segun
      * la base de datos
      */
-    public void iniciar_combo() {
-        try {
-            Connection cn = DriverManager.getConnection(mdi_Principal.BD, mdi_Principal.Usuario, mdi_Principal.Contraseña);
-            PreparedStatement psttt = cn.prepareStatement("select nombre from tipo_cliente ");
-            ResultSet rss = psttt.executeQuery();
-
-            cbox_tipo_cliente.addItem("Seleccione una opción");
-            while (rss.next()) {
-                cbox_tipo_cliente.addItem(rss.getString("nombre"));
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        tablas();
-    }
+ 
 
     /**
-     * Creates new form inf_Mantenimiento_Cliente
+     * Creates new form inf_Mantenimiento_Prenda
      */
-    public inf_Mantenimiento_Cliente() {
+    public inf_Mantenimiento_Prenda() {
         initComponents();
         tablas();
-        iniciar_combo();
+     
     }
 
     /**
@@ -114,29 +95,26 @@ public class inf_Mantenimiento_Cliente extends javax.swing.JInternalFrame {
         btnEliminar = new javax.swing.JButton();
         btnRegistrar = new javax.swing.JButton();
         btnBuscar = new javax.swing.JButton();
+        txt_descripcion = new javax.swing.JTextField();
         label1 = new javax.swing.JLabel();
+        label5 = new javax.swing.JLabel();
         btnModificar = new javax.swing.JButton();
+        label6 = new javax.swing.JLabel();
         label3 = new javax.swing.JLabel();
         txtbuscado = new javax.swing.JTextField();
-        txt_nombre = new javax.swing.JTextField();
+        label7 = new javax.swing.JLabel();
+        txt_cantidad = new javax.swing.JTextField();
+        txt_hora = new javax.swing.JTextField();
         btnLimpiar = new javax.swing.JButton();
+        lb = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tbl = new javax.swing.JTable();
-        cbox_tipo_cliente = new javax.swing.JComboBox<>();
-        label4 = new javax.swing.JLabel();
-        txt_correo = new javax.swing.JTextField();
-        label5 = new javax.swing.JLabel();
-        label6 = new javax.swing.JLabel();
-        txt_telefono = new javax.swing.JTextField();
-        label7 = new javax.swing.JLabel();
-        txt_direccion = new javax.swing.JTextField();
-        lb = new javax.swing.JLabel();
+        txt_fecha = new com.toedter.calendar.JDateChooser();
 
         setClosable(true);
         setIconifiable(true);
         setMaximizable(true);
         setResizable(true);
-        setTitle("Mantenimiento Cliente");
         setVisible(true);
 
         btnEliminar.setText("Eliminar");
@@ -161,8 +139,15 @@ public class inf_Mantenimiento_Cliente extends javax.swing.JInternalFrame {
             }
         });
 
+        txt_descripcion.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
+        txt_descripcion.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(204, 204, 204)));
+        txt_descripcion.setOpaque(false);
+
         label1.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
-        label1.setText("Cliente");
+        label1.setText("Prenda");
+
+        label5.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
+        label5.setText("Descripcion:");
 
         btnModificar.setText("Modificar");
         btnModificar.setEnabled(false);
@@ -172,12 +157,22 @@ public class inf_Mantenimiento_Cliente extends javax.swing.JInternalFrame {
             }
         });
 
-        label3.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
-        label3.setText("Nombre Cliente:");
+        label6.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
+        label6.setText("Fecha:");
 
-        txt_nombre.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
-        txt_nombre.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(204, 204, 204)));
-        txt_nombre.setOpaque(false);
+        label3.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
+        label3.setText("Cantidad:");
+
+        label7.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
+        label7.setText("Hora");
+
+        txt_cantidad.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
+        txt_cantidad.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(204, 204, 204)));
+        txt_cantidad.setOpaque(false);
+
+        txt_hora.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
+        txt_hora.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(204, 204, 204)));
+        txt_hora.setOpaque(false);
 
         btnLimpiar.setText("Limpiar");
         btnLimpiar.addActionListener(new java.awt.event.ActionListener() {
@@ -185,6 +180,9 @@ public class inf_Mantenimiento_Cliente extends javax.swing.JInternalFrame {
                 btnLimpiarActionPerformed(evt);
             }
         });
+
+        lb.setForeground(new java.awt.Color(204, 204, 204));
+        lb.setText(".");
 
         tbl.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
         tbl.setModel(new javax.swing.table.DefaultTableModel(
@@ -204,40 +202,6 @@ public class inf_Mantenimiento_Cliente extends javax.swing.JInternalFrame {
             }
         });
         jScrollPane1.setViewportView(tbl);
-
-        cbox_tipo_cliente.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
-        cbox_tipo_cliente.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cbox_tipo_clienteActionPerformed(evt);
-            }
-        });
-
-        label4.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
-        label4.setText("Tipo Cliente");
-
-        txt_correo.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
-        txt_correo.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(204, 204, 204)));
-        txt_correo.setOpaque(false);
-
-        label5.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
-        label5.setText("Correo Cliente:");
-
-        label6.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
-        label6.setText("Telefono Cliente:");
-
-        txt_telefono.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
-        txt_telefono.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(204, 204, 204)));
-        txt_telefono.setOpaque(false);
-
-        label7.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
-        label7.setText("Direccion Cliente:");
-
-        txt_direccion.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
-        txt_direccion.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(204, 204, 204)));
-        txt_direccion.setOpaque(false);
-
-        lb.setForeground(new java.awt.Color(204, 204, 204));
-        lb.setText(".");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -266,52 +230,48 @@ public class inf_Mantenimiento_Cliente extends javax.swing.JInternalFrame {
                             .addComponent(label6)
                             .addComponent(label7))
                         .addGap(14, 14, 14)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txt_telefono)
-                            .addComponent(txt_direccion)))
+                        .addComponent(txt_hora, javax.swing.GroupLayout.DEFAULT_SIZE, 305, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(label3)
-                            .addComponent(label5)
-                            .addComponent(label4))
+                            .addComponent(label5))
                         .addGap(23, 23, 23)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(txt_correo)
-                            .addComponent(txt_nombre)
-                            .addComponent(cbox_tipo_cliente, 0, 263, Short.MAX_VALUE))))
+                            .addComponent(txt_descripcion, javax.swing.GroupLayout.DEFAULT_SIZE, 263, Short.MAX_VALUE)
+                            .addComponent(txt_cantidad)
+                            .addComponent(txt_fecha, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(lb)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 619, Short.MAX_VALUE)
-                        .addContainerGap())
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(label1)
-                        .addGap(294, 294, 294))))
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 504, Short.MAX_VALUE)
+                .addContainerGap())
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(label1)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addComponent(label1)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(65, 65, 65)
+                        .addGap(31, 31, 31)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txt_nombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txt_cantidad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(label3))
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txt_correo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txt_descripcion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(label5))
                         .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(label6)
-                            .addComponent(txt_telefono, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(28, 28, 28)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txt_direccion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(label6)
+                            .addComponent(txt_fecha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(25, 25, 25)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(txt_hora, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(label7))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -324,15 +284,11 @@ public class inf_Mantenimiento_Cliente extends javax.swing.JInternalFrame {
                             .addComponent(btnBuscar)
                             .addComponent(btnLimpiar)))
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(label1)
                         .addGap(4, 4, 4)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                .addComponent(cbox_tipo_cliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(label4)
-                                .addComponent(lb))
+                            .addComponent(lb)
                             .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 303, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(43, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
@@ -342,19 +298,19 @@ public class inf_Mantenimiento_Cliente extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
         try {
             Connection cn = DriverManager.getConnection(mdi_Principal.BD, mdi_Principal.Usuario, mdi_Principal.Contraseña);
-            PreparedStatement pst = cn.prepareStatement("delete from cliente where id_cliente = ?");
+            PreparedStatement pst = cn.prepareStatement("delete from prenda where id_prenda = ?");
 
             pst.setString(1, txtbuscado.getText().trim());
             pst.executeUpdate();
 
             // bitacora_eliminar();
             JOptionPane.showMessageDialog(this, "¡ELIMINACION EXITOSA!", "Mensaje", JOptionPane.INFORMATION_MESSAGE);
-            txt_nombre.setText("");
+            txt_cantidad.setText("");
 
-            cbox_tipo_cliente.setSelectedIndex(0);
-            txt_correo.setText("");
-            txt_telefono.setText("");
-            txt_direccion.setText("");
+           
+            txt_descripcion.setText("");
+            txt_fecha.setDate(null);
+            txt_hora.setText("");
             txtbuscado.setText("");
             btnRegistrar.setEnabled(true);
             btnModificar.setEnabled(false);
@@ -370,28 +326,34 @@ public class inf_Mantenimiento_Cliente extends javax.swing.JInternalFrame {
     private void btnRegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarActionPerformed
         // TODO add your handling code here:
         try {
+            int mes, dia, año;
+            dia = txt_fecha.getCalendar().get(Calendar.DAY_OF_MONTH);
+            mes = txt_fecha.getCalendar().get(Calendar.MONTH);
+            año = txt_fecha.getCalendar().get(Calendar.YEAR);
+            String fecha;
+            fecha = año + "/"+mes+"/"+dia;
             Connection cn = DriverManager.getConnection(mdi_Principal.BD, mdi_Principal.Usuario, mdi_Principal.Contraseña);
             //localhost es 127.0.0.1
-            PreparedStatement pst = cn.prepareStatement("insert into cliente values(?,?,?,?,?,?)");
+            PreparedStatement pst = cn.prepareStatement("insert into prenda values(?,?,?,?,?)");
 
             pst.setString(1, "0");
-            pst.setString(2, lb.getText());
-            pst.setString(3, txt_nombre.getText());
-            pst.setString(4, txt_correo.getText());
-            pst.setString(5, txt_telefono.getText());
-            pst.setString(6, txt_direccion.getText());
+           
+            pst.setString(2, txt_cantidad.getText());
+            pst.setString(3, txt_descripcion.getText());
+            pst.setString(4, fecha);
+            pst.setString(5, txt_hora.getText());
 
             //bitacora_guardar();
             pst.executeUpdate();
 
             JOptionPane.showMessageDialog(this, "¡REGISTRO EXITOSO!", "Mensaje", JOptionPane.INFORMATION_MESSAGE);
-            txt_nombre.setText("");
-            txt_correo.setText("");
-            txt_telefono.setText("");
-            txt_direccion.setText("");
+            txt_cantidad.setText("");
+            txt_descripcion.setText("");
+            txt_fecha.setDate(null);
+            txt_hora.setText("");
 
             txtbuscado.setText("");
-            txt_correo.setText("");
+            txt_descripcion.setText("");
             tablas();
         } catch (SQLException e) {
             JOptionPane.showMessageDialog(this, "Error en registro", "Warning", JOptionPane.WARNING_MESSAGE);
@@ -400,7 +362,7 @@ public class inf_Mantenimiento_Cliente extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_btnRegistrarActionPerformed
 
     private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
-        
+
         String buscar = txtbuscado.getText().trim();
         if (buscar.isEmpty()) {
             JOptionPane.showMessageDialog(this, "¡No se ingreso el campo de busqueda!", "Advertencia", JOptionPane.WARNING_MESSAGE);
@@ -408,18 +370,19 @@ public class inf_Mantenimiento_Cliente extends javax.swing.JInternalFrame {
         }
         try {
             Connection cn = DriverManager.getConnection(mdi_Principal.BD, mdi_Principal.Usuario, mdi_Principal.Contraseña);
-            PreparedStatement pst = cn.prepareStatement("select * from cliente where id_cliente =?");
+            PreparedStatement pst = cn.prepareStatement("select * from prenda where id_prenda =?");
             pst.setString(1, txtbuscado.getText().trim());
 
             ResultSet rs = pst.executeQuery();
 
             if (rs.next()) {
-                lb.setText(rs.getString("id_tipo_cliente"));
-                txt_nombre.setText(rs.getString("nombre_cliente"));
+                lb.setText(rs.getString("id_prenda"));
+                txt_cantidad.setText(rs.getString("cantidad"));
 
-                txt_correo.setText(rs.getString("correo"));
-                txt_telefono.setText(rs.getString("telefono"));
-                txt_direccion.setText(rs.getString("direccion"));
+                txt_descripcion.setText(rs.getString("descripcion"));
+                //txt_fecha.setDate(rs.getString("telefono"));
+                txt_hora.setText(rs.getString("fecha_fin"));
+                txt_hora.setText(rs.getString("hora"));
 
                 btnModificar.setEnabled(true);
                 btnEliminar.setEnabled(true);
@@ -433,33 +396,40 @@ public class inf_Mantenimiento_Cliente extends javax.swing.JInternalFrame {
         } catch (Exception e) {
 
         }
-        
+
         // tablas();
         // bitacora_busqueda();
     }//GEN-LAST:event_btnBuscarActionPerformed
 
     private void btnModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModificarActionPerformed
         // TODO add your handling code here:
+                    int mes, dia, año;
+            dia = txt_fecha.getCalendar().get(Calendar.DAY_OF_MONTH);
+            mes = txt_fecha.getCalendar().get(Calendar.MONTH);
+            año = txt_fecha.getCalendar().get(Calendar.YEAR);
+            String fecha;
+            fecha = año + "/"+mes+"/"+dia;
+            
         try {
             String ID = txtbuscado.getText().trim();
 
             Connection cn = DriverManager.getConnection(mdi_Principal.BD, mdi_Principal.Usuario, mdi_Principal.Contraseña);
-            PreparedStatement pst = cn.prepareStatement("update cliente set  id_tipo_cliente = ?,nombre_cliente =?, correo = ?,telefono = ?, direccion = ? where id_cliente =" + ID);
+            PreparedStatement pst = cn.prepareStatement("update cliente set  cantidad =?, descripcion = ?,fecha_fin = ?, hora = ? where id_prenda =" + ID);
 
             pst.setString(1, lb.getText());
-            pst.setString(2, txt_nombre.getText());
-            pst.setString(3, txt_correo.getText());
-            pst.setString(4, txt_telefono.getText());
-            pst.setString(5, txt_direccion.getText());
+            pst.setString(2, txt_cantidad.getText());
+            pst.setString(3, txt_descripcion.getText());
+            pst.setString(4, fecha);
+            pst.setString(5, txt_hora.getText());
 
             pst.executeUpdate();
 
             //bitacora_modificar();
             JOptionPane.showMessageDialog(this, "¡MODIFICACION EXITOSA!", "Mensaje", JOptionPane.INFORMATION_MESSAGE);
-            txt_nombre.setText("");
-            txt_correo.setText("");
-            txt_telefono.setText("");
-            txt_direccion.setText("");
+            txt_cantidad.setText("");
+            txt_descripcion.setText("");
+            txt_fecha.setDate(null);
+            txt_hora.setText("");
 
             txtbuscado.setText("");
             btnRegistrar.setEnabled(true);
@@ -473,11 +443,11 @@ public class inf_Mantenimiento_Cliente extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_btnModificarActionPerformed
 
     private void btnLimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimpiarActionPerformed
-        txt_nombre.setText("");
-        txt_correo.setText("");
-        txt_telefono.setText("");
-        txt_direccion.setText("");
-        cbox_tipo_cliente.setSelectedIndex(0);
+        txt_cantidad.setText("");
+        txt_descripcion.setText("");
+        txt_fecha.setDate(null);
+        txt_hora.setText("");
+        
         txtbuscado.setText("");
         btnRegistrar.setEnabled(true);
         btnModificar.setEnabled(false);
@@ -486,35 +456,6 @@ public class inf_Mantenimiento_Cliente extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_btnLimpiarActionPerformed
 
-    private void cbox_tipo_clienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbox_tipo_clienteActionPerformed
-     
-        
-        try {
-            Connection cn = DriverManager.getConnection(mdi_Principal.BD, mdi_Principal.Usuario, mdi_Principal.Contraseña);
-
-            PreparedStatement pst2 = cn.prepareStatement("select id_tipo_cliente from tipo_cliente where nombre = ?");
-            pst2.setString(1, cbox_tipo_cliente.getSelectedItem().toString());
-            ResultSet rs2 = pst2.executeQuery();
-
-            if (rs2.next()) {
-                lb.setText(rs2.getString("id_tipo_cliente"));
-
-            } else {
-                if (cbox_tipo_cliente.getSelectedItem().toString().contains("Seleccione una opción")) {
-                    txt_nombre.setText("");
-                    txt_correo.setText("");
-                    txt_telefono.setText("");
-                    txt_direccion.setText("");
-                }
-            }
-
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-
-        // TODO add your handling code here:
-    }//GEN-LAST:event_cbox_tipo_clienteActionPerformed
-
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBuscar;
@@ -522,20 +463,18 @@ public class inf_Mantenimiento_Cliente extends javax.swing.JInternalFrame {
     private javax.swing.JButton btnLimpiar;
     private javax.swing.JButton btnModificar;
     private javax.swing.JButton btnRegistrar;
-    private javax.swing.JComboBox<String> cbox_tipo_cliente;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel label1;
     private javax.swing.JLabel label3;
-    private javax.swing.JLabel label4;
     private javax.swing.JLabel label5;
     private javax.swing.JLabel label6;
     private javax.swing.JLabel label7;
     private javax.swing.JLabel lb;
     private javax.swing.JTable tbl;
-    private javax.swing.JTextField txt_correo;
-    private javax.swing.JTextField txt_direccion;
-    private javax.swing.JTextField txt_nombre;
-    private javax.swing.JTextField txt_telefono;
+    private javax.swing.JTextField txt_cantidad;
+    private javax.swing.JTextField txt_descripcion;
+    private com.toedter.calendar.JDateChooser txt_fecha;
+    private javax.swing.JTextField txt_hora;
     private javax.swing.JTextField txtbuscado;
     // End of variables declaration//GEN-END:variables
 }
