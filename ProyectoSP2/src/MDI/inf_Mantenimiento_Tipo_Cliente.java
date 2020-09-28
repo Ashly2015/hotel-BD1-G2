@@ -158,6 +158,11 @@ public class inf_Mantenimiento_Tipo_Cliente extends javax.swing.JInternalFrame {
         activo.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
         activo.setText("Activo");
         activo.setOpaque(false);
+        activo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                activoActionPerformed(evt);
+            }
+        });
 
         inactivo.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
         inactivo.setText("Inactivo");
@@ -406,6 +411,10 @@ public class inf_Mantenimiento_Tipo_Cliente extends javax.swing.JInternalFrame {
             JOptionPane.showMessageDialog(this, "Error en Modificacion", "Warning", JOptionPane.WARNING_MESSAGE);
         }
     }//GEN-LAST:event_btnModificarActionPerformed
+
+    private void activoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_activoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_activoActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

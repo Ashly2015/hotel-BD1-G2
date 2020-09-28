@@ -95,6 +95,7 @@ public class inf_Mantenimiento_TipoHabitacion extends javax.swing.JInternalFrame
         setIconifiable(true);
         setMaximizable(true);
         setResizable(true);
+        setTitle("Mantenimineto Tipo Habitación");
         setVisible(true);
 
         btnBuscar.setText("Buscar");
@@ -338,7 +339,7 @@ public class inf_Mantenimiento_TipoHabitacion extends javax.swing.JInternalFrame
                 tablas();
 
             } else {
-                JOptionPane.showMessageDialog(this, "Tipo Hbitación no registrada.", "Mensaje", JOptionPane.WARNING_MESSAGE);
+                JOptionPane.showMessageDialog(this, "Tipo Habitación no registrada.", "Mensaje", JOptionPane.WARNING_MESSAGE);
             }
 
         } catch (Exception e) {
