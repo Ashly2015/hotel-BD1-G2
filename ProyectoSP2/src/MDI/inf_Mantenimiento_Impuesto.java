@@ -22,7 +22,7 @@ public class inf_Mantenimiento_Impuesto extends javax.swing.JInternalFrame {
     public void tablas() {
         try {
             Connection cn = DriverManager.getConnection(mdi_Principal.BD, mdi_Principal.Usuario, mdi_Principal.Contraseña);
-            PreparedStatement pstt4 = cn.prepareStatement("select * from impuesto");
+            PreparedStatement pstt4 = cn.prepareStatement("select * from impuestos");
             ResultSet rss4 = pstt4.executeQuery();
 
             DefaultTableModel modelo = new DefaultTableModel();
@@ -30,7 +30,7 @@ public class inf_Mantenimiento_Impuesto extends javax.swing.JInternalFrame {
             modelo.addColumn("Nombre");
             modelo.addColumn("Estatus");
             tbl.setModel(modelo);
-            String[] dato = new String[5];
+            String[] dato = new String[3];
             while (rss4.next()) {
                 dato[0] = rss4.getString(1);
                 dato[1] = rss4.getString(2);
@@ -264,7 +264,7 @@ public class inf_Mantenimiento_Impuesto extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
         try {
             Connection cn = DriverManager.getConnection(mdi_Principal.BD, mdi_Principal.Usuario, mdi_Principal.Contraseña);
-            PreparedStatement pst = cn.prepareStatement("delete from impuesto where id_impuesto = ?");
+            PreparedStatement pst = cn.prepareStatement("delete from impuesto where id_impuestos = ?");
 
             pst.setString(1, txt_id_impuesto.getText().trim());
             pst.executeUpdate();
@@ -293,7 +293,7 @@ public class inf_Mantenimiento_Impuesto extends javax.swing.JInternalFrame {
         try {
             Connection cn = DriverManager.getConnection(mdi_Principal.BD, mdi_Principal.Usuario, mdi_Principal.Contraseña);
             //localhost es 127.0.0.1
-            PreparedStatement pst = cn.prepareStatement("insert into impuesto values(?,?,?)");
+            PreparedStatement pst = cn.prepareStatement("insert into impuestos values(?,?,?)");
 
             pst.setString(1, txt_id_impuesto.getText());
             pst.setString(2, txt_nombre.getText());
@@ -317,7 +317,7 @@ public class inf_Mantenimiento_Impuesto extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
         try {
             Connection cn = DriverManager.getConnection(mdi_Principal.BD, mdi_Principal.Usuario, mdi_Principal.Contraseña);
-            PreparedStatement pst = cn.prepareStatement("select * from impuesto where id_impuesto =?");
+            PreparedStatement pst = cn.prepareStatement("select * from impuestos where id_impuesto =?");
             pst.setString(1, txtbuscado.getText().trim());
 
             ResultSet rs = pst.executeQuery();
@@ -353,7 +353,7 @@ public class inf_Mantenimiento_Impuesto extends javax.swing.JInternalFrame {
             String ID = txt_id_impuesto.getText().trim();
 
             Connection cn = DriverManager.getConnection(mdi_Principal.BD, mdi_Principal.Usuario, mdi_Principal.Contraseña);
-            PreparedStatement pst = cn.prepareStatement("update impuesto set  nombre_impuesto = ?,estatus_impuesto =? where id_bodega =" + ID);
+            PreparedStatement pst = cn.prepareStatement("update impuestos set  nombre_impuesto = ?,estatus_impuesto =? where id_bodega =" + ID);
 
             pst.setString(1, txt_nombre.getText());
             pst.setString(2, txt_estatus.getText());

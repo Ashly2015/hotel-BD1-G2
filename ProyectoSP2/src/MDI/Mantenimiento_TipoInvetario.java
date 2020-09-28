@@ -243,8 +243,8 @@ public class Mantenimiento_TipoInvetario extends javax.swing.JInternalFrame {
         try {
             String ID = txtbuscado.getText().trim();
 
-            Connection cn = DriverManager.getConnection("jdbc:mysql://localhost/hotel", "root", "compromete");
-            //Connection cn = DriverManager.getConnection(mdi_Principal.BD, mdi_Principal.Usuario, mdi_Principal.Contraseña);
+            
+            Connection cn = DriverManager.getConnection(mdi_Principal.BD, mdi_Principal.Usuario, mdi_Principal.Contraseña);
             PreparedStatement pst = cn.prepareStatement("update tipo_inventario set nombre =?, estatus = ? where id_tipo_inventario =" + ID);
             
             pst.setString(1, txt_nombre.getText());

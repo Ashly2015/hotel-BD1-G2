@@ -368,10 +368,10 @@ public class inf_Mantenimiento_Sucursal extends javax.swing.JInternalFrame {
             Connection cn = DriverManager.getConnection(mdi_Principal.BD, mdi_Principal.Usuario, mdi_Principal.Contraseña);
             PreparedStatement pst = cn.prepareStatement("update sucursal set  nombre =?, direccion = ?,telefono = ? where id_sucursal =" + ID);
 
-            pst.setString(1, lb.getText());
-            pst.setString(2, txt_nombre.getText());
-            pst.setString(3, txt_direccion.getText());
-            pst.setString(4, txt_telefono.getText());
+            
+            pst.setString(1, txt_nombre.getText());
+            pst.setString(2, txt_direccion.getText());
+            pst.setString(3, txt_telefono.getText());
 
             pst.executeUpdate();
 

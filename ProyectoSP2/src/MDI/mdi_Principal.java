@@ -17,7 +17,7 @@ public class mdi_Principal extends javax.swing.JFrame {
 
     public static String BD = "jdbc:mysql://localhost/hotel";
     public static String Usuario = "root";
-    public static String Contraseña = "compromete";
+    public static String Contraseña = "Polo.2015";
 
     public static Connection getConeccion() {
         Connection cn = null;
@@ -54,9 +54,11 @@ public class mdi_Principal extends javax.swing.JFrame {
         fileMenu = new javax.swing.JMenu();
         jMenuMarcas = new javax.swing.JMenuItem();
         jMenuLineas = new javax.swing.JMenuItem();
-        jMenuParametros = new javax.swing.JMenuItem();
+        jMenuItem11 = new javax.swing.JMenuItem();
+        jMenuItem2 = new javax.swing.JMenuItem();
         jMenuTipoInven = new javax.swing.JMenuItem();
         jMenuInventarios = new javax.swing.JMenuItem();
+        jMenuItem5 = new javax.swing.JMenuItem();
         jMenuVehiculos = new javax.swing.JMenuItem();
         jMenuItem1 = new javax.swing.JMenuItem();
         openMenuItem = new javax.swing.JMenuItem();
@@ -64,16 +66,14 @@ public class mdi_Principal extends javax.swing.JFrame {
         saveAsMenuItem = new javax.swing.JMenuItem();
         exitMenuItem = new javax.swing.JMenuItem();
         exitMenuItem1 = new javax.swing.JMenuItem();
-        jMenuItem2 = new javax.swing.JMenuItem();
         jMenuItem3 = new javax.swing.JMenuItem();
         jMenuItem4 = new javax.swing.JMenuItem();
-        jMenuItem5 = new javax.swing.JMenuItem();
         jMenuItem6 = new javax.swing.JMenuItem();
         jMenuItem7 = new javax.swing.JMenuItem();
         jMenuItem8 = new javax.swing.JMenuItem();
         jMenuItem9 = new javax.swing.JMenuItem();
         jMenuItem10 = new javax.swing.JMenuItem();
-        jMenuItem11 = new javax.swing.JMenuItem();
+        jMenuParametros = new javax.swing.JMenuItem();
         jMenuItem12 = new javax.swing.JMenuItem();
         jMenuItem13 = new javax.swing.JMenuItem();
         jMenuItem14 = new javax.swing.JMenuItem();
@@ -101,13 +101,21 @@ public class mdi_Principal extends javax.swing.JFrame {
         });
         fileMenu.add(jMenuLineas);
 
-        jMenuParametros.setText("Mantenimiento Parametros");
-        jMenuParametros.addActionListener(new java.awt.event.ActionListener() {
+        jMenuItem11.setText("Mantenimiento Sucursal");
+        jMenuItem11.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuParametrosActionPerformed(evt);
+                jMenuItem11ActionPerformed(evt);
             }
         });
-        fileMenu.add(jMenuParametros);
+        fileMenu.add(jMenuItem11);
+
+        jMenuItem2.setText("Mantenimiento Bodega");
+        jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem2ActionPerformed(evt);
+            }
+        });
+        fileMenu.add(jMenuItem2);
 
         jMenuTipoInven.setText("Mantenimiento Tipo De Inventarios");
         jMenuTipoInven.addActionListener(new java.awt.event.ActionListener() {
@@ -124,6 +132,14 @@ public class mdi_Principal extends javax.swing.JFrame {
             }
         });
         fileMenu.add(jMenuInventarios);
+
+        jMenuItem5.setText("Mantenimiento Piloto");
+        jMenuItem5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem5ActionPerformed(evt);
+            }
+        });
+        fileMenu.add(jMenuItem5);
 
         jMenuVehiculos.setText("Mantenimiento Vehiculos");
         jMenuVehiculos.addActionListener(new java.awt.event.ActionListener() {
@@ -186,14 +202,6 @@ public class mdi_Principal extends javax.swing.JFrame {
         });
         fileMenu.add(exitMenuItem1);
 
-        jMenuItem2.setText("Mantenimiento Bodega");
-        jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem2ActionPerformed(evt);
-            }
-        });
-        fileMenu.add(jMenuItem2);
-
         jMenuItem3.setText("Mantenimiento Impuesto");
         jMenuItem3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -209,14 +217,6 @@ public class mdi_Principal extends javax.swing.JFrame {
             }
         });
         fileMenu.add(jMenuItem4);
-
-        jMenuItem5.setText("Mantenimiento Piloto");
-        jMenuItem5.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem5ActionPerformed(evt);
-            }
-        });
-        fileMenu.add(jMenuItem5);
 
         jMenuItem6.setText("Mantenimiento Cobrador");
         jMenuItem6.addActionListener(new java.awt.event.ActionListener() {
@@ -258,13 +258,13 @@ public class mdi_Principal extends javax.swing.JFrame {
         });
         fileMenu.add(jMenuItem10);
 
-        jMenuItem11.setText("Mantenimiento Sucursal");
-        jMenuItem11.addActionListener(new java.awt.event.ActionListener() {
+        jMenuParametros.setText("Mantenimiento Parametros");
+        jMenuParametros.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem11ActionPerformed(evt);
+                jMenuParametrosActionPerformed(evt);
             }
         });
-        fileMenu.add(jMenuItem11);
+        fileMenu.add(jMenuParametros);
 
         jMenuItem12.setText("Mantenimiento Lavanderia");
         jMenuItem12.addActionListener(new java.awt.event.ActionListener() {

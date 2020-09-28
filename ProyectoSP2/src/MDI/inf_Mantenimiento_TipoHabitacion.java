@@ -55,6 +55,8 @@ public class inf_Mantenimiento_TipoHabitacion extends javax.swing.JInternalFrame
 
     public inf_Mantenimiento_TipoHabitacion() {
         initComponents();
+        tablas();
+       
     }
 
     /**

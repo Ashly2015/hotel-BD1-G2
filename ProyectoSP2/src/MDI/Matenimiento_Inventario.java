@@ -73,26 +73,29 @@ public class Matenimiento_Inventario extends javax.swing.JInternalFrame {
         try {
             Connection cn = DriverManager.getConnection(mdi_Principal.BD, mdi_Principal.Usuario, mdi_Principal.Contraseña);
             PreparedStatement pst1 = cn.prepareStatement("select nombre from id_tipo_inventario");
-            /*PreparedStatement pst2 = cn.prepareStatement("select nombre from bodega");
+            PreparedStatement pst2 = cn.prepareStatement("select nombre from bodega");
             PreparedStatement pst3 = cn.prepareStatement("select nombre from marca");
-            PreparedStatement pst4 = cn.prepareStatement("select nombre from linea");*/
+            PreparedStatement pst4 = cn.prepareStatement("select nombre from linea");
             
             ResultSet rs1 = pst1.executeQuery();
-            /*ResultSet rs2 = pst2.executeQuery();
+            ResultSet rs2 = pst2.executeQuery();
             ResultSet rs3 = pst3.executeQuery();
-            ResultSet rs4 = pst4.executeQuery();*/
+            ResultSet rs4 = pst4.executeQuery();
 
-            cbox_tipo_Inventario.removeAllItems();
-            /*cbox_tipo_Inventario.addItem("Seleccione una opción");
+             cbox_tipo_Inventario.removeAllItems();
+            cbox_Bodega.removeAllItems();
+            cbox_Marca.removeAllItems();
+            cbox_Linea.removeAllItems();
+            cbox_tipo_Inventario.addItem("Seleccione una opción");
             cbox_Bodega.addItem("Seleccione una opción");
             cbox_Marca.addItem("Seleccione una opción");
-            cbox_Linea.addItem("Seleccione una opción");*/
+            cbox_Linea.addItem("Seleccione una opción");
                     
-            while (rs1.next() /*&& rs2.next() && rs3.next() && rs4.next()*/) {
+            while (rs1.next() && rs2.next() && rs3.next() && rs4.next()) {
                 cbox_tipo_Inventario.addItem(rs1.getString("nombre"));
-                /*cbox_Bodega.addItem(rs2.getString("nombre"));
+                cbox_Bodega.addItem(rs2.getString("nombre"));
                 cbox_Marca.addItem(rs3.getString("nombre"));
-                cbox_Linea.addItem(rs4.getString("nombre"));*/
+                cbox_Linea.addItem(rs4.getString("nombre"));
             }
             tablas();
         } catch (Exception e) {
@@ -115,10 +118,7 @@ public class Matenimiento_Inventario extends javax.swing.JInternalFrame {
             ResultSet rs3 = pst3.executeQuery();
             ResultSet rs4 = pst4.executeQuery();
             
-            cbox_tipo_Inventario.removeAllItems();
-            cbox_Bodega.removeAllItems();
-            cbox_Marca.removeAllItems();
-            cbox_Linea.removeAllItems();
+           
             
             cbox_tipo_Inventario.addItem("Seleccione una opción");
             cbox_Bodega.addItem("Seleccione una opción");
@@ -709,6 +709,7 @@ public class Matenimiento_Inventario extends javax.swing.JInternalFrame {
             tablas();
         } catch (SQLException e) {
             JOptionPane.showMessageDialog(this, "Error en registro", "Warning", JOptionPane.WARNING_MESSAGE);
+            
         }
 
     }//GEN-LAST:event_btnRegistrarActionPerformed

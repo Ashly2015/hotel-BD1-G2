@@ -328,7 +328,7 @@ public class inf_Mantenimiento_Habitacion extends javax.swing.JInternalFrame {
         try {
             Connection cn = DriverManager.getConnection(mdi_Principal.BD, mdi_Principal.Usuario, mdi_Principal.Contraseña);
 
-            PreparedStatement pst2 = cn.prepareStatement("select id_tipo_habitacion from tipo_habitacion where nombre_tipo = ?");
+            PreparedStatement pst2 = cn.prepareStatement("select id_tipo_habitacion from tipo_habitacion where nombre = ?");
             pst2.setString(1, cbox_TipoHabitacion.getSelectedItem().toString());
             ResultSet rs2 = pst2.executeQuery();
 
@@ -354,7 +354,7 @@ public class inf_Mantenimiento_Habitacion extends javax.swing.JInternalFrame {
         try {
             Connection cn = DriverManager.getConnection(mdi_Principal.BD, mdi_Principal.Usuario, mdi_Principal.Contraseña);
             //localhost es 127.0.0.1
-            PreparedStatement pst = cn.prepareStatement("insert into parametros values(?,?,?,?)");
+            PreparedStatement pst = cn.prepareStatement("insert into habitacion values(?,?,?,?)");
 
             pst.setString(1, txt_IdHabitacion.getText());
             pst.setString(2, lb.getText());
@@ -389,7 +389,7 @@ public class inf_Mantenimiento_Habitacion extends javax.swing.JInternalFrame {
 
                 txt_IdHabitacion.setText(rs.getString("id_habitacion"));
                 lb.setText(rs.getString("id_tipo_habitacion"));
-                txt_Nivel.setText(rs.getString("nombre_parametro"));
+                txt_Nivel.setText(rs.getString("nivel"));
                 txt_Estatus.setText(rs.getString("estatus"));
 
                 btnModificar.setEnabled(true);
@@ -429,12 +429,12 @@ public class inf_Mantenimiento_Habitacion extends javax.swing.JInternalFrame {
             String ID = txtbuscado.getText().trim();
 
             Connection cn = DriverManager.getConnection(mdi_Principal.BD, mdi_Principal.Usuario, mdi_Principal.Contraseña);
-            PreparedStatement pst = cn.prepareStatement("update parametros set id_habitacion = ?, id_tipo_habitacion = ?, nivel = ?, estatus = ?,  where id_parametro = " + ID);
+            PreparedStatement pst = cn.prepareStatement("update habitacion set  id_tipo_habitacion = ?, nivel = ?, estatus = ?,  where id_habitacion = " + ID);
 
-            pst.setString(1, txt_IdHabitacion.getText());
-            pst.setString(2, lb.getText());
-            pst.setString(3, txt_Nivel.getText());
-            pst.setString(4, txt_Estatus.getText());
+            
+            pst.setString(1, lb.getText());
+            pst.setString(2, txt_Nivel.getText());
+            pst.setString(3, txt_Estatus.getText());
 
             pst.executeUpdate();
 

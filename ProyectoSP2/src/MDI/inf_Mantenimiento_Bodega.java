@@ -404,7 +404,7 @@ public class inf_Mantenimiento_Bodega extends javax.swing.JInternalFrame {
         } catch (Exception e) {
 
         }
-        refrescar();
+        
         // tablas();
         // bitacora_busqueda();
     }//GEN-LAST:event_btnBuscarActionPerformed
