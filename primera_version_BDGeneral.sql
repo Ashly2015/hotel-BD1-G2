@@ -959,3 +959,4 @@ insert into contratacion values ("1", "1", "2020/08/12", "10 meses", "A");
 insert into empleado_contratado values ("1", "1", "1", "1", "5000");
 insert into tipo_cliente values ("1", "Frecuente", "A");
 insert into sucursal values ("0", "Norte", "Zona18", "telefono");
+insert into usuario values ("admin", "1234");
