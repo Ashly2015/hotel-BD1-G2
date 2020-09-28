@@ -10,6 +10,7 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.Calendar;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
@@ -181,7 +182,6 @@ public class Matenimiento_Inventario extends javax.swing.JInternalFrame {
         cbox_Linea = new javax.swing.JComboBox<>();
         label10 = new javax.swing.JLabel();
         txt_Descripcion = new javax.swing.JTextField();
-        txt_FechaExp = new javax.swing.JTextField();
         label11 = new javax.swing.JLabel();
         label12 = new javax.swing.JLabel();
         label13 = new javax.swing.JLabel();
@@ -192,6 +192,7 @@ public class Matenimiento_Inventario extends javax.swing.JInternalFrame {
         lb2 = new javax.swing.JLabel();
         lb3 = new javax.swing.JLabel();
         lb4 = new javax.swing.JLabel();
+        txt_fecha = new com.toedter.calendar.JDateChooser();
 
         setClosable(true);
         setIconifiable(true);
@@ -330,15 +331,6 @@ public class Matenimiento_Inventario extends javax.swing.JInternalFrame {
         txt_Descripcion.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(204, 204, 204)));
         txt_Descripcion.setOpaque(false);
 
-        txt_FechaExp.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
-        txt_FechaExp.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(204, 204, 204)));
-        txt_FechaExp.setOpaque(false);
-        txt_FechaExp.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txt_FechaExpActionPerformed(evt);
-            }
-        });
-
         label11.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
         label11.setText("Fecha Caducidad:");
 
@@ -435,7 +427,7 @@ public class Matenimiento_Inventario extends javax.swing.JInternalFrame {
                         .addContainerGap()
                         .addComponent(label11)
                         .addGap(18, 18, 18)
-                        .addComponent(txt_FechaExp, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(txt_fecha, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(22, 22, 22)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
@@ -475,7 +467,7 @@ public class Matenimiento_Inventario extends javax.swing.JInternalFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(cbox_Bodega, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(label7)
-                    .addComponent(lb2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(lb2, javax.swing.GroupLayout.DEFAULT_SIZE, 26, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(cbox_Marca, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -513,10 +505,10 @@ public class Matenimiento_Inventario extends javax.swing.JInternalFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(txt_Descripcion, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(label11)
-                    .addComponent(txt_FechaExp, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(37, 37, 37)
+                    .addComponent(txt_fecha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(34, 34, 34)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnRegistrar)
                     .addComponent(btnEliminar)
@@ -552,7 +544,7 @@ public class Matenimiento_Inventario extends javax.swing.JInternalFrame {
         txt_Precio.setText("");
         txt_costo.setText("");
         txt_Descripcion.setText("");
-        txt_FechaExp.setText("");
+        txt_fecha.setDate(null);
         btnModificar.setEnabled(false);
         btnEliminar.setEnabled(false);
         txtbuscado.setText("");
@@ -570,6 +562,13 @@ public class Matenimiento_Inventario extends javax.swing.JInternalFrame {
         try {
             String ID = txtbuscado.getText().trim();
 
+            int mes, dia, año;
+            dia = txt_fecha.getCalendar().get(Calendar.DAY_OF_MONTH);
+            mes = txt_fecha.getCalendar().get(Calendar.MONTH);
+            año = txt_fecha.getCalendar().get(Calendar.YEAR);
+            String fecha;
+            fecha = año + "/"+mes+"/"+dia;
+            
             Connection cn = DriverManager.getConnection(mdi_Principal.BD, mdi_Principal.Usuario, mdi_Principal.Contraseña);
             PreparedStatement pst = cn.prepareStatement("update inventario set id_tipo_inventario = ?, id_bodega = ?,id_marca = ?, id_linea = ?,nombre = ?,estatus = ?, precio = ?,costo = ?, existencia = ?,descripcion = ?, fecha_vencimiento = ? where id_inventario = " + ID);
 
@@ -584,7 +583,7 @@ public class Matenimiento_Inventario extends javax.swing.JInternalFrame {
             pst.setString(8, txt_costo.getText());
             pst.setString(9, txt_Existencia.getText());
             pst.setString(10, txt_Descripcion.getText());
-            pst.setString(11, txt_FechaExp.getText());
+            pst.setString(11, fecha);
             
             pst.executeUpdate();
 
@@ -597,7 +596,7 @@ public class Matenimiento_Inventario extends javax.swing.JInternalFrame {
             txt_costo.setText("");
             txt_Existencia.setText("");
             txt_Descripcion.setText("");
-            txt_FechaExp.setText("");
+            txt_fecha.setDate(null);
             txtbuscado.setText("");
             btnRegistrar.setEnabled(true);
             btnModificar.setEnabled(false);
@@ -628,7 +627,7 @@ public class Matenimiento_Inventario extends javax.swing.JInternalFrame {
             txt_costo.setText("");
             txt_Existencia.setText("");
             txt_Descripcion.setText("");
-            txt_FechaExp.setText("");
+            txt_fecha.setDate(null);
             txtbuscado.setText("");
             btnRegistrar.setEnabled(true);
             btnModificar.setEnabled(false);
@@ -671,6 +670,14 @@ public class Matenimiento_Inventario extends javax.swing.JInternalFrame {
     private void btnRegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarActionPerformed
         // TODO add your handling code here:
         try {
+            
+            int mes, dia, año;
+            dia = txt_fecha.getCalendar().get(Calendar.DAY_OF_MONTH);
+            mes = txt_fecha.getCalendar().get(Calendar.MONTH);
+            año = txt_fecha.getCalendar().get(Calendar.YEAR);
+            String fecha;
+            fecha = año + "/"+mes+"/"+dia;
+            
             Connection cn = DriverManager.getConnection(mdi_Principal.BD, mdi_Principal.Usuario, mdi_Principal.Contraseña);
             //localhost es 127.0.0.1
             PreparedStatement pst = cn.prepareStatement("insert into inventario values(?,?,?,?,?,?,?,?,?,?,?,?)");
@@ -686,7 +693,7 @@ public class Matenimiento_Inventario extends javax.swing.JInternalFrame {
             pst.setString(9, txt_costo.getText());
             pst.setString(10, txt_Existencia.getText());
             pst.setString(11, txt_Descripcion.getText());
-            pst.setString(12, txt_FechaExp.getText());
+            pst.setString(12, fecha);
             
             //bitacora_guardar();
             pst.executeUpdate();
@@ -703,7 +710,7 @@ public class Matenimiento_Inventario extends javax.swing.JInternalFrame {
         txt_Precio.setText("");
         txt_costo.setText("");
         txt_Descripcion.setText("");
-        txt_FechaExp.setText("");
+        txt_fecha.setDate(null);
             txtbuscado.setText("");
             txt_Estado.setText("");
             tablas();
@@ -723,7 +730,7 @@ public class Matenimiento_Inventario extends javax.swing.JInternalFrame {
             ResultSet rs = pst.executeQuery();
 
             if (rs.next()) {
-
+                                
                 lb1.setText(rs.getString("id_tipo_inventario"));
                 lb2.setText(rs.getString("id_bodega"));
                 lb3.setText(rs.getString("id_marca"));
@@ -734,7 +741,6 @@ public class Matenimiento_Inventario extends javax.swing.JInternalFrame {
                 txt_costo.setText(rs.getString("costo"));
                 txt_Existencia.setText(rs.getString("existencia"));
                 txt_Descripcion.setText(rs.getString("descripcion"));
-                txt_FechaExp.setText(rs.getString("fecha_vencimiento"));
                 btnModificar.setEnabled(true);
                 txt_Descripcion.setEnabled(true);
                 btnEliminar.setEnabled(true);
@@ -829,10 +835,6 @@ public class Matenimiento_Inventario extends javax.swing.JInternalFrame {
         }
     }//GEN-LAST:event_cbox_LineaActionPerformed
 
-    private void txt_FechaExpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_FechaExpActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txt_FechaExpActionPerformed
-
     private void txt_EstadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_EstadoActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txt_EstadoActionPerformed
@@ -870,9 +872,9 @@ public class Matenimiento_Inventario extends javax.swing.JInternalFrame {
     private javax.swing.JTextField txt_Descripcion;
     private javax.swing.JTextField txt_Estado;
     private javax.swing.JTextField txt_Existencia;
-    private javax.swing.JTextField txt_FechaExp;
     private javax.swing.JTextField txt_Precio;
     private javax.swing.JTextField txt_costo;
+    private com.toedter.calendar.JDateChooser txt_fecha;
     private javax.swing.JTextField txt_nombre;
     private javax.swing.JTextField txtbuscado;
     // End of variables declaration//GEN-END:variables
