@@ -22,7 +22,7 @@ public class inf_Mantenimiento_Serie extends javax.swing.JInternalFrame {
     public void tablas() {
         try {
             Connection cn = DriverManager.getConnection(mdi_Principal.BD, mdi_Principal.Usuario, mdi_Principal.Contraseña);
-            PreparedStatement pstt4 = cn.prepareStatement("select * from cliente");
+            PreparedStatement pstt4 = cn.prepareStatement("select * from serie");
             ResultSet rss4 = pstt4.executeQuery();
 
             DefaultTableModel modelo = new DefaultTableModel();
