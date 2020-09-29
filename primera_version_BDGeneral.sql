@@ -467,6 +467,7 @@ foreign key (id_caja) references
 caja(id_caja)
 )engine=Innodb default charset=latin1;
 
+select * from serie;
 create table mov_transporte(
 id_mov_transporte int auto_increment primary key,
 id_vehiculo int not null,
