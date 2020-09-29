@@ -158,7 +158,7 @@ public class inf_Mantenimiento_Serie extends javax.swing.JInternalFrame {
         label4 = new javax.swing.JLabel();
         label8 = new javax.swing.JLabel();
         cbox_caja = new javax.swing.JComboBox<>();
-        lb1 = new javax.swing.JLabel();
+        lb2 = new javax.swing.JLabel();
 
         setClosable(true);
         setIconifiable(true);
@@ -255,8 +255,7 @@ public class inf_Mantenimiento_Serie extends javax.swing.JInternalFrame {
             }
         });
 
-        lb1.setForeground(new java.awt.Color(204, 204, 204));
-        lb1.setText(".");
+        lb2.setForeground(new java.awt.Color(204, 204, 204));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -264,6 +263,21 @@ public class inf_Mantenimiento_Serie extends javax.swing.JInternalFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(26, 26, 26)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(btnEliminar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btnLimpiar, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(btnBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(txtbuscado, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(btnRegistrar, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(btnModificar, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -282,22 +296,7 @@ public class inf_Mantenimiento_Serie extends javax.swing.JInternalFrame {
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(lb)
-                            .addComponent(lb1, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(26, 26, 26)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(btnEliminar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(btnLimpiar, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(btnBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(txtbuscado, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(btnRegistrar, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(btnModificar, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                            .addComponent(lb2, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 448, Short.MAX_VALUE)
                 .addContainerGap())
@@ -324,7 +323,7 @@ public class inf_Mantenimiento_Serie extends javax.swing.JInternalFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(cbox_caja, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(label8)
-                            .addComponent(lb1))
+                            .addComponent(lb2, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(txt_tipo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -364,7 +363,7 @@ public class inf_Mantenimiento_Serie extends javax.swing.JInternalFrame {
             
             if (rs.next()) {
                 lb.setText(rs.getString("id_sucursal"));
-                 lb1.setText(rs.getString("id_caja"));
+                 lb2.setText(rs.getString("id_caja"));
                 txt_tipo.setText(rs.getString("tipo"));
 
                 btnModificar.setEnabled(true);
@@ -390,10 +389,11 @@ public class inf_Mantenimiento_Serie extends javax.swing.JInternalFrame {
             String ID = txtbuscado.getText().trim();
 
             Connection cn = DriverManager.getConnection(mdi_Principal.BD, mdi_Principal.Usuario, mdi_Principal.Contraseña);
-            PreparedStatement pst = cn.prepareStatement("update serie set  id_tipo_cliente = ?,nombre_cliente =?, correo = ?,telefono = ?, direccion = ? where id_cliente =" + ID);
+            PreparedStatement pst = cn.prepareStatement("update serie set id_sucursal =?, id_caja = ?,tipo = ? where id_serie =" + ID);
 
             pst.setString(1, lb.getText());
-            pst.setString(2, txt_tipo.getText());
+            pst.setString(2, lb2.getText());
+            pst.setString(3, txt_tipo.getText());
           
 
             pst.executeUpdate();
@@ -430,7 +430,7 @@ public class inf_Mantenimiento_Serie extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
         try {
             Connection cn = DriverManager.getConnection(mdi_Principal.BD, mdi_Principal.Usuario, mdi_Principal.Contraseña);
-            PreparedStatement pst = cn.prepareStatement("delete from cliente where id_cliente = ?");
+            PreparedStatement pst = cn.prepareStatement("delete from serie where id_serie = ?");
 
             pst.setString(1, txtbuscado.getText().trim());
             pst.executeUpdate();
@@ -487,8 +487,8 @@ public class inf_Mantenimiento_Serie extends javax.swing.JInternalFrame {
             PreparedStatement pst = cn.prepareStatement("insert into serie values(?,?,?,?)");
 
             pst.setString(1, "0");
-            pst.setString(2, lb.getText());
-            pst.setString(3, txt_tipo.getText());
+            pst.setString(2, lb.getText().trim());
+            pst.setString(3, lb2.getText().trim());
             pst.setString(4, txt_tipo.getText());
            
 
@@ -497,13 +497,14 @@ public class inf_Mantenimiento_Serie extends javax.swing.JInternalFrame {
 
             JOptionPane.showMessageDialog(this, "¡REGISTRO EXITOSO!", "Mensaje", JOptionPane.INFORMATION_MESSAGE);
             txt_tipo.setText("");
-         
-
+            lb.setText("");
+            lb2.setText("");
             txtbuscado.setText("");
             
             tablas();
         } catch (SQLException e) {
             JOptionPane.showMessageDialog(this, "Error en registro", "Warning", JOptionPane.WARNING_MESSAGE);
+            System.out.println(e);
         }
         refrescar();
     }//GEN-LAST:event_btnRegistrarActionPerformed
@@ -514,16 +515,17 @@ public class inf_Mantenimiento_Serie extends javax.swing.JInternalFrame {
         try {
             Connection cn = DriverManager.getConnection(mdi_Principal.BD, mdi_Principal.Usuario, mdi_Principal.Contraseña);
 
-            PreparedStatement pst2 = cn.prepareStatement("select id_caja from caja where id_caja = ?");
-            pst2.setString(1, cbox_tipo_sucursal.getSelectedItem().toString());
-            ResultSet rs2 = pst2.executeQuery();
+            PreparedStatement pst1 = cn.prepareStatement("select id_caja from caja where id_caja = ?");
+            pst1.setString(1, cbox_caja.getSelectedItem().toString());
+            ResultSet rs1 = pst1.executeQuery();
 
-            if (rs2.next()) {
-                lb.setText(rs2.getString("id_caja"));
+            if (rs1.next()) {
+                lb2.setText(rs1.getString("id_caja"));
+                
 
             } else {
-                if (cbox_tipo_sucursal.getSelectedItem().toString().contains("Seleccione una opción")) {
-                    txt_tipo.setText("");
+                if (cbox_caja.getSelectedItem().toString().contains("Seleccione una opción")) {
+                    //txt_tipo.setText("");
                     
                 }
             }
@@ -549,7 +551,7 @@ public class inf_Mantenimiento_Serie extends javax.swing.JInternalFrame {
     private javax.swing.JLabel label4;
     private javax.swing.JLabel label8;
     private javax.swing.JLabel lb;
-    private javax.swing.JLabel lb1;
+    private javax.swing.JLabel lb2;
     private javax.swing.JTable tbl;
     private javax.swing.JTextField txt_tipo;
     private javax.swing.JTextField txtbuscado;
