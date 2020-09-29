@@ -97,6 +97,8 @@ public class inf_Mantenimiento_Serie extends javax.swing.JInternalFrame {
             while (rss.next()) {
                 cbox_tipo_sucursal.addItem(rss.getString("nombre"));
             }
+            
+            
 
         } catch (Exception e) {
             e.printStackTrace();
