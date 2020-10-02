@@ -354,7 +354,7 @@ public class inf_Mantenimiento_Habitacion extends javax.swing.JInternalFrame {
         try {
             Connection cn = DriverManager.getConnection(mdi_Principal.BD, mdi_Principal.Usuario, mdi_Principal.Contraseña);
             //localhost es 127.0.0.1
-            PreparedStatement pst = cn.prepareStatement("insert into parametros values(?,?,?,?)");
+            PreparedStatement pst = cn.prepareStatement("insert into hibitacion values(?,?,?,?)");
 
             pst.setString(1, txt_IdHabitacion.getText());
             pst.setString(2, lb.getText());
@@ -429,7 +429,7 @@ public class inf_Mantenimiento_Habitacion extends javax.swing.JInternalFrame {
             String ID = txtbuscado.getText().trim();
 
             Connection cn = DriverManager.getConnection(mdi_Principal.BD, mdi_Principal.Usuario, mdi_Principal.Contraseña);
-            PreparedStatement pst = cn.prepareStatement("update parametros set id_habitacion = ?, id_tipo_habitacion = ?, nivel = ?, estatus = ?,  where id_parametro = " + ID);
+            PreparedStatement pst = cn.prepareStatement("update habitacion set id_habitacion = ?, id_tipo_habitacion = ?, nivel = ?, estatus = ?,  where id_parametro = " + ID);
 
             pst.setString(1, txt_IdHabitacion.getText());
             pst.setString(2, lb.getText());
