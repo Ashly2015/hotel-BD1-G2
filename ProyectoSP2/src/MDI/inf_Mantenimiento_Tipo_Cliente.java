@@ -158,6 +158,11 @@ public class inf_Mantenimiento_Tipo_Cliente extends javax.swing.JInternalFrame {
         activo.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
         activo.setText("Activo");
         activo.setOpaque(false);
+        activo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                activoActionPerformed(evt);
+            }
+        });
 
         inactivo.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
         inactivo.setText("Inactivo");
@@ -272,7 +277,12 @@ public class inf_Mantenimiento_Tipo_Cliente extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
-        // TODO add your handling code here:
+       
+         String buscar = txtbuscado.getText().trim();
+        if (buscar.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "¡No se ingreso el campo de busqueda!", "Advertencia", JOptionPane.WARNING_MESSAGE);
+            return;
+        }
         try {
             Connection cn = DriverManager.getConnection(mdi_Principal.BD, mdi_Principal.Usuario, mdi_Principal.Contraseña);
             PreparedStatement pst = cn.prepareStatement("select * from tipo_cliente where id_tipo_cliente =?");
@@ -373,9 +383,16 @@ public class inf_Mantenimiento_Tipo_Cliente extends javax.swing.JInternalFrame {
 
             Connection cn = DriverManager.getConnection(mdi_Principal.BD, mdi_Principal.Usuario, mdi_Principal.Contraseña);
             PreparedStatement pst = cn.prepareStatement("update tipo_cliente set  nombre = ?, estatus = ?  where id_tipo_cliente =" + ID);
-
+            String mensaje = "";
             pst.setString(1, txt_nombre.getText());
-            pst.setString(2, txt_estado.getText());
+            
+             if (activo.isSelected()) {
+                mensaje = "A";
+            } else if (inactivo.isSelected()) {
+                mensaje = "I";
+
+            }
+            pst.setString(2, mensaje);
 
             pst.executeUpdate();
 
@@ -394,6 +411,10 @@ public class inf_Mantenimiento_Tipo_Cliente extends javax.swing.JInternalFrame {
             JOptionPane.showMessageDialog(this, "Error en Modificacion", "Warning", JOptionPane.WARNING_MESSAGE);
         }
     }//GEN-LAST:event_btnModificarActionPerformed
+
+    private void activoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_activoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_activoActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
