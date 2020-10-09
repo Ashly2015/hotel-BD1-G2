@@ -15,7 +15,7 @@ import javax.swing.table.DefaultTableModel;
 
 /**
  *
- * @author kievk
+ * @author kevin
  */
 public class inf_Mantenimiento_TipoHabitacion extends javax.swing.JInternalFrame {
 
@@ -55,6 +55,7 @@ public class inf_Mantenimiento_TipoHabitacion extends javax.swing.JInternalFrame
 
     public inf_Mantenimiento_TipoHabitacion() {
         initComponents();
+          tablas();
     }
 
     /**
@@ -141,6 +142,7 @@ public class inf_Mantenimiento_TipoHabitacion extends javax.swing.JInternalFrame
         label3.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
         label3.setText("Id Tipo Habitación:");
 
+        txt_idTipoHabitacion.setEditable(false);
         txt_idTipoHabitacion.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
         txt_idTipoHabitacion.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(204, 204, 204)));
         txt_idTipoHabitacion.setOpaque(false);
@@ -345,8 +347,7 @@ public class inf_Mantenimiento_TipoHabitacion extends javax.swing.JInternalFrame
         } catch (Exception e) {
 
         }
-        // tablas();
-        // bitacora_busqueda();
+       
     }//GEN-LAST:event_btnBuscarActionPerformed
 
     private void btnLimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimpiarActionPerformed
@@ -374,7 +375,7 @@ public class inf_Mantenimiento_TipoHabitacion extends javax.swing.JInternalFrame
             pst.setString(1, txtbuscado.getText().trim());
             pst.executeUpdate();
 
-            // bitacora_eliminar();
+ 
             JOptionPane.showMessageDialog(this, "¡ELIMINACION EXITOSA!", "Mensaje", JOptionPane.INFORMATION_MESSAGE);
             txt_idTipoHabitacion.setText("");
             txt_Nombre.setText("");
@@ -400,13 +401,13 @@ public class inf_Mantenimiento_TipoHabitacion extends javax.swing.JInternalFrame
             //localhost es 127.0.0.1
             PreparedStatement pst = cn.prepareStatement("insert into tipo_habitacion values(?,?,?,?,?,?)");
 
-            pst.setString(1, txt_idTipoHabitacion.getText());
+            pst.setString(1, "0");
             pst.setString(2, txt_Nombre.getText());
             pst.setString(3, txta_Descripcion.getText());
             pst.setString(4, txta_Caracteristicas.getText());
             pst.setString(5, txt_PrecioDiario.getText());
             pst.setString(6, txt_CupoMaximo.getText());
-            //bitacora_guardar();
+        
             pst.executeUpdate();
 
             JOptionPane.showMessageDialog(this, "¡REGISTRO EXITOSO!", "Mensaje", JOptionPane.INFORMATION_MESSAGE);
@@ -430,16 +431,16 @@ public class inf_Mantenimiento_TipoHabitacion extends javax.swing.JInternalFrame
             String ID = txtbuscado.getText().trim();
 
             Connection cn = DriverManager.getConnection(mdi_Principal.BD, mdi_Principal.Usuario, mdi_Principal.Contraseña);
-            PreparedStatement pst = cn.prepareStatement("update tipo_habitacion set  id_tipo_habitacion = ?, nombre = ?, descripcion = ?, caracteristicas = ?, precio_diario = ?, cupo_maximo = ?  where id_tipo_habitacion =" + ID);
-            pst.setString(1, txt_idTipoHabitacion.getText());
-            pst.setString(2, txt_Nombre.getText());
-            pst.setString(3, txta_Descripcion.getText());
-            pst.setString(4, txta_Caracteristicas.getText());
-            pst.setString(5, txt_PrecioDiario.getText());
-            pst.setString(6, txt_CupoMaximo.getText());
+            PreparedStatement pst = cn.prepareStatement("update tipo_habitacion set  nombre = ?, descripcion = ?, caracteristicas = ?, precio_diario = ?, cupo_maximo = ?  where id_tipo_habitacion =" + ID);
+            
+            pst.setString(1, txt_Nombre.getText());
+            pst.setString(2, txta_Descripcion.getText());
+            pst.setString(3, txta_Caracteristicas.getText());
+            pst.setString(4, txt_PrecioDiario.getText());
+            pst.setString(5, txt_CupoMaximo.getText());
             pst.executeUpdate();
 
-            //bitacora_modificar();
+ 
             JOptionPane.showMessageDialog(this, "¡MODIFICACION EXITOSA!", "Mensaje", JOptionPane.INFORMATION_MESSAGE);
             txt_idTipoHabitacion.setText("");
             txt_Nombre.setText("");

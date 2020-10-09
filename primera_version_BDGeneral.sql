@@ -691,7 +691,7 @@ cotizacion_encabezado_cliente(id_cotizacion_encabezado_cliente)
 
 
 create table tipo_habitacion(
-id_tipo_habitacion int primary key not null,
+id_tipo_habitacion int primary key auto_increment,
 nombre varchar(3) not null,
 descripcion varchar(300) null,
 caracteristicas varchar (500) null,
@@ -700,7 +700,7 @@ cupo_maximo int not null
 )engine=Innodb default charset=latin1;
 
 create table habitacion(
-id_habitacion int primary key not null,
+id_habitacion int primary key auto_increment,
 id_tipo_habitacion int not null,
 nivel int not null,
 estatus varchar(1) not null,
@@ -709,7 +709,7 @@ tipo_habitacion(id_tipo_habitacion)
 )engine=Innodb default charset=latin1;
 
 create table salon (
-id_salon int primary key not null,
+id_salon int primary key auto_increment,
 nombre varchar(3) not null,
 capacidad int not null,
 nivel int not null,

@@ -15,7 +15,7 @@ import javax.swing.table.DefaultTableModel;
 
 /**
  *
- * @author kievk
+ * @author kevin
  */
 public class inf_Mantenimiento_Habitacion extends javax.swing.JInternalFrame {
 
@@ -50,6 +50,30 @@ public class inf_Mantenimiento_Habitacion extends javax.swing.JInternalFrame {
         }
     }
 
+    public void buscar_nombrehabitacion() {
+        try {
+            Connection cn = DriverManager.getConnection(mdi_Principal.BD, mdi_Principal.Usuario, mdi_Principal.Contraseña);
+            PreparedStatement pst = cn.prepareStatement("select nombre from tipo_habitacion where id_tipo_habitacion = ?");
+
+            pst.setString(1, lb.getText().trim());
+
+            ResultSet rs = pst.executeQuery();
+
+            if (rs.next()) {
+
+                lb2.setText(rs.getString("nombre"));
+                String pc = lb2.getText();
+                cbox_TipoHabitacion.setSelectedItem(pc);
+
+            } else {
+
+            }
+
+        } catch (Exception e) {
+
+        }
+    }
+
     public void iniciar_combo() {
         try {
             Connection cn = DriverManager.getConnection(mdi_Principal.BD, mdi_Principal.Usuario, mdi_Principal.Contraseña);
@@ -81,6 +105,7 @@ public class inf_Mantenimiento_Habitacion extends javax.swing.JInternalFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        lb2 = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
         tbl = new javax.swing.JTable();
         label3 = new javax.swing.JLabel();
@@ -99,6 +124,8 @@ public class inf_Mantenimiento_Habitacion extends javax.swing.JInternalFrame {
         btnModificar = new javax.swing.JButton();
         label9 = new javax.swing.JLabel();
         txt_Estatus = new javax.swing.JTextField();
+
+        lb2.setText("jTextField1");
 
         setClosable(true);
         setIconifiable(true);
@@ -168,6 +195,7 @@ public class inf_Mantenimiento_Habitacion extends javax.swing.JInternalFrame {
         txt_Nivel.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(204, 204, 204)));
         txt_Nivel.setOpaque(false);
 
+        txt_IdHabitacion.setEditable(false);
         txt_IdHabitacion.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
         txt_IdHabitacion.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(204, 204, 204)));
         txt_IdHabitacion.setOpaque(false);
@@ -183,7 +211,6 @@ public class inf_Mantenimiento_Habitacion extends javax.swing.JInternalFrame {
         });
 
         lb.setForeground(new java.awt.Color(204, 204, 204));
-        lb.setText(".");
 
         btnModificar.setText("Modificar");
         btnModificar.setEnabled(false);
@@ -207,10 +234,9 @@ public class inf_Mantenimiento_Habitacion extends javax.swing.JInternalFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
+                .addContainerGap(19, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(btnEliminar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(btnLimpiar, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -223,10 +249,8 @@ public class inf_Mantenimiento_Habitacion extends javax.swing.JInternalFrame {
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(btnRegistrar, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
-                                .addComponent(btnModificar, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(54, 54, 54))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
+                                .addComponent(btnModificar, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(label9)
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -235,16 +259,15 @@ public class inf_Mantenimiento_Habitacion extends javax.swing.JInternalFrame {
                                     .addComponent(label3, javax.swing.GroupLayout.Alignment.TRAILING))
                                 .addComponent(label8, javax.swing.GroupLayout.Alignment.TRAILING)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(cbox_TipoHabitacion, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
-                                .addComponent(lb, javax.swing.GroupLayout.DEFAULT_SIZE, 127, Short.MAX_VALUE))
-                            .addComponent(txt_Nivel)
+                                .addComponent(lb, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(txt_Nivel, javax.swing.GroupLayout.PREFERRED_SIZE, 263, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(txt_IdHabitacion, javax.swing.GroupLayout.PREFERRED_SIZE, 262, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txt_Estatus, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(0, 73, Short.MAX_VALUE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                            .addComponent(txt_Estatus, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addGap(54, 54, 54)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(label1)
@@ -266,7 +289,7 @@ public class inf_Mantenimiento_Habitacion extends javax.swing.JInternalFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(cbox_TipoHabitacion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(label4)
-                            .addComponent(lb))
+                            .addComponent(lb, javax.swing.GroupLayout.PREFERRED_SIZE, 19, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(label3)
@@ -307,7 +330,6 @@ public class inf_Mantenimiento_Habitacion extends javax.swing.JInternalFrame {
             pst.setString(1, txtbuscado.getText().trim());
             pst.executeUpdate();
 
-            // bitacora_eliminar();
             JOptionPane.showMessageDialog(this, "¡ELIMINACION EXITOSA!", "Mensaje", JOptionPane.INFORMATION_MESSAGE);
             txt_IdHabitacion.setText("");
             cbox_TipoHabitacion.setSelectedIndex(0);
@@ -328,7 +350,7 @@ public class inf_Mantenimiento_Habitacion extends javax.swing.JInternalFrame {
         try {
             Connection cn = DriverManager.getConnection(mdi_Principal.BD, mdi_Principal.Usuario, mdi_Principal.Contraseña);
 
-            PreparedStatement pst2 = cn.prepareStatement("select id_tipo_habitacion from tipo_habitacion where nombre_tipo = ?");
+            PreparedStatement pst2 = cn.prepareStatement("select id_tipo_habitacion from tipo_habitacion where nombre = ?");
             pst2.setString(1, cbox_TipoHabitacion.getSelectedItem().toString());
             ResultSet rs2 = pst2.executeQuery();
 
@@ -354,13 +376,13 @@ public class inf_Mantenimiento_Habitacion extends javax.swing.JInternalFrame {
         try {
             Connection cn = DriverManager.getConnection(mdi_Principal.BD, mdi_Principal.Usuario, mdi_Principal.Contraseña);
             //localhost es 127.0.0.1
-            PreparedStatement pst = cn.prepareStatement("insert into hibitacion values(?,?,?,?)");
+            PreparedStatement pst = cn.prepareStatement("insert into habitacion values(?,?,?,?)");
 
-            pst.setString(1, txt_IdHabitacion.getText());
+            pst.setString(1, "0");
             pst.setString(2, lb.getText());
             pst.setString(3, txt_Nivel.getText());
             pst.setString(4, txt_Estatus.getText());
-            //bitacora_guardar();
+
             pst.executeUpdate();
 
             JOptionPane.showMessageDialog(this, "¡REGISTRO EXITOSO!", "Mensaje", JOptionPane.INFORMATION_MESSAGE);
@@ -389,9 +411,9 @@ public class inf_Mantenimiento_Habitacion extends javax.swing.JInternalFrame {
 
                 txt_IdHabitacion.setText(rs.getString("id_habitacion"));
                 lb.setText(rs.getString("id_tipo_habitacion"));
-                txt_Nivel.setText(rs.getString("nombre_parametro"));
+                txt_Nivel.setText(rs.getString("nivel"));
                 txt_Estatus.setText(rs.getString("estatus"));
-
+                buscar_nombrehabitacion();
                 btnModificar.setEnabled(true);
                 btnEliminar.setEnabled(true);
                 btnRegistrar.setEnabled(false);
@@ -405,8 +427,7 @@ public class inf_Mantenimiento_Habitacion extends javax.swing.JInternalFrame {
 
         }
 
-        // tablas();
-        // bitacora_busqueda();
+
     }//GEN-LAST:event_btnBuscarActionPerformed
 
     private void btnLimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimpiarActionPerformed
@@ -429,16 +450,14 @@ public class inf_Mantenimiento_Habitacion extends javax.swing.JInternalFrame {
             String ID = txtbuscado.getText().trim();
 
             Connection cn = DriverManager.getConnection(mdi_Principal.BD, mdi_Principal.Usuario, mdi_Principal.Contraseña);
-            PreparedStatement pst = cn.prepareStatement("update habitacion set id_habitacion = ?, id_tipo_habitacion = ?, nivel = ?, estatus = ?,  where id_parametro = " + ID);
+            PreparedStatement pst = cn.prepareStatement("update habitacion set  id_tipo_habitacion = ?, nivel = ?, estatus = ?,  where id_parametro = " + ID);
 
-            pst.setString(1, txt_IdHabitacion.getText());
-            pst.setString(2, lb.getText());
-            pst.setString(3, txt_Nivel.getText());
-            pst.setString(4, txt_Estatus.getText());
+            pst.setString(1, lb.getText());
+            pst.setString(2, txt_Nivel.getText());
+            pst.setString(3, txt_Estatus.getText());
 
             pst.executeUpdate();
 
-            //bitacora_modificar();
             JOptionPane.showMessageDialog(this, "¡MODIFICACION EXITOSA!", "Mensaje", JOptionPane.INFORMATION_MESSAGE);
             txt_Nivel.setText("");
             txt_Estatus.setText("");
@@ -452,7 +471,7 @@ public class inf_Mantenimiento_Habitacion extends javax.swing.JInternalFrame {
         } catch (SQLException e) {
             JOptionPane.showMessageDialog(this, "Error en Modificacion", "Warning", JOptionPane.WARNING_MESSAGE);
         }
-       
+
     }//GEN-LAST:event_btnModificarActionPerformed
 
     private void txt_EstatusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_EstatusActionPerformed
@@ -474,6 +493,7 @@ public class inf_Mantenimiento_Habitacion extends javax.swing.JInternalFrame {
     private javax.swing.JLabel label8;
     private javax.swing.JLabel label9;
     private javax.swing.JLabel lb;
+    private javax.swing.JTextField lb2;
     private javax.swing.JTable tbl;
     private javax.swing.JTextField txt_Estatus;
     private javax.swing.JTextField txt_IdHabitacion;
