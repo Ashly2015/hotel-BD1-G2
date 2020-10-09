@@ -19,6 +19,7 @@ public class mdi_Principal extends javax.swing.JFrame {
     public static String Usuario = "root";
     public static String Contraseña = "Sebas1234";
 
+
     public static Connection getConeccion() {
         Connection cn = null;
         try {
