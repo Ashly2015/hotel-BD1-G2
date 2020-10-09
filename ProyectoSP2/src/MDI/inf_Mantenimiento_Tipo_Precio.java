@@ -221,20 +221,26 @@ public class inf_Mantenimiento_Tipo_Precio extends javax.swing.JInternalFrame {
         activo.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
         activo.setText("Activo");
         activo.setOpaque(false);
+<<<<<<< HEAD
         activo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 activoActionPerformed(evt);
             }
         });
+=======
+>>>>>>> 95cc82cc3e3e9947518f06cd9bee57cb60a4e61a
 
         inactivo.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
         inactivo.setText("Inactivo");
         inactivo.setOpaque(false);
+<<<<<<< HEAD
         inactivo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 inactivoActionPerformed(evt);
             }
         });
+=======
+>>>>>>> 95cc82cc3e3e9947518f06cd9bee57cb60a4e61a
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -330,7 +336,11 @@ public class inf_Mantenimiento_Tipo_Precio extends javax.swing.JInternalFrame {
                                 .addGap(13, 13, 13)
                                 .addComponent(label8))
                             .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+<<<<<<< HEAD
                             .addComponent(txt_estado, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
+=======
+                            .addComponent(txt_estado, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
+>>>>>>> 95cc82cc3e3e9947518f06cd9bee57cb60a4e61a
                         .addGap(38, 38, 38)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(btnRegistrar)
@@ -342,7 +352,11 @@ public class inf_Mantenimiento_Tipo_Precio extends javax.swing.JInternalFrame {
                             .addComponent(btnBuscar)
                             .addComponent(btnLimpiar)))
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 202, javax.swing.GroupLayout.PREFERRED_SIZE))
+<<<<<<< HEAD
                 .addContainerGap(27, Short.MAX_VALUE))
+=======
+                .addContainerGap(23, Short.MAX_VALUE))
+>>>>>>> 95cc82cc3e3e9947518f06cd9bee57cb60a4e61a
         );
 
         pack();
@@ -407,11 +421,19 @@ public class inf_Mantenimiento_Tipo_Precio extends javax.swing.JInternalFrame {
         try {
             Connection cn = DriverManager.getConnection(mdi_Principal.BD, mdi_Principal.Usuario, mdi_Principal.Contraseña);
             //localhost es 127.0.0.1
+<<<<<<< HEAD
             PreparedStatement pst = cn.prepareStatement("insert into tipo_precio values(?,?,?,?)");
 
             pst.setString(1, "0");
             pst.setString(2, lb.getText());
             pst.setString(3, txt_nombre.getText());            
+=======
+            PreparedStatement pst = cn.prepareStatement("insert into cliente values(?,?,?,?)");
+
+            pst.setString(1, "0");
+            pst.setString(2, lb.getText());
+            pst.setString(3, txt_nombre.getText());
+>>>>>>> 95cc82cc3e3e9947518f06cd9bee57cb60a4e61a
             pst.setString(4, txt_estado.getText());
 
             //bitacora_guardar();
@@ -421,11 +443,18 @@ public class inf_Mantenimiento_Tipo_Precio extends javax.swing.JInternalFrame {
             txt_nombre.setText("");
             inactivo.setSelected(false);
             activo.setSelected(false);
+<<<<<<< HEAD
             txtbuscado.setText("");
             txt_estado.setText("");
             tablas();
             
             
+=======
+
+            txtbuscado.setText("");
+            txt_estado.setText("");
+            tablas();
+>>>>>>> 95cc82cc3e3e9947518f06cd9bee57cb60a4e61a
         } catch (SQLException e) {
             JOptionPane.showMessageDialog(this, "Error en registro", "Warning", JOptionPane.WARNING_MESSAGE);
         }
@@ -450,6 +479,11 @@ public class inf_Mantenimiento_Tipo_Precio extends javax.swing.JInternalFrame {
                 lb.setText(rs.getString("id_moneda"));
                 txt_nombre.setText(rs.getString("nombre"));
                 txt_estado.setText(rs.getString("estatus"));
+<<<<<<< HEAD
+=======
+                
+
+>>>>>>> 95cc82cc3e3e9947518f06cd9bee57cb60a4e61a
                 btnModificar.setEnabled(true);
                 btnEliminar.setEnabled(true);
                 btnRegistrar.setEnabled(false);
@@ -477,7 +511,17 @@ public class inf_Mantenimiento_Tipo_Precio extends javax.swing.JInternalFrame {
             String mensaje = "";
             pst.setString(1, lb.getText());
             pst.setString(2, txt_nombre.getText());
+<<<<<<< HEAD
             pst.setString(3, txt_estado.getText());
+=======
+            if (activo.isSelected()) {
+                mensaje = "A";
+            } else if (inactivo.isSelected()) {
+                mensaje = "I";
+
+            }
+            pst.setString(3, mensaje);
+>>>>>>> 95cc82cc3e3e9947518f06cd9bee57cb60a4e61a
 
             pst.executeUpdate();
 
@@ -512,6 +556,7 @@ public class inf_Mantenimiento_Tipo_Precio extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_btnLimpiarActionPerformed
 
+<<<<<<< HEAD
     private void activoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_activoActionPerformed
         if(activo.isSelected()){
             
@@ -528,6 +573,8 @@ public class inf_Mantenimiento_Tipo_Precio extends javax.swing.JInternalFrame {
             }
     }//GEN-LAST:event_inactivoActionPerformed
 
+=======
+>>>>>>> 95cc82cc3e3e9947518f06cd9bee57cb60a4e61a
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JRadioButton activo;

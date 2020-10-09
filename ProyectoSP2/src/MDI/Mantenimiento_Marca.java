@@ -62,6 +62,10 @@ public class Mantenimiento_Marca extends javax.swing.JInternalFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+<<<<<<< HEAD
+=======
+        label5 = new javax.swing.JLabel();
+>>>>>>> 95cc82cc3e3e9947518f06cd9bee57cb60a4e61a
         lb = new javax.swing.JLabel();
         btnModificar = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
@@ -72,6 +76,7 @@ public class Mantenimiento_Marca extends javax.swing.JInternalFrame {
         btnBuscar = new javax.swing.JButton();
         label2 = new javax.swing.JLabel();
         txt_nombre = new javax.swing.JTextField();
+<<<<<<< HEAD
         txt_estado = new javax.swing.JTextField();
         label1 = new javax.swing.JLabel();
         btnLimpiar = new javax.swing.JButton();
@@ -79,6 +84,11 @@ public class Mantenimiento_Marca extends javax.swing.JInternalFrame {
         jPanel1 = new javax.swing.JPanel();
         activo = new javax.swing.JRadioButton();
         inactivo = new javax.swing.JRadioButton();
+=======
+        txt_Estado = new javax.swing.JTextField();
+        label1 = new javax.swing.JLabel();
+        btnLimpiar = new javax.swing.JButton();
+>>>>>>> 95cc82cc3e3e9947518f06cd9bee57cb60a4e61a
         btnEliminar = new javax.swing.JButton();
 
         setClosable(true);
@@ -86,6 +96,12 @@ public class Mantenimiento_Marca extends javax.swing.JInternalFrame {
         setMaximizable(true);
         setVisible(true);
 
+<<<<<<< HEAD
+=======
+        label5.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
+        label5.setText("Estado:");
+
+>>>>>>> 95cc82cc3e3e9947518f06cd9bee57cb60a4e61a
         lb.setForeground(new java.awt.Color(204, 204, 204));
         lb.setText(".");
 
@@ -132,9 +148,15 @@ public class Mantenimiento_Marca extends javax.swing.JInternalFrame {
         txt_nombre.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(204, 204, 204)));
         txt_nombre.setOpaque(false);
 
+<<<<<<< HEAD
         txt_estado.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
         txt_estado.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(204, 204, 204)));
         txt_estado.setOpaque(false);
+=======
+        txt_Estado.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
+        txt_Estado.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(204, 204, 204)));
+        txt_Estado.setOpaque(false);
+>>>>>>> 95cc82cc3e3e9947518f06cd9bee57cb60a4e61a
 
         label1.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
         label1.setText("Listado de Marcas registradas:");
@@ -146,6 +168,7 @@ public class Mantenimiento_Marca extends javax.swing.JInternalFrame {
             }
         });
 
+<<<<<<< HEAD
         label8.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
         label8.setText("Estado:");
 
@@ -189,6 +212,8 @@ public class Mantenimiento_Marca extends javax.swing.JInternalFrame {
                     .addComponent(inactivo)))
         );
 
+=======
+>>>>>>> 95cc82cc3e3e9947518f06cd9bee57cb60a4e61a
         btnEliminar.setText("Eliminar");
         btnEliminar.setEnabled(false);
         btnEliminar.addActionListener(new java.awt.event.ActionListener() {
@@ -225,6 +250,7 @@ public class Mantenimiento_Marca extends javax.swing.JInternalFrame {
                         .addGap(55, 55, 55))
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
+<<<<<<< HEAD
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(label3)
@@ -237,6 +263,15 @@ public class Mantenimiento_Marca extends javax.swing.JInternalFrame {
                                 .addGap(18, 18, 18)
                                 .addComponent(txt_estado, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(34, 34, 34)))
+=======
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(label3)
+                            .addComponent(label5, javax.swing.GroupLayout.Alignment.TRAILING))
+                        .addGap(27, 27, 27)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(txt_nombre, javax.swing.GroupLayout.PREFERRED_SIZE, 263, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txt_Estado, javax.swing.GroupLayout.PREFERRED_SIZE, 263, javax.swing.GroupLayout.PREFERRED_SIZE))
+>>>>>>> 95cc82cc3e3e9947518f06cd9bee57cb60a4e61a
                         .addGap(24, 24, 24)))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
@@ -262,6 +297,7 @@ public class Mantenimiento_Marca extends javax.swing.JInternalFrame {
                         .addContainerGap()
                         .addComponent(label2)
                         .addGap(43, 43, 43)
+<<<<<<< HEAD
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -275,6 +311,16 @@ public class Mantenimiento_Marca extends javax.swing.JInternalFrame {
                                     .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                             .addComponent(txt_estado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(67, 67, 67)
+=======
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(label3)
+                            .addComponent(txt_nombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(txt_Estado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(label5))
+                        .addGap(75, 75, 75)
+>>>>>>> 95cc82cc3e3e9947518f06cd9bee57cb60a4e61a
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(btnRegistrar)
                             .addComponent(btnModificar)
@@ -284,7 +330,11 @@ public class Mantenimiento_Marca extends javax.swing.JInternalFrame {
                             .addComponent(txtbuscado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(btnBuscar)
                             .addComponent(btnLimpiar))))
+<<<<<<< HEAD
                 .addContainerGap(73, Short.MAX_VALUE))
+=======
+                .addContainerGap(69, Short.MAX_VALUE))
+>>>>>>> 95cc82cc3e3e9947518f06cd9bee57cb60a4e61a
         );
 
         pack();
@@ -299,15 +349,23 @@ public class Mantenimiento_Marca extends javax.swing.JInternalFrame {
             PreparedStatement pst = cn.prepareStatement("update marca set nombre =?, estatus = ? where id_marca =" + ID);
 
             pst.setString(1, txt_nombre.getText());
+<<<<<<< HEAD
             pst.setString(2, txt_estado.getText());
+=======
+            pst.setString(2, txt_Estado.getText());
+>>>>>>> 95cc82cc3e3e9947518f06cd9bee57cb60a4e61a
             pst.executeUpdate();
 
             //bitacora_modificar();
             JOptionPane.showMessageDialog(this, "¡MODIFICACION EXITOSA!", "Mensaje", JOptionPane.INFORMATION_MESSAGE);
             txt_nombre.setText("");
+<<<<<<< HEAD
             txt_estado.setText("");
             activo.setSelected(false);
             inactivo.setSelected(false);
+=======
+            txt_Estado.setText("");
+>>>>>>> 95cc82cc3e3e9947518f06cd9bee57cb60a4e61a
             txtbuscado.setText("");
             btnRegistrar.setEnabled(true);
             btnModificar.setEnabled(false);
@@ -327,17 +385,27 @@ public class Mantenimiento_Marca extends javax.swing.JInternalFrame {
 
             pst.setString(1, "0");
             pst.setString(2, txt_nombre.getText());
+<<<<<<< HEAD
             pst.setString(3, txt_estado.getText());
+=======
+            pst.setString(3, txt_Estado.getText());
+>>>>>>> 95cc82cc3e3e9947518f06cd9bee57cb60a4e61a
             //bitacora_guardar();
             pst.executeUpdate();
 
             JOptionPane.showMessageDialog(this, "¡REGISTRO EXITOSO!", "Mensaje", JOptionPane.INFORMATION_MESSAGE);
             txt_nombre.setText("");
+<<<<<<< HEAD
             txt_estado.setText("");
             activo.setSelected(false);
             inactivo.setSelected(false);
             txtbuscado.setText("");
             txt_estado.setText("");
+=======
+            txt_Estado.setText("");
+            txtbuscado.setText("");
+            txt_Estado.setText("");
+>>>>>>> 95cc82cc3e3e9947518f06cd9bee57cb60a4e61a
             tablas();
         } catch (SQLException e) {
             JOptionPane.showMessageDialog(this, "Error en registro", "Warning", JOptionPane.WARNING_MESSAGE);
@@ -356,9 +424,13 @@ public class Mantenimiento_Marca extends javax.swing.JInternalFrame {
             if (rs.next()) {
                 lb.setText(rs.getString("id_marca"));
                 txt_nombre.setText(rs.getString("nombre"));
+<<<<<<< HEAD
                 txt_estado.setText(rs.getString("estatus"));
                 activo.setSelected(false);
                 inactivo.setSelected(false);
+=======
+                txt_Estado.setText(rs.getString("estatus"));
+>>>>>>> 95cc82cc3e3e9947518f06cd9bee57cb60a4e61a
                 btnModificar.setEnabled(true);
                 btnEliminar.setEnabled(true);
                 btnRegistrar.setEnabled(false);
@@ -378,15 +450,20 @@ public class Mantenimiento_Marca extends javax.swing.JInternalFrame {
     private void btnLimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimpiarActionPerformed
 
         txt_nombre.setText("");
+<<<<<<< HEAD
         txt_estado.setText("");
         activo.setSelected(false);
         inactivo.setSelected(false);
+=======
+        txt_Estado.setText("");
+>>>>>>> 95cc82cc3e3e9947518f06cd9bee57cb60a4e61a
         txtbuscado.setText("");
         btnRegistrar.setEnabled(true);
         btnModificar.setEnabled(false);
         btnEliminar.setEnabled(false);
     }//GEN-LAST:event_btnLimpiarActionPerformed
 
+<<<<<<< HEAD
     private void activoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_activoActionPerformed
         if(activo.isSelected()){
 
@@ -406,6 +483,12 @@ public class Mantenimiento_Marca extends javax.swing.JInternalFrame {
     private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
         // TODO add your handling code here:
         try {
+=======
+    private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
+        // TODO add your handling code here:
+        try {
+
+>>>>>>> 95cc82cc3e3e9947518f06cd9bee57cb60a4e61a
             Connection cn = DriverManager.getConnection(mdi_Principal.BD, mdi_Principal.Usuario, mdi_Principal.Contraseña);
             PreparedStatement pst = cn.prepareStatement("delete from marca where id_marca = ?");
 
@@ -415,9 +498,13 @@ public class Mantenimiento_Marca extends javax.swing.JInternalFrame {
             // bitacora_eliminar();
             JOptionPane.showMessageDialog(this, "¡ELIMINACION EXITOSA!", "Mensaje", JOptionPane.INFORMATION_MESSAGE);
             txt_nombre.setText("");
+<<<<<<< HEAD
             txt_estado.setText("");
             inactivo.setSelected(false);
             activo.setSelected(false);
+=======
+            txt_Estado.setText("");
+>>>>>>> 95cc82cc3e3e9947518f06cd9bee57cb60a4e61a
             txtbuscado.setText("");
             btnRegistrar.setEnabled(true);
             btnModificar.setEnabled(false);
@@ -431,22 +518,35 @@ public class Mantenimiento_Marca extends javax.swing.JInternalFrame {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+<<<<<<< HEAD
     private javax.swing.JRadioButton activo;
+=======
+>>>>>>> 95cc82cc3e3e9947518f06cd9bee57cb60a4e61a
     private javax.swing.JButton btnBuscar;
     private javax.swing.JButton btnEliminar;
     private javax.swing.JButton btnLimpiar;
     private javax.swing.JButton btnModificar;
     private javax.swing.JButton btnRegistrar;
+<<<<<<< HEAD
     private javax.swing.JRadioButton inactivo;
     private javax.swing.JPanel jPanel1;
+=======
+>>>>>>> 95cc82cc3e3e9947518f06cd9bee57cb60a4e61a
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel label1;
     private javax.swing.JLabel label2;
     private javax.swing.JLabel label3;
+<<<<<<< HEAD
     private javax.swing.JLabel label8;
     private javax.swing.JLabel lb;
     private javax.swing.JTable tbl;
     private javax.swing.JTextField txt_estado;
+=======
+    private javax.swing.JLabel label5;
+    private javax.swing.JLabel lb;
+    private javax.swing.JTable tbl;
+    private javax.swing.JTextField txt_Estado;
+>>>>>>> 95cc82cc3e3e9947518f06cd9bee57cb60a4e61a
     private javax.swing.JTextField txt_nombre;
     private javax.swing.JTextField txtbuscado;
     // End of variables declaration//GEN-END:variables

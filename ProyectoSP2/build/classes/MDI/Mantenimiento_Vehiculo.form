@@ -74,6 +74,10 @@
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Group type="103" alignment="0" groupAlignment="1" attributes="0">
                                       <Component id="label14" min="-2" max="-2" attributes="0"/>
+<<<<<<< HEAD
+=======
+                                      <Component id="label6" min="-2" max="-2" attributes="0"/>
+>>>>>>> 95cc82cc3e3e9947518f06cd9bee57cb60a4e61a
                                       <Component id="label12" alignment="1" min="-2" max="-2" attributes="0"/>
                                   </Group>
                                   <Group type="102" alignment="0" attributes="0">
@@ -87,6 +91,10 @@
                                   <Component id="txt_placa" min="-2" pref="165" max="-2" attributes="0"/>
                                   <Component id="modelo" min="-2" pref="89" max="-2" attributes="0"/>
                                   <Component id="txt_NumPasajeros" min="-2" pref="125" max="-2" attributes="0"/>
+<<<<<<< HEAD
+=======
+                                  <Component id="txt_Estado" alignment="0" min="-2" pref="124" max="-2" attributes="0"/>
+>>>>>>> 95cc82cc3e3e9947518f06cd9bee57cb60a4e61a
                                   <Component id="txt_color" alignment="0" min="-2" pref="126" max="-2" attributes="0"/>
                               </Group>
                           </Group>
@@ -102,6 +110,7 @@
                                   <Component id="cbox_Marca" min="-2" pref="194" max="-2" attributes="0"/>
                               </Group>
                           </Group>
+<<<<<<< HEAD
                           <Group type="102" alignment="1" attributes="0">
                               <Component id="label11" min="-2" max="-2" attributes="0"/>
                               <EmptySpace min="-2" pref="22" max="-2" attributes="0"/>
@@ -110,6 +119,8 @@
                               <Component id="txt_estado" min="-2" pref="32" max="-2" attributes="0"/>
                               <EmptySpace min="-2" pref="8" max="-2" attributes="0"/>
                           </Group>
+=======
+>>>>>>> 95cc82cc3e3e9947518f06cd9bee57cb60a4e61a
                       </Group>
                   </Group>
               </Group>
@@ -188,6 +199,7 @@
                           <Component id="txt_NumPasajeros" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="label14" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
+<<<<<<< HEAD
                       <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="1" attributes="0">
                           <Component id="txt_estado" min="-2" max="-2" attributes="0"/>
@@ -198,6 +210,12 @@
                               </Group>
                               <Component id="jPanel1" alignment="0" min="-2" max="-2" attributes="0"/>
                           </Group>
+=======
+                      <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="txt_Estado" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="label6" alignment="3" min="-2" max="-2" attributes="0"/>
+>>>>>>> 95cc82cc3e3e9947518f06cd9bee57cb60a4e61a
                       </Group>
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
@@ -214,7 +232,11 @@
                       <Component id="jScrollPane1" min="-2" pref="437" max="-2" attributes="0"/>
                   </Group>
               </Group>
+<<<<<<< HEAD
               <EmptySpace pref="18" max="32767" attributes="0"/>
+=======
+              <EmptySpace pref="14" max="32767" attributes="0"/>
+>>>>>>> 95cc82cc3e3e9947518f06cd9bee57cb60a4e61a
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="btnRegistrar" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="btnEliminar" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -450,6 +472,17 @@
         <Property name="text" type="java.lang.String" value="Numero pasajeros:"/>
       </Properties>
     </Component>
+<<<<<<< HEAD
+=======
+    <Component class="javax.swing.JLabel" name="label6">
+      <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Century Gothic" size="12" style="1"/>
+        </Property>
+        <Property name="text" type="java.lang.String" value="Estado:"/>
+      </Properties>
+    </Component>
+>>>>>>> 95cc82cc3e3e9947518f06cd9bee57cb60a4e61a
     <Component class="javax.swing.JTextField" name="txt_NumPasajeros">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
@@ -473,7 +506,11 @@
         <Property name="text" type="java.lang.String" value="Placa:"/>
       </Properties>
     </Component>
+<<<<<<< HEAD
     <Component class="javax.swing.JTextField" name="txt_estado">
+=======
+    <Component class="javax.swing.JTextField" name="txt_Estado">
+>>>>>>> 95cc82cc3e3e9947518f06cd9bee57cb60a4e61a
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Century Gothic" size="12" style="0"/>
@@ -551,6 +588,7 @@
         </Property>
       </Properties>
     </Component>
+<<<<<<< HEAD
     <Component class="javax.swing.JLabel" name="label11">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
@@ -615,5 +653,7 @@
         </Component>
       </SubComponents>
     </Container>
+=======
+>>>>>>> 95cc82cc3e3e9947518f06cd9bee57cb60a4e61a
   </SubComponents>
 </Form>

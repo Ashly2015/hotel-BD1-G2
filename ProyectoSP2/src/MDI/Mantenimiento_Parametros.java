@@ -107,6 +107,10 @@ public class Mantenimiento_Parametros extends javax.swing.JInternalFrame {
     private void initComponents() {
 
         txt_nombre = new javax.swing.JTextField();
+<<<<<<< HEAD
+=======
+        txt_IdParametro = new javax.swing.JTextField();
+>>>>>>> 95cc82cc3e3e9947518f06cd9bee57cb60a4e61a
         btnLimpiar = new javax.swing.JButton();
         lb = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
@@ -120,6 +124,7 @@ public class Mantenimiento_Parametros extends javax.swing.JInternalFrame {
         label1 = new javax.swing.JLabel();
         label5 = new javax.swing.JLabel();
         btnModificar = new javax.swing.JButton();
+<<<<<<< HEAD
         label3 = new javax.swing.JLabel();
         txt_estado = new javax.swing.JTextField();
         txtbuscado = new javax.swing.JTextField();
@@ -128,6 +133,14 @@ public class Mantenimiento_Parametros extends javax.swing.JInternalFrame {
         jPanel1 = new javax.swing.JPanel();
         activo = new javax.swing.JRadioButton();
         inactivo = new javax.swing.JRadioButton();
+=======
+        label6 = new javax.swing.JLabel();
+        label3 = new javax.swing.JLabel();
+        txt_estado = new javax.swing.JTextField();
+        txtbuscado = new javax.swing.JTextField();
+        label8 = new javax.swing.JLabel();
+        label2 = new javax.swing.JLabel();
+>>>>>>> 95cc82cc3e3e9947518f06cd9bee57cb60a4e61a
 
         setClosable(true);
         setIconifiable(true);
@@ -138,6 +151,13 @@ public class Mantenimiento_Parametros extends javax.swing.JInternalFrame {
         txt_nombre.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(204, 204, 204)));
         txt_nombre.setOpaque(false);
 
+<<<<<<< HEAD
+=======
+        txt_IdParametro.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
+        txt_IdParametro.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(204, 204, 204)));
+        txt_IdParametro.setOpaque(false);
+
+>>>>>>> 95cc82cc3e3e9947518f06cd9bee57cb60a4e61a
         btnLimpiar.setText("Limpiar");
         btnLimpiar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -217,6 +237,12 @@ public class Mantenimiento_Parametros extends javax.swing.JInternalFrame {
             }
         });
 
+<<<<<<< HEAD
+=======
+        label6.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
+        label6.setText("Estado:");
+
+>>>>>>> 95cc82cc3e3e9947518f06cd9bee57cb60a4e61a
         label3.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
         label3.setText("Nombre:");
 
@@ -224,6 +250,7 @@ public class Mantenimiento_Parametros extends javax.swing.JInternalFrame {
         txt_estado.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(204, 204, 204)));
         txt_estado.setOpaque(false);
 
+<<<<<<< HEAD
         label2.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
         label2.setText("Parametros Resgistrados");
 
@@ -269,6 +296,13 @@ public class Mantenimiento_Parametros extends javax.swing.JInternalFrame {
                     .addComponent(activo)
                     .addComponent(inactivo)))
         );
+=======
+        label8.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
+        label8.setText("Id Parametro:");
+
+        label2.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
+        label2.setText("Parametros Resgistrados");
+>>>>>>> 95cc82cc3e3e9947518f06cd9bee57cb60a4e61a
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -277,6 +311,7 @@ public class Mantenimiento_Parametros extends javax.swing.JInternalFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
+<<<<<<< HEAD
                         .addGap(142, 142, 142)
                         .addComponent(label2)
                         .addGap(0, 135, Short.MAX_VALUE))
@@ -300,15 +335,51 @@ public class Mantenimiento_Parametros extends javax.swing.JInternalFrame {
                                         .addGap(18, 18, 18)
                                         .addComponent(txt_estado, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
                                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+=======
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(77, 77, 77)
+                                .addComponent(label6)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(txt_estado, javax.swing.GroupLayout.PREFERRED_SIZE, 283, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(0, 0, Short.MAX_VALUE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addContainerGap()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                .addComponent(label4)
+                                                .addComponent(label3, javax.swing.GroupLayout.Alignment.TRAILING))
+                                            .addComponent(label8, javax.swing.GroupLayout.Alignment.TRAILING))
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addGroup(layout.createSequentialGroup()
+                                                .addGap(35, 35, 35)
+                                                .addComponent(label2)
+                                                .addGap(0, 0, Short.MAX_VALUE))
+                                            .addGroup(layout.createSequentialGroup()
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                                .addComponent(cbox_tipo_Parametro, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                        .addGap(0, 0, Short.MAX_VALUE)
+>>>>>>> 95cc82cc3e3e9947518f06cd9bee57cb60a4e61a
                                         .addComponent(label5)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                             .addComponent(txt_nombre, javax.swing.GroupLayout.PREFERRED_SIZE, 263, javax.swing.GroupLayout.PREFERRED_SIZE)
+<<<<<<< HEAD
                                             .addComponent(txt_valor, javax.swing.GroupLayout.PREFERRED_SIZE, 263, javax.swing.GroupLayout.PREFERRED_SIZE))
                                         .addGap(20, 20, 20)))))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(31, 31, 31)
+=======
+                                            .addComponent(txt_IdParametro, javax.swing.GroupLayout.PREFERRED_SIZE, 283, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(txt_valor, javax.swing.GroupLayout.PREFERRED_SIZE, 263, javax.swing.GroupLayout.PREFERRED_SIZE))))))
+                        .addGap(4, 4, 4))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(26, 26, 26)
+>>>>>>> 95cc82cc3e3e9947518f06cd9bee57cb60a4e61a
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(btnEliminar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(btnLimpiar, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -338,14 +409,54 @@ public class Mantenimiento_Parametros extends javax.swing.JInternalFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
+<<<<<<< HEAD
                         .addContainerGap(99, Short.MAX_VALUE)
                         .addComponent(lb)
                         .addGap(303, 303, 303))
                     .addGroup(layout.createSequentialGroup()
+=======
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(lb)
+                        .addGap(303, 303, 303))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(75, 75, 75)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(label8)
+                            .addComponent(txt_IdParametro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(cbox_tipo_Parametro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(label4))
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(label3)
+                            .addComponent(txt_nombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(label5)
+                            .addComponent(txt_valor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(label6)
+                            .addComponent(txt_estado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(34, 34, 34)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(btnRegistrar)
+                            .addComponent(btnEliminar)
+                            .addComponent(btnModificar))
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(txtbuscado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnBuscar)
+                            .addComponent(btnLimpiar))
+                        .addGap(0, 73, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+>>>>>>> 95cc82cc3e3e9947518f06cd9bee57cb60a4e61a
                         .addContainerGap()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(label1)
                             .addComponent(label2))
+<<<<<<< HEAD
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -385,6 +496,10 @@ public class Mantenimiento_Parametros extends javax.swing.JInternalFrame {
                                     .addComponent(btnBuscar)
                                     .addComponent(btnLimpiar))
                                 .addGap(0, 0, Short.MAX_VALUE)))))
+=======
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)))
+>>>>>>> 95cc82cc3e3e9947518f06cd9bee57cb60a4e61a
                 .addContainerGap())
         );
 
@@ -395,10 +510,16 @@ public class Mantenimiento_Parametros extends javax.swing.JInternalFrame {
         txt_nombre.setText("");
         txt_valor.setText("");
         txt_estado.setText("");
+<<<<<<< HEAD
         activo.setSelected(false);
             inactivo.setSelected(false);
         btnModificar.setEnabled(false);
         btnEliminar.setEnabled(false);
+=======
+        btnModificar.setEnabled(false);
+        btnEliminar.setEnabled(false);
+        txt_IdParametro.setText("");
+>>>>>>> 95cc82cc3e3e9947518f06cd9bee57cb60a4e61a
         cbox_tipo_Parametro.setSelectedIndex(0);
         txtbuscado.setText("");
         btnRegistrar.setEnabled(true);
@@ -425,8 +546,12 @@ public class Mantenimiento_Parametros extends javax.swing.JInternalFrame {
             cbox_tipo_Parametro.setSelectedIndex(0);
             txt_valor.setText("");
             txt_estado.setText("");
+<<<<<<< HEAD
             activo.setSelected(false);
             inactivo.setSelected(false);
+=======
+            txt_IdParametro.setText("");
+>>>>>>> 95cc82cc3e3e9947518f06cd9bee57cb60a4e61a
             txtbuscado.setText("");
             btnRegistrar.setEnabled(true);
             btnModificar.setEnabled(false);
@@ -455,6 +580,10 @@ public class Mantenimiento_Parametros extends javax.swing.JInternalFrame {
                     txt_nombre.setText("");
                     txt_valor.setText("");
                     txt_estado.setText("");
+<<<<<<< HEAD
+=======
+                    txt_IdParametro.setText("");
+>>>>>>> 95cc82cc3e3e9947518f06cd9bee57cb60a4e61a
                 }
             }
 
@@ -472,7 +601,11 @@ public class Mantenimiento_Parametros extends javax.swing.JInternalFrame {
             //localhost es 127.0.0.1
             PreparedStatement pst = cn.prepareStatement("insert into parametros values(?,?,?,?,?)");
 
+<<<<<<< HEAD
             pst.setString(1, "0");
+=======
+            pst.setString(1, txt_IdParametro.getText());
+>>>>>>> 95cc82cc3e3e9947518f06cd9bee57cb60a4e61a
             pst.setString(2, lb.getText());
             pst.setString(3, txt_nombre.getText());
             pst.setString(4, txt_valor.getText());
@@ -485,8 +618,12 @@ public class Mantenimiento_Parametros extends javax.swing.JInternalFrame {
             txt_nombre.setText("");
             txt_valor.setText("");
             txt_estado.setText("");
+<<<<<<< HEAD
             activo.setSelected(false);
             inactivo.setSelected(false);
+=======
+            txt_IdParametro.setText("");
+>>>>>>> 95cc82cc3e3e9947518f06cd9bee57cb60a4e61a
             txtbuscado.setText("");
             txt_valor.setText("");
             cbox_tipo_Parametro.setSelectedIndex(0);
@@ -512,6 +649,10 @@ public class Mantenimiento_Parametros extends javax.swing.JInternalFrame {
                 txt_nombre.setText(rs.getString("nombre_parametro"));
                 txt_valor.setText(rs.getString("valor_parametro"));
                 txt_estado.setText(rs.getString("estatus_parametro"));
+<<<<<<< HEAD
+=======
+                txt_IdParametro.setText(rs.getString("id_parametro"));
+>>>>>>> 95cc82cc3e3e9947518f06cd9bee57cb60a4e61a
                 btnModificar.setEnabled(true);
                 btnEliminar.setEnabled(true);
                 btnRegistrar.setEnabled(false);
@@ -535,12 +676,22 @@ public class Mantenimiento_Parametros extends javax.swing.JInternalFrame {
             String ID = txtbuscado.getText().trim();
 
             Connection cn = DriverManager.getConnection(mdi_Principal.BD, mdi_Principal.Usuario, mdi_Principal.Contraseña);
+<<<<<<< HEAD
             PreparedStatement pst = cn.prepareStatement("update parametros set id_tipo_parametro = ?, nombre_parametro = ?,valor_parametro = ?, estatus_parametro = ? where id_parametro = " + ID);
             
             pst.setString(1, lb.getText());
             pst.setString(2, txt_nombre.getText());
             pst.setString(3, txt_valor.getText());
             pst.setString(4, txt_estado.getText());
+=======
+            PreparedStatement pst = cn.prepareStatement("update parametros set id_parametro = ?, id_tipo_parametro = ?, nombre_parametro = ?,valor_parametro = ?, estatus_parametro = ? where id_parametro = " + ID);
+
+            pst.setString(1, txt_IdParametro.getText());
+            pst.setString(2, lb.getText());
+            pst.setString(3, txt_nombre.getText());
+            pst.setString(4, txt_valor.getText());
+            pst.setString(5, txt_estado.getText());
+>>>>>>> 95cc82cc3e3e9947518f06cd9bee57cb60a4e61a
             
 
             pst.executeUpdate();
@@ -549,9 +700,14 @@ public class Mantenimiento_Parametros extends javax.swing.JInternalFrame {
             JOptionPane.showMessageDialog(this, "¡MODIFICACION EXITOSA!", "Mensaje", JOptionPane.INFORMATION_MESSAGE);
             txt_nombre.setText("");
             txt_valor.setText("");    
+<<<<<<< HEAD
             txt_estado.setText("");
             activo.setSelected(false);
             inactivo.setSelected(false);
+=======
+            txt_IdParametro.setText("");
+            txt_estado.setText("");
+>>>>>>> 95cc82cc3e3e9947518f06cd9bee57cb60a4e61a
             txtbuscado.setText("");
             btnRegistrar.setEnabled(true);
             btnModificar.setEnabled(false);
@@ -563,6 +719,7 @@ public class Mantenimiento_Parametros extends javax.swing.JInternalFrame {
         refrescar();
     }//GEN-LAST:event_btnModificarActionPerformed
 
+<<<<<<< HEAD
     private void activoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_activoActionPerformed
         if(activo.isSelected()){
 
@@ -583,23 +740,38 @@ public class Mantenimiento_Parametros extends javax.swing.JInternalFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JRadioButton activo;
+=======
+
+    // Variables declaration - do not modify//GEN-BEGIN:variables
+>>>>>>> 95cc82cc3e3e9947518f06cd9bee57cb60a4e61a
     private javax.swing.JButton btnBuscar;
     private javax.swing.JButton btnEliminar;
     private javax.swing.JButton btnLimpiar;
     private javax.swing.JButton btnModificar;
     private javax.swing.JButton btnRegistrar;
     private javax.swing.JComboBox<String> cbox_tipo_Parametro;
+<<<<<<< HEAD
     private javax.swing.JRadioButton inactivo;
     private javax.swing.JPanel jPanel1;
+=======
+>>>>>>> 95cc82cc3e3e9947518f06cd9bee57cb60a4e61a
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel label1;
     private javax.swing.JLabel label2;
     private javax.swing.JLabel label3;
     private javax.swing.JLabel label4;
     private javax.swing.JLabel label5;
+<<<<<<< HEAD
     private javax.swing.JLabel label8;
     private javax.swing.JLabel lb;
     private javax.swing.JTable tbl;
+=======
+    private javax.swing.JLabel label6;
+    private javax.swing.JLabel label8;
+    private javax.swing.JLabel lb;
+    private javax.swing.JTable tbl;
+    private javax.swing.JTextField txt_IdParametro;
+>>>>>>> 95cc82cc3e3e9947518f06cd9bee57cb60a4e61a
     private javax.swing.JTextField txt_estado;
     private javax.swing.JTextField txt_nombre;
     private javax.swing.JTextField txt_valor;

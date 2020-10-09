@@ -27,6 +27,7 @@
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" attributes="0">
               <Group type="103" groupAlignment="0" attributes="0">
+<<<<<<< HEAD
                   <Group type="102" attributes="0">
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" alignment="0" attributes="0">
@@ -36,6 +37,16 @@
                               <Component id="txt_nombre" min="-2" pref="263" max="-2" attributes="0"/>
                           </Group>
                           <Group type="102" alignment="0" attributes="0">
+=======
+                  <Group type="102" alignment="1" attributes="0">
+                      <EmptySpace max="32767" attributes="0"/>
+                      <Component id="label2" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="145" max="-2" attributes="0"/>
+                  </Group>
+                  <Group type="102" attributes="0">
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="102" attributes="0">
+>>>>>>> 95cc82cc3e3e9947518f06cd9bee57cb60a4e61a
                               <EmptySpace min="-2" pref="32" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" max="-2" attributes="0">
                                   <Component id="btnEliminar" alignment="0" max="32767" attributes="0"/>
@@ -55,6 +66,7 @@
                                   </Group>
                               </Group>
                           </Group>
+<<<<<<< HEAD
                       </Group>
                       <EmptySpace max="32767" attributes="0"/>
                   </Group>
@@ -74,6 +86,22 @@
                               <EmptySpace min="-2" pref="57" max="-2" attributes="0"/>
                           </Group>
                       </Group>
+=======
+                          <Group type="102" alignment="0" attributes="0">
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="label3" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="label5" alignment="1" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="1" attributes="0">
+                                  <Component id="txt_nombre" min="-2" pref="263" max="-2" attributes="0"/>
+                                  <Component id="txt_Estado" min="-2" pref="263" max="-2" attributes="0"/>
+                              </Group>
+                          </Group>
+                      </Group>
+                      <EmptySpace max="32767" attributes="0"/>
+>>>>>>> 95cc82cc3e3e9947518f06cd9bee57cb60a4e61a
                   </Group>
               </Group>
               <Group type="103" groupAlignment="0" attributes="0">
@@ -108,6 +136,7 @@
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="label2" min="-2" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="43" max="-2" attributes="0"/>
+<<<<<<< HEAD
                       <Group type="103" groupAlignment="1" attributes="0">
                           <Group type="102" attributes="0">
                               <Group type="103" groupAlignment="3" attributes="0">
@@ -126,6 +155,18 @@
                           <Component id="txt_estado" min="-2" pref="20" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace min="-2" pref="60" max="-2" attributes="0"/>
+=======
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="label3" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="txt_nombre" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="txt_Estado" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="label5" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace min="-2" pref="75" max="-2" attributes="0"/>
+>>>>>>> 95cc82cc3e3e9947518f06cd9bee57cb60a4e61a
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="btnRegistrar" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="btnEliminar" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -139,7 +180,11 @@
                       </Group>
                   </Group>
               </Group>
+<<<<<<< HEAD
               <EmptySpace pref="15" max="32767" attributes="0"/>
+=======
+              <EmptySpace max="32767" attributes="0"/>
+>>>>>>> 95cc82cc3e3e9947518f06cd9bee57cb60a4e61a
           </Group>
       </Group>
     </DimensionLayout>
@@ -223,6 +268,24 @@
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnBuscarActionPerformed"/>
       </Events>
     </Component>
+<<<<<<< HEAD
+=======
+    <Component class="javax.swing.JTextField" name="txt_Estado">
+      <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Century Gothic" size="12" style="0"/>
+        </Property>
+        <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+          <Border info="org.netbeans.modules.form.compat2.border.MatteColorBorderInfo">
+            <MatteColorBorder bottom="1" left="0" right="0" top="0">
+              <Color PropertyName="color" blue="cc" green="cc" red="cc" type="rgb"/>
+            </MatteColorBorder>
+          </Border>
+        </Property>
+        <Property name="opaque" type="boolean" value="false"/>
+      </Properties>
+    </Component>
+>>>>>>> 95cc82cc3e3e9947518f06cd9bee57cb60a4e61a
     <Component class="javax.swing.JLabel" name="label1">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
@@ -231,6 +294,17 @@
         <Property name="text" type="java.lang.String" value="Listado de Lineas registradas:"/>
       </Properties>
     </Component>
+<<<<<<< HEAD
+=======
+    <Component class="javax.swing.JLabel" name="label5">
+      <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Century Gothic" size="12" style="1"/>
+        </Property>
+        <Property name="text" type="java.lang.String" value="Estado:"/>
+      </Properties>
+    </Component>
+>>>>>>> 95cc82cc3e3e9947518f06cd9bee57cb60a4e61a
     <Component class="javax.swing.JButton" name="btnModificar">
       <Properties>
         <Property name="text" type="java.lang.String" value="Modificar"/>
@@ -258,6 +332,7 @@
         <Property name="text" type="java.lang.String" value="Registro De Lineas:"/>
       </Properties>
     </Component>
+<<<<<<< HEAD
     <Component class="javax.swing.JLabel" name="label8">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
@@ -338,5 +413,7 @@
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txt_estadoActionPerformed"/>
       </Events>
     </Component>
+=======
+>>>>>>> 95cc82cc3e3e9947518f06cd9bee57cb60a4e61a
   </SubComponents>
 </Form>

@@ -69,16 +69,25 @@ public class Matenimiento_Linea extends javax.swing.JInternalFrame {
         btnEliminar = new javax.swing.JButton();
         btnRegistrar = new javax.swing.JButton();
         btnBuscar = new javax.swing.JButton();
+<<<<<<< HEAD
         label1 = new javax.swing.JLabel();
+=======
+        txt_Estado = new javax.swing.JTextField();
+        label1 = new javax.swing.JLabel();
+        label5 = new javax.swing.JLabel();
+>>>>>>> 95cc82cc3e3e9947518f06cd9bee57cb60a4e61a
         btnModificar = new javax.swing.JButton();
         label3 = new javax.swing.JLabel();
         txtbuscado = new javax.swing.JTextField();
         label2 = new javax.swing.JLabel();
+<<<<<<< HEAD
         label8 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
         activo2 = new javax.swing.JRadioButton();
         inactivo2 = new javax.swing.JRadioButton();
         txt_estado = new javax.swing.JTextField();
+=======
+>>>>>>> 95cc82cc3e3e9947518f06cd9bee57cb60a4e61a
 
         setClosable(true);
         setIconifiable(true);
@@ -132,9 +141,22 @@ public class Matenimiento_Linea extends javax.swing.JInternalFrame {
             }
         });
 
+<<<<<<< HEAD
         label1.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
         label1.setText("Listado de Lineas registradas:");
 
+=======
+        txt_Estado.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
+        txt_Estado.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(204, 204, 204)));
+        txt_Estado.setOpaque(false);
+
+        label1.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
+        label1.setText("Listado de Lineas registradas:");
+
+        label5.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
+        label5.setText("Estado:");
+
+>>>>>>> 95cc82cc3e3e9947518f06cd9bee57cb60a4e61a
         btnModificar.setText("Modificar");
         btnModificar.setEnabled(false);
         btnModificar.addActionListener(new java.awt.event.ActionListener() {
@@ -149,6 +171,7 @@ public class Matenimiento_Linea extends javax.swing.JInternalFrame {
         label2.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
         label2.setText("Registro De Lineas:");
 
+<<<<<<< HEAD
         label8.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
         label8.setText("Estado:");
 
@@ -201,12 +224,15 @@ public class Matenimiento_Linea extends javax.swing.JInternalFrame {
             }
         });
 
+=======
+>>>>>>> 95cc82cc3e3e9947518f06cd9bee57cb60a4e61a
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+<<<<<<< HEAD
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
@@ -215,6 +241,15 @@ public class Matenimiento_Linea extends javax.swing.JInternalFrame {
                                 .addGap(27, 27, 27)
                                 .addComponent(txt_nombre, javax.swing.GroupLayout.PREFERRED_SIZE, 263, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(layout.createSequentialGroup()
+=======
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(label2)
+                        .addGap(145, 145, 145))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+>>>>>>> 95cc82cc3e3e9947518f06cd9bee57cb60a4e61a
                                 .addGap(32, 32, 32)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addComponent(btnEliminar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -228,6 +263,7 @@ public class Matenimiento_Linea extends javax.swing.JInternalFrame {
                                     .addGroup(layout.createSequentialGroup()
                                         .addComponent(btnRegistrar, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addGap(18, 18, 18)
+<<<<<<< HEAD
                                         .addComponent(btnModificar, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
@@ -243,6 +279,19 @@ public class Matenimiento_Linea extends javax.swing.JInternalFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(txt_estado, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(57, 57, 57)))))
+=======
+                                        .addComponent(btnModificar, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addGroup(layout.createSequentialGroup()
+                                .addContainerGap()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(label3)
+                                    .addComponent(label5, javax.swing.GroupLayout.Alignment.TRAILING))
+                                .addGap(27, 27, 27)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(txt_nombre, javax.swing.GroupLayout.PREFERRED_SIZE, 263, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(txt_Estado, javax.swing.GroupLayout.PREFERRED_SIZE, 263, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+>>>>>>> 95cc82cc3e3e9947518f06cd9bee57cb60a4e61a
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(lb)
@@ -268,6 +317,7 @@ public class Matenimiento_Linea extends javax.swing.JInternalFrame {
                         .addContainerGap()
                         .addComponent(label2)
                         .addGap(43, 43, 43)
+<<<<<<< HEAD
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -281,6 +331,16 @@ public class Matenimiento_Linea extends javax.swing.JInternalFrame {
                                     .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                             .addComponent(txt_estado, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(60, 60, 60)
+=======
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(label3)
+                            .addComponent(txt_nombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(txt_Estado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(label5))
+                        .addGap(75, 75, 75)
+>>>>>>> 95cc82cc3e3e9947518f06cd9bee57cb60a4e61a
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(btnRegistrar)
                             .addComponent(btnEliminar)
@@ -290,7 +350,11 @@ public class Matenimiento_Linea extends javax.swing.JInternalFrame {
                             .addComponent(txtbuscado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(btnBuscar)
                             .addComponent(btnLimpiar))))
+<<<<<<< HEAD
                 .addContainerGap(15, Short.MAX_VALUE))
+=======
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+>>>>>>> 95cc82cc3e3e9947518f06cd9bee57cb60a4e61a
         );
 
         pack();
@@ -299,9 +363,13 @@ public class Matenimiento_Linea extends javax.swing.JInternalFrame {
     private void btnLimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimpiarActionPerformed
         
         txt_nombre.setText("");
+<<<<<<< HEAD
         txt_estado.setText("");
         activo2.setSelected(false);
         inactivo2.setSelected(false);
+=======
+        txt_Estado.setText("");
+>>>>>>> 95cc82cc3e3e9947518f06cd9bee57cb60a4e61a
         txtbuscado.setText("");
         btnRegistrar.setEnabled(true);
         btnModificar.setEnabled(false);
@@ -323,9 +391,13 @@ public class Matenimiento_Linea extends javax.swing.JInternalFrame {
             // bitacora_eliminar();
             JOptionPane.showMessageDialog(this, "¡ELIMINACION EXITOSA!", "Mensaje", JOptionPane.INFORMATION_MESSAGE);
             txt_nombre.setText("");            
+<<<<<<< HEAD
             txt_estado.setText("");
             activo2.setSelected(false);
             inactivo2.setSelected(false);
+=======
+            txt_Estado.setText("");
+>>>>>>> 95cc82cc3e3e9947518f06cd9bee57cb60a4e61a
             txtbuscado.setText("");
             btnRegistrar.setEnabled(true);
             btnModificar.setEnabled(false);
@@ -346,17 +418,27 @@ public class Matenimiento_Linea extends javax.swing.JInternalFrame {
 
             pst.setString(1, "0");
             pst.setString(2, txt_nombre.getText());
+<<<<<<< HEAD
             pst.setString(3, txt_estado.getText());
+=======
+            pst.setString(3, txt_Estado.getText());
+>>>>>>> 95cc82cc3e3e9947518f06cd9bee57cb60a4e61a
             //bitacora_guardar();
             pst.executeUpdate();
 
             JOptionPane.showMessageDialog(this, "¡REGISTRO EXITOSO!", "Mensaje", JOptionPane.INFORMATION_MESSAGE);
             txt_nombre.setText("");
+<<<<<<< HEAD
             txt_estado.setText("");
             activo2.setSelected(false);
             inactivo2.setSelected(false);
             txtbuscado.setText("");
             txt_estado.setText("");
+=======
+            txt_Estado.setText("");
+            txtbuscado.setText("");
+            txt_Estado.setText("");
+>>>>>>> 95cc82cc3e3e9947518f06cd9bee57cb60a4e61a
             tablas();
         } catch (SQLException e) {
             JOptionPane.showMessageDialog(this, "Error en registro", "Warning", JOptionPane.WARNING_MESSAGE);
@@ -375,7 +457,11 @@ public class Matenimiento_Linea extends javax.swing.JInternalFrame {
             if (rs.next()) {
                 lb.setText(rs.getString("id_linea"));
                 txt_nombre.setText(rs.getString("nombre"));
+<<<<<<< HEAD
                 txt_estado.setText(rs.getString("estatus"));
+=======
+                txt_Estado.setText(rs.getString("estatus"));
+>>>>>>> 95cc82cc3e3e9947518f06cd9bee57cb60a4e61a
                 btnModificar.setEnabled(true);
                 btnEliminar.setEnabled(true);
                 btnRegistrar.setEnabled(false);
@@ -401,15 +487,23 @@ public class Matenimiento_Linea extends javax.swing.JInternalFrame {
             PreparedStatement pst = cn.prepareStatement("update linea set nombre =?, estatus = ? where id_linea =" + ID);
 
             pst.setString(1, txt_nombre.getText());
+<<<<<<< HEAD
             pst.setString(2, txt_estado.getText());
+=======
+            pst.setString(2, txt_Estado.getText());
+>>>>>>> 95cc82cc3e3e9947518f06cd9bee57cb60a4e61a
             pst.executeUpdate();
 
             //bitacora_modificar();
             JOptionPane.showMessageDialog(this, "¡MODIFICACION EXITOSA!", "Mensaje", JOptionPane.INFORMATION_MESSAGE);
             txt_nombre.setText("");
+<<<<<<< HEAD
             txt_estado.setText("");
             activo2.setSelected(false);
             inactivo2.setSelected(false);
+=======
+            txt_Estado.setText("");
+>>>>>>> 95cc82cc3e3e9947518f06cd9bee57cb60a4e61a
             txtbuscado.setText("");
             btnRegistrar.setEnabled(true);
             btnModificar.setEnabled(false);
@@ -420,6 +514,7 @@ public class Matenimiento_Linea extends javax.swing.JInternalFrame {
         }
     }//GEN-LAST:event_btnModificarActionPerformed
 
+<<<<<<< HEAD
     private void activo2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_activo2ActionPerformed
         if(activo2.isSelected()){
 
@@ -444,23 +539,37 @@ public class Matenimiento_Linea extends javax.swing.JInternalFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JRadioButton activo;
     private javax.swing.JRadioButton activo2;
+=======
+
+    // Variables declaration - do not modify//GEN-BEGIN:variables
+>>>>>>> 95cc82cc3e3e9947518f06cd9bee57cb60a4e61a
     private javax.swing.JButton btnBuscar;
     private javax.swing.JButton btnEliminar;
     private javax.swing.JButton btnLimpiar;
     private javax.swing.JButton btnModificar;
     private javax.swing.JButton btnRegistrar;
+<<<<<<< HEAD
     private javax.swing.JRadioButton inactivo;
     private javax.swing.JRadioButton inactivo2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel3;
+=======
+>>>>>>> 95cc82cc3e3e9947518f06cd9bee57cb60a4e61a
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel label1;
     private javax.swing.JLabel label2;
     private javax.swing.JLabel label3;
+<<<<<<< HEAD
     private javax.swing.JLabel label8;
     private javax.swing.JLabel lb;
     private javax.swing.JTable tbl;
     private javax.swing.JTextField txt_estado;
+=======
+    private javax.swing.JLabel label5;
+    private javax.swing.JLabel lb;
+    private javax.swing.JTable tbl;
+    private javax.swing.JTextField txt_Estado;
+>>>>>>> 95cc82cc3e3e9947518f06cd9bee57cb60a4e61a
     private javax.swing.JTextField txt_nombre;
     private javax.swing.JTextField txtbuscado;
     // End of variables declaration//GEN-END:variables

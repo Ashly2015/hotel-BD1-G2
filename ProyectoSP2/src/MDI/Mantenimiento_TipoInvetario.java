@@ -62,7 +62,11 @@ public class Mantenimiento_TipoInvetario extends javax.swing.JInternalFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+<<<<<<< HEAD
         txt_estado = new javax.swing.JTextField();
+=======
+        txt_Estado = new javax.swing.JTextField();
+>>>>>>> 95cc82cc3e3e9947518f06cd9bee57cb60a4e61a
         btnModificar = new javax.swing.JButton();
         label1 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
@@ -74,21 +78,33 @@ public class Mantenimiento_TipoInvetario extends javax.swing.JInternalFrame {
         btnRegistrar = new javax.swing.JButton();
         btnBuscar = new javax.swing.JButton();
         label2 = new javax.swing.JLabel();
+<<<<<<< HEAD
         txt_nombre = new javax.swing.JTextField();
         lb = new javax.swing.JLabel();
         label8 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         activo = new javax.swing.JRadioButton();
         inactivo = new javax.swing.JRadioButton();
+=======
+        label5 = new javax.swing.JLabel();
+        txt_nombre = new javax.swing.JTextField();
+        lb = new javax.swing.JLabel();
+>>>>>>> 95cc82cc3e3e9947518f06cd9bee57cb60a4e61a
 
         setClosable(true);
         setIconifiable(true);
         setMaximizable(true);
         setVisible(true);
 
+<<<<<<< HEAD
         txt_estado.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
         txt_estado.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(204, 204, 204)));
         txt_estado.setOpaque(false);
+=======
+        txt_Estado.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
+        txt_Estado.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(204, 204, 204)));
+        txt_Estado.setOpaque(false);
+>>>>>>> 95cc82cc3e3e9947518f06cd9bee57cb60a4e61a
 
         btnModificar.setText("Modificar");
         btnModificar.setEnabled(false);
@@ -147,6 +163,12 @@ public class Mantenimiento_TipoInvetario extends javax.swing.JInternalFrame {
         label2.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
         label2.setText("Registro, Tipo de inventario:");
 
+<<<<<<< HEAD
+=======
+        label5.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
+        label5.setText("Estado:");
+
+>>>>>>> 95cc82cc3e3e9947518f06cd9bee57cb60a4e61a
         txt_nombre.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
         txt_nombre.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(204, 204, 204)));
         txt_nombre.setOpaque(false);
@@ -154,6 +176,7 @@ public class Mantenimiento_TipoInvetario extends javax.swing.JInternalFrame {
         lb.setForeground(new java.awt.Color(204, 204, 204));
         lb.setText(".");
 
+<<<<<<< HEAD
         label8.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
         label8.setText("Estado:");
 
@@ -197,6 +220,8 @@ public class Mantenimiento_TipoInvetario extends javax.swing.JInternalFrame {
                     .addComponent(inactivo)))
         );
 
+=======
+>>>>>>> 95cc82cc3e3e9947518f06cd9bee57cb60a4e61a
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -210,6 +235,7 @@ public class Mantenimiento_TipoInvetario extends javax.swing.JInternalFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
+<<<<<<< HEAD
                                 .addGap(72, 72, 72)
                                 .addComponent(label8)
                                 .addGap(22, 22, 22)
@@ -217,6 +243,8 @@ public class Mantenimiento_TipoInvetario extends javax.swing.JInternalFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(txt_estado, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(layout.createSequentialGroup()
+=======
+>>>>>>> 95cc82cc3e3e9947518f06cd9bee57cb60a4e61a
                                 .addGap(32, 32, 32)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addComponent(btnEliminar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -233,9 +261,19 @@ public class Mantenimiento_TipoInvetario extends javax.swing.JInternalFrame {
                                         .addComponent(btnModificar, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE))))
                             .addGroup(layout.createSequentialGroup()
                                 .addContainerGap()
+<<<<<<< HEAD
                                 .addComponent(label3)
                                 .addGap(27, 27, 27)
                                 .addComponent(txt_nombre, javax.swing.GroupLayout.PREFERRED_SIZE, 263, javax.swing.GroupLayout.PREFERRED_SIZE)))
+=======
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(label3)
+                                    .addComponent(label5, javax.swing.GroupLayout.Alignment.TRAILING))
+                                .addGap(27, 27, 27)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(txt_nombre, javax.swing.GroupLayout.PREFERRED_SIZE, 263, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(txt_Estado, javax.swing.GroupLayout.PREFERRED_SIZE, 263, javax.swing.GroupLayout.PREFERRED_SIZE))))
+>>>>>>> 95cc82cc3e3e9947518f06cd9bee57cb60a4e61a
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
@@ -265,6 +303,7 @@ public class Mantenimiento_TipoInvetario extends javax.swing.JInternalFrame {
                             .addComponent(label3)
                             .addComponent(txt_nombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
+<<<<<<< HEAD
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(13, 13, 13)
@@ -272,6 +311,12 @@ public class Mantenimiento_TipoInvetario extends javax.swing.JInternalFrame {
                             .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(txt_estado, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(60, 60, 60)
+=======
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(txt_Estado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(label5))
+                        .addGap(75, 75, 75)
+>>>>>>> 95cc82cc3e3e9947518f06cd9bee57cb60a4e61a
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(btnRegistrar)
                             .addComponent(btnEliminar)
@@ -281,7 +326,11 @@ public class Mantenimiento_TipoInvetario extends javax.swing.JInternalFrame {
                             .addComponent(txtbuscado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(btnBuscar)
                             .addComponent(btnLimpiar))))
+<<<<<<< HEAD
                 .addContainerGap(15, Short.MAX_VALUE))
+=======
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+>>>>>>> 95cc82cc3e3e9947518f06cd9bee57cb60a4e61a
         );
 
         pack();
@@ -292,20 +341,33 @@ public class Mantenimiento_TipoInvetario extends javax.swing.JInternalFrame {
         try {
             String ID = txtbuscado.getText().trim();
 
+<<<<<<< HEAD
             
             Connection cn = DriverManager.getConnection(mdi_Principal.BD, mdi_Principal.Usuario, mdi_Principal.Contraseña);
             PreparedStatement pst = cn.prepareStatement("update tipo_inventario set nombre =?, estatus = ? where id_tipo_inventario =" + ID);
             
             pst.setString(1, txt_nombre.getText());
             pst.setString(2, txt_estado.getText());
+=======
+            Connection cn = DriverManager.getConnection("jdbc:mysql://localhost/hotel", "root", "compromete");
+            //Connection cn = DriverManager.getConnection(mdi_Principal.BD, mdi_Principal.Usuario, mdi_Principal.Contraseña);
+            PreparedStatement pst = cn.prepareStatement("update tipo_inventario set nombre =?, estatus = ? where id_tipo_inventario =" + ID);
+            
+            pst.setString(1, txt_nombre.getText());
+            pst.setString(2, txt_Estado.getText());
+>>>>>>> 95cc82cc3e3e9947518f06cd9bee57cb60a4e61a
             pst.executeUpdate();
 
             //bitacora_modificar();
             JOptionPane.showMessageDialog(this, "¡MODIFICACION EXITOSA!", "Mensaje", JOptionPane.INFORMATION_MESSAGE);
             txt_nombre.setText("");
+<<<<<<< HEAD
             txt_estado.setText("");
             activo.setSelected(false);
             inactivo.setSelected(false);
+=======
+            txt_Estado.setText("");
+>>>>>>> 95cc82cc3e3e9947518f06cd9bee57cb60a4e61a
             txtbuscado.setText("");
             btnRegistrar.setEnabled(true);
             btnModificar.setEnabled(false);
@@ -319,9 +381,13 @@ public class Mantenimiento_TipoInvetario extends javax.swing.JInternalFrame {
     private void btnLimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimpiarActionPerformed
 
         txt_nombre.setText("");
+<<<<<<< HEAD
         txt_estado.setText("");
         activo.setSelected(false);
         inactivo.setSelected(false);
+=======
+        txt_Estado.setText("");
+>>>>>>> 95cc82cc3e3e9947518f06cd9bee57cb60a4e61a
         txtbuscado.setText("");
         btnRegistrar.setEnabled(true);
         btnModificar.setEnabled(false);
@@ -340,10 +406,15 @@ public class Mantenimiento_TipoInvetario extends javax.swing.JInternalFrame {
             // bitacora_eliminar();
             JOptionPane.showMessageDialog(this, "¡ELIMINACION EXITOSA!", "Mensaje", JOptionPane.INFORMATION_MESSAGE);
             txt_nombre.setText("");
+<<<<<<< HEAD
             txt_estado.setText("");
             txtbuscado.setText("");
             activo.setSelected(false);
             inactivo.setSelected(false);
+=======
+            txt_Estado.setText("");
+            txtbuscado.setText("");
+>>>>>>> 95cc82cc3e3e9947518f06cd9bee57cb60a4e61a
             btnRegistrar.setEnabled(true);
             btnModificar.setEnabled(false);
             btnEliminar.setEnabled(false);
@@ -363,17 +434,27 @@ public class Mantenimiento_TipoInvetario extends javax.swing.JInternalFrame {
 
             pst.setString(1, "0");
             pst.setString(2, txt_nombre.getText());
+<<<<<<< HEAD
             pst.setString(3, txt_estado.getText());
+=======
+            pst.setString(3, txt_Estado.getText());
+>>>>>>> 95cc82cc3e3e9947518f06cd9bee57cb60a4e61a
             //bitacora_guardar();
             pst.executeUpdate();
 
             JOptionPane.showMessageDialog(this, "¡REGISTRO EXITOSO!", "Mensaje", JOptionPane.INFORMATION_MESSAGE);
             txt_nombre.setText("");
+<<<<<<< HEAD
             txt_estado.setText("");
             activo.setSelected(false);
             inactivo.setSelected(false);
             txtbuscado.setText("");
             txt_estado.setText("");
+=======
+            txt_Estado.setText("");
+            txtbuscado.setText("");
+            txt_Estado.setText("");
+>>>>>>> 95cc82cc3e3e9947518f06cd9bee57cb60a4e61a
             tablas();
         } catch (SQLException e) {
             JOptionPane.showMessageDialog(this, "Error en registro", "Warning", JOptionPane.WARNING_MESSAGE);
@@ -392,7 +473,11 @@ public class Mantenimiento_TipoInvetario extends javax.swing.JInternalFrame {
             if (rs.next()) {
                 lb.setText(rs.getString("id_tipo_inventario"));
                 txt_nombre.setText(rs.getString("nombre"));
+<<<<<<< HEAD
                 txt_estado.setText(rs.getString("estatus"));
+=======
+                txt_Estado.setText(rs.getString("estatus"));
+>>>>>>> 95cc82cc3e3e9947518f06cd9bee57cb60a4e61a
                 btnModificar.setEnabled(true);
                 btnEliminar.setEnabled(true);
                 btnRegistrar.setEnabled(false);
@@ -409,6 +494,7 @@ public class Mantenimiento_TipoInvetario extends javax.swing.JInternalFrame {
         // bitacora_busqueda();
     }//GEN-LAST:event_btnBuscarActionPerformed
 
+<<<<<<< HEAD
     private void activoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_activoActionPerformed
         if(activo.isSelected()){
 
@@ -428,21 +514,35 @@ public class Mantenimiento_TipoInvetario extends javax.swing.JInternalFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JRadioButton activo;
+=======
+
+    // Variables declaration - do not modify//GEN-BEGIN:variables
+>>>>>>> 95cc82cc3e3e9947518f06cd9bee57cb60a4e61a
     private javax.swing.JButton btnBuscar;
     private javax.swing.JButton btnEliminar;
     private javax.swing.JButton btnLimpiar;
     private javax.swing.JButton btnModificar;
     private javax.swing.JButton btnRegistrar;
+<<<<<<< HEAD
     private javax.swing.JRadioButton inactivo;
     private javax.swing.JPanel jPanel1;
+=======
+>>>>>>> 95cc82cc3e3e9947518f06cd9bee57cb60a4e61a
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel label1;
     private javax.swing.JLabel label2;
     private javax.swing.JLabel label3;
+<<<<<<< HEAD
     private javax.swing.JLabel label8;
     private javax.swing.JLabel lb;
     private javax.swing.JTable tbl;
     private javax.swing.JTextField txt_estado;
+=======
+    private javax.swing.JLabel label5;
+    private javax.swing.JLabel lb;
+    private javax.swing.JTable tbl;
+    private javax.swing.JTextField txt_Estado;
+>>>>>>> 95cc82cc3e3e9947518f06cd9bee57cb60a4e61a
     private javax.swing.JTextField txt_nombre;
     private javax.swing.JTextField txtbuscado;
     // End of variables declaration//GEN-END:variables
