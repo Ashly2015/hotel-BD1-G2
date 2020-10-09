@@ -15,14 +15,14 @@ import javax.swing.table.DefaultTableModel;
 
 /**
  *
- * @author kievk
+ * @author kevin
  */
 public class inf_Mantenimiento_Salon extends javax.swing.JInternalFrame {
 
     /**
      * Creates new form inf_Salon
      */
-     public void tablas() {
+    public void tablas() {
         try {
             Connection cn = DriverManager.getConnection(mdi_Principal.BD, mdi_Principal.Usuario, mdi_Principal.Contraseña);
             PreparedStatement pstt4 = cn.prepareStatement("select * from salon");
@@ -52,8 +52,10 @@ public class inf_Mantenimiento_Salon extends javax.swing.JInternalFrame {
             e.printStackTrace();
         }
     }
+
     public inf_Mantenimiento_Salon() {
         initComponents();
+          tablas();
     }
 
     /**
@@ -183,6 +185,7 @@ public class inf_Mantenimiento_Salon extends javax.swing.JInternalFrame {
 
         txt_idSalon.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
         txt_idSalon.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(204, 204, 204)));
+        txt_idSalon.setEnabled(false);
         txt_idSalon.setOpaque(false);
         txt_idSalon.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -352,8 +355,7 @@ public class inf_Mantenimiento_Salon extends javax.swing.JInternalFrame {
         } catch (Exception e) {
 
         }
-        // tablas();
-        // bitacora_busqueda();
+
     }//GEN-LAST:event_btnBuscarActionPerformed
 
     private void btnLimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimpiarActionPerformed
@@ -381,7 +383,6 @@ public class inf_Mantenimiento_Salon extends javax.swing.JInternalFrame {
             pst.setString(1, txtbuscado.getText().trim());
             pst.executeUpdate();
 
-            // bitacora_eliminar();
             JOptionPane.showMessageDialog(this, "¡ELIMINACION EXITOSA!", "Mensaje", JOptionPane.INFORMATION_MESSAGE);
             txt_idSalon.setText("");
             txt_Nombre.setText("");
@@ -406,14 +407,13 @@ public class inf_Mantenimiento_Salon extends javax.swing.JInternalFrame {
             Connection cn = DriverManager.getConnection(mdi_Principal.BD, mdi_Principal.Usuario, mdi_Principal.Contraseña);
             //localhost es 127.0.0.1
             PreparedStatement pst = cn.prepareStatement("insert into salon values(?,?,?,?,?,?)");
-
-            pst.setString(1, txt_idSalon.getText());
+            pst.setString(1, "0");
             pst.setString(2, txt_Nombre.getText());
             pst.setString(3, txt_Capacidad.getText());
             pst.setString(4, txt_Nivel.getText());
             pst.setString(5, txt_Precio.getText());
             pst.setString(6, txt_Estatus.getText());
-            //bitacora_guardar();
+
             pst.executeUpdate();
 
             JOptionPane.showMessageDialog(this, "¡REGISTRO EXITOSO!", "Mensaje", JOptionPane.INFORMATION_MESSAGE);
@@ -437,16 +437,14 @@ public class inf_Mantenimiento_Salon extends javax.swing.JInternalFrame {
             String ID = txtbuscado.getText().trim();
 
             Connection cn = DriverManager.getConnection(mdi_Principal.BD, mdi_Principal.Usuario, mdi_Principal.Contraseña);
-            PreparedStatement pst = cn.prepareStatement("update salon set  id_salon = ?, nombre = ?, capacidad = ?, nivel= ?, precio = ?, estatus = ?  where id_salon =" + ID);
-            pst.setString(1, txt_idSalon.getText());
-            pst.setString(2, txt_Nombre.getText());
-            pst.setString(3, txt_Capacidad.getText());
-            pst.setString(4, txt_Nivel.getText());
-            pst.setString(5, txt_Precio.getText());
-            pst.setString(6, txt_Estatus.getText());
+            PreparedStatement pst = cn.prepareStatement("update salon set  nombre = ?, capacidad = ?, nivel= ?, precio = ?, estatus = ?  where id_salon =" + ID);
+            pst.setString(1, txt_Nombre.getText());
+            pst.setString(2, txt_Capacidad.getText());
+            pst.setString(3, txt_Nivel.getText());
+            pst.setString(4, txt_Precio.getText());
+            pst.setString(5, txt_Estatus.getText());
             pst.executeUpdate();
 
-            //bitacora_modificar();
             JOptionPane.showMessageDialog(this, "¡MODIFICACION EXITOSA!", "Mensaje", JOptionPane.INFORMATION_MESSAGE);
             txt_idSalon.setText("");
             txt_Nombre.setText("");
