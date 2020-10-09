@@ -30,7 +30,7 @@ public class inf_Mantenimiento_Impuesto extends javax.swing.JInternalFrame {
             modelo.addColumn("Nombre");
             modelo.addColumn("Estatus");
             tbl.setModel(modelo);
-            String[] dato = new String[3];
+            String[] dato = new String[5];
             while (rss4.next()) {
                 dato[0] = rss4.getString(1);
                 dato[1] = rss4.getString(2);
@@ -80,9 +80,7 @@ public class inf_Mantenimiento_Impuesto extends javax.swing.JInternalFrame {
         btnBuscar = new javax.swing.JButton();
         label1 = new javax.swing.JLabel();
         btnModificar = new javax.swing.JButton();
-        label3 = new javax.swing.JLabel();
         txtbuscado = new javax.swing.JTextField();
-        txt_id_impuesto = new javax.swing.JTextField();
         btnLimpiar = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         tbl = new javax.swing.JTable();
@@ -130,13 +128,6 @@ public class inf_Mantenimiento_Impuesto extends javax.swing.JInternalFrame {
                 btnModificarActionPerformed(evt);
             }
         });
-
-        label3.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
-        label3.setText("ID Impuesto:");
-
-        txt_id_impuesto.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
-        txt_id_impuesto.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(204, 204, 204)));
-        txt_id_impuesto.setOpaque(false);
 
         btnLimpiar.setText("Limpiar");
         btnLimpiar.addActionListener(new java.awt.event.ActionListener() {
@@ -203,16 +194,12 @@ public class inf_Mantenimiento_Impuesto extends javax.swing.JInternalFrame {
                         .addContainerGap()
                         .addComponent(label6)
                         .addGap(78, 78, 78)
-                        .addComponent(txt_estatus, javax.swing.GroupLayout.DEFAULT_SIZE, 240, Short.MAX_VALUE))
+                        .addComponent(txt_estatus))
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(label3)
-                            .addComponent(label5))
-                        .addGap(23, 23, 23)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(txt_nombre, javax.swing.GroupLayout.DEFAULT_SIZE, 263, Short.MAX_VALUE)
-                            .addComponent(txt_id_impuesto))))
+                        .addComponent(label5)
+                        .addGap(44, 44, 44)
+                        .addComponent(txt_nombre, javax.swing.GroupLayout.PREFERRED_SIZE, 263, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(12, 12, 12)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
@@ -228,11 +215,7 @@ public class inf_Mantenimiento_Impuesto extends javax.swing.JInternalFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(65, 65, 65)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txt_id_impuesto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(label3))
-                        .addGap(18, 18, 18)
+                        .addGap(100, 100, 100)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(txt_nombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(label5))
@@ -254,7 +237,7 @@ public class inf_Mantenimiento_Impuesto extends javax.swing.JInternalFrame {
                         .addComponent(label1)
                         .addGap(4, 4, 4)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 303, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(51, Short.MAX_VALUE))
+                .addContainerGap(55, Short.MAX_VALUE))
         );
 
         pack();
@@ -264,20 +247,18 @@ public class inf_Mantenimiento_Impuesto extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
         try {
             Connection cn = DriverManager.getConnection(mdi_Principal.BD, mdi_Principal.Usuario, mdi_Principal.Contraseña);
-            PreparedStatement pst = cn.prepareStatement("delete from impuesto where id_impuestos = ?");
+            PreparedStatement pst = cn.prepareStatement("delete from impuestos where id_impuesto = ?");
 
-            pst.setString(1, txt_id_impuesto.getText().trim());
+            pst.setString(1, txtbuscado.getText().trim());
             pst.executeUpdate();
 
             // bitacora_eliminar();
             JOptionPane.showMessageDialog(this, "¡ELIMINACION EXITOSA!", "Mensaje", JOptionPane.INFORMATION_MESSAGE);
-            txt_id_impuesto.setText("");
 
 
             txt_nombre.setText("");
             txt_estatus.setText("");
             txtbuscado.setText("");
-            txt_id_impuesto.setEnabled(true);
             btnRegistrar.setEnabled(true);
             btnModificar.setEnabled(false);
             btnEliminar.setEnabled(false);
@@ -295,14 +276,13 @@ public class inf_Mantenimiento_Impuesto extends javax.swing.JInternalFrame {
             //localhost es 127.0.0.1
             PreparedStatement pst = cn.prepareStatement("insert into impuestos values(?,?,?)");
 
-            pst.setString(1, txt_id_impuesto.getText());
+            pst.setString(1,"0");
             pst.setString(2, txt_nombre.getText());
             pst.setString(3, txt_estatus.getText());
             //bitacora_guardar();
             pst.executeUpdate();
 
             JOptionPane.showMessageDialog(this, "¡REGISTRO EXITOSO!", "Mensaje", JOptionPane.INFORMATION_MESSAGE);
-            txt_id_impuesto.setText("");
             txt_nombre.setText("");
             txt_estatus.setText("");
 
@@ -323,17 +303,13 @@ public class inf_Mantenimiento_Impuesto extends javax.swing.JInternalFrame {
             ResultSet rs = pst.executeQuery();
 
             if (rs.next()) {
-                txt_id_impuesto.setText(rs.getString("id_impuesto"));
                 txt_nombre.setText(rs.getString("nombre_impuesto"));
-
                 txt_estatus.setText(rs.getString("estatus_impuesto"));
 
 
                 btnModificar.setEnabled(true);
                 btnEliminar.setEnabled(true);
                 btnRegistrar.setEnabled(false);
-                txt_id_impuesto.setEnabled(false);
-                txtbuscado.setText("");
                 tablas();
 
             } else {
@@ -350,10 +326,10 @@ public class inf_Mantenimiento_Impuesto extends javax.swing.JInternalFrame {
     private void btnModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModificarActionPerformed
         // TODO add your handling code here:
         try {
-            String ID = txt_id_impuesto.getText().trim();
+            String ID = txtbuscado.getText().trim();
 
             Connection cn = DriverManager.getConnection(mdi_Principal.BD, mdi_Principal.Usuario, mdi_Principal.Contraseña);
-            PreparedStatement pst = cn.prepareStatement("update impuestos set  nombre_impuesto = ?,estatus_impuesto =? where id_bodega =" + ID);
+            PreparedStatement pst = cn.prepareStatement("update impuestos set  nombre_impuesto = ?,estatus_impuesto =? where id_impuesto =" + ID);
 
             pst.setString(1, txt_nombre.getText());
             pst.setString(2, txt_estatus.getText());
@@ -362,7 +338,6 @@ public class inf_Mantenimiento_Impuesto extends javax.swing.JInternalFrame {
 
             //bitacora_modificar();
             JOptionPane.showMessageDialog(this, "¡MODIFICACION EXITOSA!", "Mensaje", JOptionPane.INFORMATION_MESSAGE);
-            txt_id_impuesto.setText("");
             txt_nombre.setText("");
             txt_estatus.setText("");
             txt_nombre.setText("");
@@ -370,7 +345,7 @@ public class inf_Mantenimiento_Impuesto extends javax.swing.JInternalFrame {
             btnRegistrar.setEnabled(true);
             btnModificar.setEnabled(false);
             btnEliminar.setEnabled(false);
-            txt_id_impuesto.setEnabled(true);
+
             tablas();
         } catch (SQLException e) {
             JOptionPane.showMessageDialog(this, "Error en Modificacion", "Warning", JOptionPane.WARNING_MESSAGE);
@@ -378,7 +353,6 @@ public class inf_Mantenimiento_Impuesto extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_btnModificarActionPerformed
 
     private void btnLimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimpiarActionPerformed
-        txt_id_impuesto.setText("");
         txt_nombre.setText("");
         txt_estatus.setText("");
         txtbuscado.setText("");
@@ -398,12 +372,10 @@ public class inf_Mantenimiento_Impuesto extends javax.swing.JInternalFrame {
     private javax.swing.JButton btnRegistrar;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel label1;
-    private javax.swing.JLabel label3;
     private javax.swing.JLabel label5;
     private javax.swing.JLabel label6;
     private javax.swing.JTable tbl;
     private javax.swing.JTextField txt_estatus;
-    private javax.swing.JTextField txt_id_impuesto;
     private javax.swing.JTextField txt_nombre;
     private javax.swing.JTextField txtbuscado;
     // End of variables declaration//GEN-END:variables
