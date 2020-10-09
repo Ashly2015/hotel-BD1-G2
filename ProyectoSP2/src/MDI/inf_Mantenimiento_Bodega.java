@@ -57,7 +57,6 @@ public class inf_Mantenimiento_Bodega extends javax.swing.JInternalFrame {
             Connection cn = DriverManager.getConnection(mdi_Principal.BD, mdi_Principal.Usuario, mdi_Principal.Contraseña);
             PreparedStatement psttt = cn.prepareStatement("select nombre from sucursal ");
             ResultSet rss = psttt.executeQuery();
-
             cbox_sucursal.removeAllItems();
             cbox_sucursal.addItem("Seleccione una opción");
             while (rss.next()) {
