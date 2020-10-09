@@ -87,7 +87,7 @@ public class inf_Mantenimiento_Piloto extends javax.swing.JInternalFrame {
     public void iniciar_combo() {
         try {
             Connection cn = DriverManager.getConnection(mdi_Principal.BD, mdi_Principal.Usuario, mdi_Principal.Contraseña);
-            PreparedStatement psttt = cn.prepareStatement("select nombre from empleado_contratado ");
+            PreparedStatement psttt = cn.prepareStatement("select id_empleado from empleado_contratado ");
             ResultSet rss = psttt.executeQuery();
 
             cbox_empleado.addItem("Seleccione una opción");
