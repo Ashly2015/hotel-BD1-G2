@@ -299,7 +299,15 @@ public class Mantenimiento_Marca extends javax.swing.JInternalFrame {
             PreparedStatement pst = cn.prepareStatement("update marca set nombre =?, estatus = ? where id_marca =" + ID);
 
             pst.setString(1, txt_nombre.getText());
-            pst.setString(2, txt_estado.getText());
+             String mensaje = "";
+             if (activo.isSelected()) {
+                mensaje = "A";
+            } else if (inactivo.isSelected()) {
+                mensaje = "I";
+
+            }
+            pst.setString(2, mensaje);
+
             pst.executeUpdate();
 
             //bitacora_modificar();
