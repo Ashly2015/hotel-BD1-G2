@@ -51,6 +51,10 @@ public class mdi_Principal extends javax.swing.JFrame {
         desktopPane = new javax.swing.JDesktopPane();
         menuBar = new javax.swing.JMenuBar();
         fileMenu = new javax.swing.JMenu();
+        jMenuCotDetClientes = new javax.swing.JMenuItem();
+        jMenuCotDetProv = new javax.swing.JMenuItem();
+        jMenuCotEncProveedores = new javax.swing.JMenuItem();
+        jMenuCotEncClientes = new javax.swing.JMenuItem();
         jMenuMarcas = new javax.swing.JMenuItem();
         jMenuLineas = new javax.swing.JMenuItem();
         jMenuParametros = new javax.swing.JMenuItem();
@@ -80,6 +84,38 @@ public class mdi_Principal extends javax.swing.JFrame {
 
         fileMenu.setMnemonic('f');
         fileMenu.setText("Mantenimientos");
+
+        jMenuCotDetClientes.setText("Cotizacion Det. Clientes");
+        jMenuCotDetClientes.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuCotDetClientesActionPerformed(evt);
+            }
+        });
+        fileMenu.add(jMenuCotDetClientes);
+
+        jMenuCotDetProv.setText("Cotizacion Det. Proveedores");
+        jMenuCotDetProv.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuCotDetProvActionPerformed(evt);
+            }
+        });
+        fileMenu.add(jMenuCotDetProv);
+
+        jMenuCotEncProveedores.setText("Contizacion Enc. Proveedores");
+        jMenuCotEncProveedores.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuCotEncProveedoresActionPerformed(evt);
+            }
+        });
+        fileMenu.add(jMenuCotEncProveedores);
+
+        jMenuCotEncClientes.setText("Cotizacion Enc. Clientes");
+        jMenuCotEncClientes.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuCotEncClientesActionPerformed(evt);
+            }
+        });
+        fileMenu.add(jMenuCotEncClientes);
 
         jMenuMarcas.setText("Mantenimiento Marcas");
         jMenuMarcas.addActionListener(new java.awt.event.ActionListener() {
@@ -502,6 +538,38 @@ System.exit(0);
         ventana.setLocation((desktopSize.width - FrameSize.width) / 2, (desktopSize.height - FrameSize.height) / 2);
     }//GEN-LAST:event_jMenuVehiculosActionPerformed
 
+    private void jMenuCotEncClientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuCotEncClientesActionPerformed
+        cot_enc_cliente ventana = new cot_enc_cliente();
+        desktopPane.add(ventana);
+        Dimension desktopSize = desktopPane.getSize();
+        Dimension FrameSize = ventana.getSize();
+        ventana.setLocation((desktopSize.width - FrameSize.width) / 2, (desktopSize.height - FrameSize.height) / 2);
+    }//GEN-LAST:event_jMenuCotEncClientesActionPerformed
+
+    private void jMenuCotDetClientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuCotDetClientesActionPerformed
+        Cot_Det_Cliente ventana = new Cot_Det_Cliente();
+        desktopPane.add(ventana);
+        Dimension desktopSize = desktopPane.getSize();
+        Dimension FrameSize = ventana.getSize();
+        ventana.setLocation((desktopSize.width - FrameSize.width) / 2, (desktopSize.height - FrameSize.height) / 2);
+    }//GEN-LAST:event_jMenuCotDetClientesActionPerformed
+
+    private void jMenuCotEncProveedoresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuCotEncProveedoresActionPerformed
+        Cot_Enc_Proveedor ventana = new Cot_Enc_Proveedor();
+        desktopPane.add(ventana);
+        Dimension desktopSize = desktopPane.getSize();
+        Dimension FrameSize = ventana.getSize();
+        ventana.setLocation((desktopSize.width - FrameSize.width) / 2, (desktopSize.height - FrameSize.height) / 2);
+    }//GEN-LAST:event_jMenuCotEncProveedoresActionPerformed
+
+    private void jMenuCotDetProvActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuCotDetProvActionPerformed
+       Cot_Det_Proveedor ventana = new Cot_Det_Proveedor();
+        desktopPane.add(ventana);
+        Dimension desktopSize = desktopPane.getSize();
+        Dimension FrameSize = ventana.getSize();
+        ventana.setLocation((desktopSize.width - FrameSize.width) / 2, (desktopSize.height - FrameSize.height) / 2);
+    }//GEN-LAST:event_jMenuCotDetProvActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -544,6 +612,10 @@ System.exit(0);
     private javax.swing.JMenuItem exitMenuItem1;
     private javax.swing.JMenu fileMenu;
     private javax.swing.JMenu helpMenu;
+    private javax.swing.JMenuItem jMenuCotDetClientes;
+    private javax.swing.JMenuItem jMenuCotDetProv;
+    private javax.swing.JMenuItem jMenuCotEncClientes;
+    private javax.swing.JMenuItem jMenuCotEncProveedores;
     private javax.swing.JMenuItem jMenuInventarios;
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem10;

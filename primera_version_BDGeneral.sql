@@ -9,6 +9,9 @@ create table nivel_academico( -- peticion de la empresa
     descripcion varchar(80)
 ) engine = InnoDB default char set=latin1;
 
+#INSERT NIVEL ACADEMICO
+insert into nivel_academico values ("1", "A", "descripcion");
+
 create table explab_detallado(
 	id_tipoexp varchar(10) primary key,-- 1
     nombre_tipo varchar(50), -- inventarios, bodega
@@ -17,6 +20,9 @@ create table explab_detallado(
     tiempo_finalizacion date -- 10/08/2015
 ) engine = InnoDB default char set=latin1;
 
+#INSERTS explab_detallado
+insert into explab_detallado values ("1", "Exp1", "A", "1999/08/12", "2020/08/22");
+
 create table experiencia_laboral(
 	id_experiencia varchar(10) primary key,
     id_tipoexp varchar(10), -- foranea
@@ -24,17 +30,26 @@ create table experiencia_laboral(
     foreign key (id_tipoexp) references explab_detallado(id_tipoexp)
 ) engine = InnoDB default char set=latin1;
 
+#INSERTS experiencia_laboral
+insert into experiencia_laboral values ("1", "1");
+
 create table referenciasP(
 	id_referenciaP varchar(10) primary key,
 	nombre_personaP varchar(50),
     telefono_personaP int
 ) engine = InnoDB default char set=latin1;
 
+#INSERTS referenciasP
+insert into referenciasP values ("1", "Juan", "123");
+
 create table referenciasL(
 	id_referenciaL varchar(10) primary key,
     nombre_personaL varchar(50),
     telefono_personaL int
 ) engine = InnoDB default char set=latin1;
+
+#INSERTS referenciasL
+insert into referenciasL values ("1", "Daniel", "456");
 
 create table puesto(
 	id_puesto varchar(10) primary key,
@@ -43,11 +58,19 @@ create table puesto(
     estatus_puesto char(1)
 ) engine = InnoDB default char set=latin1;
 
+#INSERTS puesto
+insert into puesto values ("1", "Puesto1", "ninguna", "A");
+
+
 create table departamento(
 	id_departamento varchar(10) primary key,
     nombre_departamento varchar(35),
     estatus_departamento char(1)
 ) engine = InnoDB default char set=latin1;
+
+#INSERTS departamento
+insert into departamento values ("1", "Depto1", "A");
+
 
 create table solicitud_empresarial(
 	id_solicitud varchar(10) primary key,
@@ -66,6 +89,9 @@ create table solicitud_empresarial(
     foreign key (id_experiencia) references experiencia_laboral(id_experiencia)
 ) engine = InnoDB default char set=latin1;
 
+#INSERTS solicitud_empresarial
+insert into solicitud_empresarial values ("1", "20", "30", "M", "1", "1", "1","1", "ninguna");
+
 create table medio(
 	id_medio varchar(10) primary key,
     id_solicitud varchar(10),
@@ -74,6 +100,9 @@ create table medio(
     
     foreign key(id_solicitud) references solicitud_empresarial(id_solicitud)
 ) engine = InnoDB default char set=latin1;
+
+insert into medio values ("1", "1", "Prensa", "ninguna");
+
 
 create table curriculum(/*Reclutamiento*/
 	dpi_persona int primary key,
@@ -98,6 +127,8 @@ create table curriculum(/*Reclutamiento*/
     foreign key ( id_medio) references medio(id_medio)
 ) engine = InnoDB default char set=latin1;
 
+insert into curriculum values ("125", "Jose", "Hernandez", "852", "Jose@gmail.com", "ciudad", "M", "22", "1", "1", "1", "1", "1");
+
 
 create table aplicacion(
 	id_aplicacion varchar(10) primary key,
@@ -107,10 +138,16 @@ create table aplicacion(
     foreign key(dpi_persona) references curriculum(dpi_persona)
 ) engine = InnoDB default char set=latin1;
 
+insert into aplicacion values ("1", "125", "S");
+
 create table tipo_pruebas(
 	id_prueba varchar(10) primary key,
     tipo_prueba varchar(35) -- psicologico, poligrafo, tarjeta de pulmones, socioeconomico, habilidades
 ) engine = InnoDB default char set=latin1;
+
+insert into tipo_pruebas values ("1", "psicologico");
+
+
 
 create table aplicacion_prueba(
 	id_ap varchar(10) primary key, -- codigo aplicacion prueba
@@ -122,6 +159,9 @@ create table aplicacion_prueba(
     foreign key (id_aplicacion) references aplicacion(id_aplicacion)
 ) engine = InnoDB default char set=latin1;
 
+insert into aplicacion_prueba values ("1", "1", "1", "A");
+
+
 create table seleccion(
 	id_seleccion varchar(10) primary key,
     id_ap varchar(10), -- foranea
@@ -130,11 +170,17 @@ create table seleccion(
     foreign key (id_ap) references aplicacion_prueba (id_ap)
 ) engine = InnoDB default char set=latin1;
 
+insert into seleccion values ("1", "1", "A");
+
 create table actividad(-- capacitacion, induccion, desempeño
 	id_actividad varchar(10) primary key,
     tipo_actividad varchar(50),
     descripcion varchar(80)
 ) engine = InnoDB default char set=latin1;
+
+insert into actividad values ("1", "1", "A");
+
+
 
 create table periodo_prueba(
 	id_periodop varchar(10) primary key,
@@ -148,6 +194,9 @@ create table periodo_prueba(
     foreign key (id_seleccion) references seleccion(id_seleccion)
 ) engine = InnoDB default char set=latin1;
 
+insert into periodo_prueba values ("1", "1", "2020/02/25", "2020/03/15", "100", "1");
+
+
 create table contratacion(
 	id_contratacion varchar(10) primary key,
 	id_periodop varchar(10),
@@ -157,6 +206,9 @@ create table contratacion(
 	
     foreign key (id_periodop) references periodo_prueba(id_periodop)
 ) engine = InnoDB default char set=latin1;
+
+insert into contratacion values ("1", "1", "2020/08/12", "10 meses", "A");
+
 
 create table bitacora_empleado(
 	id_bitacora varchar(10) primary key,
@@ -169,6 +221,7 @@ create table bitacora_empleado(
     foreign key (id_puesto) references puesto (id_puesto)
 ) engine = InnoDB default char set=latin1;
 
+
 create table empleado_contratado( /*EMPLEADO*/
 	id_empleado varchar(10) primary key,
     id_contratacion varchar(10), -- foranea
@@ -180,6 +233,8 @@ create table empleado_contratado( /*EMPLEADO*/
     foreign key (id_puesto) references puesto(id_puesto),
     foreign key (id_departamento) references departamento(id_departamento)
 ) engine = InnoDB default char set=latin1;
+
+insert into empleado_contratado values ("1", "1", "1", "1", "5000");
 
 create table actividad_empleado( -- capacitacion, desempeño
 	id_empleado varchar(10),
@@ -205,6 +260,9 @@ create table moneda(
     tipo_cambio float,
     estatus_moneda char(1)
 )engine = InnoDB default charset=latin1;
+
+#inserts moneda
+insert into moneda values ("0", "Dolar", 7.54,"A");
 
 create table concepto_movimiento(
 	id_concepto varchar(10) primary key,
@@ -259,21 +317,22 @@ create table movimientos_bancarios(
     foreign key (id_formapago) references forma_pago(id_formapago)
 ) engine = InnoDB default char set=latin1;
 
-create table banco(
-	nombre_banco varchar(50),
-    nombre_cuenta varchar(50), /*Cuenta maestra*/
-    clave_banco varchar(10),
-    funcionario varchar(50),
-    telefono int,
-    numero_plaza int,
-    numero_sucursal int,
-    saldo_inicial float,
-    id_moneda varchar(10),
-    id_concepto varchar(10), /*Movimientos*/
-    
-    foreign key (id_moneda) references moneda(id_moneda),
-    foreign key (id_concepto) references movimientos_bancarios(id_concepto)
-) engine = InnoDB default char set=latin1;
+CREATE TABLE banco (
+    nombre_banco VARCHAR(50),
+    nombre_cuenta VARCHAR(50),
+    clave_banco VARCHAR(10),
+    funcionario VARCHAR(50),
+    telefono INT,
+    numero_plaza INT,
+    numero_sucursal INT,
+    saldo_inicial FLOAT,
+    id_moneda VARCHAR(10),
+    id_concepto VARCHAR(10),
+    FOREIGN KEY (id_moneda)
+        REFERENCES moneda (id_moneda),
+    FOREIGN KEY (id_concepto)
+        REFERENCES movimientos_bancarios (id_concepto)
+)  ENGINE=INNODB DEFAULT CHAR SET=LATIN1;
 
 create table conciliacion_bancenc(
 	id_encabezado varchar(10) primary key,
@@ -353,7 +412,9 @@ create table usuario( -- login de usuario
     -- foreign key (ID_Empresa) references Empresa(ID_Empresa)
 )engine = InnoDB default charset=latin1;
 
-/*Área Administrativa*/
+insert into usuario values ("admin", "1234");
+/*-------------------------------------------------------------------------------------------------------------------------------------------*/
+/*----------------------------------------------------------------Área Administrativa--------------------------------------------------------*/
 create table sucursal (
 id_sucursal int auto_increment primary key,
 nombre varchar(20) not null,
@@ -361,11 +422,20 @@ direccion varchar(20) not null,
 telefono varchar(20) not null
 )engine=Innodb default charset=latin1;
 
+#inserts sucursal
+insert into sucursal values ("0", "Norte", "Zona18", "telefono");
+
 create table linea (
 id_linea int auto_increment primary key,
 nombre varchar(20) not null,
 estatus varchar(1) not null
 )engine=Innodb default charset=latin1;
+
+#insert linea
+insert into linea values (0,"comida","1");
+insert into linea values (0,"Electrica","1");
+insert into linea values (0,"Blanca","1");
+insert into linea values (0,"Vehiculos","1");
 
 create table marca (
 id_marca int auto_increment primary key,
@@ -373,17 +443,28 @@ nombre varchar(20) not null,
 estatus varchar(1) not null
 )engine=Innodb default charset=latin1;
 
+#insert marca
+insert into marca values (0,"Toyota","1");
+insert into marca values (0,"BMW","1");
+insert into marca values (0,"Samsung","1");
+insert into marca values (0,"Ideal","1");
+
 create table piloto (
 id_piloto int auto_increment primary key,
 id_empleado varchar(10) not null,
 numero_licencia varchar(20) not null,
-tipo_licencia int not null,
+tipo_licencia varchar(2) not null,
 fehca_vencimiento_licencia date not null,
 viatico double not null,
 estatus varchar(1) not null,
 foreign key(id_empleado) references
 empleado_contratado(id_empleado)
 )engine=Innodb default charset=latin1;
+
+#inserts PILOTO
+insert into piloto VALUES(0,"1","12345","A","2021-01-05",500,"A");
+insert into piloto VALUES(0,"1","54327","B","2022-03-07",500,"A");
+
 
 create table bodega (
 id_bodega int auto_increment primary key,
@@ -395,11 +476,23 @@ foreign key(id_sucursal) references
 sucursal(id_sucursal)
 )engine=Innodb default charset=latin1;
 
+#inserts BODEGA
+insert into bodega VALUES(0,1,"Bodega 1","zona 5","D");
+insert into bodega VALUES(0,1,"Bodega 2","zona 5","D");
+insert into bodega VALUES(0,1,"Bodega 3","zona 6","D");
+insert into bodega VALUES(0,1,"Bodega 4","zona 1","D");
+insert into bodega VALUES(0,1,"Bodega 5","zona 2","D");
+
 create table tipo_inventario (
 id_tipo_inventario int auto_increment primary key,
 nombre varchar(20) not null,
 estatus varchar(1) not null
 )engine=Innodb default charset=latin1;
+
+#Inserts tipo_inventario
+insert into tipo_inventario values (0,"Inicial","1");
+insert into tipo_inventario values (0,"Intermedio","1");
+insert into tipo_inventario values (0,"Final","1");
 
 create table inventario (
 id_inventario int auto_increment primary key,
@@ -424,6 +517,11 @@ foreign key(id_bodega) references
 bodega(id_bodega)
 )engine=Innodb default charset=latin1;
 
+#insert inventario
+insert into inventario values (0,1,1,1,1,"Comida","A",600,650,10,"Pedidos en la barra o encargos","2020/05/12");
+insert into inventario values (0,2,1,1,1,"Transporte","A",400,450,10,"servicio a disposicion de pedidos","2020/05/12");
+insert into inventario values (0,3,1,1,1,"Lavanderia","A",450,500,10,"Prendas encargadas","2020/05/12");
+
 create table vehiculo (
 id_vehiculo int auto_increment primary key,
 id_piloto int not null,
@@ -445,16 +543,32 @@ foreign key(id_linea) references
 linea(id_linea)
 )engine=Innodb default charset=latin1;
 
+insert into vehiculo values (0,1,2,1,4,"SK5D4","2010","Negro","4","1");
+insert into vehiculo values (0,1,2,2,4,"GE5D4","2011","Negro","5","1");
+insert into vehiculo values (0,1,2,1,4,"GE574","2015","Negro","5","1");
+
+
 create table proveedor(
 id_proveedor int auto_increment primary key,
 nombre varchar(128) not null,
 direccion varchar(128) not null
 )engine=Innodb default charset=latin1;
 
+#inserts PROVEEDOR
+insert into proveedor VALUES(0,"proveedor 1","zona 2");
+insert into proveedor VALUES(0,"proveedor 2","zona 7");
+insert into proveedor VALUES(0,"proveedor 3","zona 3");
+insert into proveedor VALUES(0,"proveedor 4","zona 15");
+insert into proveedor VALUES(0,"proveedor 5","zona 10");
+
 create table caja(
 id_caja int auto_increment primary key,
 estatus varchar(1) not null
 )engine=Innodb default charset=latin1;
+#inserts de caja
+INSERT INTO caja VALUES (0,"A");
+INSERT INTO caja VALUES (0,"B");
+INSERT INTO caja VALUES (0,"C");
 
 create table serie(
 id_serie int auto_increment primary key,
@@ -466,6 +580,12 @@ sucursal(id_sucursal),
 foreign key (id_caja) references
 caja(id_caja)
 )engine=Innodb default charset=latin1;
+
+
+#Inserts de serie
+INSERT INTO serie VALUES(0,1,1,"1");
+INSERT INTO serie VALUES(0,1,2,"2");
+
 
 create table mov_transporte(
 id_mov_transporte int auto_increment primary key,
@@ -543,6 +663,12 @@ nombre varchar(80) not null,
 estatus varchar(1) not null
 )engine=Innodb default charset=latin1;
 
+#inserts tipo_cliente
+insert into tipo_cliente values (0, "Frecuente", "A");
+insert into tipo_cliente values (0, "Normal", "A");
+insert into tipo_cliente values (0, "Premium", "A");
+
+
 create table cliente(
 id_cliente int primary key auto_increment,
 id_tipo_cliente int not null,
@@ -553,6 +679,11 @@ direccion varchar(80) not null,
 foreign key (id_tipo_cliente) references
 tipo_cliente(id_tipo_cliente)
 )engine=Innodb default charset=latin1;
+
+#inserts cliente
+insert into cliente values (0,1, "Ashly Barrios", "ranbr@gmail.com", "54738829","Zona 5");
+insert into cliente values (0,2, "Heydi Queme", "hsqa@gmail.com", "5472239","Zona 10");
+insert into cliente values (0,2, "Kevin Flores", "kfka@gmail.com", "23471239","Zona 1");
 
 create table credito_cliente(
 id_credito_cliente int  auto_increment,
@@ -579,16 +710,23 @@ moneda(id_moneda),
 primary key(id_credito_cliente,id_cliente,id_sucursal)
 )engine=Innodb default charset=latin1;
 
+
 create table impuestos(
-id_impuesto int primary key not null,
+id_impuesto int primary key auto_increment not null,
 nombre_impuesto varchar(50) not null,
 estatus_impuesto varchar(1) not null
 )engine=innodb;
 
+#inserts IMPUESTO
+insert into impuestos VALUES(0,"impuesto 1","A");
+insert into impuestos VALUES(0,"impuesto 2","A");
+insert into impuestos VALUES(0,"impuesto 3","A");
+insert into impuestos VALUES(0,"impuesto 4","A");
+insert into impuestos VALUES(0,"impuesto 5","A");
+
 create table vendedor(
 id_vendedor int primary key auto_increment,
 id_empleado varchar(10) not null,
-nombre_vendedor varchar(80) not null,
 correo varchar(80) not null,
 telefono varchar(11) not null,
 direccion varchar(80) not null,
@@ -597,6 +735,10 @@ comision double not null,
 foreign key(id_empleado) references
 empleado_contratado(id_empleado)
 )engine=Innodb default charset=latin1;
+
+#inserts VENDEDOR
+insert into vendedor VALUES(0,"1","vendedor1@email.com","12345678","zona 5",10.25,1000);
+
 
 create table venta_encabezado(
 id_ventaE int primary key not null,
@@ -632,7 +774,6 @@ moneda(id_moneda)
 create table cobrador(
 id_cobrador int primary key auto_increment,
 id_empleado varchar(10) not null,
-nombre_cobrador varchar(80) not null,
 correo varchar(80) not null,
 telefono varchar(11) not null,
 direccion varchar(80) not null,
@@ -640,11 +781,18 @@ foreign key(id_empleado) references
 empleado_contratado(id_empleado)
 )engine=Innodb default charset=latin1;
 
+#inserts COBRADOR
+insert into cobrador VALUES(0,1,"cobrador1@email.com","10298375","zona 1");
+
 create table servicios(
-id_servicio int primary key not null,
+id_servicio int primary key not null auto_increment,
 nombre_servicio varchar(50) not null,
 estatus_servicio varchar(1) not null
 )engine=innodb;
+
+#inserts servicios
+insert into servicios values (0,"masaje","A");
+insert into servicios values (0,"transporte","A");
 
 create table tipo_mov_inventario(
 id_tipo_mov_inventario int primary key auto_increment,
@@ -674,8 +822,10 @@ foreign key (id_vendedor) references
 vendedor(id_vendedor)
 )engine=Innodb default charset=latin1;
 
+insert into cotizacion_encabezado_cliente values ("0","1","1","1","1000","12/05/20");
+
 create table cotizacion_detalle_cliente(
-id_cotizacion_detalle_cliente int primary key not null,
+id_cotizacion_detalle_cliente int primary key auto_increment not null,
 id_servicio int not null,
 id_cotizacion_encabezado_cliente int not null,
 id_moneda varchar(10) not null,
@@ -691,16 +841,22 @@ cotizacion_encabezado_cliente(id_cotizacion_encabezado_cliente)
 
 
 create table tipo_habitacion(
-id_tipo_habitacion int primary key not null,
-nombre varchar(3) not null,
+id_tipo_habitacion int auto_increment primary key not null,
+nombre varchar(50) not null,
 descripcion varchar(300) null,
 caracteristicas varchar (500) null,
 precio_diario double not null,
 cupo_maximo int not null
 )engine=Innodb default charset=latin1;
 
+#inserts TIPO HABITACION
+insert into tipo_habitacion VALUES(0,"Habitacion pequeña","Habitación pequeña para una sola persona y sin acceso a aire acondicionado.","1 cama, 1 sofá, 1 baño, 1 cocina pequeña.",150,1);
+insert into tipo_habitacion VALUES(0,"Habitacion mediana","Habitación mediana para tres personas con acceso a aire acondicionado.","3 camas, 1 juego de 3 sofás, 3 baños, 1 cocina.",400,3);
+insert into tipo_habitacion VALUES(0,"Habitacion grande","Habitación grande para cinco personas con acceso a aire acondicionado.","5 camas, 1 juego de 3 sofás, 3 baño, 1 cocina.",700,5);
+insert into tipo_habitacion VALUES(0,"Habitacion tipo suite","Habitación tipo suite para ocho personas que puede o no tener acceso a aire acondicionado.","8 camas, 1 juego de 4 sofás, 5 baños, 1 cocina grande.",1200,8);
+
 create table habitacion(
-id_habitacion int primary key not null,
+id_habitacion int auto_increment primary key not null,
 id_tipo_habitacion int not null,
 nivel int not null,
 estatus varchar(1) not null,
@@ -708,14 +864,27 @@ foreign key (id_tipo_habitacion) references
 tipo_habitacion(id_tipo_habitacion)
 )engine=Innodb default charset=latin1;
 
+#inserts HABITACION
+insert into habitacion VALUES(0,1,1,"D");
+insert into habitacion VALUES(0,2,1,"D");
+insert into habitacion VALUES(0,3,1,"D");
+insert into habitacion VALUES(0,4,1,"D");
+insert into habitacion VALUES(0,1,1,"D");
+
+
 create table salon (
-id_salon int primary key not null,
-nombre varchar(3) not null,
+id_salon int auto_increment primary key not null,
+nombre varchar(50) not null,
 capacidad int not null,
 nivel int not null,
 precio double not null,
 estatus varchar(1) not null
 )engine=Innodb default charset=latin1;
+
+#inserts SALON
+insert into salon VALUES(0,"Salon 1", 2000, 1, 800, "D");
+insert into salon VALUES(0, "Salon 2", 3000, 1, 900, "D");
+insert into salon VALUES(0, "Salon General", 7000, 2, 1000, "D");
 
 create table tipo_pago(
 id_tipo_pago int primary key not null,
@@ -807,13 +976,17 @@ estado varchar(2) not null
 
 
 create table aplicacion_tipo_parametro(
-id_aplicacion_tipo_parametro int primary key not null,
+id_aplicacion_tipo_parametro int primary key not null auto_increment,
 nombre_aplicacion varchar(50) not null,
 estatus_aplicacion varchar(1) not null
 )engine=Innodb default charset=latin1; 
 
+#insert aplicacion_tipo_parametro
+insert into aplicacion_tipo_parametro values (0,"Todos","A");
+insert into aplicacion_tipo_parametro values (0,"Algunos","A");
+
 create table tipo_parametro(
-id_tipo_parametro int primary key not null,
+id_tipo_parametro int primary key not null auto_increment,
 id_aplicacion_tipo_parametro int not null,
 nombre_tipo varchar(50) not null,
 estatus_tipo varchar(1) not null,
@@ -821,8 +994,11 @@ foreign key (id_aplicacion_tipo_parametro) references
 aplicacion_tipo_parametro(id_aplicacion_tipo_parametro)
 )engine=Innodb default charset=latin1; 
 
+#insert tipo_parametro
+insert into tipo_parametro values (0,1,"Venta","A");
+
 create table parametros(
-id_parametro int primary key not null,
+id_parametro int primary key not null auto_increment,
 id_tipo_parametro int not null,
 nombre_parametro varchar(50) not null,
 valor_parametro double not null,
@@ -831,8 +1007,13 @@ foreign key (id_tipo_parametro) references
 tipo_parametro(id_tipo_parametro)
 )engine=Innodb default charset=latin1; 
 
+#insert parametro
+insert into parametros values (0,1,"Devolucion","50","A");
+insert into parametros values (0,1,"Daño","100","A");
+insert into parametros values (0,1,"Robo","150","A");
+
 create table control_objetos_olvidados(
-id_objeto int primary key not null,
+id_objeto int primary key not null auto_increment,
 id_habitacion int,
 nombre_objeto varchar(50) not null,
 fecha_ingreso date not null,
@@ -855,17 +1036,25 @@ estatus_lavanderia varchar(1) not null,
 foreign key (id_sucursal) references
 sucursal(id_sucursal)
 )engine=innodb default charset=latin1;
+#Inserts lavanderia
+INSERT INTO lavanderia VALUES (0,"Lavanderia Lola", 1, "A");
+INSERT INTO lavanderia VALUES (0,"Lavanderia Cabo", 1, "A");
+INSERT INTO lavanderia VALUES (0,"Lavanderia Fuelte", 1, "A");
 
 create table prenda(
-id_prenda int not null primary key,
+id_prenda int not null primary key auto_increment,
 cantidad int not null,
 descripcion varchar(300) not null,
 fecha_fin date not null,
 hora time not null
 )engine = InnoDB default charset = latin1;
 
+#Inserts prenda
+INSERT INTO prenda VALUES (0, 3, "Pantalones", '2020/08/10', '17:25:32.1212222');
+INSERT INTO prenda VALUES (0, 2, "Playeras", '2020/08/10', '17:25:32.1212222');
+
 create table servicio_lavanderia(
-id_servicio_lavanderia int primary key not null,
+id_servicio_lavanderia int primary key not null auto_increment,
 id_lavanderia int not null,
 id_prenda int not null,
 nombre varchar(100) not null,
@@ -880,7 +1069,7 @@ foreign key (id_prenda) references prenda (id_prenda)
 )engine=innodb default charset=latin1; 
 
 create table tipo_precio(
-id_tipo_precio int primary key not null,
+id_tipo_precio int primary key not null auto_increment,
 id_moneda varchar(10) not null,
 nombre varchar(40) not null,
 estatus varchar(1) not null,
@@ -888,8 +1077,13 @@ foreign key(id_moneda) references
 moneda(id_moneda)
 )engine=Innodb default charset=latin1;
 
+#inserts tipo_precio
+insert into tipo_precio values (0,"0", "Lavanderia", "A");
+insert into tipo_precio values (0,"0", "Restaurante", "A");
+insert into tipo_precio values (0,"0", "Servicio", "A");
+
 create table lista_precio(
-id_lista_precio int primary key not null,
+id_lista_precio int primary key not null auto_increment,
 id_tipo_cliente int not null,
 id_tipo_precio int not null,
 precio double not null,
@@ -899,6 +1093,11 @@ tipo_cliente(id_tipo_cliente),
 foreign key (id_tipo_precio) references
 tipo_precio(id_tipo_precio)
 )engine=Innodb default charset=latin1;
+
+#inserts lista_precio
+insert into lista_precio values (0,1,1, 22.26, 5.2);
+insert into lista_precio values (0,1,2, 2.26, 5.2);
+insert into lista_precio values (0,2,1, 22.26, 5.2);
 
 create table cotizacion_encabezado_proveedor(
 id_cotizacion_encabezado_proveedor int primary key auto_increment,
@@ -916,7 +1115,7 @@ vendedor(id_vendedor)
 )engine=Innodb default charset=latin1;
 
 create table cotizacion_detalle_proveedor(
-id_cotizacion_detalle_proveedor int primary key not null,
+id_cotizacion_detalle_proveedor int primary key not null auto_increment,
 id_inventario int not null,
 id_cotizacion_encabezado_proveedor int not null,
 id_moneda varchar(10) not null,
@@ -931,13 +1130,30 @@ cotizacion_encabezado_proveedor(id_cotizacion_encabezado_proveedor)
 )engine=Innodb default charset=latin1;
 
 create table descuento(
-id_descuento int not null,
+id_descuento int not null auto_increment primary key,
 nombre_descuento varchar(80) not null,
 porcentaje double not null,
 id_tipo_cliente int not null,
 foreign key (id_tipo_cliente) references
 tipo_cliente(id_tipo_cliente)
 )engine=Innodb default charset=latin1;
+
+#inserts descuento
+insert into descuento values (0,"Promocion",10,2);
+insert into descuento values (0,"Pago al contado",7,2);
+
+create table bitacora(
+id_bitacora int primary key auto_increment,
+id_usuario varchar(10) not null,
+descripcion varchar(200),
+fecha date not null,
+hora time not null,
+ip varchar(20),
+mac varchar(50),
+nombre_maquina varchar(50),
+foreign key (id_usuario) references
+usuario(id_usuario)
+)engine=InnoDB;
 
 insert into nivel_academico values ("1", "A", "descripcion");
 insert into explab_detallado values ("1", "Exp1", "A", "1999/08/12", "2020/08/22");
