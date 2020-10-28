@@ -18,7 +18,7 @@ public class mdi_Principal extends javax.swing.JFrame {
 
     public static String BD = "jdbc:mysql://localhost/hotel";
     public static String Usuario = "root";
-    public static String Contraseña = "Polo.2015";
+    public static String Contraseña = "Sebas1234";
 
 
     public static Connection getConeccion() {

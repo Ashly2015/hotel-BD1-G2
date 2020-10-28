@@ -1151,6 +1151,6 @@ mac varchar(50),
 nombre_maquina varchar(50),
 foreign key (id_usuario) references
 usuario(id_usuario)
-)engine=InnoDB;
+)engine=InnoDB  default charset=latin1;
 
 
