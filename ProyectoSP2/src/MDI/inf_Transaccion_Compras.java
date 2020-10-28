@@ -56,7 +56,7 @@ public class inf_Transaccion_Compras extends javax.swing.JInternalFrame {
         public void iniciar_combo() {
         try {
             Connection cn = DriverManager.getConnection(mdi_Principal.BD, mdi_Principal.Usuario, mdi_Principal.Contraseña);
-            PreparedStatement psttt = cn.prepareStatement("select nombre from proveedor");
+            PreparedStatement psttt = cn.prepareStatement("select * from proveedor");
             ResultSet rss = psttt.executeQuery();
 
             cbox_proveedor.addItem("Seleccione una opción");
@@ -68,14 +68,67 @@ public class inf_Transaccion_Compras extends javax.swing.JInternalFrame {
         }
         tablas();
     }
+        
+ public void iniciar_combo2() {
+        try {
+            Connection cn = DriverManager.getConnection(mdi_Principal.BD, mdi_Principal.Usuario, mdi_Principal.Contraseña);
+            PreparedStatement psttt = cn.prepareStatement("select * from moneda");
+            ResultSet rss = psttt.executeQuery();
 
+            cbox_moneda.addItem("Seleccione una opción");
+            while (rss.next()) {
+                cbox_moneda.addItem(rss.getString("nombre_moneda"));
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        tablas();
+    }
+ 
+  public void iniciar_combo3() {
+        try {
+            Connection cn = DriverManager.getConnection(mdi_Principal.BD, mdi_Principal.Usuario, mdi_Principal.Contraseña);
+            PreparedStatement psttt = cn.prepareStatement("select * from inventario");
+            ResultSet rss = psttt.executeQuery();
+
+            cbox_inventario.addItem("Seleccione una opción");
+            while (rss.next()) {
+                cbox_inventario.addItem(rss.getString("nombre"));
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        tablas();
+    }
+
+    public void iniciar_combo4() {
+        try {
+            Connection cn = DriverManager.getConnection(mdi_Principal.BD, mdi_Principal.Usuario, mdi_Principal.Contraseña);
+            PreparedStatement psttt = cn.prepareStatement("select * from sucursal");
+            ResultSet rss = psttt.executeQuery();
+
+            cbox_sucursal.addItem("Seleccione una opción");
+            while (rss.next()) {
+                cbox_sucursal.addItem(rss.getString("nombre"));
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            System.out.println(e);
+        }
+        tablas();
+    }
     /**
      * Creates new form inf_Transaccion_Compras
      */
     public inf_Transaccion_Compras() {
+
         initComponents();
         tablas();
         iniciar_combo();
+        iniciar_combo2();
+        iniciar_combo3();
+        iniciar_combo4();
+
     }
 
     /**
@@ -94,22 +147,29 @@ public class inf_Transaccion_Compras extends javax.swing.JInternalFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         tabla = new javax.swing.JTable();
         jLabel5 = new javax.swing.JLabel();
-        txt_idProducto = new javax.swing.JTextField();
         btn_confirmar = new javax.swing.JButton();
         jLabel7 = new javax.swing.JLabel();
         panel1 = new java.awt.Panel();
         txt_fecha = new com.toedter.calendar.JDateChooser();
-        txt_idEmpresa = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         cbox_proveedor = new javax.swing.JComboBox<>();
-        lb = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         txt_IdCompra = new javax.swing.JTextField();
+        cbox_sucursal = new javax.swing.JComboBox<>();
         txt_cantidad = new javax.swing.JTextField();
         txt_total = new javax.swing.JTextField();
         jLabel8 = new javax.swing.JLabel();
+        cbox_moneda = new javax.swing.JComboBox<>();
+        jLabel10 = new javax.swing.JLabel();
+        lbM = new javax.swing.JLabel();
+        cbox_inventario = new javax.swing.JComboBox<>();
+        lbI = new javax.swing.JLabel();
+        txt_subtotal = new javax.swing.JTextField();
+        jLabel11 = new javax.swing.JLabel();
+        lb = new javax.swing.JLabel();
+        lbSucursal = new javax.swing.JLabel();
 
         setClosable(true);
         setIconifiable(true);
@@ -146,13 +206,7 @@ public class inf_Transaccion_Compras extends javax.swing.JInternalFrame {
         ));
         jScrollPane1.setViewportView(tabla);
 
-        jLabel5.setText("ID_PRODUCTO");
-
-        txt_idProducto.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyReleased(java.awt.event.KeyEvent evt) {
-                txt_idProductoKeyReleased(evt);
-            }
-        });
+        jLabel5.setText("ID_INVENTARIO");
 
         btn_confirmar.setText("Confirmar");
         btn_confirmar.addActionListener(new java.awt.event.ActionListener() {
@@ -184,6 +238,13 @@ public class inf_Transaccion_Compras extends javax.swing.JInternalFrame {
             }
         });
 
+        cbox_sucursal.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
+        cbox_sucursal.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cbox_sucursalActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout panel1Layout = new javax.swing.GroupLayout(panel1);
         panel1.setLayout(panel1Layout);
         panel1Layout.setHorizontalGroup(
@@ -205,39 +266,31 @@ public class inf_Transaccion_Compras extends javax.swing.JInternalFrame {
                                 .addComponent(jLabel2)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(panel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txt_idEmpresa, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(panel1Layout.createSequentialGroup()
-                                .addGap(170, 170, 170)
-                                .addComponent(lb, javax.swing.GroupLayout.PREFERRED_SIZE, 8, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(cbox_proveedor, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txt_IdCompra, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(66, Short.MAX_VALUE))
+                            .addComponent(txt_IdCompra, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(cbox_sucursal, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(72, Short.MAX_VALUE))
         );
         panel1Layout.setVerticalGroup(
             panel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panel1Layout.createSequentialGroup()
                 .addGap(27, 27, 27)
-                .addGroup(panel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(panel1Layout.createSequentialGroup()
-                        .addComponent(lb, javax.swing.GroupLayout.PREFERRED_SIZE, 12, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(panel1Layout.createSequentialGroup()
-                        .addGroup(panel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txt_fecha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel6))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 34, Short.MAX_VALUE)
-                        .addGroup(panel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel1)
-                            .addComponent(txt_IdCompra, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
-                        .addGroup(panel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel2)
-                            .addComponent(txt_idEmpresa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
-                        .addGroup(panel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel3)
-                            .addComponent(cbox_proveedor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addContainerGap(34, Short.MAX_VALUE))))
+                .addGroup(panel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(txt_fecha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel6))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 34, Short.MAX_VALUE)
+                .addGroup(panel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel1)
+                    .addComponent(txt_IdCompra, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(panel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel2)
+                    .addComponent(cbox_sucursal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(panel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel3)
+                    .addComponent(cbox_proveedor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(22, Short.MAX_VALUE))
         );
 
         txt_cantidad.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -248,17 +301,61 @@ public class inf_Transaccion_Compras extends javax.swing.JInternalFrame {
 
         jLabel8.setText("TOTAL");
 
+        cbox_moneda.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
+        cbox_moneda.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cbox_monedaActionPerformed(evt);
+            }
+        });
+
+        jLabel10.setText("MONEDA");
+
+        cbox_inventario.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
+        cbox_inventario.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cbox_inventarioActionPerformed(evt);
+            }
+        });
+
+        lbI.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                lbIKeyReleased(evt);
+            }
+        });
+
+        jLabel11.setText("SUBTOTAL");
+
+        lbSucursal.setText(".");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(panel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(lb, javax.swing.GroupLayout.PREFERRED_SIZE, 18, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lbSucursal, javax.swing.GroupLayout.PREFERRED_SIZE, 18, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(115, 115, 115)
+                        .addComponent(btn_confirmar)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jLabel8)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(txt_total, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnFinCompra, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(29, 29, 29))
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel5)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(txt_idProducto))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel7)
@@ -266,44 +363,62 @@ public class inf_Transaccion_Compras extends javax.swing.JInternalFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(txt_precio, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txt_cantidad, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(btnAgregarProducto)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(txt_cantidad, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(btn_confirmar)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jLabel8)
+                        .addComponent(jLabel11)
+                        .addGap(39, 39, 39)
+                        .addComponent(txt_subtotal, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(txt_total, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(btnAgregarProducto))
                     .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(panel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGap(20, 20, 20)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btnFinCompra, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addGap(29, 29, 29))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel10)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(cbox_moneda, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(10, 10, 10)
+                                .addComponent(lbM, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                                .addComponent(jLabel5)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(cbox_inventario, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(lbI, javax.swing.GroupLayout.PREFERRED_SIZE, 9, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 176, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(panel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 176, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(panel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(124, 124, 124)
+                        .addComponent(lbSucursal, javax.swing.GroupLayout.PREFERRED_SIZE, 12, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(26, 26, 26)
+                        .addComponent(lb, javax.swing.GroupLayout.PREFERRED_SIZE, 12, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txt_total, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel8)
                     .addComponent(btn_confirmar))
-                .addGap(7, 7, 7)
-                .addComponent(btnFinCompra)
-                .addGap(17, 17, 17)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(7, 7, 7)
+                        .addComponent(btnFinCompra)
+                        .addGap(17, 17, 17))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 25, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(cbox_moneda, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel10)
+                            .addComponent(lbM, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5)
-                    .addComponent(txt_idProducto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(cbox_inventario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lbI, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel7)
@@ -311,9 +426,13 @@ public class inf_Transaccion_Compras extends javax.swing.JInternalFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txt_precio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel9)
+                    .addComponent(jLabel9))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txt_subtotal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel11)
                     .addComponent(btnAgregarProducto))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(19, Short.MAX_VALUE))
         );
 
         pack();
@@ -326,12 +445,14 @@ public class inf_Transaccion_Compras extends javax.swing.JInternalFrame {
             Connection cn = DriverManager.getConnection(mdi_Principal.BD, mdi_Principal.Usuario, mdi_Principal.Contraseña);
 
             //Guardando en el detalle de la compra
-            PreparedStatement pst1 = cn.prepareStatement("insert into compra_detalle values(?,?,?)");
+            PreparedStatement pst1 = cn.prepareStatement("insert into compra_detalle values(?,?,?,?)");
 
             //
-            pst1.setString(1, txt_idProducto.getText().trim());
-            pst1.setString(2, txt_cantidad.getText().trim());
-            pst1.setString(3, txt_IdCompra.getText().trim());
+            pst1.setString(1, lbI.getText().trim());
+            pst1.setString(2, txt_IdCompra.getText().trim());
+            pst1.setString(3, lbM.getText().trim());
+            pst1.setString(4, txt_cantidad.getText().trim());
+            
 
             pst1.executeUpdate();
 
@@ -344,16 +465,18 @@ public class inf_Transaccion_Compras extends javax.swing.JInternalFrame {
             String registros[] = new String[4];
 
             registros[0] = lb.getText();
-            registros[1] = txt_idProducto.getText();
+            registros[1] = lbI.getText();
             registros[2] = txt_cantidad.getText();
             registros[3] = txt_precio.getText();
             model.addRow(registros);
 
             JOptionPane.showMessageDialog(this, "¡REGISTRO EXITOSO!", "Mensaje", JOptionPane.INFORMATION_MESSAGE);
-            txt_idProducto.setText("");
+            lbI.setText("");
             txt_cantidad.setText("");
             txt_precio.setText("");
-
+            txt_subtotal.setText("");
+            cbox_moneda.setSelectedIndex(0);
+            cbox_inventario.setSelectedIndex(0);
             sumaColumnaPrecio();
 
         } catch (SQLException e) {
@@ -368,10 +491,10 @@ public class inf_Transaccion_Compras extends javax.swing.JInternalFrame {
             String id = txt_IdCompra.getText();
             //Guardando en el encabezado de la compra
             Connection cn = DriverManager.getConnection(mdi_Principal.BD, mdi_Principal.Usuario, mdi_Principal.Contraseña);
-            PreparedStatement pst = cn.prepareStatement("update compra_encabezado set id_compraE = ?, id_empresa = ?, nit_proveedor = ?, id_moneda = ?, total = ? where id_compraE = " + id);
+            PreparedStatement pst = cn.prepareStatement("update compra_encabezado set id_compraE = ?, id_sucursal = ?, id_proveedor = ?, total = ? where id_compraE = " + id);
 
-            pst.setString(1, "0");
-            pst.setString(2, txt_idEmpresa.getText());
+            pst.setString(1, txt_IdCompra.getText());
+            pst.setString(2, lbSucursal.getText());
             pst.setString(3, lb.getText());
             pst.setString(4, txt_total.getText());
             //pst.setString(6, txt_fecha.getCalendar().toString());
@@ -380,10 +503,10 @@ public class inf_Transaccion_Compras extends javax.swing.JInternalFrame {
 
             JOptionPane.showMessageDialog(this, "¡COMPRA FINALIZADA CON ÉXITO!", "Mensaje", JOptionPane.INFORMATION_MESSAGE);
             lb.setText("");
-            txt_idProducto.setText("");
+            lbI.setText("");
             txt_cantidad.setText("");
             txt_IdCompra.setText("");
-            txt_idEmpresa.setText("");
+            lbSucursal.setText("");
             //txt_idMoneda.setText("");
             txt_fecha.setCalendar(null);
             //txt_FechaVenta.setDate("");
@@ -391,35 +514,15 @@ public class inf_Transaccion_Compras extends javax.swing.JInternalFrame {
             txt_cantidad.setText("");
             txt_precio.setText("");
 
+            txt_subtotal.setText("");
+            cbox_moneda.setSelectedIndex(0);
+            cbox_inventario.setSelectedIndex(0);
             model.setRowCount(0);
 
         }catch(Exception e){
             JOptionPane.showMessageDialog(this, "Ya existe ése registro", "Warning", JOptionPane.WARNING_MESSAGE);
             System.out.println(e);}
     }//GEN-LAST:event_btnFinCompraActionPerformed
-
-    private void txt_idProductoKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_idProductoKeyReleased
-        // TODO add your handling code here:
-        String id = txt_idProducto.getText();
-        try{
-            Connection cn = DriverManager.getConnection(mdi_Principal.BD, mdi_Principal.Usuario, mdi_Principal.Contraseña);
-            PreparedStatement  pst = cn.prepareStatement("select precio from producto where id_producto = ?");
-            pst.setString(1, id);
-
-            ResultSet rs = pst.executeQuery();
-            if (rs.next()) {
-                subtotal= rs.getString("precio");
-            }
-            else{
-                JOptionPane.showMessageDialog(this, "No se encontro el prodcuto.", "Warning", JOptionPane.WARNING_MESSAGE);
-            }
-
-        }
-        catch (Exception e){
-            System.out.println(e);
-            JOptionPane.showMessageDialog(this, "Error en busqueda", "Warning", JOptionPane.WARNING_MESSAGE);
-        }
-    }//GEN-LAST:event_txt_idProductoKeyReleased
 
        public void sumaColumnaPrecio(){
         double total = 0;
@@ -436,7 +539,7 @@ public class inf_Transaccion_Compras extends javax.swing.JInternalFrame {
         try{
             //Guardando en el encabezado de la compra
             Connection cn = DriverManager.getConnection(mdi_Principal.BD, mdi_Principal.Usuario, mdi_Principal.Contraseña);
-            PreparedStatement pst = cn.prepareStatement("insert into compra_encabezado values(?,?,?,?,?,?)");
+            PreparedStatement pst = cn.prepareStatement("insert into compra_encabezado values(?,?,?,?,?)");
 
             int mes, dia, año;
             dia = txt_fecha.getCalendar().get(Calendar.DAY_OF_MONTH);
@@ -446,14 +549,14 @@ public class inf_Transaccion_Compras extends javax.swing.JInternalFrame {
             fecha = año + "/"+mes+"/"+dia;
 
             pst.setString(1, txt_IdCompra.getText());
-            pst.setString(2, txt_idEmpresa.getText());
+            pst.setString(2, lbSucursal.getText());
             pst.setString(3, lb.getText());
             pst.setString(4, null);
             pst.setString(5,fecha);
 
             pst.executeUpdate();
 
-            JOptionPane.showMessageDialog(this, "¡REGISTRO EXITOSO!", "Mensaje", JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(this, "¡PRIMER REGISTRO EXITOSO!", "Mensaje", JOptionPane.INFORMATION_MESSAGE);
 
             panel1.setEnabled(false);
             btn_confirmar.setEnabled(false);
@@ -467,14 +570,29 @@ public class inf_Transaccion_Compras extends javax.swing.JInternalFrame {
 
     private void txt_cantidadKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_cantidadKeyReleased
         // TODO add your handling code here:
-        String id = txt_idProducto.getText();
+        String id = lbI.getText();
         try{
-            int intPrecio, intCant, intSubtotal;
-            intCant = Integer.parseInt(txt_cantidad.getText());
-            intSubtotal = Integer.parseInt(subtotal);
-            intPrecio = intSubtotal * intCant;
+                   
+        Connection cn1 = DriverManager.getConnection(mdi_Principal.BD, mdi_Principal.Usuario, mdi_Principal.Contraseña);
+        PreparedStatement  pst1 = cn1.prepareStatement("select precio from inventario where id_inventario = ?");
+        pst1.setString(1, id);
+        
+        ResultSet rs = pst1.executeQuery();
+            if (rs.next()) {
+                subtotal= rs.getString("precio").trim();
+                txt_precio.setText(rs.getString("precio").trim());
+            }
+            else{
+                 JOptionPane.showMessageDialog(this, "No se encontro el prodcuto.", "Warning", JOptionPane.WARNING_MESSAGE);
+            }
+            
+            
+            double intPrecio=0, intCant, intSubtotal;
+            intCant = Double.parseDouble(txt_cantidad.getText());
+            intSubtotal = Double.parseDouble(txt_precio.getText());
+            intPrecio = (intSubtotal * intCant);
 
-            txt_precio.setText(intPrecio + "");
+            txt_subtotal.setText(intPrecio + "");
         }
         catch (Exception e){
             System.out.println(e);
@@ -486,7 +604,7 @@ public class inf_Transaccion_Compras extends javax.swing.JInternalFrame {
         try {
             Connection cn = DriverManager.getConnection(mdi_Principal.BD, mdi_Principal.Usuario, mdi_Principal.Contraseña);
 
-            PreparedStatement pst2 = cn.prepareStatement("select id_proveedor from proveedor where nombre=?");
+            PreparedStatement pst2 = cn.prepareStatement("select id_proveedor from proveedor where proveedor.nombre=?");
             pst2.setString(1, cbox_proveedor.getSelectedItem().toString());
             ResultSet rs2 = pst2.executeQuery();
 
@@ -496,7 +614,7 @@ public class inf_Transaccion_Compras extends javax.swing.JInternalFrame {
             } else {
                 if (cbox_proveedor.getSelectedItem().toString().contains("Seleccione una opción")) {
                     
-                    cbox_proveedor.setSelectedIndex(0);
+                 
                     
                 }
             }
@@ -511,13 +629,111 @@ public class inf_Transaccion_Compras extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txt_IdCompraActionPerformed
 
+    private void cbox_monedaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbox_monedaActionPerformed
+        // TODO add your handling code here:
+                try {
+            Connection cn = DriverManager.getConnection(mdi_Principal.BD, mdi_Principal.Usuario, mdi_Principal.Contraseña);
+
+            PreparedStatement pst2 = cn.prepareStatement("select id_moneda from moneda where moneda.nombre_moneda=?");
+            pst2.setString(1, cbox_moneda.getSelectedItem().toString());
+            ResultSet rs2 = pst2.executeQuery();
+
+            if (rs2.next()) {
+                lbM.setText(rs2.getString("id_moneda"));
+
+            } else {
+                if (cbox_moneda.getSelectedItem().toString().contains("Seleccione una opción")) {
+                    
+                    
+                }
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }//GEN-LAST:event_cbox_monedaActionPerformed
+
+    private void cbox_inventarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbox_inventarioActionPerformed
+        // TODO add your handling code here:
+       
+                        try {
+            Connection cn = DriverManager.getConnection(mdi_Principal.BD, mdi_Principal.Usuario, mdi_Principal.Contraseña);
+
+            PreparedStatement pst2 = cn.prepareStatement("select id_inventario, precio from inventario where inventario.nombre=?");
+            pst2.setString(1, cbox_inventario.getSelectedItem().toString());
+            ResultSet rs2 = pst2.executeQuery();
+
+            
+            if (rs2.next()) {
+                lbI.setText(rs2.getString("id_inventario"));
+
+            } else {
+                if (cbox_inventario.getSelectedItem().toString().contains("Seleccione una opción")) {
+                    
+                    
+                    
+                }
+            }
+
+            
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            System.out.println(e);
+        }
+    }//GEN-LAST:event_cbox_inventarioActionPerformed
+
+    private void lbIKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_lbIKeyReleased
+        // TODO add your handling code here:
+        try{
+        
+
+        }catch(Exception e){
+            e.printStackTrace();
+            System.out.println(e);
+        }
+    }//GEN-LAST:event_lbIKeyReleased
+
+    private void cbox_sucursalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbox_sucursalActionPerformed
+        // TODO add your handling code here:
+               
+          try {
+            Connection cn = DriverManager.getConnection(mdi_Principal.BD, mdi_Principal.Usuario, mdi_Principal.Contraseña);
+
+            PreparedStatement pst2 = cn.prepareStatement("select * from sucursal where sucursal.nombre=?");
+            pst2.setString(1, cbox_sucursal.getSelectedItem().toString());
+            ResultSet rss2 = pst2.executeQuery();
+
+            
+            if (rss2.next()) {
+                lbSucursal.setText(rss2.getString("id_sucursal"));
+
+            } else {
+                if (cbox_sucursal.getSelectedItem().toString().contains("Seleccione una opción")) {
+     
+                }
+            }
+
+            
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            System.out.println(e);
+        }
+    }//GEN-LAST:event_cbox_sucursalActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAgregarProducto;
     private javax.swing.JButton btnFinCompra;
     private javax.swing.JButton btn_confirmar;
+    private javax.swing.JComboBox<String> cbox_inventario;
+    private javax.swing.JComboBox<String> cbox_moneda;
     private javax.swing.JComboBox<String> cbox_proveedor;
+    private javax.swing.JComboBox<String> cbox_sucursal;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel5;
@@ -527,14 +743,16 @@ public class inf_Transaccion_Compras extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel9;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lb;
+    private javax.swing.JLabel lbI;
+    private javax.swing.JLabel lbM;
+    private javax.swing.JLabel lbSucursal;
     private java.awt.Panel panel1;
     private javax.swing.JTable tabla;
     private javax.swing.JTextField txt_IdCompra;
     private javax.swing.JTextField txt_cantidad;
     private com.toedter.calendar.JDateChooser txt_fecha;
-    private javax.swing.JTextField txt_idEmpresa;
-    private javax.swing.JTextField txt_idProducto;
     private javax.swing.JTextField txt_precio;
+    private javax.swing.JTextField txt_subtotal;
     private javax.swing.JTextField txt_total;
     // End of variables declaration//GEN-END:variables
 }
