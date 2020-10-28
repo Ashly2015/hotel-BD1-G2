@@ -605,7 +605,7 @@ piloto(id_piloto)
 
 
 create table compra_encabezado(
-id_compraE int not null auto_increment primary key,
+id_compraE int not null primary key,
 id_sucursal int not null,
 id_proveedor int not null,
 total double ,
@@ -615,6 +615,7 @@ proveedor(id_proveedor),
 foreign key (id_sucursal) references
 sucursal(id_sucursal)
 )engine=Innodb default charset=latin1;
+select * from compra_encabezado;
 
 create table compra_detalle(
 id_inventario int primary key not null,
@@ -628,7 +629,7 @@ compra_encabezado(id_compraE),
 foreign key(id_moneda) references
 moneda(id_moneda)
 )engine=Innodb default charset=latin1;
-
+select * from compra_detalle;
 
 create table credito_proveedor(
 id_credito_proveedor int  auto_increment,
