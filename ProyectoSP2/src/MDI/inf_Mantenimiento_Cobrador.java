@@ -19,6 +19,7 @@ import javax.swing.table.DefaultTableModel;
  */
 public class inf_Mantenimiento_Cobrador extends javax.swing.JInternalFrame {
 
+     
     public void tablas() {
         try {
             Connection cn = DriverManager.getConnection(mdi_Principal.BD, mdi_Principal.Usuario, mdi_Principal.Contraseña);
