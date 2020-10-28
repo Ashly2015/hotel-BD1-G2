@@ -9,7 +9,10 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.Calendar;
 import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -17,13 +20,16 @@ import javax.swing.JOptionPane;
  */
 public class inf_Transaccion_Compras extends javax.swing.JInternalFrame {
 
-     int compraCantidad, inventarioCantidad = 0;
      
+     DefaultTableModel model = new DefaultTableModel();
+    String subtotal;
+    
     /**
      * Creates new form inf_Transaccion_Compras
      */
     public inf_Transaccion_Compras() {
         initComponents();
+        txt_precio.setEnabled(false);
     }
 
     /**
@@ -361,6 +367,16 @@ public class inf_Transaccion_Compras extends javax.swing.JInternalFrame {
         }
     }//GEN-LAST:event_txt_idProductoKeyReleased
 
+       public void sumaColumnaPrecio(){
+        double total = 0;
+        double fila =0;
+        for (int i = 0; i < tabla.getRowCount(); i++) {
+            fila = Double.parseDouble(tabla.getValueAt(i,3).toString());
+            total += fila;
+        }
+    
+        txt_total.setText(total + "");
+    }
     private void btn_confirmarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_confirmarActionPerformed
         // TODO add your handling code here:
         try{
