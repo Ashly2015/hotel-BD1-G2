@@ -313,7 +313,7 @@ public class inf_Mantenimiento_Cobrador extends javax.swing.JInternalFrame {
                                     .addComponent(txt_telefono)
                                     .addComponent(txt_correo)
                                     .addComponent(cbox_empleado, 0, 263, Short.MAX_VALUE))
-                                .addGap(0, 1, Short.MAX_VALUE))
+                                .addGap(0, 4, Short.MAX_VALUE))
                             .addComponent(txt_direccion)))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(29, 29, 29)
@@ -339,12 +339,12 @@ public class inf_Mantenimiento_Cobrador extends javax.swing.JInternalFrame {
                                         .addGap(18, 18, 18)
                                         .addComponent(btnModificar, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                         .addGap(0, 0, Short.MAX_VALUE)))
-                .addGap(24, 24, 24)
+                .addGap(18, 18, 18)
                 .addComponent(lb)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 630, Short.MAX_VALUE)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 633, Short.MAX_VALUE)
                         .addContainerGap())
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
@@ -395,7 +395,7 @@ public class inf_Mantenimiento_Cobrador extends javax.swing.JInternalFrame {
                             .addComponent(txtbuscado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(btnBuscar)
                             .addComponent(btnLimpiar))))
-                .addContainerGap(55, Short.MAX_VALUE))
+                .addContainerGap(59, Short.MAX_VALUE))
         );
 
         pack();
