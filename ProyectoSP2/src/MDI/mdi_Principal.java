@@ -18,7 +18,7 @@ public class mdi_Principal extends javax.swing.JFrame {
 
     public static String BD = "jdbc:mysql://localhost/hotel";
     public static String Usuario = "root";
-    public static String Contraseña = "Sebas1234";
+    public static String Contraseña = "Polo.2015";
 
 
     public static Connection getConeccion() {
@@ -54,10 +54,6 @@ public class mdi_Principal extends javax.swing.JFrame {
         desktopPane = new javax.swing.JDesktopPane();
         menuBar = new javax.swing.JMenuBar();
         fileMenu = new javax.swing.JMenu();
-        jMenuCotDetClientes = new javax.swing.JMenuItem();
-        jMenuCotDetProv = new javax.swing.JMenuItem();
-        jMenuCotEncProveedores = new javax.swing.JMenuItem();
-        jMenuCotEncClientes = new javax.swing.JMenuItem();
         jMenuMarcas = new javax.swing.JMenuItem();
         jMenuLineas = new javax.swing.JMenuItem();
         jMenuItem11 = new javax.swing.JMenuItem();
@@ -86,44 +82,16 @@ public class mdi_Principal extends javax.swing.JFrame {
         jMenuItem15 = new javax.swing.JMenuItem();
         jMenu1 = new javax.swing.JMenu();
         jMenuItem16 = new javax.swing.JMenuItem();
+        jMenuCotDetClientes = new javax.swing.JMenuItem();
+        jMenuCotDetProv = new javax.swing.JMenuItem();
+        jMenuCotEncProveedores = new javax.swing.JMenuItem();
+        jMenuCotEncClientes = new javax.swing.JMenuItem();
         helpMenu = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         fileMenu.setMnemonic('f');
         fileMenu.setText("Mantenimientos");
-
-        jMenuCotDetClientes.setText("Cotizacion Det. Clientes");
-        jMenuCotDetClientes.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuCotDetClientesActionPerformed(evt);
-            }
-        });
-        fileMenu.add(jMenuCotDetClientes);
-
-        jMenuCotDetProv.setText("Cotizacion Det. Proveedores");
-        jMenuCotDetProv.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuCotDetProvActionPerformed(evt);
-            }
-        });
-        fileMenu.add(jMenuCotDetProv);
-
-        jMenuCotEncProveedores.setText("Contizacion Enc. Proveedores");
-        jMenuCotEncProveedores.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuCotEncProveedoresActionPerformed(evt);
-            }
-        });
-        fileMenu.add(jMenuCotEncProveedores);
-
-        jMenuCotEncClientes.setText("Cotizacion Enc. Clientes");
-        jMenuCotEncClientes.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuCotEncClientesActionPerformed(evt);
-            }
-        });
-        fileMenu.add(jMenuCotEncClientes);
 
         jMenuMarcas.setText("Mantenimiento Marcas");
         jMenuMarcas.addActionListener(new java.awt.event.ActionListener() {
@@ -349,6 +317,38 @@ public class mdi_Principal extends javax.swing.JFrame {
             }
         });
         jMenu1.add(jMenuItem16);
+
+        jMenuCotDetClientes.setText("Cotizacion Det. Clientes");
+        jMenuCotDetClientes.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuCotDetClientesActionPerformed(evt);
+            }
+        });
+        jMenu1.add(jMenuCotDetClientes);
+
+        jMenuCotDetProv.setText("Cotizacion Det. Proveedores");
+        jMenuCotDetProv.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuCotDetProvActionPerformed(evt);
+            }
+        });
+        jMenu1.add(jMenuCotDetProv);
+
+        jMenuCotEncProveedores.setText("Contizacion Enc. Proveedores");
+        jMenuCotEncProveedores.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuCotEncProveedoresActionPerformed(evt);
+            }
+        });
+        jMenu1.add(jMenuCotEncProveedores);
+
+        jMenuCotEncClientes.setText("Cotizacion Enc. Clientes");
+        jMenuCotEncClientes.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuCotEncClientesActionPerformed(evt);
+            }
+        });
+        jMenu1.add(jMenuCotEncClientes);
 
         menuBar.add(jMenu1);
 
