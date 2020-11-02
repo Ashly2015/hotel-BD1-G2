@@ -86,6 +86,7 @@ public class mdi_Principal extends javax.swing.JFrame {
         jMenuCotDetProv = new javax.swing.JMenuItem();
         jMenuCotEncProveedores = new javax.swing.JMenuItem();
         jMenuCotEncClientes = new javax.swing.JMenuItem();
+        jMenuCotEncClientes1 = new javax.swing.JMenuItem();
         helpMenu = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -349,6 +350,14 @@ public class mdi_Principal extends javax.swing.JFrame {
             }
         });
         jMenu1.add(jMenuCotEncClientes);
+
+        jMenuCotEncClientes1.setText("Credito Proveedores");
+        jMenuCotEncClientes1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuCotEncClientes1ActionPerformed(evt);
+            }
+        });
+        jMenu1.add(jMenuCotEncClientes1);
 
         menuBar.add(jMenu1);
 
@@ -656,6 +665,15 @@ public class mdi_Principal extends javax.swing.JFrame {
         ventana.setLocation((desktopSize.width - FrameSize.width) / 2, (desktopSize.height - FrameSize.height) / 2);
     }//GEN-LAST:event_jMenuItem16ActionPerformed
 
+    private void jMenuCotEncClientes1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuCotEncClientes1ActionPerformed
+       Credito_Proveedor ventana = new Credito_Proveedor();
+        desktopPane.add(ventana);
+        Dimension desktopSize = desktopPane.getSize();
+        Dimension FrameSize = ventana.getSize();
+        ventana.setLocation((desktopSize.width - FrameSize.width) / 2, (desktopSize.height - FrameSize.height) / 2);
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jMenuCotEncClientes1ActionPerformed
+
 
     /**
      * @param args the command line arguments
@@ -703,6 +721,7 @@ public class mdi_Principal extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuCotDetClientes;
     private javax.swing.JMenuItem jMenuCotDetProv;
     private javax.swing.JMenuItem jMenuCotEncClientes;
+    private javax.swing.JMenuItem jMenuCotEncClientes1;
     private javax.swing.JMenuItem jMenuCotEncProveedores;
     private javax.swing.JMenuItem jMenuInventarios;
     private javax.swing.JMenuItem jMenuItem1;
