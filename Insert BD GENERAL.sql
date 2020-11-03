@@ -1,4 +1,4 @@
-use Hotel;
+use hotel_general;
 insert into usuario values ("admin", "1234");
 -- RRHH
 insert into nivel_academico values ("1", "A", "descripcion");
@@ -94,9 +94,9 @@ insert into proveedor VALUES(0,"proveedor 4","zona 15");
 insert into proveedor VALUES(0,"proveedor 5","zona 10");
 
 #inserts de caja
-INSERT INTO caja VALUES (0,"A");
-INSERT INTO caja VALUES (0,"B");
-INSERT INTO caja VALUES (0,"C");
+INSERT INTO caja VALUES (0,"A","Caja General");
+INSERT INTO caja VALUES (0,"A","Caja Chica");
+INSERT INTO caja VALUES (0,"A","Caja 1");
 
 #Inserts de serie
 INSERT INTO serie VALUES(0,1,1,"1");

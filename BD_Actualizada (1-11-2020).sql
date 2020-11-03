@@ -557,7 +557,8 @@ direccion varchar(128) not null
 
 create table caja(
 id_caja int auto_increment primary key,
-estatus varchar(1) not null
+estatus varchar(1) not null,
+nombre_caja varchar(45) not null
 )engine=Innodb default charset=latin1;
 
 
@@ -1073,3 +1074,17 @@ nombre_maquina varchar(50),
 foreign key (id_usuario) references
 usuario(id_usuario)
 )engine=InnoDB  default charset=latin1;
+
+create table registro_contable(
+codigo varchar(10) primary key,
+codigo_operacion varchar(10) not null,
+fecha_operacion date not null,
+cuenta_cargo varchar(10) not null,
+cuenta_abono varchar(10) not null,
+cantidad double not null,
+quien_carga varchar(10) not null,
+quien_abona varchar(10) not null,
+
+foreign key (cuenta_cargo) references cuenta_contable(id_cuenta),
+foreign key (cuenta_abono) references cuenta_contable(id_cuenta)
+)engine=Innodb default char set=latin1;
