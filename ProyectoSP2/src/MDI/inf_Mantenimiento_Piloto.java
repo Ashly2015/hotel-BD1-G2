@@ -50,6 +50,7 @@ public class inf_Mantenimiento_Piloto extends javax.swing.JInternalFrame {
             e.printStackTrace();
         }
     }
+
     public void buscar_empleado() {
         try {
             Connection cn = DriverManager.getConnection(mdi_Principal.BD, mdi_Principal.Usuario, mdi_Principal.Contraseña);
@@ -78,7 +79,6 @@ public class inf_Mantenimiento_Piloto extends javax.swing.JInternalFrame {
      *
      * Funcion para actualizar los combobox
      */
-
     /**
      *
      * Funcion para poblar el combobox con la informacion correspondiente segun
@@ -134,13 +134,16 @@ public class inf_Mantenimiento_Piloto extends javax.swing.JInternalFrame {
         label4 = new javax.swing.JLabel();
         txt_tipolicencia = new javax.swing.JTextField();
         label5 = new javax.swing.JLabel();
-        label6 = new javax.swing.JLabel();
-        txt_estatus = new javax.swing.JTextField();
         lb = new javax.swing.JLabel();
         label7 = new javax.swing.JLabel();
         date_vencimiento = new com.toedter.calendar.JDateChooser();
         label8 = new javax.swing.JLabel();
         txt_viaticos = new javax.swing.JTextField();
+        txt_estatus = new javax.swing.JTextField();
+        label9 = new javax.swing.JLabel();
+        jPanel1 = new javax.swing.JPanel();
+        activo = new javax.swing.JRadioButton();
+        inactivo = new javax.swing.JRadioButton();
 
         lb2.setForeground(new java.awt.Color(204, 204, 204));
         lb2.setText(".");
@@ -235,13 +238,6 @@ public class inf_Mantenimiento_Piloto extends javax.swing.JInternalFrame {
         label5.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
         label5.setText("Tipo Licencia:");
 
-        label6.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
-        label6.setText("Estatus:");
-
-        txt_estatus.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
-        txt_estatus.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(204, 204, 204)));
-        txt_estatus.setOpaque(false);
-
         lb.setForeground(new java.awt.Color(204, 204, 204));
         lb.setText(".");
 
@@ -255,6 +251,53 @@ public class inf_Mantenimiento_Piloto extends javax.swing.JInternalFrame {
         txt_viaticos.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(204, 204, 204)));
         txt_viaticos.setOpaque(false);
 
+        txt_estatus.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        txt_estatus.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(204, 204, 204)));
+        txt_estatus.setOpaque(false);
+
+        label9.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
+        label9.setText("Estado:");
+
+        jPanel1.setOpaque(false);
+
+        activo.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
+        activo.setText("Activo");
+        activo.setOpaque(false);
+        activo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                activoActionPerformed(evt);
+            }
+        });
+
+        inactivo.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
+        inactivo.setText("Inactivo");
+        inactivo.setOpaque(false);
+        inactivo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                inactivoActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(activo)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 27, Short.MAX_VALUE)
+                .addComponent(inactivo)
+                .addContainerGap())
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(activo)
+                    .addComponent(inactivo)))
+        );
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -262,52 +305,56 @@ public class inf_Mantenimiento_Piloto extends javax.swing.JInternalFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(29, 29, 29)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(btnEliminar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(btnLimpiar, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(18, 18, 18)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(btnBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(txtbuscado, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(btnRegistrar, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(18, 18, 18)
-                                        .addComponent(btnModificar, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                            .addGroup(layout.createSequentialGroup()
-                                .addContainerGap()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(label3)
-                                    .addComponent(label5)
-                                    .addComponent(label4))
-                                .addGap(23, 23, 23)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(txt_tipolicencia)
-                                    .addComponent(txt_licencia)
-                                    .addComponent(cbox_empleado, 0, 263, Short.MAX_VALUE)))
-                            .addGroup(layout.createSequentialGroup()
-                                .addContainerGap()
-                                .addComponent(label7)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(date_vencimiento, javax.swing.GroupLayout.DEFAULT_SIZE, 240, Short.MAX_VALUE)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(lb))
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(label6)
-                                .addGap(78, 78, 78)
-                                .addComponent(txt_estatus))
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGap(29, 29, 29)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                            .addComponent(btnEliminar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                            .addComponent(btnLimpiar, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addGap(18, 18, 18)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addGroup(layout.createSequentialGroup()
+                                                .addComponent(btnBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                                .addComponent(txtbuscado, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                            .addGroup(layout.createSequentialGroup()
+                                                .addComponent(btnRegistrar, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addGap(18, 18, 18)
+                                                .addComponent(btnModificar, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addContainerGap()
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(label3)
+                                            .addComponent(label5)
+                                            .addComponent(label4))
+                                        .addGap(23, 23, 23)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                            .addComponent(txt_tipolicencia)
+                                            .addComponent(txt_licencia)
+                                            .addComponent(cbox_empleado, 0, 263, Short.MAX_VALUE)))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addContainerGap()
+                                        .addComponent(label7)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(date_vencimiento, javax.swing.GroupLayout.DEFAULT_SIZE, 240, Short.MAX_VALUE)))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(lb))
                             .addGroup(layout.createSequentialGroup()
+                                .addContainerGap()
                                 .addComponent(label8)
                                 .addGap(78, 78, 78)
-                                .addComponent(txt_viaticos)))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(txt_viaticos)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(46, 46, 46)
+                        .addComponent(label9)
+                        .addGap(22, 22, 22)
+                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(txt_estatus, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 631, Short.MAX_VALUE)
@@ -348,9 +395,13 @@ public class inf_Mantenimiento_Piloto extends javax.swing.JInternalFrame {
                             .addComponent(label8)
                             .addComponent(txt_viaticos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(label6)
-                            .addComponent(txt_estatus, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(txt_estatus, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(layout.createSequentialGroup()
+                                    .addGap(13, 13, 13)
+                                    .addComponent(label9))
+                                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(btnRegistrar)
@@ -361,7 +412,7 @@ public class inf_Mantenimiento_Piloto extends javax.swing.JInternalFrame {
                             .addComponent(txtbuscado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(btnBuscar)
                             .addComponent(btnLimpiar))))
-                .addContainerGap(51, Short.MAX_VALUE))
+                .addContainerGap(55, Short.MAX_VALUE))
         );
 
         pack();
@@ -386,7 +437,8 @@ public class inf_Mantenimiento_Piloto extends javax.swing.JInternalFrame {
             txt_estatus.setText("");
             date_vencimiento.setDate(null);
             txtbuscado.setText("");
-            
+            inactivo.setSelected(false);
+            activo.setSelected(false);
             btnRegistrar.setEnabled(true);
             btnModificar.setEnabled(false);
             btnEliminar.setEnabled(false);
@@ -422,6 +474,8 @@ public class inf_Mantenimiento_Piloto extends javax.swing.JInternalFrame {
             txt_tipolicencia.setText("");
             txt_licencia.setText("");
             txt_viaticos.setText("");
+            inactivo.setSelected(false);
+            activo.setSelected(false);
             txt_estatus.setText("");
             date_vencimiento.setDate(null);
             txtbuscado.setText("");
@@ -434,6 +488,7 @@ public class inf_Mantenimiento_Piloto extends javax.swing.JInternalFrame {
 
     private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
         // TODO add your handling code here:
+        
         try {
             Connection cn = DriverManager.getConnection(mdi_Principal.BD, mdi_Principal.Usuario, mdi_Principal.Contraseña);
             PreparedStatement pst = cn.prepareStatement("select * from piloto where id_piloto =?");
@@ -448,7 +503,7 @@ public class inf_Mantenimiento_Piloto extends javax.swing.JInternalFrame {
                 date_vencimiento.setDate(rs.getDate("fehca_vencimiento_licencia"));
                 txt_viaticos.setText(rs.getString("viatico"));
                 txt_estatus.setText(rs.getString("estatus"));
-                
+
                 buscar_empleado();
 
                 btnModificar.setEnabled(true);
@@ -469,6 +524,9 @@ public class inf_Mantenimiento_Piloto extends javax.swing.JInternalFrame {
 
     private void btnModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModificarActionPerformed
         // TODO add your handling code here:
+         java.util.Date fechaN = date_vencimiento.getDate();
+        long fecha = fechaN.getTime();
+        java.sql.Date dateN = new java.sql.Date(fecha);
         try {
             String ID = txtbuscado.getText().trim();
 
@@ -478,8 +536,17 @@ public class inf_Mantenimiento_Piloto extends javax.swing.JInternalFrame {
             pst.setString(1, lb.getText());
             pst.setString(2, txt_licencia.getText());
             pst.setString(3, txt_tipolicencia.getText());
-            pst.setString(4, txt_estatus.getText());
+            pst.setString(4, dateN.toString());
+            pst.setString(5, txt_viaticos.getText());
+            String mensaje = "";
+            if (activo.isSelected()) {
+                mensaje = "A";
+            } else if (inactivo.isSelected()) {
+                mensaje = "I";
 
+            }
+            pst.setString(6, mensaje);
+            
             pst.executeUpdate();
 
             //bitacora_modificar();
@@ -491,7 +558,8 @@ public class inf_Mantenimiento_Piloto extends javax.swing.JInternalFrame {
             txt_estatus.setText("");
             date_vencimiento.setDate(null);
             txtbuscado.setText("");
-
+            inactivo.setSelected(false);
+            activo.setSelected(false);
             txtbuscado.setText("");
             btnRegistrar.setEnabled(true);
             btnModificar.setEnabled(false);
@@ -504,12 +572,14 @@ public class inf_Mantenimiento_Piloto extends javax.swing.JInternalFrame {
 
     private void btnLimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimpiarActionPerformed
         cbox_empleado.setSelectedIndex(0);
-            txt_tipolicencia.setText("");
-            txt_licencia.setText("");
-            txt_viaticos.setText("");
-            txt_estatus.setText("");
-            date_vencimiento.setDate(null);
-            txtbuscado.setText("");
+        txt_tipolicencia.setText("");
+        txt_licencia.setText("");
+        txt_viaticos.setText("");
+        inactivo.setSelected(false);
+        activo.setSelected(false);
+        txt_estatus.setText("");
+        date_vencimiento.setDate(null);
+        txtbuscado.setText("");
         btnRegistrar.setEnabled(true);
         btnModificar.setEnabled(false);
         btnEliminar.setEnabled(false);
@@ -521,7 +591,7 @@ public class inf_Mantenimiento_Piloto extends javax.swing.JInternalFrame {
         try {
             Connection cn = DriverManager.getConnection(mdi_Principal.BD, mdi_Principal.Usuario, mdi_Principal.Contraseña);
 
-            PreparedStatement pst2 = cn.prepareStatement("select id_empleado from empleado_contratado where nombre = ?");
+            PreparedStatement pst2 = cn.prepareStatement("select id_empleado from empleado_contratado where id_empleado = ?");
             pst2.setString(1, cbox_empleado.getSelectedItem().toString());
             ResultSet rs2 = pst2.executeQuery();
 
@@ -545,8 +615,27 @@ public class inf_Mantenimiento_Piloto extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_cbox_empleadoActionPerformed
 
+    private void activoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_activoActionPerformed
+        if (activo.isSelected()) {
+
+            txt_estatus.setText("A");
+            inactivo.setSelected(false);
+        }
+        // TODO add your handling code here:
+    }//GEN-LAST:event_activoActionPerformed
+
+    private void inactivoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_inactivoActionPerformed
+        if (inactivo.isSelected()) {
+
+            txt_estatus.setText("I");
+            activo.setSelected(false);
+        }
+        // TODO add your handling code here:
+    }//GEN-LAST:event_inactivoActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JRadioButton activo;
     private javax.swing.JButton btnBuscar;
     private javax.swing.JButton btnEliminar;
     private javax.swing.JButton btnLimpiar;
@@ -554,14 +643,16 @@ public class inf_Mantenimiento_Piloto extends javax.swing.JInternalFrame {
     private javax.swing.JButton btnRegistrar;
     private javax.swing.JComboBox<String> cbox_empleado;
     private com.toedter.calendar.JDateChooser date_vencimiento;
+    private javax.swing.JRadioButton inactivo;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel label1;
     private javax.swing.JLabel label3;
     private javax.swing.JLabel label4;
     private javax.swing.JLabel label5;
-    private javax.swing.JLabel label6;
     private javax.swing.JLabel label7;
     private javax.swing.JLabel label8;
+    private javax.swing.JLabel label9;
     private javax.swing.JLabel lb;
     private javax.swing.JLabel lb2;
     private javax.swing.JTable tbl;

@@ -118,10 +118,20 @@ public class inf_Mantenimiento_Servicio extends javax.swing.JInternalFrame {
         activo.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
         activo.setText("Activo");
         activo.setOpaque(false);
+        activo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                activoActionPerformed(evt);
+            }
+        });
 
         inactivo.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
         inactivo.setText("Inactivo");
         inactivo.setOpaque(false);
+        inactivo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                inactivoActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -407,6 +417,22 @@ public class inf_Mantenimiento_Servicio extends javax.swing.JInternalFrame {
 
         // TODO add your handling code here:
     }//GEN-LAST:event_btnLimpiarActionPerformed
+
+    private void activoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_activoActionPerformed
+ if(activo.isSelected()){
+
+            txt_estado.setText("A");
+            inactivo.setSelected(false);
+        }        // TODO add your handling code here:
+    }//GEN-LAST:event_activoActionPerformed
+
+    private void inactivoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_inactivoActionPerformed
+ if(inactivo.isSelected()){
+
+            txt_estado.setText("I");
+            activo.setSelected(false);
+        }        // TODO add your handling code here:
+    }//GEN-LAST:event_inactivoActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

@@ -362,7 +362,9 @@ public class inf_Mantenimiento_Prenda extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_btnRegistrarActionPerformed
 
     private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
-
+  
+        
+        
         String buscar = txtbuscado.getText().trim();
         if (buscar.isEmpty()) {
             JOptionPane.showMessageDialog(this, "¡No se ingreso el campo de busqueda!", "Advertencia", JOptionPane.WARNING_MESSAGE);
@@ -381,7 +383,7 @@ public class inf_Mantenimiento_Prenda extends javax.swing.JInternalFrame {
 
                 txt_descripcion.setText(rs.getString("descripcion"));
                 //txt_fecha.setDate(rs.getString("telefono"));
-                txt_hora.setText(rs.getString("fecha_fin"));
+                txt_fecha.setDate(rs.getDate("fecha_fin"));
                 txt_hora.setText(rs.getString("hora"));
 
                 btnModificar.setEnabled(true);
@@ -416,11 +418,11 @@ public class inf_Mantenimiento_Prenda extends javax.swing.JInternalFrame {
             Connection cn = DriverManager.getConnection(mdi_Principal.BD, mdi_Principal.Usuario, mdi_Principal.Contraseña);
             PreparedStatement pst = cn.prepareStatement("update prenda set  cantidad =?, descripcion = ?,fecha_fin = ?, hora = ? where id_prenda =" + ID);
 
-            pst.setString(1, lb.getText());
-            pst.setString(2, txt_cantidad.getText());
-            pst.setString(3, txt_descripcion.getText());
-            pst.setString(4, fecha);
-            pst.setString(5, txt_hora.getText());
+       
+            pst.setString(1, txt_cantidad.getText());
+            pst.setString(2, txt_descripcion.getText());
+            pst.setString(3, fecha);
+            pst.setString(4, txt_hora.getText());
 
             pst.executeUpdate();
 
@@ -438,6 +440,7 @@ public class inf_Mantenimiento_Prenda extends javax.swing.JInternalFrame {
             tablas();
         } catch (SQLException e) {
             JOptionPane.showMessageDialog(this, "Error en Modificacion", "Warning", JOptionPane.WARNING_MESSAGE);
+            
         }
         refrescar();
     }//GEN-LAST:event_btnModificarActionPerformed

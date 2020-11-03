@@ -317,21 +317,22 @@ create table movimientos_bancarios(
     foreign key (id_formapago) references forma_pago(id_formapago)
 ) engine = InnoDB default char set=latin1;
 
-create table banco(
-	nombre_banco varchar(50),
-    nombre_cuenta varchar(50), /*Cuenta maestra*/
-    clave_banco varchar(10),
-    funcionario varchar(50),
-    telefono int,
-    numero_plaza int,
-    numero_sucursal int,
-    saldo_inicial float,
-    id_moneda varchar(10),
-    id_concepto varchar(10), /*Movimientos*/
-    
-    foreign key (id_moneda) references moneda(id_moneda),
-    foreign key (id_concepto) references movimientos_bancarios(id_concepto)
-) engine = InnoDB default char set=latin1;
+CREATE TABLE banco (
+    nombre_banco VARCHAR(50),
+    nombre_cuenta VARCHAR(50),
+    clave_banco VARCHAR(10),
+    funcionario VARCHAR(50),
+    telefono INT,
+    numero_plaza INT,
+    numero_sucursal INT,
+    saldo_inicial FLOAT,
+    id_moneda VARCHAR(10),
+    id_concepto VARCHAR(10),
+    FOREIGN KEY (id_moneda)
+        REFERENCES moneda (id_moneda),
+    FOREIGN KEY (id_concepto)
+        REFERENCES movimientos_bancarios (id_concepto)
+)  ENGINE=INNODB DEFAULT CHAR SET=LATIN1;
 
 create table conciliacion_bancenc(
 	id_encabezado varchar(10) primary key,
@@ -539,6 +540,10 @@ create table caja(
 id_caja int auto_increment primary key,
 estatus varchar(1) not null
 )engine=Innodb default charset=latin1;
+#inserts de caja
+INSERT INTO caja VALUES (0,"A");
+INSERT INTO caja VALUES (0,"B");
+INSERT INTO caja VALUES (0,"C");
 
 create table serie(
 id_serie int auto_increment primary key,
@@ -550,6 +555,11 @@ sucursal(id_sucursal),
 foreign key (id_caja) references
 caja(id_caja)
 )engine=Innodb default charset=latin1;
+#select * from sucursal;
+select * from caja;
+#Inserts de serie
+INSERT INTO serie VALUES(0,1,1,"1");
+INSERT INTO serie VALUES(0,1,2,"2");
 
 
 create table mov_transporte(
@@ -993,6 +1003,10 @@ estatus_lavanderia varchar(1) not null,
 foreign key (id_sucursal) references
 sucursal(id_sucursal)
 )engine=innodb default charset=latin1;
+#Inserts lavanderia
+INSERT INTO lavanderia VALUES (0,"Lavanderia Lola", 1, "A");
+INSERT INTO lavanderia VALUES (0,"Lavanderia Cabo", 1, "A");
+INSERT INTO lavanderia VALUES (0,"Lavanderia Fuelte", 1, "A");
 
 create table prenda(
 id_prenda int not null primary key,
@@ -1001,6 +1015,11 @@ descripcion varchar(300) not null,
 fecha_fin date not null,
 hora time not null
 )engine = InnoDB default charset = latin1;
+
+#Inserts prenda
+use hotel;
+INSERT INTO prenda VALUES (0, 3, "Pantalones", '2020/08/10', '17:25:32.1212222');
+INSERT INTO prenda VALUES (1, 2, "Playeras", '2020/08/10', '17:25:32.1212222');
 
 create table servicio_lavanderia(
 id_servicio_lavanderia int primary key not null,
