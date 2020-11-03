@@ -16,9 +16,9 @@ import java.sql.DriverManager;
  */
 public class mdi_Principal extends javax.swing.JFrame {
 
-    public static String BD = "jdbc:mysql://localhost/hotel";
+    public static String BD = "jdbc:mysql://localhost/hotel_general";
     public static String Usuario = "root";
-    public static String Contraseña = "Polo.2015";
+    public static String Contraseña = "6182";
 
 
     public static Connection getConeccion() {
@@ -54,6 +54,7 @@ public class mdi_Principal extends javax.swing.JFrame {
         desktopPane = new javax.swing.JDesktopPane();
         menuBar = new javax.swing.JMenuBar();
         fileMenu = new javax.swing.JMenu();
+        jMenuItem17 = new javax.swing.JMenuItem();
         jMenuMarcas = new javax.swing.JMenuItem();
         jMenuLineas = new javax.swing.JMenuItem();
         jMenuItem11 = new javax.swing.JMenuItem();
@@ -93,6 +94,14 @@ public class mdi_Principal extends javax.swing.JFrame {
 
         fileMenu.setMnemonic('f');
         fileMenu.setText("Mantenimientos");
+
+        jMenuItem17.setText("Registro Contable");
+        jMenuItem17.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem17ActionPerformed(evt);
+            }
+        });
+        fileMenu.add(jMenuItem17);
 
         jMenuMarcas.setText("Mantenimiento Marcas");
         jMenuMarcas.addActionListener(new java.awt.event.ActionListener() {
@@ -674,6 +683,15 @@ public class mdi_Principal extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jMenuCotEncClientes1ActionPerformed
 
+    private void jMenuItem17ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem17ActionPerformed
+        // TODO add your handling code here:
+        inf_RegistroPartida ventana = new inf_RegistroPartida();
+        desktopPane.add(ventana);
+        Dimension desktopSize = desktopPane.getSize();
+        Dimension FrameSize = ventana.getSize();
+        ventana.setLocation((desktopSize.width - FrameSize.width) / 2, (desktopSize.height - FrameSize.height) / 2);
+    }//GEN-LAST:event_jMenuItem17ActionPerformed
+
 
     /**
      * @param args the command line arguments
@@ -732,6 +750,7 @@ public class mdi_Principal extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem14;
     private javax.swing.JMenuItem jMenuItem15;
     private javax.swing.JMenuItem jMenuItem16;
+    private javax.swing.JMenuItem jMenuItem17;
     private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JMenuItem jMenuItem4;
