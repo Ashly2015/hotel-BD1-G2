@@ -16,20 +16,10 @@ import java.sql.DriverManager;
  */
 public class mdi_Principal extends javax.swing.JFrame {
 
-    public static String BD = "jdbc:mysql://localhost/hotel";
+    public static String BD = "jdbc:mysql://localhost/hotel_general";
     public static String Usuario = "root";
-<<<<<<< HEAD
-    public static String Contraseña = "Polo.2015";
-
-=======
-<<<<<<< HEAD
-    public static String Contraseña = "Sebas1234";
-
-=======
     public static String Contraseña = "6182";
-            //"compromete";
->>>>>>> 95cc82cc3e3e9947518f06cd9bee57cb60a4e61a
->>>>>>> zuzu-ai-master
+
 
     public static Connection getConeccion() {
         Connection cn = null;
@@ -64,25 +54,14 @@ public class mdi_Principal extends javax.swing.JFrame {
         desktopPane = new javax.swing.JDesktopPane();
         menuBar = new javax.swing.JMenuBar();
         fileMenu = new javax.swing.JMenu();
+        jMenuItem17 = new javax.swing.JMenuItem();
         jMenuMarcas = new javax.swing.JMenuItem();
         jMenuLineas = new javax.swing.JMenuItem();
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
->>>>>>> zuzu-ai-master
         jMenuItem11 = new javax.swing.JMenuItem();
         jMenuItem2 = new javax.swing.JMenuItem();
         jMenuTipoInven = new javax.swing.JMenuItem();
         jMenuInventarios = new javax.swing.JMenuItem();
         jMenuItem5 = new javax.swing.JMenuItem();
-<<<<<<< HEAD
-=======
-=======
-        jMenuParametros = new javax.swing.JMenuItem();
-        jMenuTipoInven = new javax.swing.JMenuItem();
-        jMenuInventarios = new javax.swing.JMenuItem();
->>>>>>> 95cc82cc3e3e9947518f06cd9bee57cb60a4e61a
->>>>>>> zuzu-ai-master
         jMenuVehiculos = new javax.swing.JMenuItem();
         jMenuItem1 = new javax.swing.JMenuItem();
         openMenuItem = new javax.swing.JMenuItem();
@@ -97,15 +76,7 @@ public class mdi_Principal extends javax.swing.JFrame {
         jMenuItem8 = new javax.swing.JMenuItem();
         jMenuItem9 = new javax.swing.JMenuItem();
         jMenuItem10 = new javax.swing.JMenuItem();
-<<<<<<< HEAD
         jMenuParametros = new javax.swing.JMenuItem();
-=======
-<<<<<<< HEAD
-        jMenuParametros = new javax.swing.JMenuItem();
-=======
-        jMenuItem11 = new javax.swing.JMenuItem();
->>>>>>> 95cc82cc3e3e9947518f06cd9bee57cb60a4e61a
->>>>>>> zuzu-ai-master
         jMenuItem12 = new javax.swing.JMenuItem();
         jMenuItem13 = new javax.swing.JMenuItem();
         jMenuItem14 = new javax.swing.JMenuItem();
@@ -124,6 +95,14 @@ public class mdi_Principal extends javax.swing.JFrame {
         fileMenu.setMnemonic('f');
         fileMenu.setText("Mantenimientos");
 
+        jMenuItem17.setText("Registro Contable");
+        jMenuItem17.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem17ActionPerformed(evt);
+            }
+        });
+        fileMenu.add(jMenuItem17);
+
         jMenuMarcas.setText("Mantenimiento Marcas");
         jMenuMarcas.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -140,10 +119,6 @@ public class mdi_Principal extends javax.swing.JFrame {
         });
         fileMenu.add(jMenuLineas);
 
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
->>>>>>> zuzu-ai-master
         jMenuItem11.setText("Mantenimiento Sucursal");
         jMenuItem11.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -159,18 +134,6 @@ public class mdi_Principal extends javax.swing.JFrame {
             }
         });
         fileMenu.add(jMenuItem2);
-<<<<<<< HEAD
-=======
-=======
-        jMenuParametros.setText("Mantenimiento Parametros");
-        jMenuParametros.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuParametrosActionPerformed(evt);
-            }
-        });
-        fileMenu.add(jMenuParametros);
->>>>>>> 95cc82cc3e3e9947518f06cd9bee57cb60a4e61a
->>>>>>> zuzu-ai-master
 
         jMenuTipoInven.setText("Mantenimiento Tipo De Inventarios");
         jMenuTipoInven.addActionListener(new java.awt.event.ActionListener() {
@@ -188,10 +151,6 @@ public class mdi_Principal extends javax.swing.JFrame {
         });
         fileMenu.add(jMenuInventarios);
 
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
->>>>>>> zuzu-ai-master
         jMenuItem5.setText("Mantenimiento Piloto");
         jMenuItem5.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -200,11 +159,6 @@ public class mdi_Principal extends javax.swing.JFrame {
         });
         fileMenu.add(jMenuItem5);
 
-<<<<<<< HEAD
-=======
-=======
->>>>>>> 95cc82cc3e3e9947518f06cd9bee57cb60a4e61a
->>>>>>> zuzu-ai-master
         jMenuVehiculos.setText("Mantenimiento Vehiculos");
         jMenuVehiculos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -322,10 +276,6 @@ public class mdi_Principal extends javax.swing.JFrame {
         });
         fileMenu.add(jMenuItem10);
 
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
->>>>>>> zuzu-ai-master
         jMenuParametros.setText("Mantenimiento Parametros");
         jMenuParametros.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -333,18 +283,6 @@ public class mdi_Principal extends javax.swing.JFrame {
             }
         });
         fileMenu.add(jMenuParametros);
-<<<<<<< HEAD
-=======
-=======
-        jMenuItem11.setText("Mantenimiento Sucursal");
-        jMenuItem11.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem11ActionPerformed(evt);
-            }
-        });
-        fileMenu.add(jMenuItem11);
->>>>>>> 95cc82cc3e3e9947518f06cd9bee57cb60a4e61a
->>>>>>> zuzu-ai-master
 
         jMenuItem12.setText("Mantenimiento Lavanderia");
         jMenuItem12.addActionListener(new java.awt.event.ActionListener() {
@@ -745,6 +683,15 @@ public class mdi_Principal extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jMenuCotEncClientes1ActionPerformed
 
+    private void jMenuItem17ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem17ActionPerformed
+        // TODO add your handling code here:
+        inf_RegistroPartida ventana = new inf_RegistroPartida();
+        desktopPane.add(ventana);
+        Dimension desktopSize = desktopPane.getSize();
+        Dimension FrameSize = ventana.getSize();
+        ventana.setLocation((desktopSize.width - FrameSize.width) / 2, (desktopSize.height - FrameSize.height) / 2);
+    }//GEN-LAST:event_jMenuItem17ActionPerformed
+
 
     /**
      * @param args the command line arguments
@@ -803,6 +750,7 @@ public class mdi_Principal extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem14;
     private javax.swing.JMenuItem jMenuItem15;
     private javax.swing.JMenuItem jMenuItem16;
+    private javax.swing.JMenuItem jMenuItem17;
     private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JMenuItem jMenuItem4;
