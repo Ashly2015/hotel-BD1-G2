@@ -55,6 +55,10 @@
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> zuzu-ai-master
                       <Group type="103" groupAlignment="1" attributes="0">
                           <Group type="102" alignment="1" attributes="0">
                               <Component id="label3" min="-2" max="-2" attributes="0"/>
@@ -69,6 +73,19 @@
                               <Component id="txt_estado" min="-2" pref="34" max="-2" attributes="0"/>
                               <EmptySpace min="-2" pref="34" max="-2" attributes="0"/>
                           </Group>
+<<<<<<< HEAD
+=======
+=======
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="label3" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="label5" alignment="1" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="1" attributes="0">
+                          <Component id="txt_nombre" alignment="1" min="-2" pref="263" max="-2" attributes="0"/>
+                          <Component id="txt_Estado" alignment="1" min="-2" pref="263" max="-2" attributes="0"/>
+>>>>>>> 95cc82cc3e3e9947518f06cd9bee57cb60a4e61a
+>>>>>>> zuzu-ai-master
                       </Group>
                       <EmptySpace min="-2" pref="24" max="-2" attributes="0"/>
                   </Group>
@@ -104,6 +121,10 @@
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="label2" min="-2" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="43" max="-2" attributes="0"/>
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> zuzu-ai-master
                       <Group type="103" groupAlignment="1" attributes="0">
                           <Group type="102" attributes="0">
                               <Group type="103" groupAlignment="3" attributes="0">
@@ -122,6 +143,21 @@
                           <Component id="txt_estado" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace min="-2" pref="67" max="-2" attributes="0"/>
+<<<<<<< HEAD
+=======
+=======
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="label3" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="txt_nombre" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="txt_Estado" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="label5" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace min="-2" pref="75" max="-2" attributes="0"/>
+>>>>>>> 95cc82cc3e3e9947518f06cd9bee57cb60a4e61a
+>>>>>>> zuzu-ai-master
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="btnRegistrar" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="btnModificar" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -135,12 +171,34 @@
                       </Group>
                   </Group>
               </Group>
+<<<<<<< HEAD
               <EmptySpace pref="73" max="32767" attributes="0"/>
+=======
+<<<<<<< HEAD
+              <EmptySpace pref="73" max="32767" attributes="0"/>
+=======
+              <EmptySpace pref="69" max="32767" attributes="0"/>
+>>>>>>> 95cc82cc3e3e9947518f06cd9bee57cb60a4e61a
+>>>>>>> zuzu-ai-master
           </Group>
       </Group>
     </DimensionLayout>
   </Layout>
   <SubComponents>
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+=======
+    <Component class="javax.swing.JLabel" name="label5">
+      <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Century Gothic" size="12" style="1"/>
+        </Property>
+        <Property name="text" type="java.lang.String" value="Estado:"/>
+      </Properties>
+    </Component>
+>>>>>>> 95cc82cc3e3e9947518f06cd9bee57cb60a4e61a
+>>>>>>> zuzu-ai-master
     <Component class="javax.swing.JLabel" name="lb">
       <Properties>
         <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
@@ -229,7 +287,15 @@
         <Property name="opaque" type="boolean" value="false"/>
       </Properties>
     </Component>
+<<<<<<< HEAD
     <Component class="javax.swing.JTextField" name="txt_estado">
+=======
+<<<<<<< HEAD
+    <Component class="javax.swing.JTextField" name="txt_estado">
+=======
+    <Component class="javax.swing.JTextField" name="txt_Estado">
+>>>>>>> 95cc82cc3e3e9947518f06cd9bee57cb60a4e61a
+>>>>>>> zuzu-ai-master
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Century Gothic" size="12" style="0"/>
@@ -260,6 +326,10 @@
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnLimpiarActionPerformed"/>
       </Events>
     </Component>
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> zuzu-ai-master
     <Component class="javax.swing.JLabel" name="label8">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
@@ -324,6 +394,11 @@
         </Component>
       </SubComponents>
     </Container>
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> 95cc82cc3e3e9947518f06cd9bee57cb60a4e61a
+>>>>>>> zuzu-ai-master
     <Component class="javax.swing.JButton" name="btnEliminar">
       <Properties>
         <Property name="text" type="java.lang.String" value="Eliminar"/>

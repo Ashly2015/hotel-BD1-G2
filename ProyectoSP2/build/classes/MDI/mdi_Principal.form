@@ -26,6 +26,10 @@
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMenuLineasActionPerformed"/>
               </Events>
             </MenuItem>
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> zuzu-ai-master
             <MenuItem class="javax.swing.JMenuItem" name="jMenuItem11">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Mantenimiento Sucursal"/>
@@ -40,6 +44,17 @@
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMenuItem2ActionPerformed"/>
+<<<<<<< HEAD
+=======
+=======
+            <MenuItem class="javax.swing.JMenuItem" name="jMenuParametros">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Mantenimiento Parametros"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMenuParametrosActionPerformed"/>
+>>>>>>> 95cc82cc3e3e9947518f06cd9bee57cb60a4e61a
+>>>>>>> zuzu-ai-master
               </Events>
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="jMenuTipoInven">
@@ -58,6 +73,10 @@
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMenuInventariosActionPerformed"/>
               </Events>
             </MenuItem>
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> zuzu-ai-master
             <MenuItem class="javax.swing.JMenuItem" name="jMenuItem5">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Mantenimiento Piloto"/>
@@ -66,6 +85,11 @@
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMenuItem5ActionPerformed"/>
               </Events>
             </MenuItem>
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> 95cc82cc3e3e9947518f06cd9bee57cb60a4e61a
+>>>>>>> zuzu-ai-master
             <MenuItem class="javax.swing.JMenuItem" name="jMenuVehiculos">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Mantenimiento Vehiculos"/>
@@ -183,12 +207,27 @@
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMenuItem10ActionPerformed"/>
               </Events>
             </MenuItem>
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> zuzu-ai-master
             <MenuItem class="javax.swing.JMenuItem" name="jMenuParametros">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Mantenimiento Parametros"/>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMenuParametrosActionPerformed"/>
+<<<<<<< HEAD
+=======
+=======
+            <MenuItem class="javax.swing.JMenuItem" name="jMenuItem11">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Mantenimiento Sucursal"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMenuItem11ActionPerformed"/>
+>>>>>>> 95cc82cc3e3e9947518f06cd9bee57cb60a4e61a
+>>>>>>> zuzu-ai-master
               </Events>
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="jMenuItem12">

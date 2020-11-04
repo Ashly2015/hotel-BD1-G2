@@ -32,6 +32,10 @@
                       <Component id="label2" min="-2" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="145" max="-2" attributes="0"/>
                   </Group>
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> zuzu-ai-master
                   <Group type="102" attributes="0">
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" alignment="0" attributes="0">
@@ -43,6 +47,14 @@
                               <Component id="txt_estado" min="-2" pref="46" max="-2" attributes="0"/>
                           </Group>
                           <Group type="102" alignment="0" attributes="0">
+<<<<<<< HEAD
+=======
+=======
+                  <Group type="102" alignment="0" attributes="0">
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="102" alignment="0" attributes="0">
+>>>>>>> 95cc82cc3e3e9947518f06cd9bee57cb60a4e61a
+>>>>>>> zuzu-ai-master
                               <EmptySpace min="-2" pref="32" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" max="-2" attributes="0">
                                   <Component id="btnEliminar" alignment="0" max="32767" attributes="0"/>
@@ -64,9 +76,27 @@
                           </Group>
                           <Group type="102" alignment="0" attributes="0">
                               <EmptySpace max="-2" attributes="0"/>
+<<<<<<< HEAD
                               <Component id="label3" min="-2" max="-2" attributes="0"/>
                               <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
                               <Component id="txt_nombre" min="-2" pref="263" max="-2" attributes="0"/>
+=======
+<<<<<<< HEAD
+                              <Component id="label3" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
+                              <Component id="txt_nombre" min="-2" pref="263" max="-2" attributes="0"/>
+=======
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="label3" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="label5" alignment="1" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="1" attributes="0">
+                                  <Component id="txt_nombre" alignment="1" min="-2" pref="263" max="-2" attributes="0"/>
+                                  <Component id="txt_Estado" alignment="1" min="-2" pref="263" max="-2" attributes="0"/>
+                              </Group>
+>>>>>>> 95cc82cc3e3e9947518f06cd9bee57cb60a4e61a
+>>>>>>> zuzu-ai-master
                           </Group>
                       </Group>
                       <EmptySpace max="32767" attributes="0"/>
@@ -108,6 +138,10 @@
                           <Component id="txt_nombre" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> zuzu-ai-master
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" alignment="0" attributes="0">
                               <EmptySpace min="-2" pref="13" max="-2" attributes="0"/>
@@ -117,6 +151,16 @@
                           <Component id="txt_estado" alignment="1" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace min="-2" pref="60" max="-2" attributes="0"/>
+<<<<<<< HEAD
+=======
+=======
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="txt_Estado" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="label5" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace min="-2" pref="75" max="-2" attributes="0"/>
+>>>>>>> 95cc82cc3e3e9947518f06cd9bee57cb60a4e61a
+>>>>>>> zuzu-ai-master
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="btnRegistrar" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="btnEliminar" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -130,13 +174,29 @@
                       </Group>
                   </Group>
               </Group>
+<<<<<<< HEAD
               <EmptySpace pref="15" max="32767" attributes="0"/>
+=======
+<<<<<<< HEAD
+              <EmptySpace pref="15" max="32767" attributes="0"/>
+=======
+              <EmptySpace max="32767" attributes="0"/>
+>>>>>>> 95cc82cc3e3e9947518f06cd9bee57cb60a4e61a
+>>>>>>> zuzu-ai-master
           </Group>
       </Group>
     </DimensionLayout>
   </Layout>
   <SubComponents>
+<<<<<<< HEAD
     <Component class="javax.swing.JTextField" name="txt_estado">
+=======
+<<<<<<< HEAD
+    <Component class="javax.swing.JTextField" name="txt_estado">
+=======
+    <Component class="javax.swing.JTextField" name="txt_Estado">
+>>>>>>> 95cc82cc3e3e9947518f06cd9bee57cb60a4e61a
+>>>>>>> zuzu-ai-master
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Century Gothic" size="12" style="0"/>
@@ -241,6 +301,20 @@
         <Property name="text" type="java.lang.String" value="Registro, Tipo de inventario:"/>
       </Properties>
     </Component>
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+=======
+    <Component class="javax.swing.JLabel" name="label5">
+      <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Century Gothic" size="12" style="1"/>
+        </Property>
+        <Property name="text" type="java.lang.String" value="Estado:"/>
+      </Properties>
+    </Component>
+>>>>>>> 95cc82cc3e3e9947518f06cd9bee57cb60a4e61a
+>>>>>>> zuzu-ai-master
     <Component class="javax.swing.JTextField" name="txt_nombre">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
@@ -264,6 +338,10 @@
         <Property name="text" type="java.lang.String" value="."/>
       </Properties>
     </Component>
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> zuzu-ai-master
     <Component class="javax.swing.JLabel" name="label8">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
@@ -328,5 +406,10 @@
         </Component>
       </SubComponents>
     </Container>
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> 95cc82cc3e3e9947518f06cd9bee57cb60a4e61a
+>>>>>>> zuzu-ai-master
   </SubComponents>
 </Form>

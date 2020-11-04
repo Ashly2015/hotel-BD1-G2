@@ -113,12 +113,25 @@
                           <Component id="txt_IdHabitacion" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> zuzu-ai-master
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Component id="lb" alignment="1" min="-2" pref="19" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="cbox_TipoHabitacion" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="label4" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
+<<<<<<< HEAD
+=======
+=======
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="cbox_TipoHabitacion" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="label4" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="lb" alignment="1" min="-2" pref="19" max="-2" attributes="0"/>
+>>>>>>> 95cc82cc3e3e9947518f06cd9bee57cb60a4e61a
+>>>>>>> zuzu-ai-master
                       </Group>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">

@@ -295,7 +295,15 @@ public class inf_Mantenimiento_Impuesto extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
         try {
             Connection cn = DriverManager.getConnection(mdi_Principal.BD, mdi_Principal.Usuario, mdi_Principal.Contraseña);
+<<<<<<< HEAD
             PreparedStatement pst = cn.prepareStatement("delete from impuestos where id_impuesto = ?");
+=======
+<<<<<<< HEAD
+            PreparedStatement pst = cn.prepareStatement("delete from impuesto where id_impuestos = ?");
+=======
+            PreparedStatement pst = cn.prepareStatement("delete from impuestos where id_impuesto = ?");
+>>>>>>> 95cc82cc3e3e9947518f06cd9bee57cb60a4e61a
+>>>>>>> zuzu-ai-master
 
             pst.setString(1, txtbuscado.getText().trim());
             pst.executeUpdate();
@@ -380,7 +388,15 @@ activo.setSelected(false);
             String ID = txtbuscado.getText().trim();
 
             Connection cn = DriverManager.getConnection(mdi_Principal.BD, mdi_Principal.Usuario, mdi_Principal.Contraseña);
+<<<<<<< HEAD
             PreparedStatement pst = cn.prepareStatement("update impuestos set  nombre_impuesto = ?,estatus_impuesto =? where id_impuesto =" + ID);
+=======
+<<<<<<< HEAD
+            PreparedStatement pst = cn.prepareStatement("update impuestos set  nombre_impuesto = ?,estatus_impuesto =? where id_bodega =" + ID);
+=======
+            PreparedStatement pst = cn.prepareStatement("update impuestos set  nombre_impuesto = ?,estatus_impuesto =? where id_impuesto =" + ID);
+>>>>>>> 95cc82cc3e3e9947518f06cd9bee57cb60a4e61a
+>>>>>>> zuzu-ai-master
 
             pst.setString(1, txt_nombre.getText());
             String mensaje = "";

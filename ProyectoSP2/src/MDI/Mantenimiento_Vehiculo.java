@@ -141,9 +141,22 @@ public class Mantenimiento_Vehiculo extends javax.swing.JInternalFrame {
         txt_color = new javax.swing.JTextField();
         btnModificar = new javax.swing.JButton();
         label14 = new javax.swing.JLabel();
+<<<<<<< HEAD
         txt_NumPasajeros = new javax.swing.JTextField();
         label3 = new javax.swing.JLabel();
         txt_estado = new javax.swing.JTextField();
+=======
+<<<<<<< HEAD
+        txt_NumPasajeros = new javax.swing.JTextField();
+        label3 = new javax.swing.JLabel();
+        txt_estado = new javax.swing.JTextField();
+=======
+        label6 = new javax.swing.JLabel();
+        txt_NumPasajeros = new javax.swing.JTextField();
+        label3 = new javax.swing.JLabel();
+        txt_Estado = new javax.swing.JTextField();
+>>>>>>> 95cc82cc3e3e9947518f06cd9bee57cb60a4e61a
+>>>>>>> zuzu-ai-master
         txtbuscado = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
         tbl = new javax.swing.JTable();
@@ -152,10 +165,19 @@ public class Mantenimiento_Vehiculo extends javax.swing.JInternalFrame {
         label8 = new javax.swing.JLabel();
         lb2 = new javax.swing.JLabel();
         lb1 = new javax.swing.JLabel();
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> zuzu-ai-master
         label11 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         activo = new javax.swing.JRadioButton();
         inactivo = new javax.swing.JRadioButton();
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> 95cc82cc3e3e9947518f06cd9bee57cb60a4e61a
+>>>>>>> zuzu-ai-master
 
         setClosable(true);
         setIconifiable(true);
@@ -268,6 +290,15 @@ public class Mantenimiento_Vehiculo extends javax.swing.JInternalFrame {
         label14.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
         label14.setText("Numero pasajeros:");
 
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+=======
+        label6.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
+        label6.setText("Estado:");
+
+>>>>>>> 95cc82cc3e3e9947518f06cd9bee57cb60a4e61a
+>>>>>>> zuzu-ai-master
         txt_NumPasajeros.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
         txt_NumPasajeros.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(204, 204, 204)));
         txt_NumPasajeros.setOpaque(false);
@@ -275,9 +306,21 @@ public class Mantenimiento_Vehiculo extends javax.swing.JInternalFrame {
         label3.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
         label3.setText("Placa:");
 
+<<<<<<< HEAD
         txt_estado.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
         txt_estado.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(204, 204, 204)));
         txt_estado.setOpaque(false);
+=======
+<<<<<<< HEAD
+        txt_estado.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
+        txt_estado.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(204, 204, 204)));
+        txt_estado.setOpaque(false);
+=======
+        txt_Estado.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
+        txt_Estado.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(204, 204, 204)));
+        txt_Estado.setOpaque(false);
+>>>>>>> 95cc82cc3e3e9947518f06cd9bee57cb60a4e61a
+>>>>>>> zuzu-ai-master
 
         tbl.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
         tbl.setModel(new javax.swing.table.DefaultTableModel(
@@ -302,6 +345,10 @@ public class Mantenimiento_Vehiculo extends javax.swing.JInternalFrame {
         lb1.setBackground(new java.awt.Color(153, 153, 153));
         lb1.setForeground(new java.awt.Color(204, 204, 204));
 
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> zuzu-ai-master
         label11.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
         label11.setText("Estado:");
 
@@ -345,6 +392,11 @@ public class Mantenimiento_Vehiculo extends javax.swing.JInternalFrame {
                     .addComponent(inactivo)))
         );
 
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> 95cc82cc3e3e9947518f06cd9bee57cb60a4e61a
+>>>>>>> zuzu-ai-master
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -388,6 +440,13 @@ public class Mantenimiento_Vehiculo extends javax.swing.JInternalFrame {
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                         .addComponent(label14)
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+=======
+                                        .addComponent(label6)
+>>>>>>> 95cc82cc3e3e9947518f06cd9bee57cb60a4e61a
+>>>>>>> zuzu-ai-master
                                         .addComponent(label12))
                                     .addGroup(layout.createSequentialGroup()
                                         .addGap(64, 64, 64)
@@ -398,6 +457,13 @@ public class Mantenimiento_Vehiculo extends javax.swing.JInternalFrame {
                                     .addComponent(txt_placa, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(modelo, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(txt_NumPasajeros, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+=======
+                                    .addComponent(txt_Estado, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE)
+>>>>>>> 95cc82cc3e3e9947518f06cd9bee57cb60a4e61a
+>>>>>>> zuzu-ai-master
                                     .addComponent(txt_color, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE)))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                                 .addGroup(layout.createSequentialGroup()
@@ -407,6 +473,10 @@ public class Mantenimiento_Vehiculo extends javax.swing.JInternalFrame {
                                 .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                                     .addComponent(label9)
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> zuzu-ai-master
                                     .addComponent(cbox_Marca, javax.swing.GroupLayout.PREFERRED_SIZE, 194, javax.swing.GroupLayout.PREFERRED_SIZE)))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                 .addComponent(label11)
@@ -415,6 +485,12 @@ public class Mantenimiento_Vehiculo extends javax.swing.JInternalFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(txt_estado, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(8, 8, 8)))))
+<<<<<<< HEAD
+=======
+=======
+                                    .addComponent(cbox_Marca, javax.swing.GroupLayout.PREFERRED_SIZE, 194, javax.swing.GroupLayout.PREFERRED_SIZE))))))
+>>>>>>> 95cc82cc3e3e9947518f06cd9bee57cb60a4e61a
+>>>>>>> zuzu-ai-master
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(44, 44, 44)
@@ -475,6 +551,10 @@ public class Mantenimiento_Vehiculo extends javax.swing.JInternalFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(txt_NumPasajeros, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(label14))
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> zuzu-ai-master
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(txt_estado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -483,6 +563,15 @@ public class Mantenimiento_Vehiculo extends javax.swing.JInternalFrame {
                                     .addGap(13, 13, 13)
                                     .addComponent(label11))
                                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+<<<<<<< HEAD
+=======
+=======
+                        .addGap(12, 12, 12)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(txt_Estado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(label6)))
+>>>>>>> 95cc82cc3e3e9947518f06cd9bee57cb60a4e61a
+>>>>>>> zuzu-ai-master
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
@@ -493,7 +582,15 @@ public class Mantenimiento_Vehiculo extends javax.swing.JInternalFrame {
                             .addComponent(lb4, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 17, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 437, javax.swing.GroupLayout.PREFERRED_SIZE)))
+<<<<<<< HEAD
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 18, Short.MAX_VALUE)
+=======
+<<<<<<< HEAD
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 18, Short.MAX_VALUE)
+=======
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 14, Short.MAX_VALUE)
+>>>>>>> 95cc82cc3e3e9947518f06cd9bee57cb60a4e61a
+>>>>>>> zuzu-ai-master
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnRegistrar)
                     .addComponent(btnEliminar)
@@ -524,7 +621,15 @@ public class Mantenimiento_Vehiculo extends javax.swing.JInternalFrame {
                 if (cbox_Marca.getSelectedItem().toString().contains("Seleccione una opción")) {
                     txt_placa.setText("");
                     modelo.setText("");
+<<<<<<< HEAD
                     txt_estado.setText("");
+=======
+<<<<<<< HEAD
+                    txt_estado.setText("");
+=======
+                    txt_Estado.setText("");
+>>>>>>> 95cc82cc3e3e9947518f06cd9bee57cb60a4e61a
+>>>>>>> zuzu-ai-master
                 }
             }
 
@@ -548,7 +653,15 @@ public class Mantenimiento_Vehiculo extends javax.swing.JInternalFrame {
                 if (cbox_Linea.getSelectedItem().toString().contains("Seleccione una opción")) {
                     txt_placa.setText("");
                     modelo.setText("");
+<<<<<<< HEAD
                     txt_estado.setText("");
+=======
+<<<<<<< HEAD
+                    txt_estado.setText("");
+=======
+                    txt_Estado.setText("");
+>>>>>>> 95cc82cc3e3e9947518f06cd9bee57cb60a4e61a
+>>>>>>> zuzu-ai-master
                 }
             }
 
@@ -575,9 +688,19 @@ public class Mantenimiento_Vehiculo extends javax.swing.JInternalFrame {
         cbox_Linea.setSelectedIndex(0);
         txt_placa.setText("");
         modelo.setText("");
+<<<<<<< HEAD
         txt_estado.setText("");
         activo.setSelected(false);
         inactivo.setSelected(false);
+=======
+<<<<<<< HEAD
+        txt_estado.setText("");
+        activo.setSelected(false);
+        inactivo.setSelected(false);
+=======
+        txt_Estado.setText("");
+>>>>>>> 95cc82cc3e3e9947518f06cd9bee57cb60a4e61a
+>>>>>>> zuzu-ai-master
         txt_color.setText("");
         txt_NumPasajeros.setText("");
         txtbuscado.setText("");
@@ -605,7 +728,15 @@ public class Mantenimiento_Vehiculo extends javax.swing.JInternalFrame {
                 if (cbox_Piloto.getSelectedItem().toString().contains("Seleccione una opción")) {
                     txt_placa.setText("");
                     modelo.setText("");
+<<<<<<< HEAD
                     txt_estado.setText("");
+=======
+<<<<<<< HEAD
+                    txt_estado.setText("");
+=======
+                    txt_Estado.setText("");
+>>>>>>> 95cc82cc3e3e9947518f06cd9bee57cb60a4e61a
+>>>>>>> zuzu-ai-master
                 }
             }
 
@@ -632,7 +763,15 @@ public class Mantenimiento_Vehiculo extends javax.swing.JInternalFrame {
             pst.setString(7, modelo.getText());
             pst.setString(8, txt_color.getText());
             pst.setString(9, txt_NumPasajeros.getText());
+<<<<<<< HEAD
             pst.setString(10, txt_estado.getText());
+=======
+<<<<<<< HEAD
+            pst.setString(10, txt_estado.getText());
+=======
+            pst.setString(10, txt_Estado.getText());
+>>>>>>> 95cc82cc3e3e9947518f06cd9bee57cb60a4e61a
+>>>>>>> zuzu-ai-master
 
             //bitacora_guardar();
             pst.executeUpdate();
@@ -645,9 +784,19 @@ public class Mantenimiento_Vehiculo extends javax.swing.JInternalFrame {
             cbox_Linea.setSelectedIndex(0);
             txt_placa.setText("");
             modelo.setText("");
+<<<<<<< HEAD
             txt_estado.setText("");
             activo.setSelected(false);
             inactivo.setSelected(false);
+=======
+<<<<<<< HEAD
+            txt_estado.setText("");
+            activo.setSelected(false);
+            inactivo.setSelected(false);
+=======
+            txt_Estado.setText("");
+>>>>>>> 95cc82cc3e3e9947518f06cd9bee57cb60a4e61a
+>>>>>>> zuzu-ai-master
             txt_color.setText("");
             txt_NumPasajeros.setText("");
             txtbuscado.setText("");
@@ -677,7 +826,15 @@ public class Mantenimiento_Vehiculo extends javax.swing.JInternalFrame {
                 modelo.setText(rs.getString("modelo"));
                 txt_color.setText(rs.getString("color"));
                 txt_NumPasajeros.setText(rs.getString("numero_pasajeros"));
+<<<<<<< HEAD
                 txt_estado.setText(rs.getString("estatus"));
+=======
+<<<<<<< HEAD
+                txt_estado.setText(rs.getString("estatus"));
+=======
+                txt_Estado.setText(rs.getString("estatus"));
+>>>>>>> 95cc82cc3e3e9947518f06cd9bee57cb60a4e61a
+>>>>>>> zuzu-ai-master
                 btnModificar.setEnabled(true);
                 btnEliminar.setEnabled(true);
                 btnRegistrar.setEnabled(false);
@@ -714,7 +871,15 @@ public class Mantenimiento_Vehiculo extends javax.swing.JInternalFrame {
                 if (cbox_Inventario.getSelectedItem().toString().contains("Seleccione una opción")) {
                     txt_placa.setText("");
                     modelo.setText("");
+<<<<<<< HEAD
                     txt_estado.setText("");
+=======
+<<<<<<< HEAD
+                    txt_estado.setText("");
+=======
+                    txt_Estado.setText("");
+>>>>>>> 95cc82cc3e3e9947518f06cd9bee57cb60a4e61a
+>>>>>>> zuzu-ai-master
                 }
             }
 
@@ -731,9 +896,19 @@ public class Mantenimiento_Vehiculo extends javax.swing.JInternalFrame {
         cbox_Linea.setSelectedIndex(0);
         txt_placa.setText("");
         modelo.setText("");
+<<<<<<< HEAD
         txt_estado.setText("");
         activo.setSelected(false);
         inactivo.setSelected(false);
+=======
+<<<<<<< HEAD
+        txt_estado.setText("");
+        activo.setSelected(false);
+        inactivo.setSelected(false);
+=======
+        txt_Estado.setText("");
+>>>>>>> 95cc82cc3e3e9947518f06cd9bee57cb60a4e61a
+>>>>>>> zuzu-ai-master
         txt_color.setText("");
         txt_NumPasajeros.setText("");
         btnModificar.setEnabled(false);
@@ -761,7 +936,15 @@ public class Mantenimiento_Vehiculo extends javax.swing.JInternalFrame {
             pst.setString(5, modelo.getText());
             pst.setString(6, txt_color.getText());
             pst.setString(7, txt_NumPasajeros.getText());
+<<<<<<< HEAD
             pst.setString(8, txt_estado.getText());
+=======
+<<<<<<< HEAD
+            pst.setString(8, txt_estado.getText());
+=======
+            pst.setString(8, txt_Estado.getText());
+>>>>>>> 95cc82cc3e3e9947518f06cd9bee57cb60a4e61a
+>>>>>>> zuzu-ai-master
 
             pst.executeUpdate();
 
@@ -774,9 +957,19 @@ public class Mantenimiento_Vehiculo extends javax.swing.JInternalFrame {
         cbox_Linea.setSelectedIndex(0);
         txt_placa.setText("");
         modelo.setText("");
+<<<<<<< HEAD
         txt_estado.setText("");
         activo.setSelected(false);
         inactivo.setSelected(false);
+=======
+<<<<<<< HEAD
+        txt_estado.setText("");
+        activo.setSelected(false);
+        inactivo.setSelected(false);
+=======
+        txt_Estado.setText("");
+>>>>>>> 95cc82cc3e3e9947518f06cd9bee57cb60a4e61a
+>>>>>>> zuzu-ai-master
         txt_color.setText("");
         txt_NumPasajeros.setText("");
         btnModificar.setEnabled(false);
@@ -792,6 +985,10 @@ public class Mantenimiento_Vehiculo extends javax.swing.JInternalFrame {
         }
     }//GEN-LAST:event_btnModificarActionPerformed
 
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> zuzu-ai-master
     private void activoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_activoActionPerformed
         if(activo.isSelected()){
 
@@ -811,6 +1008,13 @@ public class Mantenimiento_Vehiculo extends javax.swing.JInternalFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JRadioButton activo;
+<<<<<<< HEAD
+=======
+=======
+
+    // Variables declaration - do not modify//GEN-BEGIN:variables
+>>>>>>> 95cc82cc3e3e9947518f06cd9bee57cb60a4e61a
+>>>>>>> zuzu-ai-master
     private javax.swing.JButton btnBuscar;
     private javax.swing.JButton btnEliminar;
     private javax.swing.JButton btnLimpiar;
@@ -820,17 +1024,35 @@ public class Mantenimiento_Vehiculo extends javax.swing.JInternalFrame {
     private javax.swing.JComboBox<String> cbox_Linea;
     private javax.swing.JComboBox<String> cbox_Marca;
     private javax.swing.JComboBox<String> cbox_Piloto;
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> zuzu-ai-master
     private javax.swing.JRadioButton inactivo;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel label10;
     private javax.swing.JLabel label11;
+<<<<<<< HEAD
+=======
+=======
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JLabel label10;
+>>>>>>> 95cc82cc3e3e9947518f06cd9bee57cb60a4e61a
+>>>>>>> zuzu-ai-master
     private javax.swing.JLabel label12;
     private javax.swing.JLabel label14;
     private javax.swing.JLabel label2;
     private javax.swing.JLabel label3;
     private javax.swing.JLabel label4;
     private javax.swing.JLabel label5;
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+=======
+    private javax.swing.JLabel label6;
+>>>>>>> 95cc82cc3e3e9947518f06cd9bee57cb60a4e61a
+>>>>>>> zuzu-ai-master
     private javax.swing.JLabel label7;
     private javax.swing.JLabel label8;
     private javax.swing.JLabel label9;
@@ -840,9 +1062,21 @@ public class Mantenimiento_Vehiculo extends javax.swing.JInternalFrame {
     private javax.swing.JLabel lb4;
     private javax.swing.JTextField modelo;
     private javax.swing.JTable tbl;
+<<<<<<< HEAD
     private javax.swing.JTextField txt_NumPasajeros;
     private javax.swing.JTextField txt_color;
     private javax.swing.JTextField txt_estado;
+=======
+<<<<<<< HEAD
+    private javax.swing.JTextField txt_NumPasajeros;
+    private javax.swing.JTextField txt_color;
+    private javax.swing.JTextField txt_estado;
+=======
+    private javax.swing.JTextField txt_Estado;
+    private javax.swing.JTextField txt_NumPasajeros;
+    private javax.swing.JTextField txt_color;
+>>>>>>> 95cc82cc3e3e9947518f06cd9bee57cb60a4e61a
+>>>>>>> zuzu-ai-master
     private javax.swing.JTextField txt_placa;
     private javax.swing.JTextField txtbuscado;
     // End of variables declaration//GEN-END:variables
