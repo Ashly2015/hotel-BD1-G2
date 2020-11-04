@@ -20,7 +20,6 @@ public class mdi_Principal extends javax.swing.JFrame {
     public static String Usuario = "root";
     public static String Contraseña = "6182";
 
-
     public static Connection getConeccion() {
         Connection cn = null;
         try {
@@ -560,45 +559,45 @@ public class mdi_Principal extends javax.swing.JFrame {
         ventana.setLocation((desktopSize.width - FrameSize.width) / 2, (desktopSize.height - FrameSize.height) / 2);
     }//GEN-LAST:event_jMenuMarcasActionPerformed
 
-    private void jMenuLineasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuLineasActionPerformed
+        private void jMenuLineasActionPerformed(java.awt.event.ActionEvent evt) {                                            
         Matenimiento_Linea ventana = new Matenimiento_Linea();
         desktopPane.add(ventana);
         Dimension desktopSize = desktopPane.getSize();
         Dimension FrameSize = ventana.getSize();
         ventana.setLocation((desktopSize.width - FrameSize.width) / 2, (desktopSize.height - FrameSize.height) / 2);
-    }//GEN-LAST:event_jMenuLineasActionPerformed
+    }                                           
 
-    private void jMenuParametrosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuParametrosActionPerformed
+    private void jMenuParametrosActionPerformed(java.awt.event.ActionEvent evt) {                                                
         Mantenimiento_Parametros ventana = new Mantenimiento_Parametros();
         desktopPane.add(ventana);
         Dimension desktopSize = desktopPane.getSize();
         Dimension FrameSize = ventana.getSize();
         ventana.setLocation((desktopSize.width - FrameSize.width) / 2, (desktopSize.height - FrameSize.height) / 2);
-    }//GEN-LAST:event_jMenuParametrosActionPerformed
+    }                                               
 
-    private void jMenuTipoInvenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuTipoInvenActionPerformed
+    private void jMenuTipoInvenActionPerformed(java.awt.event.ActionEvent evt) {                                               
         Mantenimiento_TipoInvetario ventana = new Mantenimiento_TipoInvetario();
         desktopPane.add(ventana);
         Dimension desktopSize = desktopPane.getSize();
         Dimension FrameSize = ventana.getSize();
         ventana.setLocation((desktopSize.width - FrameSize.width) / 2, (desktopSize.height - FrameSize.height) / 2);
-    }//GEN-LAST:event_jMenuTipoInvenActionPerformed
+    }                                              
 
-    private void jMenuInventariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuInventariosActionPerformed
+    private void jMenuInventariosActionPerformed(java.awt.event.ActionEvent evt) {                                                 
         Matenimiento_Inventario ventana = new Matenimiento_Inventario();
         desktopPane.add(ventana);
         Dimension desktopSize = desktopPane.getSize();
         Dimension FrameSize = ventana.getSize();
         ventana.setLocation((desktopSize.width - FrameSize.width) / 2, (desktopSize.height - FrameSize.height) / 2);
-    }//GEN-LAST:event_jMenuInventariosActionPerformed
+    }                                                
 
-    private void jMenuVehiculosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuVehiculosActionPerformed
+    private void jMenuVehiculosActionPerformed(java.awt.event.ActionEvent evt) {                                               
         Mantenimiento_Vehiculo ventana = new Mantenimiento_Vehiculo();
         desktopPane.add(ventana);
         Dimension desktopSize = desktopPane.getSize();
         Dimension FrameSize = ventana.getSize();
         ventana.setLocation((desktopSize.width - FrameSize.width) / 2, (desktopSize.height - FrameSize.height) / 2);
-    }//GEN-LAST:event_jMenuVehiculosActionPerformed
+    }                                              
 
 
     private void jMenuItem13ActionPerformed(java.awt.event.ActionEvent evt) {                                            
@@ -647,7 +646,6 @@ public class mdi_Principal extends javax.swing.JFrame {
     private void jMenuCotEncProveedoresActionPerformed(java.awt.event.ActionEvent evt) {                                                       
         Cot_Enc_Proveedor ventana = new Cot_Enc_Proveedor();
 
-<<<<<<< HEAD
         desktopPane.add(ventana);
         Dimension desktopSize = desktopPane.getSize();
         Dimension FrameSize = ventana.getSize();
@@ -684,42 +682,14 @@ public class mdi_Principal extends javax.swing.JFrame {
         // TODO add your handling code here:
     }                                                    
 
-    private void jMenuCotDetProvActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuCotDetProvActionPerformed
-       Cot_Det_Proveedor ventana = new Cot_Det_Proveedor();
-        desktopPane.add(ventana);
-        Dimension desktopSize = desktopPane.getSize();
-        Dimension FrameSize = ventana.getSize();
-        ventana.setLocation((desktopSize.width - FrameSize.width) / 2, (desktopSize.height - FrameSize.height) / 2);
-    }//GEN-LAST:event_jMenuCotDetProvActionPerformed
-
-    private void jMenuItem16ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem16ActionPerformed
-        // TODO add your handling code here:
-        inf_Transaccion_Compras ventana = new inf_Transaccion_Compras();
-        desktopPane.add(ventana);
-        Dimension desktopSize = desktopPane.getSize();
-        Dimension FrameSize = ventana.getSize();
-        ventana.setLocation((desktopSize.width - FrameSize.width) / 2, (desktopSize.height - FrameSize.height) / 2);
-    }//GEN-LAST:event_jMenuItem16ActionPerformed
-
-    private void jMenuCotEncClientes1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuCotEncClientes1ActionPerformed
-       Credito_Proveedor ventana = new Credito_Proveedor();
-        desktopPane.add(ventana);
-        Dimension desktopSize = desktopPane.getSize();
-        Dimension FrameSize = ventana.getSize();
-        ventana.setLocation((desktopSize.width - FrameSize.width) / 2, (desktopSize.height - FrameSize.height) / 2);
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jMenuCotEncClientes1ActionPerformed
-
-    private void jMenuItem17ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem17ActionPerformed
+    private void jMenuItem17ActionPerformed(java.awt.event.ActionEvent evt) {                                            
         // TODO add your handling code here:
         inf_RegistroPartida ventana = new inf_RegistroPartida();
         desktopPane.add(ventana);
         Dimension desktopSize = desktopPane.getSize();
         Dimension FrameSize = ventana.getSize();
         ventana.setLocation((desktopSize.width - FrameSize.width) / 2, (desktopSize.height - FrameSize.height) / 2);
-    }//GEN-LAST:event_jMenuItem17ActionPerformed
-
-
+    } //GEN-LAST:event_jMenuItem17ActionPerformed
 
     /**
      * @param args the command line arguments
