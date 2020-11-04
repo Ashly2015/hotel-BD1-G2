@@ -10,6 +10,7 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.Calendar;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
@@ -22,10 +23,9 @@ public class Matenimiento_Inventario extends javax.swing.JInternalFrame {
     /**
      * Creates new form Matenimiento_Inventario
      */
-    
     public void tablas() {
         try {
-            
+
             Connection cn = DriverManager.getConnection(mdi_Principal.BD, mdi_Principal.Usuario, mdi_Principal.Contraseña);
             PreparedStatement pstt4 = cn.prepareStatement("select * from inventario");
             ResultSet rss4 = pstt4.executeQuery();
@@ -43,7 +43,7 @@ public class Matenimiento_Inventario extends javax.swing.JInternalFrame {
             modelo.addColumn("Existencia");
             modelo.addColumn("Descripcion");
             modelo.addColumn("Fecha Exp.");
-            
+
             tbl.setModel(modelo);
             String[] dato = new String[12];
             while (rss4.next()) {
@@ -59,7 +59,7 @@ public class Matenimiento_Inventario extends javax.swing.JInternalFrame {
                 dato[9] = rss4.getString(10);
                 dato[10] = rss4.getString(11);
                 dato[11] = rss4.getString(12);
-                
+
                 modelo.addRow(dato);
             }
 
@@ -67,32 +67,34 @@ public class Matenimiento_Inventario extends javax.swing.JInternalFrame {
             e.printStackTrace();
         }
     }
-    
-    
+
     public void refrescar() {
         try {
             Connection cn = DriverManager.getConnection(mdi_Principal.BD, mdi_Principal.Usuario, mdi_Principal.Contraseña);
             PreparedStatement pst1 = cn.prepareStatement("select nombre from id_tipo_inventario");
-            /*PreparedStatement pst2 = cn.prepareStatement("select nombre from bodega");
+            PreparedStatement pst2 = cn.prepareStatement("select nombre from bodega");
             PreparedStatement pst3 = cn.prepareStatement("select nombre from marca");
-            PreparedStatement pst4 = cn.prepareStatement("select nombre from linea");*/
-            
+            PreparedStatement pst4 = cn.prepareStatement("select nombre from linea");
+
             ResultSet rs1 = pst1.executeQuery();
-            /*ResultSet rs2 = pst2.executeQuery();
+            ResultSet rs2 = pst2.executeQuery();
             ResultSet rs3 = pst3.executeQuery();
-            ResultSet rs4 = pst4.executeQuery();*/
+            ResultSet rs4 = pst4.executeQuery();
 
             cbox_tipo_Inventario.removeAllItems();
-            /*cbox_tipo_Inventario.addItem("Seleccione una opción");
+            cbox_Bodega.removeAllItems();
+            cbox_Marca.removeAllItems();
+            cbox_Linea.removeAllItems();
+            cbox_tipo_Inventario.addItem("Seleccione una opción");
             cbox_Bodega.addItem("Seleccione una opción");
             cbox_Marca.addItem("Seleccione una opción");
-            cbox_Linea.addItem("Seleccione una opción");*/
-                    
-            while (rs1.next() /*&& rs2.next() && rs3.next() && rs4.next()*/) {
+            cbox_Linea.addItem("Seleccione una opción");
+
+            while (rs1.next() && rs2.next() && rs3.next() && rs4.next()) {
                 cbox_tipo_Inventario.addItem(rs1.getString("nombre"));
-                /*cbox_Bodega.addItem(rs2.getString("nombre"));
+                cbox_Bodega.addItem(rs2.getString("nombre"));
                 cbox_Marca.addItem(rs3.getString("nombre"));
-                cbox_Linea.addItem(rs4.getString("nombre"));*/
+                cbox_Linea.addItem(rs4.getString("nombre"));
             }
             tablas();
         } catch (Exception e) {
@@ -100,47 +102,39 @@ public class Matenimiento_Inventario extends javax.swing.JInternalFrame {
         }
         tablas();
     }
-    
+
     public void iniciar_combo() {
-        try 
-        {
+        try {
             Connection cn = DriverManager.getConnection(mdi_Principal.BD, mdi_Principal.Usuario, mdi_Principal.Contraseña);
             PreparedStatement pst1 = cn.prepareStatement("select nombre from tipo_inventario");
             PreparedStatement pst2 = cn.prepareStatement("select nombre from bodega");
             PreparedStatement pst3 = cn.prepareStatement("select nombre from marca");
             PreparedStatement pst4 = cn.prepareStatement("select nombre from linea");
-            
-            ResultSet rs1 = pst1.executeQuery();            
+
+            ResultSet rs1 = pst1.executeQuery();
             ResultSet rs2 = pst2.executeQuery();
             ResultSet rs3 = pst3.executeQuery();
             ResultSet rs4 = pst4.executeQuery();
-            
-            cbox_tipo_Inventario.removeAllItems();
-            cbox_Bodega.removeAllItems();
-            cbox_Marca.removeAllItems();
-            cbox_Linea.removeAllItems();
-            
+
             cbox_tipo_Inventario.addItem("Seleccione una opción");
             cbox_Bodega.addItem("Seleccione una opción");
             cbox_Marca.addItem("Seleccione una opción");
             cbox_Linea.addItem("Seleccione una opción");
-            
+
             while (rs1.next() && rs2.next() && rs3.next() && rs4.next()) {
-                
+
                 cbox_tipo_Inventario.addItem(rs1.getString("nombre"));
                 cbox_Bodega.addItem(rs2.getString("nombre"));
                 cbox_Marca.addItem(rs3.getString("nombre"));
                 cbox_Linea.addItem(rs4.getString("nombre"));
-                
-               }
+
+            }
         } catch (Exception e) {
             e.printStackTrace();
         }
         tablas();
     }
-    
-    
-    
+
     public Matenimiento_Inventario() {
         initComponents();
         tablas();
@@ -157,7 +151,6 @@ public class Matenimiento_Inventario extends javax.swing.JInternalFrame {
     private void initComponents() {
 
         btnLimpiar = new javax.swing.JButton();
-        label5 = new javax.swing.JLabel();
         btnModificar = new javax.swing.JButton();
         label6 = new javax.swing.JLabel();
         label3 = new javax.swing.JLabel();
@@ -172,7 +165,6 @@ public class Matenimiento_Inventario extends javax.swing.JInternalFrame {
         label4 = new javax.swing.JLabel();
         btnBuscar = new javax.swing.JButton();
         txt_nombre = new javax.swing.JTextField();
-        txt_Estado = new javax.swing.JTextField();
         label1 = new javax.swing.JLabel();
         cbox_Bodega = new javax.swing.JComboBox<>();
         label7 = new javax.swing.JLabel();
@@ -181,7 +173,6 @@ public class Matenimiento_Inventario extends javax.swing.JInternalFrame {
         cbox_Linea = new javax.swing.JComboBox<>();
         label10 = new javax.swing.JLabel();
         txt_Descripcion = new javax.swing.JTextField();
-        txt_FechaExp = new javax.swing.JTextField();
         label11 = new javax.swing.JLabel();
         label12 = new javax.swing.JLabel();
         label13 = new javax.swing.JLabel();
@@ -192,6 +183,12 @@ public class Matenimiento_Inventario extends javax.swing.JInternalFrame {
         lb2 = new javax.swing.JLabel();
         lb3 = new javax.swing.JLabel();
         lb4 = new javax.swing.JLabel();
+        txt_fecha = new com.toedter.calendar.JDateChooser();
+        txt_Estado = new javax.swing.JTextField();
+        label8 = new javax.swing.JLabel();
+        jPanel1 = new javax.swing.JPanel();
+        activo = new javax.swing.JRadioButton();
+        inactivo = new javax.swing.JRadioButton();
 
         setClosable(true);
         setIconifiable(true);
@@ -204,9 +201,6 @@ public class Matenimiento_Inventario extends javax.swing.JInternalFrame {
                 btnLimpiarActionPerformed(evt);
             }
         });
-
-        label5.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
-        label5.setText("Estado:");
 
         btnModificar.setText("Modificar");
         btnModificar.setEnabled(false);
@@ -284,15 +278,6 @@ public class Matenimiento_Inventario extends javax.swing.JInternalFrame {
         txt_nombre.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(204, 204, 204)));
         txt_nombre.setOpaque(false);
 
-        txt_Estado.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
-        txt_Estado.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(204, 204, 204)));
-        txt_Estado.setOpaque(false);
-        txt_Estado.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txt_EstadoActionPerformed(evt);
-            }
-        });
-
         label1.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
         label1.setText("Inventarios Resgistrados");
 
@@ -330,15 +315,6 @@ public class Matenimiento_Inventario extends javax.swing.JInternalFrame {
         txt_Descripcion.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(204, 204, 204)));
         txt_Descripcion.setOpaque(false);
 
-        txt_FechaExp.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
-        txt_FechaExp.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(204, 204, 204)));
-        txt_FechaExp.setOpaque(false);
-        txt_FechaExp.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txt_FechaExpActionPerformed(evt);
-            }
-        });
-
         label11.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
         label11.setText("Fecha Caducidad:");
 
@@ -366,6 +342,53 @@ public class Matenimiento_Inventario extends javax.swing.JInternalFrame {
         lb3.setForeground(new java.awt.Color(204, 204, 204));
 
         lb4.setForeground(new java.awt.Color(204, 204, 204));
+
+        txt_Estado.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        txt_Estado.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(204, 204, 204)));
+        txt_Estado.setOpaque(false);
+
+        label8.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
+        label8.setText("Estado:");
+
+        jPanel1.setOpaque(false);
+
+        activo.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
+        activo.setText("Activo");
+        activo.setOpaque(false);
+        activo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                activoActionPerformed(evt);
+            }
+        });
+
+        inactivo.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
+        inactivo.setText("Inactivo");
+        inactivo.setOpaque(false);
+        inactivo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                inactivoActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(activo)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 27, Short.MAX_VALUE)
+                .addComponent(inactivo)
+                .addContainerGap())
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(activo)
+                    .addComponent(inactivo)))
+        );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -396,12 +419,10 @@ public class Matenimiento_Inventario extends javax.swing.JInternalFrame {
                                             .addComponent(label7)
                                             .addComponent(label9)
                                             .addComponent(label10)
-                                            .addComponent(label3)
-                                            .addComponent(label5))
+                                            .addComponent(label3))
                                         .addGap(18, 18, 18)
                                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                             .addComponent(cbox_Bodega, javax.swing.GroupLayout.PREFERRED_SIZE, 194, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(txt_Estado, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
                                             .addComponent(txt_nombre, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
                                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                                                 .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
@@ -414,15 +435,22 @@ public class Matenimiento_Inventario extends javax.swing.JInternalFrame {
                                                     .addComponent(lb3, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                                     .addGroup(layout.createSequentialGroup()
                                         .addGap(24, 24, 24)
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                             .addGroup(layout.createSequentialGroup()
-                                                .addComponent(label14)
-                                                .addGap(18, 18, 18)
-                                                .addComponent(txt_costo, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                            .addGroup(layout.createSequentialGroup()
-                                                .addComponent(label12)
-                                                .addGap(18, 18, 18)
-                                                .addComponent(txt_Precio))))))
+                                                .addComponent(label8)
+                                                .addGap(22, 22, 22)
+                                                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                                .addComponent(txt_Estado, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                                .addGroup(layout.createSequentialGroup()
+                                                    .addComponent(label14)
+                                                    .addGap(18, 18, 18)
+                                                    .addComponent(txt_costo, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                                .addGroup(layout.createSequentialGroup()
+                                                    .addComponent(label12)
+                                                    .addGap(18, 18, 18)
+                                                    .addComponent(txt_Precio)))))))
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                 .addComponent(lb2, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
@@ -435,7 +463,7 @@ public class Matenimiento_Inventario extends javax.swing.JInternalFrame {
                         .addContainerGap()
                         .addComponent(label11)
                         .addGap(18, 18, 18)
-                        .addComponent(txt_FechaExp, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(txt_fecha, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(22, 22, 22)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
@@ -475,7 +503,7 @@ public class Matenimiento_Inventario extends javax.swing.JInternalFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(cbox_Bodega, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(label7)
-                    .addComponent(lb2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(lb2, javax.swing.GroupLayout.DEFAULT_SIZE, 30, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(cbox_Marca, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -490,11 +518,15 @@ public class Matenimiento_Inventario extends javax.swing.JInternalFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(label3)
                     .addComponent(txt_nombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(label5)
-                    .addComponent(txt_Estado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(8, 8, 8)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(txt_Estado, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(layout.createSequentialGroup()
+                            .addGap(13, 13, 13)
+                            .addComponent(label8))
+                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(label12)
                     .addComponent(txt_Precio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -513,10 +545,10 @@ public class Matenimiento_Inventario extends javax.swing.JInternalFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(txt_Descripcion, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(label11)
-                    .addComponent(txt_FechaExp, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(37, 37, 37)
+                    .addComponent(txt_fecha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(34, 34, 34)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnRegistrar)
                     .addComponent(btnEliminar)
@@ -539,9 +571,7 @@ public class Matenimiento_Inventario extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnLimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimpiarActionPerformed
-        
-        
-        
+
         cbox_tipo_Inventario.setSelectedIndex(0);
         cbox_Bodega.setSelectedIndex(0);
         cbox_Marca.setSelectedIndex(0);
@@ -552,7 +582,9 @@ public class Matenimiento_Inventario extends javax.swing.JInternalFrame {
         txt_Precio.setText("");
         txt_costo.setText("");
         txt_Descripcion.setText("");
-        txt_FechaExp.setText("");
+        inactivo.setSelected(false);
+        activo.setSelected(false);
+        txt_fecha.setDate(null);
         btnModificar.setEnabled(false);
         btnEliminar.setEnabled(false);
         txtbuscado.setText("");
@@ -570,40 +602,55 @@ public class Matenimiento_Inventario extends javax.swing.JInternalFrame {
         try {
             String ID = txtbuscado.getText().trim();
 
+            int mes, dia, año;
+            dia = txt_fecha.getCalendar().get(Calendar.DAY_OF_MONTH);
+            mes = txt_fecha.getCalendar().get(Calendar.MONTH);
+            año = txt_fecha.getCalendar().get(Calendar.YEAR);
+            String fecha;
+            fecha = año + "/" + mes + "/" + dia;
+
             Connection cn = DriverManager.getConnection(mdi_Principal.BD, mdi_Principal.Usuario, mdi_Principal.Contraseña);
             PreparedStatement pst = cn.prepareStatement("update inventario set id_tipo_inventario = ?, id_bodega = ?,id_marca = ?, id_linea = ?,nombre = ?,estatus = ?, precio = ?,costo = ?, existencia = ?,descripcion = ?, fecha_vencimiento = ? where id_inventario = " + ID);
 
-            
             pst.setString(1, lb1.getText());
             pst.setString(2, lb2.getText());
             pst.setString(3, lb3.getText());
             pst.setString(4, lb4.getText());
             pst.setString(5, txt_nombre.getText());
-            pst.setString(6, txt_Estado.getText());
+            String mensaje = "";
+             if (activo.isSelected()) {
+                mensaje = "A";
+            } else if (inactivo.isSelected()) {
+                mensaje = "I";
+
+            }
+            pst.setString(6, mensaje);
             pst.setString(7, txt_Precio.getText());
             pst.setString(8, txt_costo.getText());
             pst.setString(9, txt_Existencia.getText());
             pst.setString(10, txt_Descripcion.getText());
-            pst.setString(11, txt_FechaExp.getText());
-            
+            pst.setString(11, fecha);
+
             pst.executeUpdate();
 
             //bitacora_modificar();
             JOptionPane.showMessageDialog(this, "¡MODIFICACION EXITOSA!", "Mensaje", JOptionPane.INFORMATION_MESSAGE);
-            
+
             txt_nombre.setText("");
             txt_Estado.setText("");
             txt_Precio.setText("");
             txt_costo.setText("");
             txt_Existencia.setText("");
             txt_Descripcion.setText("");
-            txt_FechaExp.setText("");
+            txt_fecha.setDate(null);
             txtbuscado.setText("");
+            inactivo.setSelected(false);
+            activo.setSelected(false);
             btnRegistrar.setEnabled(true);
             btnModificar.setEnabled(false);
             btnEliminar.setEnabled(false);
             tablas();
-            
+
         } catch (SQLException e) {
             JOptionPane.showMessageDialog(this, "Error en Modificacion", "Warning", JOptionPane.WARNING_MESSAGE);
         }
@@ -621,14 +668,16 @@ public class Matenimiento_Inventario extends javax.swing.JInternalFrame {
 
             // bitacora_eliminar();
             JOptionPane.showMessageDialog(this, "¡ELIMINACION EXITOSA!", "Mensaje", JOptionPane.INFORMATION_MESSAGE);
-            
+
             txt_nombre.setText("");
             txt_Estado.setText("");
             txt_Precio.setText("");
             txt_costo.setText("");
             txt_Existencia.setText("");
             txt_Descripcion.setText("");
-            txt_FechaExp.setText("");
+            txt_fecha.setDate(null);
+            inactivo.setSelected(false);
+            activo.setSelected(false);
             txtbuscado.setText("");
             btnRegistrar.setEnabled(true);
             btnModificar.setEnabled(false);
@@ -660,7 +709,6 @@ public class Matenimiento_Inventario extends javax.swing.JInternalFrame {
                 }
             }
 
-                      
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -671,6 +719,14 @@ public class Matenimiento_Inventario extends javax.swing.JInternalFrame {
     private void btnRegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarActionPerformed
         // TODO add your handling code here:
         try {
+
+            int mes, dia, año;
+            dia = txt_fecha.getCalendar().get(Calendar.DAY_OF_MONTH);
+            mes = txt_fecha.getCalendar().get(Calendar.MONTH);
+            año = txt_fecha.getCalendar().get(Calendar.YEAR);
+            String fecha;
+            fecha = año + "/" + mes + "/" + dia;
+
             Connection cn = DriverManager.getConnection(mdi_Principal.BD, mdi_Principal.Usuario, mdi_Principal.Contraseña);
             //localhost es 127.0.0.1
             PreparedStatement pst = cn.prepareStatement("insert into inventario values(?,?,?,?,?,?,?,?,?,?,?,?)");
@@ -681,34 +737,37 @@ public class Matenimiento_Inventario extends javax.swing.JInternalFrame {
             pst.setString(4, lb3.getText());
             pst.setString(5, lb4.getText());
             pst.setString(6, txt_nombre.getText());
-            pst.setString(7, txt_Estado.getText());
+            pst.setString(7, "A");
             pst.setString(8, txt_Precio.getText());
             pst.setString(9, txt_costo.getText());
             pst.setString(10, txt_Existencia.getText());
             pst.setString(11, txt_Descripcion.getText());
-            pst.setString(12, txt_FechaExp.getText());
-            
+            pst.setString(12, fecha);
+
             //bitacora_guardar();
             pst.executeUpdate();
 
             JOptionPane.showMessageDialog(this, "¡REGISTRO EXITOSO!", "Mensaje", JOptionPane.INFORMATION_MESSAGE);
-        
-        cbox_tipo_Inventario.setSelectedIndex(0);
-        cbox_Bodega.setSelectedIndex(0);
-        cbox_Marca.setSelectedIndex(0);
-        cbox_Linea.setSelectedIndex(0);
-        txt_nombre.setText("");
-        txt_Estado.setText("");
-        txt_Existencia.setText("");
-        txt_Precio.setText("");
-        txt_costo.setText("");
-        txt_Descripcion.setText("");
-        txt_FechaExp.setText("");
+
+            cbox_tipo_Inventario.setSelectedIndex(0);
+            cbox_Bodega.setSelectedIndex(0);
+            cbox_Marca.setSelectedIndex(0);
+            cbox_Linea.setSelectedIndex(0);
+            txt_nombre.setText("");
+            txt_Estado.setText("");
+            txt_Existencia.setText("");
+            txt_Precio.setText("");
+            txt_costo.setText("");
+            inactivo.setSelected(false);
+            activo.setSelected(false);
+            txt_Descripcion.setText("");
+            txt_fecha.setDate(null);
             txtbuscado.setText("");
             txt_Estado.setText("");
             tablas();
         } catch (SQLException e) {
             JOptionPane.showMessageDialog(this, "Error en registro", "Warning", JOptionPane.WARNING_MESSAGE);
+
         }
 
     }//GEN-LAST:event_btnRegistrarActionPerformed
@@ -734,7 +793,7 @@ public class Matenimiento_Inventario extends javax.swing.JInternalFrame {
                 txt_costo.setText(rs.getString("costo"));
                 txt_Existencia.setText(rs.getString("existencia"));
                 txt_Descripcion.setText(rs.getString("descripcion"));
-                txt_FechaExp.setText(rs.getString("fecha_vencimiento"));
+                txt_fecha.setDate(rs.getDate("fecha_vencimiento"));
                 btnModificar.setEnabled(true);
                 txt_Descripcion.setEnabled(true);
                 btnEliminar.setEnabled(true);
@@ -772,7 +831,6 @@ public class Matenimiento_Inventario extends javax.swing.JInternalFrame {
                 }
             }
 
-                      
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -798,7 +856,6 @@ public class Matenimiento_Inventario extends javax.swing.JInternalFrame {
                 }
             }
 
-                      
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -823,22 +880,32 @@ public class Matenimiento_Inventario extends javax.swing.JInternalFrame {
                 }
             }
 
-                      
         } catch (Exception e) {
             e.printStackTrace();
         }
     }//GEN-LAST:event_cbox_LineaActionPerformed
 
-    private void txt_FechaExpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_FechaExpActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txt_FechaExpActionPerformed
+    private void activoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_activoActionPerformed
+        if(activo.isSelected()){
 
-    private void txt_EstadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_EstadoActionPerformed
+            txt_Estado.setText("A");
+            inactivo.setSelected(false);
+        }
         // TODO add your handling code here:
-    }//GEN-LAST:event_txt_EstadoActionPerformed
+    }//GEN-LAST:event_activoActionPerformed
+
+    private void inactivoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_inactivoActionPerformed
+        if(inactivo.isSelected()){
+
+            txt_Estado.setText("I");
+            activo.setSelected(false);
+        }
+        // TODO add your handling code here:
+    }//GEN-LAST:event_inactivoActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JRadioButton activo;
     private javax.swing.JButton btnBuscar;
     private javax.swing.JButton btnEliminar;
     private javax.swing.JButton btnLimpiar;
@@ -848,6 +915,8 @@ public class Matenimiento_Inventario extends javax.swing.JInternalFrame {
     private javax.swing.JComboBox<String> cbox_Linea;
     private javax.swing.JComboBox<String> cbox_Marca;
     private javax.swing.JComboBox<String> cbox_tipo_Inventario;
+    private javax.swing.JRadioButton inactivo;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel label1;
     private javax.swing.JLabel label10;
@@ -858,9 +927,9 @@ public class Matenimiento_Inventario extends javax.swing.JInternalFrame {
     private javax.swing.JLabel label2;
     private javax.swing.JLabel label3;
     private javax.swing.JLabel label4;
-    private javax.swing.JLabel label5;
     private javax.swing.JLabel label6;
     private javax.swing.JLabel label7;
+    private javax.swing.JLabel label8;
     private javax.swing.JLabel label9;
     private javax.swing.JLabel lb1;
     private javax.swing.JLabel lb2;
@@ -870,9 +939,9 @@ public class Matenimiento_Inventario extends javax.swing.JInternalFrame {
     private javax.swing.JTextField txt_Descripcion;
     private javax.swing.JTextField txt_Estado;
     private javax.swing.JTextField txt_Existencia;
-    private javax.swing.JTextField txt_FechaExp;
     private javax.swing.JTextField txt_Precio;
     private javax.swing.JTextField txt_costo;
+    private com.toedter.calendar.JDateChooser txt_fecha;
     private javax.swing.JTextField txt_nombre;
     private javax.swing.JTextField txtbuscado;
     // End of variables declaration//GEN-END:variables

@@ -3,6 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+//inserte sus comentarios aqui
 package MDI;
 
 import java.awt.Dimension;
@@ -15,10 +16,10 @@ import java.sql.DriverManager;
  */
 public class mdi_Principal extends javax.swing.JFrame {
 
-    public static String BD = "jdbc:mysql://localhost/hotel";
+    public static String BD = "jdbc:mysql://localhost/hotel_general";
     public static String Usuario = "root";
     public static String Contraseña = "6182";
-            //"compromete";
+
 
     public static Connection getConeccion() {
         Connection cn = null;
@@ -53,11 +54,14 @@ public class mdi_Principal extends javax.swing.JFrame {
         desktopPane = new javax.swing.JDesktopPane();
         menuBar = new javax.swing.JMenuBar();
         fileMenu = new javax.swing.JMenu();
+        jMenuItem17 = new javax.swing.JMenuItem();
         jMenuMarcas = new javax.swing.JMenuItem();
         jMenuLineas = new javax.swing.JMenuItem();
-        jMenuParametros = new javax.swing.JMenuItem();
+        jMenuItem11 = new javax.swing.JMenuItem();
+        jMenuItem2 = new javax.swing.JMenuItem();
         jMenuTipoInven = new javax.swing.JMenuItem();
         jMenuInventarios = new javax.swing.JMenuItem();
+        jMenuItem5 = new javax.swing.JMenuItem();
         jMenuVehiculos = new javax.swing.JMenuItem();
         jMenuItem1 = new javax.swing.JMenuItem();
         openMenuItem = new javax.swing.JMenuItem();
@@ -65,26 +69,39 @@ public class mdi_Principal extends javax.swing.JFrame {
         saveAsMenuItem = new javax.swing.JMenuItem();
         exitMenuItem = new javax.swing.JMenuItem();
         exitMenuItem1 = new javax.swing.JMenuItem();
-        jMenuItem2 = new javax.swing.JMenuItem();
         jMenuItem3 = new javax.swing.JMenuItem();
         jMenuItem4 = new javax.swing.JMenuItem();
-        jMenuItem5 = new javax.swing.JMenuItem();
         jMenuItem6 = new javax.swing.JMenuItem();
         jMenuItem7 = new javax.swing.JMenuItem();
         jMenuItem8 = new javax.swing.JMenuItem();
         jMenuItem9 = new javax.swing.JMenuItem();
         jMenuItem10 = new javax.swing.JMenuItem();
-        jMenuItem11 = new javax.swing.JMenuItem();
+        jMenuParametros = new javax.swing.JMenuItem();
         jMenuItem12 = new javax.swing.JMenuItem();
         jMenuItem13 = new javax.swing.JMenuItem();
         jMenuItem14 = new javax.swing.JMenuItem();
         jMenuItem15 = new javax.swing.JMenuItem();
+        jMenu1 = new javax.swing.JMenu();
+        jMenuItem16 = new javax.swing.JMenuItem();
+        jMenuCotDetClientes = new javax.swing.JMenuItem();
+        jMenuCotDetProv = new javax.swing.JMenuItem();
+        jMenuCotEncProveedores = new javax.swing.JMenuItem();
+        jMenuCotEncClientes = new javax.swing.JMenuItem();
+        jMenuCotEncClientes1 = new javax.swing.JMenuItem();
         helpMenu = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         fileMenu.setMnemonic('f');
         fileMenu.setText("Mantenimientos");
+
+        jMenuItem17.setText("Registro Contable");
+        jMenuItem17.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem17ActionPerformed(evt);
+            }
+        });
+        fileMenu.add(jMenuItem17);
 
         jMenuMarcas.setText("Mantenimiento Marcas");
         jMenuMarcas.addActionListener(new java.awt.event.ActionListener() {
@@ -102,13 +119,21 @@ public class mdi_Principal extends javax.swing.JFrame {
         });
         fileMenu.add(jMenuLineas);
 
-        jMenuParametros.setText("Mantenimiento Parametros");
-        jMenuParametros.addActionListener(new java.awt.event.ActionListener() {
+        jMenuItem11.setText("Mantenimiento Sucursal");
+        jMenuItem11.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuParametrosActionPerformed(evt);
+                jMenuItem11ActionPerformed(evt);
             }
         });
-        fileMenu.add(jMenuParametros);
+        fileMenu.add(jMenuItem11);
+
+        jMenuItem2.setText("Mantenimiento Bodega");
+        jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem2ActionPerformed(evt);
+            }
+        });
+        fileMenu.add(jMenuItem2);
 
         jMenuTipoInven.setText("Mantenimiento Tipo De Inventarios");
         jMenuTipoInven.addActionListener(new java.awt.event.ActionListener() {
@@ -125,6 +150,14 @@ public class mdi_Principal extends javax.swing.JFrame {
             }
         });
         fileMenu.add(jMenuInventarios);
+
+        jMenuItem5.setText("Mantenimiento Piloto");
+        jMenuItem5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem5ActionPerformed(evt);
+            }
+        });
+        fileMenu.add(jMenuItem5);
 
         jMenuVehiculos.setText("Mantenimiento Vehiculos");
         jMenuVehiculos.addActionListener(new java.awt.event.ActionListener() {
@@ -187,14 +220,6 @@ public class mdi_Principal extends javax.swing.JFrame {
         });
         fileMenu.add(exitMenuItem1);
 
-        jMenuItem2.setText("Mantenimiento Bodega");
-        jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem2ActionPerformed(evt);
-            }
-        });
-        fileMenu.add(jMenuItem2);
-
         jMenuItem3.setText("Mantenimiento Impuesto");
         jMenuItem3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -210,14 +235,6 @@ public class mdi_Principal extends javax.swing.JFrame {
             }
         });
         fileMenu.add(jMenuItem4);
-
-        jMenuItem5.setText("Mantenimiento Piloto");
-        jMenuItem5.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem5ActionPerformed(evt);
-            }
-        });
-        fileMenu.add(jMenuItem5);
 
         jMenuItem6.setText("Mantenimiento Cobrador");
         jMenuItem6.addActionListener(new java.awt.event.ActionListener() {
@@ -259,13 +276,13 @@ public class mdi_Principal extends javax.swing.JFrame {
         });
         fileMenu.add(jMenuItem10);
 
-        jMenuItem11.setText("Mantenimiento Sucursal");
-        jMenuItem11.addActionListener(new java.awt.event.ActionListener() {
+        jMenuParametros.setText("Mantenimiento Parametros");
+        jMenuParametros.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem11ActionPerformed(evt);
+                jMenuParametrosActionPerformed(evt);
             }
         });
-        fileMenu.add(jMenuItem11);
+        fileMenu.add(jMenuParametros);
 
         jMenuItem12.setText("Mantenimiento Lavanderia");
         jMenuItem12.addActionListener(new java.awt.event.ActionListener() {
@@ -300,6 +317,58 @@ public class mdi_Principal extends javax.swing.JFrame {
         fileMenu.add(jMenuItem15);
 
         menuBar.add(fileMenu);
+
+        jMenu1.setText("Transacciones");
+
+        jMenuItem16.setText("Compras");
+        jMenuItem16.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem16ActionPerformed(evt);
+            }
+        });
+        jMenu1.add(jMenuItem16);
+
+        jMenuCotDetClientes.setText("Cotizacion Det. Clientes");
+        jMenuCotDetClientes.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuCotDetClientesActionPerformed(evt);
+            }
+        });
+        jMenu1.add(jMenuCotDetClientes);
+
+        jMenuCotDetProv.setText("Cotizacion Det. Proveedores");
+        jMenuCotDetProv.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuCotDetProvActionPerformed(evt);
+            }
+        });
+        jMenu1.add(jMenuCotDetProv);
+
+        jMenuCotEncProveedores.setText("Contizacion Enc. Proveedores");
+        jMenuCotEncProveedores.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuCotEncProveedoresActionPerformed(evt);
+            }
+        });
+        jMenu1.add(jMenuCotEncProveedores);
+
+        jMenuCotEncClientes.setText("Cotizacion Enc. Clientes");
+        jMenuCotEncClientes.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuCotEncClientesActionPerformed(evt);
+            }
+        });
+        jMenu1.add(jMenuCotEncClientes);
+
+        jMenuCotEncClientes1.setText("Credito Proveedores");
+        jMenuCotEncClientes1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuCotEncClientes1ActionPerformed(evt);
+            }
+        });
+        jMenu1.add(jMenuCotEncClientes1);
+
+        menuBar.add(jMenu1);
 
         helpMenu.setMnemonic('h');
         helpMenu.setText("Exit");
@@ -531,32 +600,98 @@ public class mdi_Principal extends javax.swing.JFrame {
         ventana.setLocation((desktopSize.width - FrameSize.width) / 2, (desktopSize.height - FrameSize.height) / 2);
     }//GEN-LAST:event_jMenuVehiculosActionPerformed
 
-    private void jMenuItem13ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem13ActionPerformed
+
+    private void jMenuItem13ActionPerformed(java.awt.event.ActionEvent evt) {                                            
         inf_Mantenimiento_TipoHabitacion ventana = new inf_Mantenimiento_TipoHabitacion();
+         desktopPane.add(ventana);
+        Dimension desktopSize = desktopPane.getSize();
+        Dimension FrameSize = ventana.getSize();
+        ventana.setLocation((desktopSize.width - FrameSize.width) / 2, (desktopSize.height - FrameSize.height) / 2);
+    }                                              
+
+    private void jMenuCotEncClientesActionPerformed(java.awt.event.ActionEvent evt) {                                                    
+        cot_enc_cliente ventana = new cot_enc_cliente();
         desktopPane.add(ventana);
         Dimension desktopSize = desktopPane.getSize();
         Dimension FrameSize = ventana.getSize();
         ventana.setLocation((desktopSize.width - FrameSize.width) / 2, (desktopSize.height - FrameSize.height) / 2);
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jMenuItem13ActionPerformed
 
-    private void jMenuItem15ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem15ActionPerformed
+    }                                           
+
+    private void jMenuItem15ActionPerformed(java.awt.event.ActionEvent evt) {                                            
         inf_Mantenimiento_Salon ventana = new inf_Mantenimiento_Salon();
         desktopPane.add(ventana);
         Dimension desktopSize = desktopPane.getSize();
         Dimension FrameSize = ventana.getSize();
         ventana.setLocation((desktopSize.width - FrameSize.width) / 2, (desktopSize.height - FrameSize.height) / 2);
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jMenuItem15ActionPerformed
+    }                                                   
 
-    private void jMenuItem14ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem14ActionPerformed
+    private void jMenuCotDetClientesActionPerformed(java.awt.event.ActionEvent evt) {                                                    
+        Cot_Det_Cliente ventana = new Cot_Det_Cliente();
+        desktopPane.add(ventana);
+        Dimension desktopSize = desktopPane.getSize();
+        Dimension FrameSize = ventana.getSize();
+        ventana.setLocation((desktopSize.width - FrameSize.width) / 2, (desktopSize.height - FrameSize.height) / 2);
+
+        // TODO add your handling code here:
+    }                                           
+
+    private void jMenuItem14ActionPerformed(java.awt.event.ActionEvent evt) {                                            
         inf_Mantenimiento_Habitacion ventana = new inf_Mantenimiento_Habitacion();
+     desktopPane.add(ventana);
+        Dimension desktopSize = desktopPane.getSize();
+        Dimension FrameSize = ventana.getSize();
+        ventana.setLocation((desktopSize.width - FrameSize.width) / 2, (desktopSize.height - FrameSize.height) / 2);
+    }                                                                                                 
+
+    private void jMenuCotEncProveedoresActionPerformed(java.awt.event.ActionEvent evt) {                                                       
+        Cot_Enc_Proveedor ventana = new Cot_Enc_Proveedor();
+
+        desktopPane.add(ventana);
+        Dimension desktopSize = desktopPane.getSize();
+        Dimension FrameSize = ventana.getSize();
+        ventana.setLocation((desktopSize.width - FrameSize.width) / 2, (desktopSize.height - FrameSize.height) / 2);
+
+        // TODO add your handling code here:
+    }                                           
+
+                                                         
+
+    private void jMenuCotDetProvActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuCotDetProvActionPerformed
+       Cot_Det_Proveedor ventana = new Cot_Det_Proveedor();
+        desktopPane.add(ventana);
+        Dimension desktopSize = desktopPane.getSize();
+        Dimension FrameSize = ventana.getSize();
+        ventana.setLocation((desktopSize.width - FrameSize.width) / 2, (desktopSize.height - FrameSize.height) / 2);
+    }//GEN-LAST:event_jMenuCotDetProvActionPerformed
+
+    private void jMenuItem16ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem16ActionPerformed
+        // TODO add your handling code here:
+        inf_Transaccion_Compras ventana = new inf_Transaccion_Compras();
+        desktopPane.add(ventana);
+        Dimension desktopSize = desktopPane.getSize();
+        Dimension FrameSize = ventana.getSize();
+        ventana.setLocation((desktopSize.width - FrameSize.width) / 2, (desktopSize.height - FrameSize.height) / 2);
+    }//GEN-LAST:event_jMenuItem16ActionPerformed
+
+    private void jMenuCotEncClientes1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuCotEncClientes1ActionPerformed
+       Credito_Proveedor ventana = new Credito_Proveedor();
         desktopPane.add(ventana);
         Dimension desktopSize = desktopPane.getSize();
         Dimension FrameSize = ventana.getSize();
         ventana.setLocation((desktopSize.width - FrameSize.width) / 2, (desktopSize.height - FrameSize.height) / 2);
         // TODO add your handling code here:
-    }//GEN-LAST:event_jMenuItem14ActionPerformed
+    }//GEN-LAST:event_jMenuCotEncClientes1ActionPerformed
+
+    private void jMenuItem17ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem17ActionPerformed
+        // TODO add your handling code here:
+        inf_RegistroPartida ventana = new inf_RegistroPartida();
+        desktopPane.add(ventana);
+        Dimension desktopSize = desktopPane.getSize();
+        Dimension FrameSize = ventana.getSize();
+        ventana.setLocation((desktopSize.width - FrameSize.width) / 2, (desktopSize.height - FrameSize.height) / 2);
+    }//GEN-LAST:event_jMenuItem17ActionPerformed
+
 
     /**
      * @param args the command line arguments
@@ -600,6 +735,12 @@ public class mdi_Principal extends javax.swing.JFrame {
     private javax.swing.JMenuItem exitMenuItem1;
     private javax.swing.JMenu fileMenu;
     private javax.swing.JMenu helpMenu;
+    private javax.swing.JMenu jMenu1;
+    private javax.swing.JMenuItem jMenuCotDetClientes;
+    private javax.swing.JMenuItem jMenuCotDetProv;
+    private javax.swing.JMenuItem jMenuCotEncClientes;
+    private javax.swing.JMenuItem jMenuCotEncClientes1;
+    private javax.swing.JMenuItem jMenuCotEncProveedores;
     private javax.swing.JMenuItem jMenuInventarios;
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem10;
@@ -608,6 +749,8 @@ public class mdi_Principal extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem13;
     private javax.swing.JMenuItem jMenuItem14;
     private javax.swing.JMenuItem jMenuItem15;
+    private javax.swing.JMenuItem jMenuItem16;
+    private javax.swing.JMenuItem jMenuItem17;
     private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JMenuItem jMenuItem4;

@@ -167,6 +167,11 @@ public class inf_Mantenimiento_Tipo_Cliente extends javax.swing.JInternalFrame {
         inactivo.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
         inactivo.setText("Inactivo");
         inactivo.setOpaque(false);
+        inactivo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                inactivoActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -383,9 +388,9 @@ public class inf_Mantenimiento_Tipo_Cliente extends javax.swing.JInternalFrame {
 
             Connection cn = DriverManager.getConnection(mdi_Principal.BD, mdi_Principal.Usuario, mdi_Principal.Contraseña);
             PreparedStatement pst = cn.prepareStatement("update tipo_cliente set  nombre = ?, estatus = ?  where id_tipo_cliente =" + ID);
-            String mensaje = "";
-            pst.setString(1, txt_nombre.getText());
             
+            pst.setString(1, txt_nombre.getText());
+            String mensaje = "";
              if (activo.isSelected()) {
                 mensaje = "A";
             } else if (inactivo.isSelected()) {
@@ -413,8 +418,22 @@ public class inf_Mantenimiento_Tipo_Cliente extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_btnModificarActionPerformed
 
     private void activoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_activoActionPerformed
-        // TODO add your handling code here:
+ if(activo.isSelected()){
+
+            txt_estado.setText("A");
+            inactivo.setSelected(false);
+        }
+ // TODO add your handling code here:
     }//GEN-LAST:event_activoActionPerformed
+
+    private void inactivoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_inactivoActionPerformed
+ if(inactivo.isSelected()){
+
+            txt_estado.setText("I");
+            activo.setSelected(false);
+        }
+ // TODO add your handling code here:
+    }//GEN-LAST:event_inactivoActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

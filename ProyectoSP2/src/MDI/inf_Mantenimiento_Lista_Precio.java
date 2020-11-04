@@ -439,7 +439,7 @@ public class inf_Mantenimiento_Lista_Precio extends javax.swing.JInternalFrame {
         }
         try {
             Connection cn = DriverManager.getConnection(mdi_Principal.BD, mdi_Principal.Usuario, mdi_Principal.Contraseña);
-            PreparedStatement pst = cn.prepareStatement("select * from lista_precio where id_lista_precio =?");
+            PreparedStatement pst = cn.prepareStatement("select * from lista_precio where id_lista_precio = ?");
             pst.setString(1, txtbuscado.getText().trim());
 
             ResultSet rs = pst.executeQuery();
@@ -448,8 +448,8 @@ public class inf_Mantenimiento_Lista_Precio extends javax.swing.JInternalFrame {
                 lb.setText(rs.getString("id_tipo_cliente"));
                 lb1.setText(rs.getString("id_tipo_precio"));
 
-                txt_precio.setText(rs.getString("correo"));
-                txt_porcentaje.setText(rs.getString("telefono"));
+                txt_precio.setText(rs.getString("precio"));
+                txt_porcentaje.setText(rs.getString("porcentaje"));
                 
 
                 btnModificar.setEnabled(true);

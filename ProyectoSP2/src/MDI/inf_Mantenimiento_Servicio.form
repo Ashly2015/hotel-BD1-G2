@@ -199,6 +199,9 @@
             <Property name="text" type="java.lang.String" value="Activo"/>
             <Property name="opaque" type="boolean" value="false"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="activoActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JRadioButton" name="inactivo">
           <Properties>
@@ -208,6 +211,9 @@
             <Property name="text" type="java.lang.String" value="Inactivo"/>
             <Property name="opaque" type="boolean" value="false"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="inactivoActionPerformed"/>
+          </Events>
         </Component>
       </SubComponents>
     </Container>
