@@ -54,9 +54,6 @@
     <Property name="title" type="java.lang.String" value="Registro de Partidas Libro Diario"/>
     <Property name="visible" type="boolean" value="true"/>
   </Properties>
-  <AccessibilityProperties>
-    <Property name="AccessibleContext.accessibleName" type="java.lang.String" value="Registro de Partidas Libro Diario"/>
-  </AccessibilityProperties>
   <SyntheticProperties>
     <SyntheticProperty name="formSizePolicy" type="int" value="1"/>
   </SyntheticProperties>
@@ -206,10 +203,8 @@
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="103" alignment="0" groupAlignment="0" max="-2" attributes="0">
                               <Component id="cbox_cargo" alignment="0" max="32767" attributes="0"/>
-                              <Group type="103" alignment="0" groupAlignment="3" attributes="0">
-                                  <Component id="cbox_abono" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Component id="label" alignment="3" min="-2" pref="20" max="-2" attributes="0"/>
-                              </Group>
+                              <Component id="cbox_abono" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="label" min="-2" pref="20" max="-2" attributes="0"/>
                           </Group>
                           <Component id="lb3" alignment="0" min="-2" pref="20" max="-2" attributes="0"/>
                       </Group>
