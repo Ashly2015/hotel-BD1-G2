@@ -34,7 +34,10 @@ public class inf_RegistroPartida extends javax.swing.JInternalFrame {
             modelo.addColumn("Cuenta Abono");
             modelo.addColumn("Quien Carga");
             modelo.addColumn("Quien Abona");
+<<<<<<< HEAD
             modelo.addColumn("Cantidad");
+=======
+>>>>>>> c3a78ea20c1077bfe7c88a9d73644e5cfebf2087
             tbl1.setModel(modelo);
             String[] dato = new String[10];
             while (rss4.next()) {
@@ -43,10 +46,16 @@ public class inf_RegistroPartida extends javax.swing.JInternalFrame {
                 dato[2] = rss4.getString(3);
                 dato[3] = rss4.getString(4);
                 dato[4] = rss4.getString(5);
+<<<<<<< HEAD
                 dato[5] = rss4.getString(7);
                 dato[6] = rss4.getString(8);
                 dato[7] = rss4.getString(6);
 
+=======
+                dato[5] = rss4.getString(6);
+                dato[6] = rss4.getString(7);
+                dato[6] = rss4.getString(8);
+>>>>>>> c3a78ea20c1077bfe7c88a9d73644e5cfebf2087
                 modelo.addRow(dato);
             }
 
@@ -93,6 +102,7 @@ public void get_fecha(){
     }
     
     public void iniciar_cboxquienc() {
+<<<<<<< HEAD
         String tabla=cbox_cargo.getSelectedItem().toString().trim();
         String dato="nombre_"+tabla;
 
@@ -110,6 +120,21 @@ public void get_fecha(){
                 cbox_quienc.addItem(rs.getString(dato));
             }
             
+=======
+        String tabla=cbox_cargo.getSelectedItem().toString();
+        String dato="nombre_"+tabla;
+        try {
+                cbox_quienc.removeAllItems();
+            Connection cn = DriverManager.getConnection(mdi_Principal.BD, mdi_Principal.Usuario,mdi_Principal.Contraseña);
+            PreparedStatement pst = cn.prepareStatement("select"+dato+" from "+tabla);       
+            ResultSet rs = pst.executeQuery();
+            cbox_quienc.addItem("Seleccione una opción");
+            
+           
+            while (rs.next()) {
+                cbox_quienc.addItem(rs.getString(dato));
+            }
+>>>>>>> c3a78ea20c1077bfe7c88a9d73644e5cfebf2087
 
         } catch (Exception e) {
             e.printStackTrace();
@@ -161,7 +186,11 @@ public void get_fecha(){
             Connection cn = DriverManager.getConnection(mdi_Principal.BD, mdi_Principal.Usuario, mdi_Principal.Contraseña);
             PreparedStatement pst = cn.prepareStatement("select nombre_cuenta from cuenta_contable where id_cuenta = ?");
 
+<<<<<<< HEAD
             pst.setString(1, lb3.getText().trim());
+=======
+            pst.setString(1, lb2.getText().trim());
+>>>>>>> c3a78ea20c1077bfe7c88a9d73644e5cfebf2087
 
             ResultSet rs = pst.executeQuery();
 
@@ -185,7 +214,11 @@ public void get_fecha(){
             Connection cn = DriverManager.getConnection(mdi_Principal.BD, mdi_Principal.Usuario, mdi_Principal.Contraseña);
             PreparedStatement pst = cn.prepareStatement("select nombre_cuenta from cuenta_contable where id_cuenta = ?");
 
+<<<<<<< HEAD
             pst.setString(1, label.getText().trim());
+=======
+            pst.setString(1, lb3.getText().trim());
+>>>>>>> c3a78ea20c1077bfe7c88a9d73644e5cfebf2087
 
             ResultSet rs = pst.executeQuery();
 
@@ -210,9 +243,15 @@ public void get_fecha(){
             String val="id_"+nombre_tabla;
 
             Connection cn = DriverManager.getConnection(mdi_Principal.BD, mdi_Principal.Usuario, mdi_Principal.Contraseña);
+<<<<<<< HEAD
             PreparedStatement pst = cn.prepareStatement("select * from "+nombre_tabla+" where "+val+"= ?");
 
             pst.setString(1, lb5.getText().trim());
+=======
+            PreparedStatement pst = cn.prepareStatement("select "+dato+" from "+nombre_tabla+" where"+val+"= ?");
+
+            pst.setString(1, label.getText().trim());
+>>>>>>> c3a78ea20c1077bfe7c88a9d73644e5cfebf2087
 
             ResultSet rs = pst.executeQuery();
 
@@ -234,9 +273,15 @@ public void get_fecha(){
             String dato="nombre_"+nombre_tabla;
             String val="id_"+nombre_tabla;
             Connection cn = DriverManager.getConnection(mdi_Principal.BD, mdi_Principal.Usuario, mdi_Principal.Contraseña);
+<<<<<<< HEAD
             PreparedStatement pst = cn.prepareStatement("select * from "+nombre_tabla+" where "+val+" = ?");
 
             pst.setString(1, lb6.getText().trim());
+=======
+            PreparedStatement pst = cn.prepareStatement("select "+dato+" from "+nombre_tabla+" where"+val+" = ?");
+
+            pst.setString(1, lb5.getText().trim());
+>>>>>>> c3a78ea20c1077bfe7c88a9d73644e5cfebf2087
 
             ResultSet rs = pst.executeQuery();
 
@@ -352,8 +397,13 @@ public void get_fecha(){
         ca = new javax.swing.JLabel();
         qc = new javax.swing.JLabel();
         oper = new javax.swing.JLabel();
+<<<<<<< HEAD
         lb6 = new javax.swing.JLabel();
         lb5 = new javax.swing.JLabel();
+=======
+        lb5 = new javax.swing.JLabel();
+        lb6 = new javax.swing.JLabel();
+>>>>>>> c3a78ea20c1077bfe7c88a9d73644e5cfebf2087
         cbox_quienc = new javax.swing.JComboBox<>();
         carga = new javax.swing.JLabel();
         cbox_quiena = new javax.swing.JComboBox<>();
@@ -382,8 +432,11 @@ public void get_fecha(){
         jScrollPane1 = new javax.swing.JScrollPane();
         tbl1 = new javax.swing.JTable();
         label = new javax.swing.JLabel();
+<<<<<<< HEAD
         jLabel10 = new javax.swing.JLabel();
         txt_codigo = new javax.swing.JTextField();
+=======
+>>>>>>> c3a78ea20c1077bfe7c88a9d73644e5cfebf2087
 
         lb2.setForeground(new java.awt.Color(204, 204, 204));
         lb2.setText(".");
@@ -398,10 +451,17 @@ public void get_fecha(){
 
         oper.setText("jLabel6");
 
+<<<<<<< HEAD
         lb6.setText("jLabel10");
 
         lb5.setText("jLabel6");
 
+=======
+        lb5.setText("jLabel6");
+
+        lb6.setText("jLabel10");
+
+>>>>>>> c3a78ea20c1077bfe7c88a9d73644e5cfebf2087
         setClosable(true);
         setIconifiable(true);
         setMaximizable(true);
@@ -498,11 +558,19 @@ public void get_fecha(){
 
             },
             new String [] {
+<<<<<<< HEAD
                 "ID", "Operacion", "Fecha", "Cuenta Cargo", "Cuenta Abono", "Quien Carga", "Quien Abona", "Cantidad"
             }
         ) {
             boolean[] canEdit = new boolean [] {
                 false, false, false, false, false, false, true, true
+=======
+                "ID", "Operacion", "Fecha", "Cuenta Cargo", "Cuenta Abono", "Quien Carga", "Quien Abona"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false, false, true
+>>>>>>> c3a78ea20c1077bfe7c88a9d73644e5cfebf2087
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -511,8 +579,11 @@ public void get_fecha(){
         });
         jScrollPane1.setViewportView(tbl1);
 
+<<<<<<< HEAD
         jLabel10.setText("Codigo");
 
+=======
+>>>>>>> c3a78ea20c1077bfe7c88a9d73644e5cfebf2087
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -520,6 +591,7 @@ public void get_fecha(){
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
+<<<<<<< HEAD
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(cbox_quienc, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -581,6 +653,11 @@ public void get_fecha(){
                                 .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(25, 25, 25)
+=======
+                        .addGap(25, 25, 25)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+>>>>>>> c3a78ea20c1077bfe7c88a9d73644e5cfebf2087
                                 .addComponent(btnRegistrar)
                                 .addGap(18, 18, 18)
                                 .addComponent(btnModificar)
@@ -593,9 +670,69 @@ public void get_fecha(){
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(buscar, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(layout.createSequentialGroup()
+<<<<<<< HEAD
                                 .addGap(78, 78, 78)
                                 .addComponent(txt_cantidad, javax.swing.GroupLayout.PREFERRED_SIZE, 380, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(0, 0, Short.MAX_VALUE)))
+=======
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGap(281, 281, 281)
+                                        .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGap(67, 67, 67)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                .addGroup(layout.createSequentialGroup()
+                                                    .addComponent(cbox_operacion, javax.swing.GroupLayout.PREFERRED_SIZE, 254, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                    .addComponent(lb1, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                                    .addGroup(layout.createSequentialGroup()
+                                                        .addComponent(jLabel4)
+                                                        .addGap(199, 199, 199)
+                                                        .addComponent(jLabel5))
+                                                    .addComponent(jLabel3))
+                                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                                    .addGap(12, 12, 12)
+                                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                                            .addComponent(jLabel2)
+                                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                            .addComponent(date_fecha, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                            .addGap(220, 220, 220))
+                                                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                                            .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 255, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                            .addGap(145, 145, 145))
+                                                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                                            .addComponent(jLabel8)
+                                                            .addGap(257, 257, 257)))))
+                                            .addGroup(layout.createSequentialGroup()
+                                                .addComponent(cbox_cargo, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                                .addComponent(lb3, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                .addComponent(cbox_abono, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addGap(18, 18, 18)
+                                                .addComponent(label, javax.swing.GroupLayout.PREFERRED_SIZE, 19, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addGap(15, 15, 15))
+                                            .addGroup(layout.createSequentialGroup()
+                                                .addComponent(cbox_quienc, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                                .addComponent(carga, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addGap(82, 82, 82)
+                                                .addComponent(cbox_quiena, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addGap(18, 18, 18)
+                                                .addComponent(abona, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 434, Short.MAX_VALUE))))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(256, 256, 256)
+                        .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(136, 136, 136)
+                        .addComponent(txt_cantidad, javax.swing.GroupLayout.PREFERRED_SIZE, 380, javax.swing.GroupLayout.PREFERRED_SIZE)))
+>>>>>>> c3a78ea20c1077bfe7c88a9d73644e5cfebf2087
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -603,6 +740,7 @@ public void get_fecha(){
             .addGroup(layout.createSequentialGroup()
                 .addGap(25, 25, 25)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+<<<<<<< HEAD
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 303, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(20, 20, 20)
@@ -625,6 +763,25 @@ public void get_fecha(){
                             .addComponent(jLabel4)
                             .addComponent(jLabel5))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+=======
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(cbox_operacion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lb1, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(33, 33, 33)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel2)
+                            .addComponent(date_fecha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(37, 37, 37)
+                        .addComponent(jLabel3)
+                        .addGap(19, 19, 19)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel4)
+                            .addComponent(jLabel5))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+>>>>>>> c3a78ea20c1077bfe7c88a9d73644e5cfebf2087
                         .addComponent(jLabel8)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -641,12 +798,22 @@ public void get_fecha(){
                                 .addComponent(cbox_quienc)
                                 .addComponent(cbox_quiena, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addComponent(abona, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
+<<<<<<< HEAD
                             .addComponent(carga, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addGap(36, 36, 36)
                 .addComponent(jLabel9)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(txt_cantidad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(44, 44, 44)
+=======
+                            .addComponent(carga, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 303, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jLabel9)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(txt_cantidad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+>>>>>>> c3a78ea20c1077bfe7c88a9d73644e5cfebf2087
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnLimpiar)
                     .addComponent(btnEliminar)
@@ -669,7 +836,11 @@ public void get_fecha(){
 
             Connection cn = DriverManager.getConnection(mdi_Principal.BD, mdi_Principal.Usuario, mdi_Principal.Contraseña);
 
+<<<<<<< HEAD
             PreparedStatement pst = cn.prepareStatement("select * from "+tabla+" where "+val+"= ?");
+=======
+            PreparedStatement pst = cn.prepareStatement("select"+dato+" from "+tabla+" where "+val+"= ?");
+>>>>>>> c3a78ea20c1077bfe7c88a9d73644e5cfebf2087
             pst.setString(1, cbox_quienc.getSelectedItem().toString().trim());
             ResultSet rs2 = pst.executeQuery();
 
@@ -699,7 +870,11 @@ public void get_fecha(){
 
             Connection cn = DriverManager.getConnection(mdi_Principal.BD, mdi_Principal.Usuario, mdi_Principal.Contraseña);
 
+<<<<<<< HEAD
             PreparedStatement pst = cn.prepareStatement("select * from "+tabla+" where "+val+"= ?");
+=======
+            PreparedStatement pst = cn.prepareStatement("select"+dato+" from "+tabla+" where "+val+"= ?");
+>>>>>>> c3a78ea20c1077bfe7c88a9d73644e5cfebf2087
             pst.setString(1, cbox_quiena.getSelectedItem().toString().trim());
             ResultSet rs2 = pst.executeQuery();
 
@@ -729,8 +904,13 @@ public void get_fecha(){
         remover();
 
         lb1.setText("");
+<<<<<<< HEAD
         lb3.setText("");
         label.setText("");
+=======
+        lb2.setText("");
+        lb3.setText("");
+>>>>>>> c3a78ea20c1077bfe7c88a9d73644e5cfebf2087
         carga.setText("");
         abona.setText("");
         txt_cantidad.setText("");
@@ -754,11 +934,19 @@ public void get_fecha(){
             if (rs.next()) {
                 lb1.setText(rs.getString("codigo"));
                 date_fecha.setDate(rs.getDate("fecha_operacion"));
+<<<<<<< HEAD
                 lb3.setText(rs.getString("cuenta_cargo"));
                 label.setText(rs.getString("cuenta_abono"));
                 txt_cantidad.setText(rs.getString("cantidad"));
                 lb5.setText(rs.getString("quien_carga"));
                 lb6.setText(rs.getString("quien_abona"));
+=======
+                lb2.setText(rs.getString("cuenta_cargo"));
+                lb3.setText(rs.getString("cuenta_abono"));
+                txt_cantidad.setText(rs.getString("cantidad"));
+                label.setText(rs.getString("quien_carga"));
+                lb5.setText(rs.getString("quien_abona"));
+>>>>>>> c3a78ea20c1077bfe7c88a9d73644e5cfebf2087
 
                 buscar_operacion();
                 buscar_nombrecc();
@@ -792,6 +980,7 @@ public void get_fecha(){
             pst2.executeUpdate();
 
             cbox_operacion.setSelectedIndex(0);
+<<<<<<< HEAD
         cbox_cargo.setSelectedIndex(0);
         cbox_abono.setSelectedIndex(0);
         get_fecha();
@@ -805,6 +994,19 @@ public void get_fecha(){
         abona.setText("");
         txt_cantidad.setText("");
         buscar.setText("");
+=======
+            get_fecha();
+            cbox_cargo.setSelectedIndex(0);
+            cbox_abono.setSelectedIndex(0);
+            remover();
+            lb1.setText("");
+            lb2.setText("");
+            lb3.setText("");
+            carga.setText("");
+            abona.setText("");
+            txt_cantidad.setText("");
+            buscar.setText("");
+>>>>>>> c3a78ea20c1077bfe7c88a9d73644e5cfebf2087
 
             btnRegistrar.setEnabled(true);
             btnModificar.setEnabled(false);
@@ -832,8 +1034,13 @@ public void get_fecha(){
 
             pst2.setString(1, lb1.getText());
             pst2.setString(2, dateN.toString());
+<<<<<<< HEAD
             pst2.setString(3, lb3.getText());
             pst2.setString(4, label.getText());
+=======
+            pst2.setString(3, lb2.getText());
+            pst2.setString(4, lb3.getText());
+>>>>>>> c3a78ea20c1077bfe7c88a9d73644e5cfebf2087
             pst2.setString(5, txt_cantidad.getText());
             pst2.setString(6, carga.getText());
             pst2.setString(7, abona.getText());
@@ -842,6 +1049,7 @@ public void get_fecha(){
 
             //bitacora_modificar();
             cbox_operacion.setSelectedIndex(0);
+<<<<<<< HEAD
         cbox_cargo.setSelectedIndex(0);
         cbox_abono.setSelectedIndex(0);
         get_fecha();
@@ -855,6 +1063,19 @@ public void get_fecha(){
         abona.setText("");
         txt_cantidad.setText("");
         buscar.setText("");
+=======
+            cbox_cargo.setSelectedIndex(0);
+            cbox_abono.setSelectedIndex(0);
+            remover();
+            get_fecha();
+            txt_cantidad.setText("");
+            lb1.setText("");
+            lb2.setText("");
+            lb3.setText("");
+            carga.setText("");
+            abona.setText("");
+            buscar.setText("");
+>>>>>>> c3a78ea20c1077bfe7c88a9d73644e5cfebf2087
 
             btnRegistrar.setEnabled(true);
             btnModificar.setEnabled(false);
@@ -878,11 +1099,19 @@ public void get_fecha(){
             //localhost es 127.0.0.1
             PreparedStatement pst2 = cn.prepareStatement("insert into registro_contable values(?,?,?,?,?,?,?,?)");
 
+<<<<<<< HEAD
             pst2.setString(1, txt_codigo.getText());
             pst2.setString(2, lb1.getText());
             pst2.setString(3, dateN.toString());
             pst2.setString(4, lb3.getText());
             pst2.setString(5, label.getText());
+=======
+            pst2.setString(1, "0");
+            pst2.setString(2, lb1.getText());
+            pst2.setString(3, dateN.toString());
+            pst2.setString(4, lb2.getText());
+            pst2.setString(5, lb3.getText());
+>>>>>>> c3a78ea20c1077bfe7c88a9d73644e5cfebf2087
             pst2.setString(6, txt_cantidad.getText());
             pst2.setString(7, carga.getText().trim());
             pst2.setString(8, abona.getText().trim());
@@ -891,6 +1120,7 @@ public void get_fecha(){
 
             //bitacora_guardar();
             cbox_operacion.setSelectedIndex(0);
+<<<<<<< HEAD
         cbox_cargo.setSelectedIndex(0);
         cbox_abono.setSelectedIndex(0);
         get_fecha();
@@ -904,6 +1134,19 @@ public void get_fecha(){
         abona.setText("");
         txt_cantidad.setText("");
         buscar.setText("");
+=======
+            cbox_cargo.setSelectedIndex(0);
+            cbox_abono.setSelectedIndex(0);
+            remover();
+            get_fecha();
+            txt_cantidad.setText("");
+            lb1.setText("");
+            lb2.setText("");
+            lb3.setText("");
+            carga.setText("");
+            abona.setText("");
+            buscar.setText("");
+>>>>>>> c3a78ea20c1077bfe7c88a9d73644e5cfebf2087
 
             JOptionPane.showMessageDialog(this, "¡REGISTRO EXITOSO!", "Mensaje", JOptionPane.INFORMATION_MESSAGE);
         } catch (Exception e) {
@@ -962,8 +1205,13 @@ public void get_fecha(){
         try {
             Connection cn = DriverManager.getConnection(mdi_Principal.BD, mdi_Principal.Usuario, mdi_Principal.Contraseña);
 
+<<<<<<< HEAD
             PreparedStatement pst = cn.prepareStatement("select id_cuenta from cuenta_contable where nombre_cuenta= ?");
             pst.setString(1, cbox_abono.getSelectedItem().toString().trim());
+=======
+            PreparedStatement pst = cn.prepareStatement("select codigo_cuenta from cuenta_contable where nombre_cuenta= ?");
+            pst.setString(1, cbox_abono.getSelectedItem().toString());
+>>>>>>> c3a78ea20c1077bfe7c88a9d73644e5cfebf2087
             ResultSet rs2 = pst.executeQuery();
 
             if (rs2.next()) {
@@ -1002,7 +1250,10 @@ public void get_fecha(){
     private javax.swing.JLabel cc;
     private com.toedter.calendar.JDateChooser date_fecha;
     private javax.swing.JLabel jLabel1;
+<<<<<<< HEAD
     private javax.swing.JLabel jLabel10;
+=======
+>>>>>>> c3a78ea20c1077bfe7c88a9d73644e5cfebf2087
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -1022,6 +1273,9 @@ public void get_fecha(){
     private javax.swing.JLabel qc;
     private javax.swing.JTable tbl1;
     private javax.swing.JTextField txt_cantidad;
+<<<<<<< HEAD
     private javax.swing.JTextField txt_codigo;
+=======
+>>>>>>> c3a78ea20c1077bfe7c88a9d73644e5cfebf2087
     // End of variables declaration//GEN-END:variables
 }
