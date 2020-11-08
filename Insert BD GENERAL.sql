@@ -169,9 +169,9 @@ INSERT INTO prenda VALUES (0, 3, "Pantalones", '2020/08/10', '17:25:32.1212222')
 INSERT INTO prenda VALUES (0, 2, "Playeras", '2020/08/10', '17:25:32.1212222');
 
 #inserts tipo_precio
-insert into tipo_precio values (0,"0", "Lavanderia", "A");
-insert into tipo_precio values (0,"0", "Restaurante", "A");
-insert into tipo_precio values (0,"0", "Servicio", "A");
+insert into tipo_precio values (0,1, "Lavanderia", "A");
+insert into tipo_precio values (0,1, "Restaurante", "A");
+insert into tipo_precio values (0,1, "Servicio", "A");
 
 #inserts lista_precio
 insert into lista_precio values (0,1,1, 22.26, 5.2);
@@ -181,3 +181,11 @@ insert into lista_precio values (0,2,1, 22.26, 5.2);
 #inserts descuento
 insert into descuento values (0,"Promocion",10,2);
 insert into descuento values (0,"Pago al contado",7,2);
+
+#inserts ventas
+insert into venta_encabezado values(1,1,1,1,1,100,"2020-11-01");
+insert into venta_detalle values(1,1,1,1,100);
+
+insert into tipo_pago_credito values(1, "tarjeta", "A");
+insert into tipo_pago_credito values(2, "cheque", "A");
+insert into tipo_pago_credito values(3, "efectivo", "A");

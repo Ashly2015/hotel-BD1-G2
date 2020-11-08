@@ -317,35 +317,20 @@
             <Property name="text" type="java.lang.String" value="Privacidad"/>
           </Properties>
           <SubComponents>
-<<<<<<< HEAD
-            <MenuItem class="javax.swing.JMenuItem" name="jMenuItem18">
-=======
             <MenuItem class="javax.swing.JMenuItem" name="jMenuItem20">
->>>>>>> c181d0cf8785ef4c7c77ea7624ac26e9468c013a
               <Properties>
                 <Property name="text" type="java.lang.String" value="Mantenimiento Rol"/>
               </Properties>
               <Events>
-<<<<<<< HEAD
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMenuItem18ActionPerformed"/>
-              </Events>
-            </MenuItem>
-            <MenuItem class="javax.swing.JMenuItem" name="jMenuItem19">
-=======
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMenuItem20ActionPerformed"/>
               </Events>
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="jMenuItem21">
->>>>>>> c181d0cf8785ef4c7c77ea7624ac26e9468c013a
               <Properties>
                 <Property name="text" type="java.lang.String" value="Mantenimento Usuario"/>
               </Properties>
               <Events>
-<<<<<<< HEAD
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMenuItem19ActionPerformed"/>
-=======
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMenuItem21ActionPerformed"/>
->>>>>>> c181d0cf8785ef4c7c77ea7624ac26e9468c013a
               </Events>
             </MenuItem>
           </SubComponents>
@@ -396,11 +381,6 @@
   </Layout>
   <SubComponents>
     <Container class="javax.swing.JDesktopPane" name="desktopPane">
-      <Properties>
-        <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-          <Color blue="0" green="0" red="0" type="rgb"/>
-        </Property>
-      </Properties>
 
       <Layout class="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout">
         <Property name="useNullLayout" type="boolean" value="true"/>
