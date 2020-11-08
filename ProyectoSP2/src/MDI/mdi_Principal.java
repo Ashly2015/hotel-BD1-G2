@@ -16,11 +16,10 @@ import java.sql.DriverManager;
  */
 public class mdi_Principal extends javax.swing.JFrame {
 
-    private static String c;
-    private static String u;
     public static String BD = "jdbc:mysql://localhost/hotel_general";
     public static String Usuario = "root";
     public static String Contraseña = "6182";
+
 
     public static Connection getConeccion() {
         Connection cn = null;
@@ -41,9 +40,6 @@ public class mdi_Principal extends javax.swing.JFrame {
         this.setExtendedState(mdi_Principal.MAXIMIZED_BOTH);
         this.setTitle("Hotel");
         setDefaultCloseOperation(EXIT_ON_CLOSE);
-        labelusuario.setBounds(10, 10, 160, 51);
-        c = labelc.getText().trim();
-        u = labelusuario.getText().trim();
     }
 
     /**
@@ -97,24 +93,14 @@ public class mdi_Principal extends javax.swing.JFrame {
         jMenuCotEncClientes = new javax.swing.JMenuItem();
         jMenuCotEncClientes1 = new javax.swing.JMenuItem();
         jmAdministracion = new javax.swing.JMenu();
-<<<<<<< HEAD
-        jMenuItem18 = new javax.swing.JMenuItem();
-        jMenuItem19 = new javax.swing.JMenuItem();
-=======
         jMenuItem20 = new javax.swing.JMenuItem();
         jMenuItem21 = new javax.swing.JMenuItem();
->>>>>>> c181d0cf8785ef4c7c77ea7624ac26e9468c013a
         helpMenu = new javax.swing.JMenu();
 
         labelc.setText("jLabel1");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-<<<<<<< HEAD
-        desktopPane.setBackground(new java.awt.Color(0, 0, 0));
-
-=======
->>>>>>> c181d0cf8785ef4c7c77ea7624ac26e9468c013a
         labelusuario.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         desktopPane.add(labelusuario);
         labelusuario.setBounds(900, 10, 80, 30);
@@ -415,23 +401,6 @@ public class mdi_Principal extends javax.swing.JFrame {
 
         jmAdministracion.setText("Privacidad");
 
-<<<<<<< HEAD
-        jMenuItem18.setText("Mantenimiento Rol");
-        jMenuItem18.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem18ActionPerformed(evt);
-            }
-        });
-        jmAdministracion.add(jMenuItem18);
-
-        jMenuItem19.setText("Mantenimento Usuario");
-        jMenuItem19.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem19ActionPerformed(evt);
-            }
-        });
-        jmAdministracion.add(jMenuItem19);
-=======
         jMenuItem20.setText("Mantenimiento Rol");
         jMenuItem20.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -447,7 +416,6 @@ public class mdi_Principal extends javax.swing.JFrame {
             }
         });
         jmAdministracion.add(jMenuItem21);
->>>>>>> c181d0cf8785ef4c7c77ea7624ac26e9468c013a
 
         menuBar.add(jmAdministracion);
 
@@ -681,32 +649,33 @@ public class mdi_Principal extends javax.swing.JFrame {
         ventana.setLocation((desktopSize.width - FrameSize.width) / 2, (desktopSize.height - FrameSize.height) / 2);
     }//GEN-LAST:event_jMenuVehiculosActionPerformed
 
-    private void jMenuItem13ActionPerformed(java.awt.event.ActionEvent evt) {
+
+    private void jMenuItem13ActionPerformed(java.awt.event.ActionEvent evt) {                                            
         inf_Mantenimiento_TipoHabitacion ventana = new inf_Mantenimiento_TipoHabitacion();
-        desktopPane.add(ventana);
+         desktopPane.add(ventana);
         Dimension desktopSize = desktopPane.getSize();
         Dimension FrameSize = ventana.getSize();
         ventana.setLocation((desktopSize.width - FrameSize.width) / 2, (desktopSize.height - FrameSize.height) / 2);
-    }
+    }                                              
 
-    private void jMenuCotEncClientesActionPerformed(java.awt.event.ActionEvent evt) {
+    private void jMenuCotEncClientesActionPerformed(java.awt.event.ActionEvent evt) {                                                    
         cot_enc_cliente ventana = new cot_enc_cliente();
         desktopPane.add(ventana);
         Dimension desktopSize = desktopPane.getSize();
         Dimension FrameSize = ventana.getSize();
         ventana.setLocation((desktopSize.width - FrameSize.width) / 2, (desktopSize.height - FrameSize.height) / 2);
 
-    }
+    }                                           
 
-    private void jMenuItem15ActionPerformed(java.awt.event.ActionEvent evt) {
+    private void jMenuItem15ActionPerformed(java.awt.event.ActionEvent evt) {                                            
         inf_Mantenimiento_Salon ventana = new inf_Mantenimiento_Salon();
         desktopPane.add(ventana);
         Dimension desktopSize = desktopPane.getSize();
         Dimension FrameSize = ventana.getSize();
         ventana.setLocation((desktopSize.width - FrameSize.width) / 2, (desktopSize.height - FrameSize.height) / 2);
-    }
+    }                                                   
 
-    private void jMenuCotDetClientesActionPerformed(java.awt.event.ActionEvent evt) {
+    private void jMenuCotDetClientesActionPerformed(java.awt.event.ActionEvent evt) {                                                    
         Cot_Det_Cliente ventana = new Cot_Det_Cliente();
         desktopPane.add(ventana);
         Dimension desktopSize = desktopPane.getSize();
@@ -714,17 +683,17 @@ public class mdi_Principal extends javax.swing.JFrame {
         ventana.setLocation((desktopSize.width - FrameSize.width) / 2, (desktopSize.height - FrameSize.height) / 2);
 
         // TODO add your handling code here:
-    }
+    }                                           
 
-    private void jMenuItem14ActionPerformed(java.awt.event.ActionEvent evt) {
+    private void jMenuItem14ActionPerformed(java.awt.event.ActionEvent evt) {                                            
         inf_Mantenimiento_Habitacion ventana = new inf_Mantenimiento_Habitacion();
-        desktopPane.add(ventana);
+     desktopPane.add(ventana);
         Dimension desktopSize = desktopPane.getSize();
         Dimension FrameSize = ventana.getSize();
         ventana.setLocation((desktopSize.width - FrameSize.width) / 2, (desktopSize.height - FrameSize.height) / 2);
-    }
+    }                                                                                                 
 
-    private void jMenuCotEncProveedoresActionPerformed(java.awt.event.ActionEvent evt) {
+    private void jMenuCotEncProveedoresActionPerformed(java.awt.event.ActionEvent evt) {                                                       
         Cot_Enc_Proveedor ventana = new Cot_Enc_Proveedor();
 
         desktopPane.add(ventana);
@@ -733,11 +702,12 @@ public class mdi_Principal extends javax.swing.JFrame {
         ventana.setLocation((desktopSize.width - FrameSize.width) / 2, (desktopSize.height - FrameSize.height) / 2);
 
         // TODO add your handling code here:
-    }
+    }                                           
 
+                                                         
 
     private void jMenuCotDetProvActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuCotDetProvActionPerformed
-        Cot_Det_Proveedor ventana = new Cot_Det_Proveedor();
+       Cot_Det_Proveedor ventana = new Cot_Det_Proveedor();
         desktopPane.add(ventana);
         Dimension desktopSize = desktopPane.getSize();
         Dimension FrameSize = ventana.getSize();
@@ -754,7 +724,7 @@ public class mdi_Principal extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuItem16ActionPerformed
 
     private void jMenuCotEncClientes1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuCotEncClientes1ActionPerformed
-        Credito_Proveedor ventana = new Credito_Proveedor();
+       Credito_Proveedor ventana = new Credito_Proveedor();
         desktopPane.add(ventana);
         Dimension desktopSize = desktopPane.getSize();
         Dimension FrameSize = ventana.getSize();
@@ -772,12 +742,8 @@ public class mdi_Principal extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuItem17ActionPerformed
 
     private void jMenuItem18ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem18ActionPerformed
-<<<<<<< HEAD
-        inf_Mantenimiento_Rol ventana = new inf_Mantenimiento_Rol();
-=======
         // TODO add your handling code here:
         inf_TransaccionCreditoCliente ventana = new inf_TransaccionCreditoCliente();
->>>>>>> c181d0cf8785ef4c7c77ea7624ac26e9468c013a
         desktopPane.add(ventana);
         Dimension desktopSize = desktopPane.getSize();
         Dimension FrameSize = ventana.getSize();
@@ -785,19 +751,13 @@ public class mdi_Principal extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuItem18ActionPerformed
 
     private void jMenuItem19ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem19ActionPerformed
-<<<<<<< HEAD
-        inf_Mantenimiento_Usuario ventana = new inf_Mantenimiento_Usuario();
-=======
         // TODO add your handling code here:
         inf_Diario ventana = new inf_Diario();
->>>>>>> c181d0cf8785ef4c7c77ea7624ac26e9468c013a
         desktopPane.add(ventana);
         Dimension desktopSize = desktopPane.getSize();
         Dimension FrameSize = ventana.getSize();
         ventana.setLocation((desktopSize.width - FrameSize.width) / 2, (desktopSize.height - FrameSize.height) / 2);
     }//GEN-LAST:event_jMenuItem19ActionPerformed
-<<<<<<< HEAD
-=======
 
     private void jMenuItem20ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem20ActionPerformed
         inf_Mantenimiento_Rol ventana = new inf_Mantenimiento_Rol();
@@ -815,7 +775,6 @@ public class mdi_Principal extends javax.swing.JFrame {
         ventana.setLocation((desktopSize.width - FrameSize.width) / 2, (desktopSize.height - FrameSize.height) / 2);
     }//GEN-LAST:event_jMenuItem21ActionPerformed
 
->>>>>>> c181d0cf8785ef4c7c77ea7624ac26e9468c013a
 
     /**
      * @param args the command line arguments
