@@ -110,7 +110,6 @@ create table curriculum(/*Reclutamiento*/
 	ON DELETE SET NULL
 ) engine = InnoDB default char set=latin1;
 
-
 create table aplicacion(
 	id_aplicacion varchar(10) primary key,
     dpi_persona varchar(13), -- foranea 
@@ -222,7 +221,6 @@ create table actividad_empleado( -- capacitacion, desempeño
 	ON DELETE SET NULL
 ) engine = InnoDB default char set=latin1;
 
-
 /*Área de Nómina*/
 create table concepto_planilla(
 	id_conceptoPlanilla varchar(10) primary key,
@@ -255,7 +253,6 @@ create table planilla_det(
 	foreign key(id_conceptoPlanilla) references Concepto_Planilla(id_conceptoPlanilla),
 	foreign key(id_empleado) references empleado_contratado(id_empleado)
 ) engine = InnoDB default char set=latin1;
-
 
 /*Área de Bancos*/
 create table moneda(
@@ -338,7 +335,6 @@ create table mov_bancDet( -- cuentas involucradas y partida contable
     -- tipo_concepto varchar(50) /*cargo, abono
 ) engine = InnoDB default char set=latin1;*/
 
-
 create table forma_pago(
 	id_formapago varchar(10) primary key,
     tipo_pago varchar(35) /*cheque, efectivo, tarjeta, nota de credito, otro*/
@@ -403,7 +399,6 @@ create table conciliacion_bancaria_det(
     foreign key(id_encabezado) references conciliacion_bancenc(id_encabezado)
 ) engine = InnoDB default char set=latin1;
 
-
 /*Área de Contabilidad*/
 
 create table poliza_encab(
@@ -448,7 +443,6 @@ create table usuario( -- login de usuario
 )engine = InnoDB default charset=latin1;
 
 
-
 /*-------------------------------------------------------------------------------------------------------------------------------------------*/
 /*----------------------------------------------------------------Área Administrativa--------------------------------------------------------*/
 create table sucursal (
@@ -464,13 +458,11 @@ nombre varchar(20) not null,
 estatus varchar(1) not null
 )engine=Innodb default charset=latin1;
 
-
 create table marca (
 id_marca int auto_increment primary key,
 nombre varchar(20) not null,
 estatus varchar(1) not null
 )engine=Innodb default charset=latin1;
-
 
 create table piloto (
 id_piloto int auto_increment primary key,
@@ -484,7 +476,6 @@ foreign key(id_empleado) references
 empleado_contratado(id_empleado)
 )engine=Innodb default charset=latin1;
 
-
 create table bodega (
 id_bodega int auto_increment primary key,
 id_sucursal int not null,
@@ -494,7 +485,6 @@ estatus varchar(1) not null,
 foreign key(id_sucursal) references
 sucursal(id_sucursal)
 )engine=Innodb default charset=latin1;
-
 
 create table tipo_inventario (
 id_tipo_inventario int auto_increment primary key,
@@ -525,7 +515,6 @@ foreign key(id_bodega) references
 bodega(id_bodega)
 )engine=Innodb default charset=latin1;
 
-
 create table vehiculo (
 id_vehiculo int auto_increment primary key,
 id_piloto int not null,
@@ -547,20 +536,17 @@ foreign key(id_linea) references
 linea(id_linea)
 )engine=Innodb default charset=latin1;
 
-
 create table proveedor(
 id_proveedor int auto_increment primary key,
 nombre varchar(128) not null,
 direccion varchar(128) not null
 )engine=Innodb default charset=latin1;
 
-
 create table caja(
 id_caja int auto_increment primary key,
 estatus varchar(1) not null,
 nombre_caja varchar(45) not null
 )engine=Innodb default charset=latin1;
-
 
 create table serie(
 id_serie int auto_increment primary key,
@@ -572,7 +558,6 @@ sucursal(id_sucursal),
 foreign key (id_caja) references
 caja(id_caja)
 )engine=Innodb default charset=latin1;
-
 
 create table mov_transporte(
 id_mov_transporte int auto_increment primary key,
@@ -590,7 +575,6 @@ foreign key (id_piloto) references
 piloto(id_piloto)
 )engine=Innodb default charset=latin1;
 
-
 create table compra_encabezado(
 id_compraE int not null primary key,
 id_sucursal int not null,
@@ -602,7 +586,6 @@ proveedor(id_proveedor),
 foreign key (id_sucursal) references
 sucursal(id_sucursal)
 )engine=Innodb default charset=latin1;
-
 
 create table compra_detalle(
 id_inventario int primary key not null,
@@ -664,6 +647,12 @@ tipo_cliente(id_tipo_cliente)
 )engine=Innodb default charset=latin1;
 
 
+create table tipo_pago_credito(
+id_tipo int not null primary key,
+nombre_tipo varchar(50) not null,
+estado varchar(1) not null
+)engine=Innodb default char set=latin1;
+
 create table credito_cliente(
 id_credito_cliente int  auto_increment,
 id_cliente int not null,
@@ -675,8 +664,8 @@ interes double,
 cuota double not null,
 pago_acumulado double not null,
 tiempo_pago int not null,
-tipo_tiempo varchar(80) not null,
-forma_pago varchar(80) not null,
+tipo_tiempo int not null,
+forma_pago int not null,
 total double not null,
 fecha_inicio date not null,
 fecha_final date not null,
@@ -686,7 +675,9 @@ foreign key (id_sucursal) references
 sucursal(id_sucursal),
 foreign key(id_moneda) references
 moneda(id_moneda),
-primary key(id_credito_cliente,id_cliente,id_sucursal)
+foreign key(forma_pago) references
+tipo_pago_credito(id_tipo),
+primary key(id_credito_cliente)
 )engine=Innodb default charset=latin1;
 
 
@@ -729,7 +720,8 @@ impuestos(id_impuesto)
 )engine=Innodb default charset=latin1;
 
 create table venta_detalle(
-id_inventario int primary key not null,
+id_ventaD int primary key not null,
+id_inventario int not null,
 id_ventaE int not null,
 id_moneda varchar(10) not null,
 cantidad int not null,
