@@ -433,7 +433,7 @@ public class inf_Mantenimiento_Habitacion extends javax.swing.JInternalFrame {
             pst.setString(1, "0");
             pst.setString(2, lb.getText());
             pst.setString(3, txt_Nivel.getText());
-            pst.setString(4, "A");
+            pst.setString(4, txt_Estatus.getText());
 
             pst.executeUpdate();
 
