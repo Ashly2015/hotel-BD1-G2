@@ -131,6 +131,8 @@ public class inf_Mantenimiento_Cliente1 extends javax.swing.JInternalFrame {
         label7 = new javax.swing.JLabel();
         txt_direccion = new javax.swing.JTextField();
         lb = new javax.swing.JLabel();
+        label8 = new javax.swing.JLabel();
+        txt_nit = new javax.swing.JTextField();
 
         setClosable(true);
         setIconifiable(true);
@@ -239,53 +241,64 @@ public class inf_Mantenimiento_Cliente1 extends javax.swing.JInternalFrame {
         lb.setForeground(new java.awt.Color(204, 204, 204));
         lb.setText(".");
 
+        label8.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
+        label8.setText("Nit");
+
+        txt_nit.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
+        txt_nit.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(204, 204, 204)));
+        txt_nit.setOpaque(false);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(29, 29, 29)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(btnEliminar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(btnLimpiar, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(btnBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(txtbuscado, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(btnRegistrar, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(29, 29, 29)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(btnEliminar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(btnLimpiar, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGap(18, 18, 18)
-                                .addComponent(btnModificar, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(btnBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(txtbuscado, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(btnRegistrar, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(btnModificar, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addGroup(layout.createSequentialGroup()
+                                .addContainerGap()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(label3)
+                                    .addComponent(label5)
+                                    .addComponent(label4))
+                                .addGap(23, 23, 23)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(txt_correo)
+                                    .addComponent(txt_nombre)
+                                    .addComponent(cbox_tipo_cliente, 0, 263, Short.MAX_VALUE))))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(lb))
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(label6)
-                            .addComponent(label7))
+                            .addComponent(label7)
+                            .addComponent(label8))
                         .addGap(14, 14, 14)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(txt_nit)
                             .addComponent(txt_telefono)
-                            .addComponent(txt_direccion)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(label3)
-                            .addComponent(label5)
-                            .addComponent(label4))
-                        .addGap(23, 23, 23)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(txt_correo)
-                            .addComponent(txt_nombre)
-                            .addComponent(cbox_tipo_cliente, 0, 263, Short.MAX_VALUE))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(lb)
+                            .addComponent(txt_direccion))))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 619, Short.MAX_VALUE)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 617, Short.MAX_VALUE)
                         .addContainerGap())
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
@@ -295,17 +308,30 @@ public class inf_Mantenimiento_Cliente1 extends javax.swing.JInternalFrame {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+                .addComponent(label1)
+                .addGap(4, 4, 4)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 303, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(65, 65, 65)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txt_nombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(label3))
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txt_correo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(label5))
-                        .addGap(18, 18, 18)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(45, 45, 45)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(txt_nombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(label3))
+                                .addGap(18, 18, 18)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(txt_correo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(label5)))
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(cbox_tipo_cliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(label4)
+                                .addComponent(lb)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(label8)
+                            .addComponent(txt_nit, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(27, 27, 27)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(label6)
                             .addComponent(txt_telefono, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -313,7 +339,7 @@ public class inf_Mantenimiento_Cliente1 extends javax.swing.JInternalFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(txt_direccion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(label7))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(btnRegistrar)
                             .addComponent(btnEliminar)
@@ -322,17 +348,8 @@ public class inf_Mantenimiento_Cliente1 extends javax.swing.JInternalFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(txtbuscado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(btnBuscar)
-                            .addComponent(btnLimpiar)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(label1)
-                        .addGap(4, 4, 4)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                .addComponent(cbox_tipo_cliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(label4)
-                                .addComponent(lb))
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 303, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(43, Short.MAX_VALUE))
+                            .addComponent(btnLimpiar))))
+                .addContainerGap(47, Short.MAX_VALUE))
         );
 
         pack();
@@ -350,7 +367,7 @@ public class inf_Mantenimiento_Cliente1 extends javax.swing.JInternalFrame {
             // bitacora_eliminar();
             JOptionPane.showMessageDialog(this, "¡ELIMINACION EXITOSA!", "Mensaje", JOptionPane.INFORMATION_MESSAGE);
             txt_nombre.setText("");
-
+            txt_nit.setText("");
             cbox_tipo_cliente.setSelectedIndex(0);
             txt_correo.setText("");
             txt_telefono.setText("");
@@ -372,14 +389,15 @@ public class inf_Mantenimiento_Cliente1 extends javax.swing.JInternalFrame {
         try {
             Connection cn = DriverManager.getConnection(mdi_Principal.BD, mdi_Principal.Usuario, mdi_Principal.Contraseña);
             //localhost es 127.0.0.1
-            PreparedStatement pst = cn.prepareStatement("insert into cliente values(?,?,?,?,?,?)");
+            PreparedStatement pst = cn.prepareStatement("insert into cliente values(?,?,?,?,?,?, ?)");
 
             pst.setString(1, "0");
             pst.setString(2, lb.getText());
             pst.setString(3, txt_nombre.getText());
-            pst.setString(4, txt_correo.getText());
-            pst.setString(5, txt_telefono.getText());
-            pst.setString(6, txt_direccion.getText());
+            pst.setString(4, txt_nit.getText());
+            pst.setString(5, txt_correo.getText());
+            pst.setString(6, txt_telefono.getText());
+            pst.setString(7, txt_direccion.getText());
 
             //bitacora_guardar();
             pst.executeUpdate();
@@ -389,7 +407,7 @@ public class inf_Mantenimiento_Cliente1 extends javax.swing.JInternalFrame {
             txt_correo.setText("");
             txt_telefono.setText("");
             txt_direccion.setText("");
-
+            txt_nit.setText("");
             txtbuscado.setText("");
             txt_correo.setText("");
             tablas();
@@ -416,11 +434,11 @@ public class inf_Mantenimiento_Cliente1 extends javax.swing.JInternalFrame {
             if (rs.next()) {
                 lb.setText(rs.getString("id_tipo_cliente"));
                 txt_nombre.setText(rs.getString("nombre_cliente"));
-
+                txt_nit.setText(rs.getString("nit_cliente"));
                 txt_correo.setText(rs.getString("correo"));
                 txt_telefono.setText(rs.getString("telefono"));
                 txt_direccion.setText(rs.getString("direccion"));
-
+                
                 btnModificar.setEnabled(true);
                 btnEliminar.setEnabled(true);
                 btnRegistrar.setEnabled(false);
@@ -444,13 +462,14 @@ public class inf_Mantenimiento_Cliente1 extends javax.swing.JInternalFrame {
             String ID = txtbuscado.getText().trim();
 
             Connection cn = DriverManager.getConnection(mdi_Principal.BD, mdi_Principal.Usuario, mdi_Principal.Contraseña);
-            PreparedStatement pst = cn.prepareStatement("update cliente set  id_tipo_cliente = ?,nombre_cliente =?, correo = ?,telefono = ?, direccion = ? where id_cliente =" + ID);
+            PreparedStatement pst = cn.prepareStatement("update cliente set  id_tipo_cliente = ?,nombre_cliente =?,nit_cliente = ?, correo = ?,telefono = ?, direccion = ? where id_cliente =" + ID);
 
             pst.setString(1, lb.getText());
             pst.setString(2, txt_nombre.getText());
-            pst.setString(3, txt_correo.getText());
-            pst.setString(4, txt_telefono.getText());
-            pst.setString(5, txt_direccion.getText());
+            pst.setString(3, txt_nit.getText());
+            pst.setString(4, txt_correo.getText());
+            pst.setString(5, txt_telefono.getText());
+            pst.setString(6, txt_direccion.getText());
 
             pst.executeUpdate();
 
@@ -460,7 +479,7 @@ public class inf_Mantenimiento_Cliente1 extends javax.swing.JInternalFrame {
             txt_correo.setText("");
             txt_telefono.setText("");
             txt_direccion.setText("");
-
+            txt_nit.setText("");
             txtbuscado.setText("");
             btnRegistrar.setEnabled(true);
             btnModificar.setEnabled(false);
@@ -476,6 +495,7 @@ public class inf_Mantenimiento_Cliente1 extends javax.swing.JInternalFrame {
         txt_nombre.setText("");
         txt_correo.setText("");
         txt_telefono.setText("");
+        txt_nit.setText("");
         txt_direccion.setText("");
         cbox_tipo_cliente.setSelectedIndex(0);
         txtbuscado.setText("");
@@ -505,6 +525,7 @@ public class inf_Mantenimiento_Cliente1 extends javax.swing.JInternalFrame {
                     txt_correo.setText("");
                     txt_telefono.setText("");
                     txt_direccion.setText("");
+                    txt_nit.setText("");
                 }
             }
 
@@ -530,10 +551,12 @@ public class inf_Mantenimiento_Cliente1 extends javax.swing.JInternalFrame {
     private javax.swing.JLabel label5;
     private javax.swing.JLabel label6;
     private javax.swing.JLabel label7;
+    private javax.swing.JLabel label8;
     private javax.swing.JLabel lb;
     private javax.swing.JTable tbl;
     private javax.swing.JTextField txt_correo;
     private javax.swing.JTextField txt_direccion;
+    private javax.swing.JTextField txt_nit;
     private javax.swing.JTextField txt_nombre;
     private javax.swing.JTextField txt_telefono;
     private javax.swing.JTextField txtbuscado;
