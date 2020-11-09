@@ -639,13 +639,14 @@ create table cliente(
 id_cliente int primary key auto_increment,
 id_tipo_cliente int not null,
 nombre_cliente varchar(80) not null,
+nit_cliente varchar(30) not null,
 correo varchar(80) not null,
 telefono varchar(11) not null,
 direccion varchar(80) not null,
 foreign key (id_tipo_cliente) references
 tipo_cliente(id_tipo_cliente)
 )engine=Innodb default charset=latin1;
-
+-- select * from cliente;
 
 create table tipo_pago_credito(
 id_tipo int not null primary key,

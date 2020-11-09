@@ -108,9 +108,9 @@ insert into tipo_cliente values (0, "Normal", "A");
 insert into tipo_cliente values (0, "Premium", "A");
 
 #inserts cliente
-insert into cliente values (0,1, "Ashly Barrios", "ranbr@gmail.com", "54738829","Zona 5");
-insert into cliente values (0,2, "Heydi Queme", "hsqa@gmail.com", "5472239","Zona 10");
-insert into cliente values (0,2, "Kevin Flores", "kfka@gmail.com", "23471239","Zona 1");
+insert into cliente values (0,1, "Ashly Barrios", "2017588-9", "ranbr@gmail.com", "54738829","Zona 5");
+insert into cliente values (0,2, "Heydi Queme", "585956-8", "hsqa@gmail.com", "5472239","Zona 10");
+insert into cliente values (0,2, "Kevin Flores","56565555-6", "kfka@gmail.com", "23471239","Zona 1");
 
 #inserts IMPUESTO
 insert into impuestos VALUES(0,"impuesto 1","A");
