@@ -5,6 +5,7 @@
  *///
 package MDI;
 
+import static MDI.mdi_Principal.labelusuario;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -19,7 +20,107 @@ import javax.swing.table.DefaultTableModel;
  * @author SEBAS
  */
 public class inf_Diario extends javax.swing.JInternalFrame {
- 
+     public void get_fecha(){
+        //Obtenemos la fecha
+        Calendar c1 = Calendar.getInstance();
+                fecha.setCalendar(c1);
+    }
+    
+    public void get_usuario(){
+        try {
+            Connection cn = DriverManager.getConnection(mdi_Principal.BD, mdi_Principal.Usuario, mdi_Principal.Contraseña);
+            PreparedStatement pst = cn.prepareStatement("select * from usuario_hoteleria where nombre_usuario = ?");
+            pst.setString(1, labelusuario.getText().trim()); 
+
+            ResultSet rs = pst.executeQuery();
+
+            if (rs.next()) {
+
+                lbusu.setText(rs.getString("id_usuario"));
+                
+
+
+        }
+        }catch (Exception e) {
+
+        
+        }
+    }
+    
+    public void bitacora_filtrado(){
+        String opcion=cbox_filtrado.getSelectedItem().toString();
+        String descrip="Filtró la información del libro diario por "+opcion;
+       //Desciframos la fecha
+        java.util.Date fechaN = fecha.getDate();
+        long fecha = fechaN.getTime();
+        java.sql.Date dateN = new java.sql.Date(fecha);
+        
+        
+        //Obtenemos la hora
+                Calendar timec = Calendar.getInstance();
+                
+                int hora = timec.get(Calendar.HOUR_OF_DAY);
+                int minutos = timec.get(Calendar.MINUTE);
+                int segundos = timec.get(Calendar.SECOND);
+                
+                String time=hora+":"+minutos+":"+segundos;
+                
+        
+        try {
+            
+            Connection cn = DriverManager.getConnection(mdi_Principal.BD, mdi_Principal.Usuario, mdi_Principal.Contraseña);
+            //localhost es 127.0.0.1
+            PreparedStatement pst = cn.prepareStatement("insert into bitacora values(?,?,?,?,?)");
+
+            pst.setString(1, "0");
+            pst.setString(2, lbusu.getText().trim());
+            pst.setString(3, descrip);
+            pst.setString(4,dateN.toString().trim() );
+            pst.setString(5, time.trim());
+            
+            pst.executeUpdate();
+
+        } catch (SQLException e) {
+        }
+    }
+    public void bitacora_ordenado(){
+        String opcion=cbox_orden.getSelectedItem().toString();
+        String descrip="Ordenó la información del libro diario por "+opcion;
+       //Desciframos la fecha
+        java.util.Date fechaN = fecha.getDate();
+        long fecha = fechaN.getTime();
+        java.sql.Date dateN = new java.sql.Date(fecha);
+        
+        
+        //Obtenemos la hora
+                Calendar timec = Calendar.getInstance();
+                
+                int hora = timec.get(Calendar.HOUR_OF_DAY);
+                int minutos = timec.get(Calendar.MINUTE);
+                int segundos = timec.get(Calendar.SECOND);
+                
+                String time=hora+":"+minutos+":"+segundos;
+                
+        
+        try {
+            
+            Connection cn = DriverManager.getConnection(mdi_Principal.BD, mdi_Principal.Usuario, mdi_Principal.Contraseña);
+            //localhost es 127.0.0.1
+            PreparedStatement pst = cn.prepareStatement("insert into bitacora values(?,?,?,?,?)");
+
+            pst.setString(1, "0");
+            pst.setString(2, lbusu.getText().trim());
+            pst.setString(3, descrip);
+            pst.setString(4,dateN.toString().trim() );
+            pst.setString(5, time.trim());
+            
+            pst.executeUpdate();
+
+        } catch (SQLException e) {
+        }
+    }
+    
+    
  public void iniciar_filtro(){
      cbox_orden.removeAllItems();
      
@@ -607,6 +708,9 @@ public class inf_Diario extends javax.swing.JInternalFrame {
         iniciar_filtro();
         iniciar_buscar();
         ordenID();
+        get_usuario();
+        get_fecha();
+        
     }
 
     /**
@@ -624,6 +728,8 @@ public class inf_Diario extends javax.swing.JInternalFrame {
         moneda = new javax.swing.JLabel();
         pago = new javax.swing.JLabel();
         tiempo = new javax.swing.JLabel();
+        lbusu = new javax.swing.JLabel();
+        fecha = new com.toedter.calendar.JDateChooser();
         jScrollPane1 = new javax.swing.JScrollPane();
         tbl1 = new javax.swing.JTable();
         jLabel1 = new javax.swing.JLabel();
@@ -780,6 +886,7 @@ public class inf_Diario extends javax.swing.JInternalFrame {
                 }
             }
         }
+        bitacora_ordenado();
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
@@ -824,6 +931,7 @@ public class inf_Diario extends javax.swing.JInternalFrame {
                 }
             }
         }
+        bitacora_filtrado();
     }//GEN-LAST:event_jButton2ActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -831,11 +939,13 @@ public class inf_Diario extends javax.swing.JInternalFrame {
     private javax.swing.JComboBox<String> cbox_filtrado;
     private javax.swing.JComboBox<String> cbox_orden;
     private javax.swing.JLabel cliente;
+    private com.toedter.calendar.JDateChooser fecha;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JLabel lbusu;
     private javax.swing.JLabel lbventa;
     private javax.swing.JLabel moneda;
     private javax.swing.JLabel pago;

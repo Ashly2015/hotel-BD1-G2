@@ -34,7 +34,6 @@ insert into clasificacion_cuenta values ("1", "Corriente");
 insert into clasificacion_cuenta values ("2", "No Corriente");
 insert into clasificacion_cuenta values ("3", "Capital");
 
-select * from cuenta_contable;
 insert into cuenta_contable values ("1", "Caja", "Activo", "1", "0", "10000","500", "9500", "0", "0", "Contiene el efectivo" );
 
 insert into Documento_bancario values ("01", "Cheque", "-", "A");
@@ -108,9 +107,9 @@ insert into tipo_cliente values (0, "Normal", "A");
 insert into tipo_cliente values (0, "Premium", "A");
 
 #inserts cliente
-insert into cliente values (0,1, "Ashly Barrios", "ranbr@gmail.com", "54738829","Zona 5");
-insert into cliente values (0,2, "Heydi Queme", "hsqa@gmail.com", "5472239","Zona 10");
-insert into cliente values (0,2, "Kevin Flores", "kfka@gmail.com", "23471239","Zona 1");
+insert into cliente values (0,1, "Ashly Barrios", "2017588-9", "ranbr@gmail.com", "54738829","Zona 5");
+insert into cliente values (0,2, "Heydi Queme", "585956-8", "hsqa@gmail.com", "5472239","Zona 10");
+insert into cliente values (0,2, "Kevin Flores","56565555-6", "kfka@gmail.com", "23471239","Zona 1");
 
 #inserts IMPUESTO
 insert into impuestos VALUES(0,"impuesto 1","A");
@@ -169,9 +168,9 @@ INSERT INTO prenda VALUES (0, 3, "Pantalones", '2020/08/10', '17:25:32.1212222')
 INSERT INTO prenda VALUES (0, 2, "Playeras", '2020/08/10', '17:25:32.1212222');
 
 #inserts tipo_precio
-insert into tipo_precio values (0,"0", "Lavanderia", "A");
-insert into tipo_precio values (0,"0", "Restaurante", "A");
-insert into tipo_precio values (0,"0", "Servicio", "A");
+insert into tipo_precio values (0,1, "Lavanderia", "A");
+insert into tipo_precio values (0,1, "Restaurante", "A");
+insert into tipo_precio values (0,1, "Servicio", "A");
 
 #inserts lista_precio
 insert into lista_precio values (0,1,1, 22.26, 5.2);
@@ -181,3 +180,17 @@ insert into lista_precio values (0,2,1, 22.26, 5.2);
 #inserts descuento
 insert into descuento values (0,"Promocion",10,2);
 insert into descuento values (0,"Pago al contado",7,2);
+
+#inserts ventas
+insert into venta_encabezado values(1,1,1,1,1,100,"2020-11-01");
+insert into venta_detalle values(1,1,1,1,100);
+
+insert into tipo_pago_credito values(1, "tarjeta", "A");
+insert into tipo_pago_credito values(2, "cheque", "A");
+insert into tipo_pago_credito values(3, "efectivo", "A");
+
+insert into usuario_hoteleria values("1", "zuzu", "123", "1", "A");
+
+insert into bitacora values("0", "1", "Ingresó al programa", "2020-11-09", "13:17:00");
+
+select * from hotel_general.bitacora;

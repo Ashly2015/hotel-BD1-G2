@@ -1,6 +1,12 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 
 <Form version="1.5" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JInternalFrameFormInfo">
+  <NonVisualComponents>
+    <Component class="com.toedter.calendar.JDateChooser" name="fecha">
+    </Component>
+    <Component class="javax.swing.JLabel" name="lbusu">
+    </Component>
+  </NonVisualComponents>
   <Properties>
     <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
       <Color blue="e3" green="e3" id="Button.light" palette="3" red="e3" type="palette"/>

@@ -7,6 +7,7 @@ package MDI;
 
 import MDI.mdi_Principal;
 import java.sql.*;
+import java.util.Calendar;
 import javax.swing.JOptionPane;
 
 /**
@@ -18,6 +19,71 @@ public class Login extends javax.swing.JFrame {
     /**
      * Creates new form f_Login
      */
+    
+    public void get_fecha(){
+        //Obtenemos la fecha
+        Calendar c1 = Calendar.getInstance();
+                fecha.setCalendar(c1);
+    }
+    
+    public void get_usuario(){
+        try {
+            Connection cn = DriverManager.getConnection(mdi_Principal.BD, mdi_Principal.Usuario, mdi_Principal.Contraseña);
+            PreparedStatement pst = cn.prepareStatement("select * from usuario_hoteleria where nombre_usuario = ?");
+            pst.setString(1, txtUsuario.getText().trim()); 
+
+            ResultSet rs = pst.executeQuery();
+
+            if (rs.next()) {
+
+                lbusu.setText(rs.getString("id_usuario"));
+                
+
+
+        }
+        }catch (Exception e) {
+
+        
+        }
+    }
+    
+    public void bitacora_inicio(){
+        get_usuario();
+        //Desciframos la fecha
+        java.util.Date fechaN = fecha.getDate();
+        long fecha = fechaN.getTime();
+        java.sql.Date dateN = new java.sql.Date(fecha);
+        
+        
+        //Obtenemos la hora
+                Calendar timec = Calendar.getInstance();
+                
+                int hora = timec.get(Calendar.HOUR_OF_DAY);
+                int minutos = timec.get(Calendar.MINUTE);
+                int segundos = timec.get(Calendar.SECOND);
+                
+                String time=hora+":"+minutos+":"+segundos;
+                
+        
+        try {
+            
+            Connection cn = DriverManager.getConnection(mdi_Principal.BD, mdi_Principal.Usuario, mdi_Principal.Contraseña);
+            //localhost es 127.0.0.1
+            PreparedStatement pst = cn.prepareStatement("insert into bitacora values(?,?,?,?,?)");
+
+            pst.setString(1, "0");
+            pst.setString(2, txtUsuario.getText());
+            pst.setString(3, "Ingresó a la plataforma");
+            pst.setString(4,dateN.toString() );
+            pst.setString(5, time);
+            
+            
+            pst.executeUpdate();
+
+        } catch (SQLException e) {
+        }
+    }
+    
     public Login() {
         initComponents();
         setLocationRelativeTo(null);
@@ -37,6 +103,8 @@ public class Login extends javax.swing.JFrame {
     private void initComponents() {
 
         pass = new javax.swing.JLabel();
+        fecha = new com.toedter.calendar.JDateChooser();
+        lbusu = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         txtContraseña = new javax.swing.JPasswordField();
         btnRegistrar = new javax.swing.JButton();
@@ -137,6 +205,7 @@ public class Login extends javax.swing.JFrame {
                 if (txtUsuario.getText().equals(nombre) && co.equals(contra)) {
 
                     JOptionPane.showMessageDialog(null, "Bienvenido\n", "Mensaje de bienvenida", JOptionPane.INFORMATION_MESSAGE);
+                    bitacora_inicio();
 
                     mdi_Principal principal = new mdi_Principal();
                     mdi_Principal.labelusuario.setText(nombre);
@@ -202,11 +271,13 @@ public class Login extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnRegistrar;
+    private com.toedter.calendar.JDateChooser fecha;
     private javax.swing.JLabel fondo_login;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JLabel lbusu;
     private javax.swing.JLabel pass;
     private javax.swing.JPasswordField txtContraseña;
     private javax.swing.JTextField txtUsuario;
