@@ -1054,18 +1054,31 @@ foreign key (id_tipo_cliente) references
 tipo_cliente(id_tipo_cliente)
 )engine=Innodb default charset=latin1;
 
+create table rol_usuario(
+id_rol_usuario varchar (20) primary key not null,
+nombre_rol varchar (40) not null,
+rol_key varchar (35) not null,
+estado varchar (1) not null
+)engine = InnoDB default charset=latin1;
+
+create table usuario_hoteleria(-- login de usuario hotel
+id_usuario varchar (35) primary key not null,
+nombre_usuario varchar (20) not null,
+password_usuario varchar (35) not null,
+id_empleado varchar (10) not null,
+estado varchar (1) not null,
+foreign key(id_empleado) references
+empleado_contratado(id_empleado)
+)engine = InnoDB default charset=latin1;
 
 create table bitacora(
 id_bitacora int primary key auto_increment,
-id_usuario varchar(10) not null,
+id_usuario varchar(35) not null,
 descripcion varchar(200),
 fecha date not null,
 hora time not null,
-ip varchar(20),
-mac varchar(50),
-nombre_maquina varchar(50),
 foreign key (id_usuario) references
-usuario(id_usuario)
+usuario_hoteleria(id_usuario)
 )engine=InnoDB  default charset=latin1;
 
 create table registro_contable(
@@ -1081,3 +1094,5 @@ quien_abona varchar(10) not null,
 foreign key (cuenta_cargo) references cuenta_contable(id_cuenta),
 foreign key (cuenta_abono) references cuenta_contable(id_cuenta)
 )engine=Innodb default char set=latin1;
+
+

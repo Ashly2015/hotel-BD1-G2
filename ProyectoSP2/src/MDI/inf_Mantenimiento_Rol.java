@@ -5,11 +5,13 @@
  */
 package MDI;
 
+import static MDI.mdi_Principal.labelusuario;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.Calendar;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
@@ -46,6 +48,179 @@ public class inf_Mantenimiento_Rol extends javax.swing.JInternalFrame {
             e.printStackTrace();
         }
     }
+    
+    public void get_fecha(){
+        //Obtenemos la fecha
+        Calendar c1 = Calendar.getInstance();
+                fecha.setCalendar(c1);
+    }
+    
+    public void get_usuario(){
+        try {
+            Connection cn = DriverManager.getConnection(mdi_Principal.BD, mdi_Principal.Usuario, mdi_Principal.Contraseña);
+            PreparedStatement pst = cn.prepareStatement("select * from usuario_hoteleria where nombre_usuario = ?");
+            pst.setString(1, labelusuario.getText().trim()); 
+
+            ResultSet rs = pst.executeQuery();
+
+            if (rs.next()) {
+
+                lbusu.setText(rs.getString("id_usuario"));
+                
+
+
+        }
+        }catch (Exception e) {
+
+        
+        }
+    }
+    
+    public void bitacora_guardar(){
+        String prov=txtRol.getText();
+        String descrip="Registró el rol "+prov;
+       //Desciframos la fecha
+        java.util.Date fechaN = fecha.getDate();
+        long fecha = fechaN.getTime();
+        java.sql.Date dateN = new java.sql.Date(fecha);
+        
+        
+        //Obtenemos la hora
+                Calendar timec = Calendar.getInstance();
+                
+                int hora = timec.get(Calendar.HOUR_OF_DAY);
+                int minutos = timec.get(Calendar.MINUTE);
+                int segundos = timec.get(Calendar.SECOND);
+                
+                String time=hora+":"+minutos+":"+segundos;
+                
+        
+        try {
+            
+            Connection cn = DriverManager.getConnection(mdi_Principal.BD, mdi_Principal.Usuario, mdi_Principal.Contraseña);
+            //localhost es 127.0.0.1
+            PreparedStatement pst = cn.prepareStatement("insert into bitacora values(?,?,?,?,?)");
+
+            pst.setString(1, "0");
+            pst.setString(2, lbusu.getText().trim());
+            pst.setString(3, descrip);
+            pst.setString(4,dateN.toString().trim() );
+            pst.setString(5, time.trim());
+            
+            pst.executeUpdate();
+
+        } catch (SQLException e) {
+        }
+    }
+    public void bitacora_modificar(){
+        String prov=txtRol.getText();
+        String descrip="Modificó el rol "+prov;
+       //Desciframos la fecha
+        java.util.Date fechaN = fecha.getDate();
+        long fecha = fechaN.getTime();
+        java.sql.Date dateN = new java.sql.Date(fecha);
+        
+        
+        //Obtenemos la hora
+                Calendar timec = Calendar.getInstance();
+                
+                int hora = timec.get(Calendar.HOUR_OF_DAY);
+                int minutos = timec.get(Calendar.MINUTE);
+                int segundos = timec.get(Calendar.SECOND);
+                
+                String time=hora+":"+minutos+":"+segundos;
+                
+        
+        try {
+            
+            Connection cn = DriverManager.getConnection(mdi_Principal.BD, mdi_Principal.Usuario, mdi_Principal.Contraseña);
+            //localhost es 127.0.0.1
+            PreparedStatement pst = cn.prepareStatement("insert into bitacora values(?,?,?,?,?)");
+
+            pst.setString(1, "0");
+            pst.setString(2, lbusu.getText().trim());
+            pst.setString(3, descrip);
+            pst.setString(4,dateN.toString().trim() );
+            pst.setString(5, time.trim());
+            
+            pst.executeUpdate();
+
+        } catch (SQLException e) {
+        }
+    }
+    public void bitacora_eliminar(){
+       
+        String prov=txtRol.getText();
+        String descrip="Eliminó el rol "+prov;
+       //Desciframos la fecha
+        java.util.Date fechaN = fecha.getDate();
+        long fecha = fechaN.getTime();
+        java.sql.Date dateN = new java.sql.Date(fecha);
+        
+        
+        //Obtenemos la hora
+                Calendar timec = Calendar.getInstance();
+                
+                int hora = timec.get(Calendar.HOUR_OF_DAY);
+                int minutos = timec.get(Calendar.MINUTE);
+                int segundos = timec.get(Calendar.SECOND);
+                
+                String time=hora+":"+minutos+":"+segundos;
+                
+        
+        try {
+            
+            Connection cn = DriverManager.getConnection(mdi_Principal.BD, mdi_Principal.Usuario, mdi_Principal.Contraseña);
+            //localhost es 127.0.0.1
+            PreparedStatement pst = cn.prepareStatement("insert into bitacora values(?,?,?,?,?)");
+
+            pst.setString(1, "0");
+            pst.setString(2, lbusu.getText().trim());
+            pst.setString(3, descrip);
+            pst.setString(4,dateN.toString().trim() );
+            pst.setString(5, time.trim());
+            
+            pst.executeUpdate();
+
+        } catch (SQLException e) {
+        }
+    }
+    public void bitacora_buscar(){
+        String prov=txtRol.getText();
+        String descrip="Buscó el rol "+prov;
+       //Desciframos la fecha
+        java.util.Date fechaN = fecha.getDate();
+        long fecha = fechaN.getTime();
+        java.sql.Date dateN = new java.sql.Date(fecha);
+        
+        
+        //Obtenemos la hora
+                Calendar timec = Calendar.getInstance();
+                
+                int hora = timec.get(Calendar.HOUR_OF_DAY);
+                int minutos = timec.get(Calendar.MINUTE);
+                int segundos = timec.get(Calendar.SECOND);
+                
+                String time=hora+":"+minutos+":"+segundos;
+                
+        
+        try {
+            
+            Connection cn = DriverManager.getConnection(mdi_Principal.BD, mdi_Principal.Usuario, mdi_Principal.Contraseña);
+            //localhost es 127.0.0.1
+            PreparedStatement pst = cn.prepareStatement("insert into bitacora values(?,?,?,?,?)");
+
+            pst.setString(1, "0");
+            pst.setString(2, lbusu.getText().trim());
+            pst.setString(3, descrip);
+            pst.setString(4,dateN.toString().trim() );
+            pst.setString(5, time.trim());
+            
+            pst.executeUpdate();
+
+        } catch (SQLException e) {
+        }
+    }
 
     public inf_Mantenimiento_Rol() {
         initComponents();
@@ -54,7 +229,10 @@ public class inf_Mantenimiento_Rol extends javax.swing.JInternalFrame {
         txtRol.setBackground(new java.awt.Color(0, 0, 0, 1));
         pfKey.setBackground(new java.awt.Color(0, 0, 0, 1));
         txt_estado.setBackground(new java.awt.Color(0, 0, 0, 1));
+        get_fecha();
+        get_usuario();
     }
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -65,6 +243,8 @@ public class inf_Mantenimiento_Rol extends javax.swing.JInternalFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        lbusu = new javax.swing.JLabel();
+        fecha = new com.toedter.calendar.JDateChooser();
         txtID_Rol = new javax.swing.JTextField();
         txt_estado = new javax.swing.JTextField();
         lb = new javax.swing.JLabel();
@@ -260,9 +440,7 @@ public class inf_Mantenimiento_Rol extends javax.swing.JInternalFrame {
                         .addGap(34, 34, 34))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(label5))
+                            .addComponent(label5)
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(0, 0, Short.MAX_VALUE)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -352,7 +530,7 @@ public class inf_Mantenimiento_Rol extends javax.swing.JInternalFrame {
 
             pst.executeUpdate();
 
-            //bitacora_modificar();
+            bitacora_modificar();
             JOptionPane.showMessageDialog(this, "¡MODIFICACION EXITOSA!", "Mensaje", JOptionPane.INFORMATION_MESSAGE);
             txtID_Rol.setText("");
             txtRol.setText("");
@@ -411,7 +589,7 @@ public class inf_Mantenimiento_Rol extends javax.swing.JInternalFrame {
             pst.setString(2, txtRol.getText());
             pst.setString(3, pfKey.getText());
             pst.setString(4, txt_estado.getText());
-            //bitacora_guardar();
+            bitacora_guardar();
             pst.executeUpdate();
 
             JOptionPane.showMessageDialog(this, "¡REGISTRO EXITOSO!", "Mensaje", JOptionPane.INFORMATION_MESSAGE);
@@ -438,7 +616,7 @@ public class inf_Mantenimiento_Rol extends javax.swing.JInternalFrame {
             pst.setString(1, txtbuscado.getText().trim());
             pst.executeUpdate();
 
-            // bitacora_eliminar();
+             bitacora_eliminar();
             JOptionPane.showMessageDialog(this, "¡ELIMINACION EXITOSA!", "Mensaje", JOptionPane.INFORMATION_MESSAGE);
             txtID_Rol.setText("");
             txtRol.setText("");
@@ -486,7 +664,7 @@ public class inf_Mantenimiento_Rol extends javax.swing.JInternalFrame {
 
         }
         // tablas();
-        // bitacora_busqueda();
+         bitacora_buscar();
     }//GEN-LAST:event_btnBuscarActionPerformed
 
     private void pfKeyKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_pfKeyKeyTyped
@@ -522,6 +700,7 @@ public class inf_Mantenimiento_Rol extends javax.swing.JInternalFrame {
     private javax.swing.JButton btnLimpiar;
     private javax.swing.JButton btnModificar;
     private javax.swing.JButton btnRegistrar;
+    private com.toedter.calendar.JDateChooser fecha;
     private javax.swing.JRadioButton inactivo;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
@@ -531,6 +710,7 @@ public class inf_Mantenimiento_Rol extends javax.swing.JInternalFrame {
     private javax.swing.JLabel label5;
     private javax.swing.JLabel label8;
     private javax.swing.JLabel lb;
+    private javax.swing.JLabel lbusu;
     private javax.swing.JPasswordField pfKey;
     private javax.swing.JTable tbl;
     private javax.swing.JTextField txtID_Rol;

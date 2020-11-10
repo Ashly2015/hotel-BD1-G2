@@ -5,11 +5,13 @@
  */
 package MDI;
 
+import static MDI.mdi_Principal.labelusuario;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.Calendar;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
@@ -26,15 +28,13 @@ public class inf_Mantenimiento_Caja extends javax.swing.JInternalFrame {
 
             DefaultTableModel modelo = new DefaultTableModel();
             modelo.addColumn("ID Caja");
-            modelo.addColumn("Nombre Caja");
-            modelo.addColumn("Estatus Caja");
+            modelo.addColumn("Estatus");
 
             tbl.setModel(modelo);
             String[] dato = new String[5];
             while (rss4.next()) {
                 dato[0] = rss4.getString(1);
-                dato[1] = rss4.getString(3);
-                dato[2] = rss4.getString(2);
+                dato[1] = rss4.getString(2);
 
 
                 modelo.addRow(dato);
@@ -45,12 +45,200 @@ public class inf_Mantenimiento_Caja extends javax.swing.JInternalFrame {
         }
     }
      
-             /**
+         public void refrescar() {
+        try {
+            Connection cn = DriverManager.getConnection(mdi_Principal.BD, mdi_Principal.Usuario, mdi_Principal.Contraseña);
+            PreparedStatement psttt = cn.prepareStatement("select nombre from caja ");
+            ResultSet rss = psttt.executeQuery();
+
+            tablas();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        tablas();
+    }
+         public void get_fecha(){
+        //Obtenemos la fecha
+        Calendar c1 = Calendar.getInstance();
+                fecha.setCalendar(c1);
+    }
+    
+    public void get_usuario(){
+        try {
+            Connection cn = DriverManager.getConnection(mdi_Principal.BD, mdi_Principal.Usuario, mdi_Principal.Contraseña);
+            PreparedStatement pst = cn.prepareStatement("select * from usuario_hoteleria where nombre_usuario = ?");
+            pst.setString(1, labelusuario.getText().trim()); 
+
+            ResultSet rs = pst.executeQuery();
+
+            if (rs.next()) {
+
+                lbusu.setText(rs.getString("id_usuario"));
+                
+
+
+        }
+        }catch (Exception e) {
+
+        
+        }
+    }
+    
+    public void bitacora_guardar(){
+        String caja=txt_nombre.getText();
+        String descrip="Ingresó la caja "+caja;
+       //Desciframos la fecha
+        java.util.Date fechaN = fecha.getDate();
+        long fecha = fechaN.getTime();
+        java.sql.Date dateN = new java.sql.Date(fecha);
+        
+        
+        //Obtenemos la hora
+                Calendar timec = Calendar.getInstance();
+                
+                int hora = timec.get(Calendar.HOUR_OF_DAY);
+                int minutos = timec.get(Calendar.MINUTE);
+                int segundos = timec.get(Calendar.SECOND);
+                
+                String time=hora+":"+minutos+":"+segundos;
+                
+        
+        try {
+            
+            Connection cn = DriverManager.getConnection(mdi_Principal.BD, mdi_Principal.Usuario, mdi_Principal.Contraseña);
+            //localhost es 127.0.0.1
+            PreparedStatement pst = cn.prepareStatement("insert into bitacora values(?,?,?,?,?)");
+
+            pst.setString(1, "0");
+            pst.setString(2, lbusu.getText().trim());
+            pst.setString(3, descrip);
+            pst.setString(4,dateN.toString().trim() );
+            pst.setString(5, time.trim());
+            
+            pst.executeUpdate();
+
+        } catch (SQLException e) {
+        }
+    }
+    public void bitacora_modificar(){
+        String caja=txt_nombre.getText();
+        String descrip="Modificó la caja "+caja;
+       //Desciframos la fecha
+        java.util.Date fechaN = fecha.getDate();
+        long fecha = fechaN.getTime();
+        java.sql.Date dateN = new java.sql.Date(fecha);
+        
+        
+        //Obtenemos la hora
+                Calendar timec = Calendar.getInstance();
+                
+                int hora = timec.get(Calendar.HOUR_OF_DAY);
+                int minutos = timec.get(Calendar.MINUTE);
+                int segundos = timec.get(Calendar.SECOND);
+                
+                String time=hora+":"+minutos+":"+segundos;
+                
+        
+        try {
+            
+            Connection cn = DriverManager.getConnection(mdi_Principal.BD, mdi_Principal.Usuario, mdi_Principal.Contraseña);
+            //localhost es 127.0.0.1
+            PreparedStatement pst = cn.prepareStatement("insert into bitacora values(?,?,?,?,?)");
+
+            pst.setString(1, "0");
+            pst.setString(2, lbusu.getText().trim());
+            pst.setString(3, descrip);
+            pst.setString(4,dateN.toString().trim() );
+            pst.setString(5, time.trim());
+            
+            pst.executeUpdate();
+
+        } catch (SQLException e) {
+        }
+    }
+    public void bitacora_eliminar(){
+       
+        String caja=txt_nombre.getText();
+        String descrip="Eliminó la caja "+caja;
+       //Desciframos la fecha
+        java.util.Date fechaN = fecha.getDate();
+        long fecha = fechaN.getTime();
+        java.sql.Date dateN = new java.sql.Date(fecha);
+        
+        
+        //Obtenemos la hora
+                Calendar timec = Calendar.getInstance();
+                
+                int hora = timec.get(Calendar.HOUR_OF_DAY);
+                int minutos = timec.get(Calendar.MINUTE);
+                int segundos = timec.get(Calendar.SECOND);
+                
+                String time=hora+":"+minutos+":"+segundos;
+                
+        
+        try {
+            
+            Connection cn = DriverManager.getConnection(mdi_Principal.BD, mdi_Principal.Usuario, mdi_Principal.Contraseña);
+            //localhost es 127.0.0.1
+            PreparedStatement pst = cn.prepareStatement("insert into bitacora values(?,?,?,?,?)");
+
+            pst.setString(1, "0");
+            pst.setString(2, lbusu.getText().trim());
+            pst.setString(3, descrip);
+            pst.setString(4,dateN.toString().trim() );
+            pst.setString(5, time.trim());
+            
+            pst.executeUpdate();
+
+        } catch (SQLException e) {
+        }
+    }
+    public void bitacora_buscar(){
+        String caja=txt_nombre.getText();
+        String descrip="Buscó la caja "+caja;
+       //Desciframos la fecha
+        java.util.Date fechaN = fecha.getDate();
+        long fecha = fechaN.getTime();
+        java.sql.Date dateN = new java.sql.Date(fecha);
+        
+        
+        //Obtenemos la hora
+                Calendar timec = Calendar.getInstance();
+                
+                int hora = timec.get(Calendar.HOUR_OF_DAY);
+                int minutos = timec.get(Calendar.MINUTE);
+                int segundos = timec.get(Calendar.SECOND);
+                
+                String time=hora+":"+minutos+":"+segundos;
+                
+        
+        try {
+            
+            Connection cn = DriverManager.getConnection(mdi_Principal.BD, mdi_Principal.Usuario, mdi_Principal.Contraseña);
+            //localhost es 127.0.0.1
+            PreparedStatement pst = cn.prepareStatement("insert into bitacora values(?,?,?,?,?)");
+
+            pst.setString(1, "0");
+            pst.setString(2, lbusu.getText().trim());
+            pst.setString(3, descrip);
+            pst.setString(4,dateN.toString().trim() );
+            pst.setString(5, time.trim());
+            
+            pst.executeUpdate();
+
+        } catch (SQLException e) {
+        }
+    }
+
+
+    /**
      * Creates new form inf_Mantenimiento_Caja
      */
     public inf_Mantenimiento_Caja() {
         initComponents();
                 tablas();
+                get_usuario();
+                get_fecha();
        
     }
 
@@ -63,6 +251,8 @@ public class inf_Mantenimiento_Caja extends javax.swing.JInternalFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        lbusu = new javax.swing.JLabel();
+        fecha = new com.toedter.calendar.JDateChooser();
         label1 = new javax.swing.JLabel();
         btnModificar = new javax.swing.JButton();
         txtbuscado = new javax.swing.JTextField();
@@ -78,7 +268,7 @@ public class inf_Mantenimiento_Caja extends javax.swing.JInternalFrame {
         activo = new javax.swing.JRadioButton();
         inactivo = new javax.swing.JRadioButton();
         txt_estatus = new javax.swing.JTextField();
-        label9 = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
         txt_nombre = new javax.swing.JTextField();
 
         setClosable(true);
@@ -114,11 +304,11 @@ public class inf_Mantenimiento_Caja extends javax.swing.JInternalFrame {
 
             },
             new String [] {
-                "ID Caja", "Nombre Caja", "Estatus Caja"
+                "ID Bodega", "ID Sucursal", "Nombre Bodega", "Direccion Bodega", "Estatus Bodega"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false
+                false, false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -196,39 +386,32 @@ public class inf_Mantenimiento_Caja extends javax.swing.JInternalFrame {
         txt_estatus.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(204, 204, 204)));
         txt_estatus.setOpaque(false);
 
-        label9.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
-        label9.setText("Nombre:");
-
-        txt_nombre.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txt_nombreActionPerformed(evt);
-            }
-        });
+        jLabel1.setText("Nombre");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(layout.createSequentialGroup()
                                         .addComponent(label1)
                                         .addGap(260, 260, 260))
                                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                        .addComponent(label9)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(txt_nombre, javax.swing.GroupLayout.PREFERRED_SIZE, 253, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(label8)
+                                        .addGap(22, 22, 22)
+                                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(18, 18, 18)
                                         .addComponent(txt_estatus, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addGap(18, 18, 18)))
                                 .addComponent(lb))
                             .addGroup(layout.createSequentialGroup()
-                                .addGap(8, 8, 8)
+                                .addGap(22, 22, 22)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addComponent(btnEliminar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addComponent(btnLimpiar, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -241,13 +424,13 @@ public class inf_Mantenimiento_Caja extends javax.swing.JInternalFrame {
                                     .addGroup(layout.createSequentialGroup()
                                         .addComponent(btnRegistrar, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addGap(18, 18, 18)
-                                        .addComponent(btnModificar, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(label8)
-                        .addGap(22, 22, 22)
-                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(78, 78, 78)))
+                                        .addComponent(btnModificar, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE))))))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(60, 60, 60)
+                        .addComponent(jLabel1)
+                        .addGap(17, 17, 17)
+                        .addComponent(txt_nombre, javax.swing.GroupLayout.PREFERRED_SIZE, 249, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 376, Short.MAX_VALUE)
                 .addContainerGap())
         );
@@ -257,23 +440,24 @@ public class inf_Mantenimiento_Caja extends javax.swing.JInternalFrame {
                 .addGap(20, 20, 20)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(lb)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(56, Short.MAX_VALUE))
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(label1)
-                .addGap(20, 20, 20)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(layout.createSequentialGroup()
+                            .addGap(13, 13, 13)
+                            .addComponent(label8))
+                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txt_estatus, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txt_estatus, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(label9)
+                    .addComponent(jLabel1)
                     .addComponent(txt_nombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(13, 13, 13)
-                        .addComponent(label8))
-                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnRegistrar)
                     .addComponent(btnEliminar)
@@ -283,7 +467,7 @@ public class inf_Mantenimiento_Caja extends javax.swing.JInternalFrame {
                     .addComponent(txtbuscado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnBuscar)
                     .addComponent(btnLimpiar))
-                .addGap(31, 31, 31))
+                .addGap(21, 21, 21))
         );
 
         pack();
@@ -310,29 +494,28 @@ public class inf_Mantenimiento_Caja extends javax.swing.JInternalFrame {
 
             pst.executeUpdate();
 
-            //bitacora_modificar();
+            bitacora_modificar();
             JOptionPane.showMessageDialog(this, "¡MODIFICACION EXITOSA!", "Mensaje", JOptionPane.INFORMATION_MESSAGE);
 
             txt_estatus.setText("");
-
+            txt_nombre.setText("");
             txtbuscado.setText("");
             btnRegistrar.setEnabled(true);
             activo.setSelected(false);
         inactivo.setSelected(false);
             btnModificar.setEnabled(false);
             btnEliminar.setEnabled(false);
-            txt_nombre.setText("");
             tablas();
         } catch (SQLException e) {
             JOptionPane.showMessageDialog(this, "Error en Modificacion", "Warning", JOptionPane.WARNING_MESSAGE);
         }
-    
+        refrescar();
     }//GEN-LAST:event_btnModificarActionPerformed
 
     private void btnLimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimpiarActionPerformed
 
-        txt_nombre.setText("");
         txt_estatus.setText("");
+        txt_nombre.setText("");
 activo.setSelected(false);
         inactivo.setSelected(false);
         txtbuscado.setText("");
@@ -352,11 +535,11 @@ activo.setSelected(false);
             pst.setString(1, txtbuscado.getText().trim());
             pst.executeUpdate();
 
-            // bitacora_eliminar();
+            bitacora_eliminar();
             JOptionPane.showMessageDialog(this, "¡ELIMINACION EXITOSA!", "Mensaje", JOptionPane.INFORMATION_MESSAGE);
 
-            txt_nombre.setText("");
             txt_estatus.setText("");
+            txt_nombre.setText("");
             txtbuscado.setText("");
             activo.setSelected(false);
         inactivo.setSelected(false);
@@ -368,7 +551,7 @@ activo.setSelected(false);
         } catch (SQLException e) {
             JOptionPane.showMessageDialog(this, "Error en Eliminacion", "Warning", JOptionPane.WARNING_MESSAGE);
         }
-     
+        refrescar();
     }//GEN-LAST:event_btnEliminarActionPerformed
 
     private void btnRegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarActionPerformed
@@ -381,14 +564,13 @@ activo.setSelected(false);
             pst.setString(1, "0");
             pst.setString(2, "A");
             pst.setString(3, txt_nombre.getText());
-            //bitacora_guardar();
+            bitacora_guardar();
             pst.executeUpdate();
 
             JOptionPane.showMessageDialog(this, "¡REGISTRO EXITOSO!", "Mensaje", JOptionPane.INFORMATION_MESSAGE);
 
             txt_estatus.setText("");
             txt_nombre.setText("");
-
             txtbuscado.setText("");
             activo.setSelected(false);
         inactivo.setSelected(false);
@@ -397,7 +579,7 @@ activo.setSelected(false);
             JOptionPane.showMessageDialog(this, "Error en registro", "Warning", JOptionPane.WARNING_MESSAGE);
             System.out.println(e);
         }
-     
+        refrescar();
     }//GEN-LAST:event_btnRegistrarActionPerformed
 
     private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
@@ -411,10 +593,8 @@ activo.setSelected(false);
 
             if (rs.next()) {
                 lb.setText(rs.getString("id_caja"));
-
-                txt_estatus.setText(rs.getString("estatus"));
-                
                 txt_nombre.setText(rs.getString("nombre_caja"));
+                txt_estatus.setText(rs.getString("estatus"));
 
                 btnModificar.setEnabled(true);
                 btnEliminar.setEnabled(true);
@@ -428,8 +608,9 @@ activo.setSelected(false);
         } catch (Exception e) {
 
         }
+        refrescar();
         // tablas();
-        // bitacora_busqueda();
+     bitacora_buscar();
     }//GEN-LAST:event_btnBuscarActionPerformed
 
     private void activoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_activoActionPerformed
@@ -448,10 +629,6 @@ activo.setSelected(false);
         }
     }//GEN-LAST:event_inactivoActionPerformed
 
-    private void txt_nombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_nombreActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txt_nombreActionPerformed
-
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JRadioButton activo;
@@ -460,13 +637,15 @@ activo.setSelected(false);
     private javax.swing.JButton btnLimpiar;
     private javax.swing.JButton btnModificar;
     private javax.swing.JButton btnRegistrar;
+    private com.toedter.calendar.JDateChooser fecha;
     private javax.swing.JRadioButton inactivo;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel label1;
     private javax.swing.JLabel label8;
-    private javax.swing.JLabel label9;
     private javax.swing.JLabel lb;
+    private javax.swing.JLabel lbusu;
     private javax.swing.JTable tbl;
     private javax.swing.JTextField txt_estatus;
     private javax.swing.JTextField txt_nombre;

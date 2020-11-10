@@ -10,6 +10,10 @@
         <Property name="text" type="java.lang.String" value="."/>
       </Properties>
     </Component>
+    <Component class="javax.swing.JLabel" name="lbusu">
+    </Component>
+    <Component class="com.toedter.calendar.JDateChooser" name="fecha">
+    </Component>
   </NonVisualComponents>
   <Properties>
     <Property name="closable" type="boolean" value="true"/>

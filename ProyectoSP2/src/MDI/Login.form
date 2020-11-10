@@ -4,6 +4,10 @@
   <NonVisualComponents>
     <Component class="javax.swing.JLabel" name="pass">
     </Component>
+    <Component class="com.toedter.calendar.JDateChooser" name="fecha">
+    </Component>
+    <Component class="javax.swing.JLabel" name="lbusu">
+    </Component>
   </NonVisualComponents>
   <Properties>
     <Property name="defaultCloseOperation" type="int" value="3"/>

@@ -5,6 +5,7 @@
  */
 package MDI;
 
+import static MDI.mdi_Principal.labelusuario;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -282,6 +283,182 @@ public class inf_TransaccionCreditoCliente extends javax.swing.JInternalFrame {
     /**
      * Creates new form inf_Transaccion_Compras
      */
+    
+    public void get_fecha(){
+        //Obtenemos la fecha
+        Calendar c1 = Calendar.getInstance();
+                fecha.setCalendar(c1);
+    }
+    
+    public void get_usuario(){
+        try {
+            Connection cn = DriverManager.getConnection(mdi_Principal.BD, mdi_Principal.Usuario, mdi_Principal.Contraseña);
+            PreparedStatement pst = cn.prepareStatement("select * from usuario_hoteleria where nombre_usuario = ?");
+            pst.setString(1, labelusuario.getText().trim()); 
+
+            ResultSet rs = pst.executeQuery();
+
+            if (rs.next()) {
+
+                lbusu.setText(rs.getString("id_usuario"));
+                
+
+
+        }
+        }catch (Exception e) {
+
+        
+        }
+    }
+    
+    public void bitacora_guardar(){
+        String prov=cbox_cliente.getSelectedItem().toString();
+        String descrip="Registró un crédito para el cliente "+prov;
+       //Desciframos la fecha
+        java.util.Date fechaN = fecha.getDate();
+        long fecha = fechaN.getTime();
+        java.sql.Date dateN = new java.sql.Date(fecha);
+        
+        
+        //Obtenemos la hora
+                Calendar timec = Calendar.getInstance();
+                
+                int hora = timec.get(Calendar.HOUR_OF_DAY);
+                int minutos = timec.get(Calendar.MINUTE);
+                int segundos = timec.get(Calendar.SECOND);
+                
+                String time=hora+":"+minutos+":"+segundos;
+                
+        
+        try {
+            
+            Connection cn = DriverManager.getConnection(mdi_Principal.BD, mdi_Principal.Usuario, mdi_Principal.Contraseña);
+            //localhost es 127.0.0.1
+            PreparedStatement pst = cn.prepareStatement("insert into bitacora values(?,?,?,?,?)");
+
+            pst.setString(1, "0");
+            pst.setString(2, lbusu.getText().trim());
+            pst.setString(3, descrip);
+            pst.setString(4,dateN.toString().trim() );
+            pst.setString(5, time.trim());
+            
+            pst.executeUpdate();
+
+        } catch (SQLException e) {
+        }
+    }
+    public void bitacora_modificar(){
+        String prov=cbox_cliente.getSelectedItem().toString();
+        String num=buscar.getText();
+        String descrip="Modificó el crédito número "+num+" del cliente "+prov;
+       //Desciframos la fecha
+        java.util.Date fechaN = fecha.getDate();
+        long fecha = fechaN.getTime();
+        java.sql.Date dateN = new java.sql.Date(fecha);
+        
+        
+        //Obtenemos la hora
+                Calendar timec = Calendar.getInstance();
+                
+                int hora = timec.get(Calendar.HOUR_OF_DAY);
+                int minutos = timec.get(Calendar.MINUTE);
+                int segundos = timec.get(Calendar.SECOND);
+                
+                String time=hora+":"+minutos+":"+segundos;
+                
+        
+        try {
+            
+            Connection cn = DriverManager.getConnection(mdi_Principal.BD, mdi_Principal.Usuario, mdi_Principal.Contraseña);
+            //localhost es 127.0.0.1
+            PreparedStatement pst = cn.prepareStatement("insert into bitacora values(?,?,?,?,?)");
+
+            pst.setString(1, "0");
+            pst.setString(2, lbusu.getText().trim());
+            pst.setString(3, descrip);
+            pst.setString(4,dateN.toString().trim() );
+            pst.setString(5, time.trim());
+            
+            pst.executeUpdate();
+
+        } catch (SQLException e) {
+        }
+    }
+    public void bitacora_eliminar(){
+       String prov=cbox_cliente.getSelectedItem().toString();
+        String num=buscar.getText();
+        String descrip="Eliminó el crédito número "+num+" del cliente "+prov;
+       //Desciframos la fecha
+        java.util.Date fechaN = fecha.getDate();
+        long fecha = fechaN.getTime();
+        java.sql.Date dateN = new java.sql.Date(fecha);
+        
+        
+        //Obtenemos la hora
+                Calendar timec = Calendar.getInstance();
+                
+                int hora = timec.get(Calendar.HOUR_OF_DAY);
+                int minutos = timec.get(Calendar.MINUTE);
+                int segundos = timec.get(Calendar.SECOND);
+                
+                String time=hora+":"+minutos+":"+segundos;
+                
+        
+        try {
+            
+            Connection cn = DriverManager.getConnection(mdi_Principal.BD, mdi_Principal.Usuario, mdi_Principal.Contraseña);
+            //localhost es 127.0.0.1
+            PreparedStatement pst = cn.prepareStatement("insert into bitacora values(?,?,?,?,?)");
+
+            pst.setString(1, "0");
+            pst.setString(2, lbusu.getText().trim());
+            pst.setString(3, descrip);
+            pst.setString(4,dateN.toString().trim() );
+            pst.setString(5, time.trim());
+            
+            pst.executeUpdate();
+
+        } catch (SQLException e) {
+        }
+    }
+    public void bitacora_buscar(){
+        String prov=cbox_cliente.getSelectedItem().toString();
+        String num=buscar.getText();
+        String descrip="Buscó el crédito número "+num+" del cliente "+prov;
+       //Desciframos la fecha
+        java.util.Date fechaN = fecha.getDate();
+        long fecha = fechaN.getTime();
+        java.sql.Date dateN = new java.sql.Date(fecha);
+        
+        
+        //Obtenemos la hora
+                Calendar timec = Calendar.getInstance();
+                
+                int hora = timec.get(Calendar.HOUR_OF_DAY);
+                int minutos = timec.get(Calendar.MINUTE);
+                int segundos = timec.get(Calendar.SECOND);
+                
+                String time=hora+":"+minutos+":"+segundos;
+                
+        
+        try {
+            
+            Connection cn = DriverManager.getConnection(mdi_Principal.BD, mdi_Principal.Usuario, mdi_Principal.Contraseña);
+            //localhost es 127.0.0.1
+            PreparedStatement pst = cn.prepareStatement("insert into bitacora values(?,?,?,?,?)");
+
+            pst.setString(1, "0");
+            pst.setString(2, lbusu.getText().trim());
+            pst.setString(3, descrip);
+            pst.setString(4,dateN.toString().trim() );
+            pst.setString(5, time.trim());
+            
+            pst.executeUpdate();
+
+        } catch (SQLException e) {
+        }
+    }
+    
     public inf_TransaccionCreditoCliente() {
 
         initComponents();
@@ -294,6 +471,8 @@ public class inf_TransaccionCreditoCliente extends javax.swing.JInternalFrame {
         cbox_venta.removeAllItems();
         txt_interes.setEnabled(false);
         txt_total.setEnabled(false);
+        get_usuario();
+        get_fecha();
     }
 
     /**
@@ -311,6 +490,8 @@ public class inf_TransaccionCreditoCliente extends javax.swing.JInternalFrame {
         moneda = new javax.swing.JLabel();
         pago = new javax.swing.JLabel();
         tiempo = new javax.swing.JLabel();
+        fecha = new com.toedter.calendar.JDateChooser();
+        lbusu = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         cbox_cliente = new javax.swing.JComboBox<>();
         jLabel5 = new javax.swing.JLabel();
@@ -761,7 +942,7 @@ public class inf_TransaccionCreditoCliente extends javax.swing.JInternalFrame {
 
             pst2.executeUpdate();
 
-            //bitacora_guardar();
+            bitacora_guardar();
             lb1.setText("");
             lb2.setText("");
             cbox_cliente.setSelectedIndex(0);
@@ -821,7 +1002,7 @@ public class inf_TransaccionCreditoCliente extends javax.swing.JInternalFrame {
 
             pst2.executeUpdate();
 
-            //bitacora_modificar();
+            bitacora_modificar();
             lb1.setText("");
             lb2.setText("");
             cbox_cliente.setSelectedIndex(0);
@@ -860,6 +1041,7 @@ public class inf_TransaccionCreditoCliente extends javax.swing.JInternalFrame {
 
             pst2.setString(1, buscar.getText().trim());
             pst2.executeUpdate();
+            bitacora_eliminar();
 
             lb1.setText("");
             lb2.setText("");
@@ -944,7 +1126,7 @@ public class inf_TransaccionCreditoCliente extends javax.swing.JInternalFrame {
                 date_inicio.setDate(rs.getDate("fecha_inicio"));
                 date_final.setDate(rs.getDate("fecha_final"));
 
-                //bitacora_busqueda();
+                bitacora_buscar();
                 
                 buscar_nombrecliente();
                 buscar_nombresucursal();
@@ -1177,6 +1359,7 @@ public class inf_TransaccionCreditoCliente extends javax.swing.JInternalFrame {
     private javax.swing.JLabel cliente;
     private com.toedter.calendar.JDateChooser date_final;
     private com.toedter.calendar.JDateChooser date_inicio;
+    private com.toedter.calendar.JDateChooser fecha;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -1197,6 +1380,7 @@ public class inf_TransaccionCreditoCliente extends javax.swing.JInternalFrame {
     private javax.swing.JLabel lb4;
     private javax.swing.JLabel lb5;
     private javax.swing.JLabel lb6;
+    private javax.swing.JLabel lbusu;
     private javax.swing.JLabel lbventa;
     private javax.swing.JLabel moneda;
     private javax.swing.JLabel pago;
