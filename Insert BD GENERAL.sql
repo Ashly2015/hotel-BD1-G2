@@ -185,6 +185,11 @@ insert into descuento values (0,"Pago al contado",7,2);
 insert into venta_encabezado values(1,1,1,1,1,100,"2020-11-01");
 insert into venta_detalle values(1,1,1,1,100);
 
+insert into compra_encabezado values(1,1,1,100,"2020-11-01");
+insert into compra_encabezado values(2,1,2,100,"2020-12-01");
+insert into compra_detalle values(1,1,1,100);
+insert into compra_detalle values(2,1,1,10);
+
 insert into tipo_pago_credito values(1, "tarjeta", "A");
 insert into tipo_pago_credito values(2, "cheque", "A");
 insert into tipo_pago_credito values(3, "efectivo", "A");

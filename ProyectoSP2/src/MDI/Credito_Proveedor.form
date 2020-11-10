@@ -453,6 +453,9 @@
       </AuxValues>
     </Component>
     <Component class="javax.swing.JTextField" name="txt_total">
+      <Properties>
+        <Property name="editable" type="boolean" value="false"/>
+      </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="lb2">
     </Component>
@@ -568,6 +571,9 @@
     <Component class="javax.swing.JTextField" name="buscar">
     </Component>
     <Component class="javax.swing.JTextField" name="txt_interes">
+      <Properties>
+        <Property name="editable" type="boolean" value="false"/>
+      </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txt_interesActionPerformed"/>
       </Events>

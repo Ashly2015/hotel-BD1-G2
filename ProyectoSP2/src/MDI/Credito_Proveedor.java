@@ -80,6 +80,23 @@ public class Credito_Proveedor extends javax.swing.JInternalFrame {
             e.printStackTrace();
         }
     }
+    public void iniciar_cboxventa() {
+        try {
+            cbox_compra.removeAllItems();
+            Connection cn = DriverManager.getConnection(mdi_Principal.BD, mdi_Principal.Usuario, mdi_Principal.Contraseña);
+            PreparedStatement psttt = cn.prepareStatement("select * from compra_encabezado where id_proveedor=?");
+            psttt.setString(1,lb1.getText());
+            ResultSet rss = psttt.executeQuery();
+
+            cbox_compra.addItem("Seleccione una opción");
+            while (rss.next()) {
+                cbox_compra.addItem(rss.getString("id_compraE"));
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+    
     public void buscar_nombrecliente(){
         try {
             Connection cn = DriverManager.getConnection(mdi_Principal.BD, mdi_Principal.Usuario, mdi_Principal.Contraseña);
@@ -387,14 +404,8 @@ public class Credito_Proveedor extends javax.swing.JInternalFrame {
                 cbox_sucursal.addItem(rs.getString("nombre"));
             }
             
-            PreparedStatement pstttt = cn.prepareStatement("select id_compraE from compra_encabezado ");
-            ResultSet rsss = pstttt.executeQuery();
-
-            cbox_compra.removeAllItems();
-            cbox_compra.addItem("Seleccione una opción");
-            while (rsss.next()) {
-                cbox_compra.addItem(rsss.getString("id_compraE"));
-            }
+           
+            
             
             PreparedStatement ps = cn.prepareStatement("select nombre_moneda from moneda ");
             ResultSet r = ps.executeQuery();
@@ -414,6 +425,10 @@ public class Credito_Proveedor extends javax.swing.JInternalFrame {
                 cbox_formapago.addItem(rssss.getString("nombre_tipo"));
             }
             
+            cbox_tipotiempo.removeAllItems();
+            cbox_tipotiempo.addItem("Seleccione una opción");
+                cbox_tipotiempo.addItem("meses");
+                cbox_tipotiempo.addItem("años");
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -445,14 +460,7 @@ public class Credito_Proveedor extends javax.swing.JInternalFrame {
                 cbox_sucursal.addItem(rs.getString("nombre"));
             }
             
-            PreparedStatement pstttt = cn.prepareStatement("select id_compraE from compra_encabezado ");
-            ResultSet rsss = pstttt.executeQuery();
-
-            
-            cbox_compra.addItem("Seleccione una opción");
-            while (rsss.next()) {
-                cbox_compra.addItem(rsss.getString("id_compraE"));
-            }
+           
             
             PreparedStatement ps = cn.prepareStatement("select nombre_moneda from moneda ");
             ResultSet r = ps.executeQuery();
@@ -462,6 +470,20 @@ public class Credito_Proveedor extends javax.swing.JInternalFrame {
             while (r.next()) {
                 cbox_moneda.addItem(r.getString("nombre_moneda"));
             }
+            
+            PreparedStatement psstttt = cn.prepareStatement("select nombre_tipo from tipo_pago_credito ");
+            ResultSet rssss = psstttt.executeQuery();
+
+            
+            cbox_formapago.addItem("Seleccione una opción");
+            while (rssss.next()) {
+                cbox_formapago.addItem(rssss.getString("nombre_tipo"));
+            }
+            
+            
+            cbox_tipotiempo.addItem("Seleccione una opción");
+                cbox_tipotiempo.addItem("meses");
+                cbox_tipotiempo.addItem("años");
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -473,6 +495,7 @@ public class Credito_Proveedor extends javax.swing.JInternalFrame {
         get_usuario();
         get_fecha();
         tablas();
+        iniciar_cboxventa();
         
     }
 
@@ -640,6 +663,8 @@ public class Credito_Proveedor extends javax.swing.JInternalFrame {
             }
         });
 
+        txt_total.setEditable(false);
+
         jLabel13.setText("Fecha Inicio");
 
         jLabel14.setText("Fecha Final");
@@ -705,6 +730,7 @@ public class Credito_Proveedor extends javax.swing.JInternalFrame {
 
         jLabel2.setText("Interés");
 
+        txt_interes.setEditable(false);
         txt_interes.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txt_interesActionPerformed(evt);
@@ -1027,7 +1053,7 @@ public class Credito_Proveedor extends javax.swing.JInternalFrame {
             e.printStackTrace();
         }
 
-        
+        iniciar_cboxventa();
     }//GEN-LAST:event_cbox_proveedorActionPerformed
 
     private void cbox_formapagoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbox_formapagoActionPerformed
