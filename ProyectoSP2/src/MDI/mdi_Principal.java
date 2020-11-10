@@ -22,56 +22,51 @@ public class mdi_Principal extends javax.swing.JFrame {
     public static String BD = "jdbc:mysql://localhost/hotel_general";
     public static String Usuario = "root";
     public static String Contraseña = "Polo.2015";
-    
-    public void get_fecha(){
+
+    public void get_fecha() {
         //Obtenemos la fecha
         Calendar c1 = Calendar.getInstance();
-                fecha.setCalendar(c1);
+        fecha.setCalendar(c1);
     }
-    
-    public void get_usuario(){
+
+    public void get_usuario() {
         try {
             Connection cn = DriverManager.getConnection(mdi_Principal.BD, mdi_Principal.Usuario, mdi_Principal.Contraseña);
             PreparedStatement pst = cn.prepareStatement("select * from usuario_hoteleria where nombre_usuario = ?");
-            pst.setString(1, labelusuario.getText().trim()); 
+            pst.setString(1, labelusuario.getText().trim());
 
             ResultSet rs = pst.executeQuery();
 
             if (rs.next()) {
 
                 lbusu.setText(rs.getString("id_usuario"));
-                
 
+            }
+        } catch (Exception e) {
 
-        }
-        }catch (Exception e) {
-
-        
         }
     }
-    
-    public void bitacora_boton(){
+
+    public void bitacora_boton() {
         get_usuario();
-        String boton=boton_press.getText();
-        String descrip="Ingresó a la seccion "+boton;
-       //Desciframos la fecha
+        String boton = boton_press.getText();
+        String descrip = "Ingresó a la seccion " + boton;
+        //Desciframos la fecha
         java.util.Date fechaN = fecha.getDate();
         long fecha = fechaN.getTime();
         java.sql.Date dateN = new java.sql.Date(fecha);
-        
-        
+
         //Obtenemos la hora
-                Calendar timec = Calendar.getInstance();
-                
-                int hora = timec.get(Calendar.HOUR_OF_DAY);
-                int minutos = timec.get(Calendar.MINUTE);
-                int segundos = timec.get(Calendar.SECOND);
-                
-                String time=hora+":"+minutos+":"+segundos;
-                
-        
+        Calendar timec = Calendar.getInstance();
+
+        int hora = timec.get(Calendar.HOUR_OF_DAY);
+        int minutos = timec.get(Calendar.MINUTE);
+        int segundos = timec.get(Calendar.SECOND);
+
+        String time = hora + ":" + minutos + ":" + segundos;
+
         try {
-            
+
             Connection cn = DriverManager.getConnection(mdi_Principal.BD, mdi_Principal.Usuario, mdi_Principal.Contraseña);
             //localhost es 127.0.0.1
             PreparedStatement pst = cn.prepareStatement("insert into bitacora values(?,?,?,?,?)");
@@ -79,9 +74,9 @@ public class mdi_Principal extends javax.swing.JFrame {
             pst.setString(1, "0");
             pst.setString(2, lbusu.getText().trim());
             pst.setString(3, descrip);
-            pst.setString(4,dateN.toString().trim() );
+            pst.setString(4, dateN.toString().trim());
             pst.setString(5, time.trim());
-            
+
             pst.executeUpdate();
 
         } catch (SQLException e) {
@@ -100,7 +95,6 @@ public class mdi_Principal extends javax.swing.JFrame {
         return cn;
 
     }
-    
 
     public mdi_Principal() {
         initComponents();
@@ -115,7 +109,6 @@ public class mdi_Principal extends javax.swing.JFrame {
         get_fecha();
     }
 
-    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -168,6 +161,7 @@ public class mdi_Principal extends javax.swing.JFrame {
         jMenuCotEncClientes = new javax.swing.JMenuItem();
         jMenuCreditoProv = new javax.swing.JMenuItem();
         jMenuCreditoProv1 = new javax.swing.JMenuItem();
+        jMenuItem1 = new javax.swing.JMenuItem();
         jmAdministracion = new javax.swing.JMenu();
         jMenuItem18 = new javax.swing.JMenuItem();
         jMenuItem19 = new javax.swing.JMenuItem();
@@ -180,6 +174,8 @@ public class mdi_Principal extends javax.swing.JFrame {
         lbusu.setText("jLabel1");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        desktopPane.setBackground(new java.awt.Color(0, 0, 0));
 
         labelusuario.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         labelusuario.setText("zuzu");
@@ -643,6 +639,14 @@ public class mdi_Principal extends javax.swing.JFrame {
         });
         jMenu1.add(jMenuCreditoProv1);
 
+        jMenuItem1.setText("Ventas");
+        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem1ActionPerformed(evt);
+            }
+        });
+        jMenu1.add(jMenuItem1);
+
         menuBar.add(jMenu1);
 
         jmAdministracion.setText("Privacidad");
@@ -707,21 +711,19 @@ public class mdi_Principal extends javax.swing.JFrame {
         Dimension FrameSize = ventana1.getSize();
         ventana1.setLocation((desktopSize.width - FrameSize.width) / 2, (desktopSize.height - FrameSize.height) / 2);
         bitacora_boton();
-        
+
     }//GEN-LAST:event_exitMenuItemActionPerformed
 
     private void MenuTipClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MenuTipClienteActionPerformed
-  inf_Mantenimiento_Tipo_Cliente ventana1 = new inf_Mantenimiento_Tipo_Cliente();
+        inf_Mantenimiento_Tipo_Cliente ventana1 = new inf_Mantenimiento_Tipo_Cliente();
         desktopPane.add(ventana1);
         Dimension desktopSize = desktopPane.getSize();
         Dimension FrameSize = ventana1.getSize();
         ventana1.setLocation((desktopSize.width - FrameSize.width) / 2, (desktopSize.height - FrameSize.height) / 2);
         bitacora_boton();
-        
-        
 
         // TODO add your handling code here:
-        
+
     }//GEN-LAST:event_MenuTipClienteActionPerformed
 
     private void exitMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exitMenuItem1ActionPerformed
@@ -1052,217 +1054,217 @@ public class mdi_Principal extends javax.swing.JFrame {
 
     private void MenuRegistroContableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_MenuRegistroContableMouseClicked
         // TODO add your handling code here:
-        
+
     }//GEN-LAST:event_MenuRegistroContableMouseClicked
 
     private void MenuRegistroContableMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_MenuRegistroContableMousePressed
         // TODO add your handling code here:
-        String nombre=MenuRegistroContable.getText();
+        String nombre = MenuRegistroContable.getText();
         boton_press.setText(nombre);
     }//GEN-LAST:event_MenuRegistroContableMousePressed
 
     private void MenuMarcasMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_MenuMarcasMousePressed
         // TODO add your handling code here:
-        String nombre=MenuMarcas.getText();
+        String nombre = MenuMarcas.getText();
         boton_press.setText(nombre);
     }//GEN-LAST:event_MenuMarcasMousePressed
 
     private void MenuLineasMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_MenuLineasMousePressed
         // TODO add your handling code here:
-        String nombre=MenuLineas.getText();
+        String nombre = MenuLineas.getText();
         boton_press.setText(nombre);
     }//GEN-LAST:event_MenuLineasMousePressed
 
     private void MenuSucursalMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_MenuSucursalMousePressed
         // TODO add your handling code here:
-        String nombre=MenuSucursal.getText();
+        String nombre = MenuSucursal.getText();
         boton_press.setText(nombre);
     }//GEN-LAST:event_MenuSucursalMousePressed
 
     private void MenuBodegaMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_MenuBodegaMousePressed
         // TODO add your handling code here:
-        String nombre=MenuBodega.getText();
+        String nombre = MenuBodega.getText();
         boton_press.setText(nombre);
     }//GEN-LAST:event_MenuBodegaMousePressed
 
     private void MenuTipoInvenMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_MenuTipoInvenMousePressed
         // TODO add your handling code here:
-        String nombre=MenuTipoInven.getText();
+        String nombre = MenuTipoInven.getText();
         boton_press.setText(nombre);
     }//GEN-LAST:event_MenuTipoInvenMousePressed
 
     private void MenuInventariosMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_MenuInventariosMousePressed
         // TODO add your handling code here:
-        String nombre=MenuInventarios.getText();
+        String nombre = MenuInventarios.getText();
         boton_press.setText(nombre);
     }//GEN-LAST:event_MenuInventariosMousePressed
 
     private void MenuPilotoMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_MenuPilotoMousePressed
         // TODO add your handling code here:
-        String nombre=MenuPiloto.getText();
+        String nombre = MenuPiloto.getText();
         boton_press.setText(nombre);
     }//GEN-LAST:event_MenuPilotoMousePressed
 
     private void MenuVehiculosMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_MenuVehiculosMousePressed
         // TODO add your handling code here:
-        String nombre=MenuVehiculos.getText();
+        String nombre = MenuVehiculos.getText();
         boton_press.setText(nombre);
     }//GEN-LAST:event_MenuVehiculosMousePressed
 
     private void MenuTipClienteMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_MenuTipClienteMousePressed
         // TODO add your handling code here:
-        String nombre=MenuTipCliente.getText();
+        String nombre = MenuTipCliente.getText();
         boton_press.setText(nombre);
     }//GEN-LAST:event_MenuTipClienteMousePressed
 
     private void MenuClienteMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_MenuClienteMousePressed
         // TODO add your handling code here:
-        String nombre=MenuCliente.getText();
+        String nombre = MenuCliente.getText();
         boton_press.setText(nombre);
     }//GEN-LAST:event_MenuClienteMousePressed
 
     private void saveMenuItemMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_saveMenuItemMousePressed
         // TODO add your handling code here:
-        String nombre=saveMenuItem.getText();
+        String nombre = saveMenuItem.getText();
         boton_press.setText(nombre);
     }//GEN-LAST:event_saveMenuItemMousePressed
 
     private void saveAsMenuItemMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_saveAsMenuItemMousePressed
         // TODO add your handling code here:
-        String nombre=saveAsMenuItem.getText();
+        String nombre = saveAsMenuItem.getText();
         boton_press.setText(nombre);
     }//GEN-LAST:event_saveAsMenuItemMousePressed
 
     private void exitMenuItemMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_exitMenuItemMousePressed
         // TODO add your handling code here:
-        String nombre=exitMenuItem.getText();
+        String nombre = exitMenuItem.getText();
         boton_press.setText(nombre);
     }//GEN-LAST:event_exitMenuItemMousePressed
 
     private void exitMenuItem1MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_exitMenuItem1MousePressed
         // TODO add your handling code here:
-        String nombre=exitMenuItem.getText();
+        String nombre = exitMenuItem.getText();
         boton_press.setText(nombre);
     }//GEN-LAST:event_exitMenuItem1MousePressed
 
     private void jMenuItem3MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenuItem3MousePressed
         // TODO add your handling code here:
-        String nombre=jMenuItem3.getText();
+        String nombre = jMenuItem3.getText();
         boton_press.setText(nombre);
     }//GEN-LAST:event_jMenuItem3MousePressed
 
     private void jMenuItem4MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenuItem4MousePressed
         // TODO add your handling code here:
-        String nombre=jMenuItem4.getText();
+        String nombre = jMenuItem4.getText();
         boton_press.setText(nombre);
-        
+
     }//GEN-LAST:event_jMenuItem4MousePressed
 
     private void jMenuItem6MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenuItem6MousePressed
         // TODO add your handling code here:
-        String nombre=jMenuItem6.getText();
+        String nombre = jMenuItem6.getText();
         boton_press.setText(nombre);
     }//GEN-LAST:event_jMenuItem6MousePressed
 
     private void jMenuItem7MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenuItem7MousePressed
         // TODO add your handling code here:
-        String nombre=jMenuItem7.getText();
+        String nombre = jMenuItem7.getText();
         boton_press.setText(nombre);
     }//GEN-LAST:event_jMenuItem7MousePressed
 
     private void jMenuItem8MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenuItem8MousePressed
         // TODO add your handling code here:
-        String nombre=jMenuItem8.getText();
+        String nombre = jMenuItem8.getText();
         boton_press.setText(nombre);
     }//GEN-LAST:event_jMenuItem8MousePressed
 
     private void jMenuItem9MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenuItem9MousePressed
         // TODO add your handling code here:
-        String nombre=jMenuItem9.getText();
+        String nombre = jMenuItem9.getText();
         boton_press.setText(nombre);
     }//GEN-LAST:event_jMenuItem9MousePressed
 
     private void jMenuItem10MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenuItem10MousePressed
         // TODO add your handling code here:
-        String nombre=jMenuItem10.getText();
+        String nombre = jMenuItem10.getText();
         boton_press.setText(nombre);
     }//GEN-LAST:event_jMenuItem10MousePressed
 
     private void jMenuParametrosMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenuParametrosMousePressed
         // TODO add your handling code here:
-        String nombre=jMenuParametros.getText();
+        String nombre = jMenuParametros.getText();
         boton_press.setText(nombre);
     }//GEN-LAST:event_jMenuParametrosMousePressed
 
     private void jMenuItem12MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenuItem12MousePressed
         // TODO add your handling code here:
-        String nombre=jMenuItem12.getText();
+        String nombre = jMenuItem12.getText();
         boton_press.setText(nombre);
     }//GEN-LAST:event_jMenuItem12MousePressed
 
     private void jMenuItem13MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenuItem13MousePressed
         // TODO add your handling code here:
-        String nombre=jMenuItem13.getText();
+        String nombre = jMenuItem13.getText();
         boton_press.setText(nombre);
     }//GEN-LAST:event_jMenuItem13MousePressed
 
     private void jMenuItem14MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenuItem14MousePressed
         // TODO add your handling code here:
-        String nombre=jMenuItem14.getText();
+        String nombre = jMenuItem14.getText();
         boton_press.setText(nombre);
     }//GEN-LAST:event_jMenuItem14MousePressed
 
     private void jMenuItem15MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenuItem15MousePressed
         // TODO add your handling code here:
-        String nombre=jMenuItem15.getText();
+        String nombre = jMenuItem15.getText();
         boton_press.setText(nombre);
     }//GEN-LAST:event_jMenuItem15MousePressed
 
     private void jMenuItem16MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenuItem16MousePressed
         // TODO add your handling code here:
-        String nombre=jMenuItem16.getText();
+        String nombre = jMenuItem16.getText();
         boton_press.setText(nombre);
     }//GEN-LAST:event_jMenuItem16MousePressed
 
     private void jMenuCotDetClientesMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenuCotDetClientesMousePressed
         // TODO add your handling code here:
-        String nombre=jMenuCotDetClientes.getText();
+        String nombre = jMenuCotDetClientes.getText();
         boton_press.setText(nombre);
     }//GEN-LAST:event_jMenuCotDetClientesMousePressed
 
     private void jMenuCotDetProvMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenuCotDetProvMousePressed
         // TODO add your handling code here:
-        String nombre=jMenuCotDetProv.getText();
+        String nombre = jMenuCotDetProv.getText();
         boton_press.setText(nombre);
     }//GEN-LAST:event_jMenuCotDetProvMousePressed
 
     private void jMenuCotEncProveedoresMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenuCotEncProveedoresMousePressed
         // TODO add your handling code here:
-        String nombre=jMenuCotEncProveedores.getText();
+        String nombre = jMenuCotEncProveedores.getText();
         boton_press.setText(nombre);
     }//GEN-LAST:event_jMenuCotEncProveedoresMousePressed
 
     private void jMenuCotEncClientesMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenuCotEncClientesMousePressed
         // TODO add your handling code here:
-        String nombre=jMenuCotEncClientes.getText();
+        String nombre = jMenuCotEncClientes.getText();
         boton_press.setText(nombre);
     }//GEN-LAST:event_jMenuCotEncClientesMousePressed
 
     private void jMenuCreditoProvMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenuCreditoProvMousePressed
         // TODO add your handling code here:
-        String nombre=jMenuCreditoProv.getText();
+        String nombre = jMenuCreditoProv.getText();
         boton_press.setText(nombre);
     }//GEN-LAST:event_jMenuCreditoProvMousePressed
 
     private void jMenuItem18MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenuItem18MousePressed
         // TODO add your handling code here:
-        String nombre=jMenuItem18.getText();
+        String nombre = jMenuItem18.getText();
         boton_press.setText(nombre);
     }//GEN-LAST:event_jMenuItem18MousePressed
 
     private void jMenuItem19MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenuItem19MousePressed
         // TODO add your handling code here:
-        String nombre=jMenuItem19.getText();
+        String nombre = jMenuItem19.getText();
         boton_press.setText(nombre);
     }//GEN-LAST:event_jMenuItem19MousePressed
 
@@ -1278,6 +1280,14 @@ public class mdi_Principal extends javax.swing.JFrame {
         ventana.setLocation((desktopSize.width - FrameSize.width) / 2, (desktopSize.height - FrameSize.height) / 2);
         bitacora_boton();        // TODO add your handling code here:
     }//GEN-LAST:event_jMenuCreditoProv1ActionPerformed
+
+    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+        inf_Transaccion_Venta ventana = new inf_Transaccion_Venta();
+        desktopPane.add(ventana);
+        Dimension desktopSize = desktopPane.getSize();
+        Dimension FrameSize = ventana.getSize();
+        ventana.setLocation((desktopSize.width - FrameSize.width) / 2, (desktopSize.height - FrameSize.height) / 2);
+    }//GEN-LAST:event_jMenuItem1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -1341,6 +1351,7 @@ public class mdi_Principal extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuCotEncProveedores;
     private javax.swing.JMenuItem jMenuCreditoProv;
     private javax.swing.JMenuItem jMenuCreditoProv1;
+    private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem10;
     private javax.swing.JMenuItem jMenuItem12;
     private javax.swing.JMenuItem jMenuItem13;

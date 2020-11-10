@@ -271,7 +271,6 @@ public class inf_Mantenimiento_TipoHabitacion extends javax.swing.JInternalFrame
         setBackground(javax.swing.UIManager.getDefaults().getColor("Button.light"));
         setClosable(true);
         setIconifiable(true);
-        setMaximizable(true);
         setResizable(true);
         setTitle("Mantenimineto Tipo Habitación");
         setVisible(true);

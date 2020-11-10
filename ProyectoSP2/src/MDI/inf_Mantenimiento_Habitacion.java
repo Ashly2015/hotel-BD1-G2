@@ -311,7 +311,6 @@ public class inf_Mantenimiento_Habitacion extends javax.swing.JInternalFrame {
 
         setClosable(true);
         setIconifiable(true);
-        setMaximizable(true);
         setResizable(true);
         setTitle("Mantenimiento Habitación ");
         setVisible(true);
