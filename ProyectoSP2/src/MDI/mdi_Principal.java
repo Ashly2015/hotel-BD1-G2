@@ -167,6 +167,7 @@ public class mdi_Principal extends javax.swing.JFrame {
         jMenuCotEncProveedores = new javax.swing.JMenuItem();
         jMenuCotEncClientes = new javax.swing.JMenuItem();
         jMenuCreditoProv = new javax.swing.JMenuItem();
+        jMenuCreditoProv1 = new javax.swing.JMenuItem();
         jmAdministracion = new javax.swing.JMenu();
         jMenuItem18 = new javax.swing.JMenuItem();
         jMenuItem19 = new javax.swing.JMenuItem();
@@ -179,8 +180,6 @@ public class mdi_Principal extends javax.swing.JFrame {
         lbusu.setText("jLabel1");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-
-        desktopPane.setBackground(new java.awt.Color(0, 0, 0));
 
         labelusuario.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         labelusuario.setText("zuzu");
@@ -630,6 +629,19 @@ public class mdi_Principal extends javax.swing.JFrame {
             }
         });
         jMenu1.add(jMenuCreditoProv);
+
+        jMenuCreditoProv1.setText("Credito Clientes");
+        jMenuCreditoProv1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                jMenuCreditoProv1MousePressed(evt);
+            }
+        });
+        jMenuCreditoProv1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuCreditoProv1ActionPerformed(evt);
+            }
+        });
+        jMenu1.add(jMenuCreditoProv1);
 
         menuBar.add(jMenu1);
 
@@ -1254,6 +1266,19 @@ public class mdi_Principal extends javax.swing.JFrame {
         boton_press.setText(nombre);
     }//GEN-LAST:event_jMenuItem19MousePressed
 
+    private void jMenuCreditoProv1MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenuCreditoProv1MousePressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jMenuCreditoProv1MousePressed
+
+    private void jMenuCreditoProv1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuCreditoProv1ActionPerformed
+        inf_TransaccionCreditoCliente ventana = new inf_TransaccionCreditoCliente();
+        desktopPane.add(ventana);
+        Dimension desktopSize = desktopPane.getSize();
+        Dimension FrameSize = ventana.getSize();
+        ventana.setLocation((desktopSize.width - FrameSize.width) / 2, (desktopSize.height - FrameSize.height) / 2);
+        bitacora_boton();        // TODO add your handling code here:
+    }//GEN-LAST:event_jMenuCreditoProv1ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -1315,6 +1340,7 @@ public class mdi_Principal extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuCotEncClientes;
     private javax.swing.JMenuItem jMenuCotEncProveedores;
     private javax.swing.JMenuItem jMenuCreditoProv;
+    private javax.swing.JMenuItem jMenuCreditoProv1;
     private javax.swing.JMenuItem jMenuItem10;
     private javax.swing.JMenuItem jMenuItem12;
     private javax.swing.JMenuItem jMenuItem13;
