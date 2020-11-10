@@ -5,6 +5,7 @@
  */
 package MDI;
 
+import static MDI.mdi_Principal.labelusuario;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -117,6 +118,145 @@ public class inf_Transaccion_Compras extends javax.swing.JInternalFrame {
         }
         tablas();
     }
+    
+    public void get_fecha(){
+        //Obtenemos la fecha
+        Calendar c1 = Calendar.getInstance();
+                fecha.setCalendar(c1);
+    }
+    
+    public void get_usuario(){
+        try {
+            Connection cn = DriverManager.getConnection(mdi_Principal.BD, mdi_Principal.Usuario, mdi_Principal.Contraseña);
+            PreparedStatement pst = cn.prepareStatement("select * from usuario_hoteleria where nombre_usuario = ?");
+            pst.setString(1, labelusuario.getText().trim()); 
+
+            ResultSet rs = pst.executeQuery();
+
+            if (rs.next()) {
+
+                lbusu.setText(rs.getString("id_usuario"));
+                
+
+
+        }
+        }catch (Exception e) {
+
+        
+        }
+    }
+    
+    public void bitacora_compra(){
+        String prov=txt_IdCompra.getText();
+        String descrip="Registró la compra "+prov;
+       //Desciframos la fecha
+        java.util.Date fechaN = fecha.getDate();
+        long fecha = fechaN.getTime();
+        java.sql.Date dateN = new java.sql.Date(fecha);
+        
+        
+        //Obtenemos la hora
+                Calendar timec = Calendar.getInstance();
+                
+                int hora = timec.get(Calendar.HOUR_OF_DAY);
+                int minutos = timec.get(Calendar.MINUTE);
+                int segundos = timec.get(Calendar.SECOND);
+                
+                String time=hora+":"+minutos+":"+segundos;
+                
+        
+        try {
+            
+            Connection cn = DriverManager.getConnection(mdi_Principal.BD, mdi_Principal.Usuario, mdi_Principal.Contraseña);
+            //localhost es 127.0.0.1
+            PreparedStatement pst = cn.prepareStatement("insert into bitacora values(?,?,?,?,?)");
+
+            pst.setString(1, "0");
+            pst.setString(2, lbusu.getText().trim());
+            pst.setString(3, descrip);
+            pst.setString(4,dateN.toString().trim() );
+            pst.setString(5, time.trim());
+            
+            pst.executeUpdate();
+
+        } catch (SQLException e) {
+        }
+    }
+    
+    public void bitacora_detallec(){
+        String prov=txt_IdCompra.getText();
+        String descrip="Registró un articulo en la compra "+prov;
+       //Desciframos la fecha
+        java.util.Date fechaN = fecha.getDate();
+        long fecha = fechaN.getTime();
+        java.sql.Date dateN = new java.sql.Date(fecha);
+        
+        
+        //Obtenemos la hora
+                Calendar timec = Calendar.getInstance();
+                
+                int hora = timec.get(Calendar.HOUR_OF_DAY);
+                int minutos = timec.get(Calendar.MINUTE);
+                int segundos = timec.get(Calendar.SECOND);
+                
+                String time=hora+":"+minutos+":"+segundos;
+                
+        
+        try {
+            
+            Connection cn = DriverManager.getConnection(mdi_Principal.BD, mdi_Principal.Usuario, mdi_Principal.Contraseña);
+            //localhost es 127.0.0.1
+            PreparedStatement pst = cn.prepareStatement("insert into bitacora values(?,?,?,?,?)");
+
+            pst.setString(1, "0");
+            pst.setString(2, lbusu.getText().trim());
+            pst.setString(3, descrip);
+            pst.setString(4,dateN.toString().trim() );
+            pst.setString(5, time.trim());
+            
+            pst.executeUpdate();
+
+        } catch (SQLException e) {
+        }
+    }
+    
+    public void bitacora_finalizar(){
+        String prov=txt_IdCompra.getText();
+        String descrip="Finalizó la compra "+prov;
+       //Desciframos la fecha
+        java.util.Date fechaN = fecha.getDate();
+        long fecha = fechaN.getTime();
+        java.sql.Date dateN = new java.sql.Date(fecha);
+        
+        
+        //Obtenemos la hora
+                Calendar timec = Calendar.getInstance();
+                
+                int hora = timec.get(Calendar.HOUR_OF_DAY);
+                int minutos = timec.get(Calendar.MINUTE);
+                int segundos = timec.get(Calendar.SECOND);
+                
+                String time=hora+":"+minutos+":"+segundos;
+                
+        
+        try {
+            
+            Connection cn = DriverManager.getConnection(mdi_Principal.BD, mdi_Principal.Usuario, mdi_Principal.Contraseña);
+            //localhost es 127.0.0.1
+            PreparedStatement pst = cn.prepareStatement("insert into bitacora values(?,?,?,?,?)");
+
+            pst.setString(1, "0");
+            pst.setString(2, lbusu.getText().trim());
+            pst.setString(3, descrip);
+            pst.setString(4,dateN.toString().trim() );
+            pst.setString(5, time.trim());
+            
+            pst.executeUpdate();
+
+        } catch (SQLException e) {
+        }
+    }
+
     /**
      * Creates new form inf_Transaccion_Compras
      */
@@ -128,6 +268,8 @@ public class inf_Transaccion_Compras extends javax.swing.JInternalFrame {
         iniciar_combo2();
         iniciar_combo3();
         iniciar_combo4();
+        get_usuario();
+        get_fecha();
 
     }
 
@@ -140,6 +282,8 @@ public class inf_Transaccion_Compras extends javax.swing.JInternalFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        fecha = new com.toedter.calendar.JDateChooser();
+        lbusu = new javax.swing.JLabel();
         txt_precio = new javax.swing.JTextField();
         jLabel9 = new javax.swing.JLabel();
         btnAgregarProducto = new javax.swing.JButton();
@@ -471,6 +615,8 @@ public class inf_Transaccion_Compras extends javax.swing.JInternalFrame {
             model.addRow(registros);
 
             JOptionPane.showMessageDialog(this, "¡REGISTRO EXITOSO!", "Mensaje", JOptionPane.INFORMATION_MESSAGE);
+            bitacora_detallec();
+            
             lbI.setText("");
             txt_cantidad.setText("");
             txt_precio.setText("");
@@ -501,6 +647,8 @@ public class inf_Transaccion_Compras extends javax.swing.JInternalFrame {
 
             pst.executeUpdate();
 
+            bitacora_finalizar();
+            
             JOptionPane.showMessageDialog(this, "¡COMPRA FINALIZADA CON ÉXITO!", "Mensaje", JOptionPane.INFORMATION_MESSAGE);
             lb.setText("");
             lbI.setText("");
@@ -555,6 +703,8 @@ public class inf_Transaccion_Compras extends javax.swing.JInternalFrame {
             pst.setString(5,fecha);
 
             pst.executeUpdate();
+            
+            bitacora_compra();
 
             JOptionPane.showMessageDialog(this, "¡PRIMER REGISTRO EXITOSO!", "Mensaje", JOptionPane.INFORMATION_MESSAGE);
 
@@ -731,6 +881,7 @@ public class inf_Transaccion_Compras extends javax.swing.JInternalFrame {
     private javax.swing.JComboBox<String> cbox_moneda;
     private javax.swing.JComboBox<String> cbox_proveedor;
     private javax.swing.JComboBox<String> cbox_sucursal;
+    private com.toedter.calendar.JDateChooser fecha;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -746,6 +897,7 @@ public class inf_Transaccion_Compras extends javax.swing.JInternalFrame {
     private javax.swing.JLabel lbI;
     private javax.swing.JLabel lbM;
     private javax.swing.JLabel lbSucursal;
+    private javax.swing.JLabel lbusu;
     private java.awt.Panel panel1;
     private javax.swing.JTable tabla;
     private javax.swing.JTextField txt_IdCompra;

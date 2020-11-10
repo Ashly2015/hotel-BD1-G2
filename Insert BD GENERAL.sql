@@ -34,7 +34,6 @@ insert into clasificacion_cuenta values ("1", "Corriente");
 insert into clasificacion_cuenta values ("2", "No Corriente");
 insert into clasificacion_cuenta values ("3", "Capital");
 
-select * from cuenta_contable;
 insert into cuenta_contable values ("1", "Caja", "Activo", "1", "0", "10000","500", "9500", "0", "0", "Contiene el efectivo" );
 
 insert into Documento_bancario values ("01", "Cheque", "-", "A");
@@ -189,3 +188,9 @@ insert into venta_detalle values(1,1,1,1,100);
 insert into tipo_pago_credito values(1, "tarjeta", "A");
 insert into tipo_pago_credito values(2, "cheque", "A");
 insert into tipo_pago_credito values(3, "efectivo", "A");
+
+insert into usuario_hoteleria values("1", "zuzu", "123", "1", "A");
+
+insert into bitacora values("0", "1", "Ingresó al programa", "2020-11-09", "13:17:00");
+
+select * from hotel_general.bitacora;
