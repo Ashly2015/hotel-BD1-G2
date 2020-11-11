@@ -5,13 +5,11 @@
  */
 package MDI;
 
-import static MDI.mdi_Principal.labelusuario;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.Calendar;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
@@ -126,177 +124,6 @@ public class inf_Mantenimiento_Serie extends javax.swing.JInternalFrame {
         }
         tablas();
     }
-        
-        public void get_fecha(){
-        //Obtenemos la fecha
-        Calendar c1 = Calendar.getInstance();
-                fecha.setCalendar(c1);
-    }
-    
-    public void get_usuario(){
-        try {
-            Connection cn = DriverManager.getConnection(mdi_Principal.BD, mdi_Principal.Usuario, mdi_Principal.Contraseña);
-            PreparedStatement pst = cn.prepareStatement("select * from usuario_hoteleria where nombre_usuario = ?");
-            pst.setString(1, labelusuario.getText().trim()); 
-
-            ResultSet rs = pst.executeQuery();
-
-            if (rs.next()) {
-
-                lbusu.setText(rs.getString("id_usuario"));
-                
-
-
-        }
-        }catch (Exception e) {
-
-        
-        }
-    }
-    
-    public void bitacora_guardar(){
-        String descrip="Registró una serie ";
-       //Desciframos la fecha
-        java.util.Date fechaN = fecha.getDate();
-        long fecha = fechaN.getTime();
-        java.sql.Date dateN = new java.sql.Date(fecha);
-        
-        
-        //Obtenemos la hora
-                Calendar timec = Calendar.getInstance();
-                
-                int hora = timec.get(Calendar.HOUR_OF_DAY);
-                int minutos = timec.get(Calendar.MINUTE);
-                int segundos = timec.get(Calendar.SECOND);
-                
-                String time=hora+":"+minutos+":"+segundos;
-                
-        
-        try {
-            
-            Connection cn = DriverManager.getConnection(mdi_Principal.BD, mdi_Principal.Usuario, mdi_Principal.Contraseña);
-            //localhost es 127.0.0.1
-            PreparedStatement pst = cn.prepareStatement("insert into bitacora values(?,?,?,?,?)");
-
-            pst.setString(1, "0");
-            pst.setString(2, lbusu.getText().trim());
-            pst.setString(3, descrip);
-            pst.setString(4,dateN.toString().trim() );
-            pst.setString(5, time.trim());
-            
-            pst.executeUpdate();
-
-        } catch (SQLException e) {
-        }
-    }
-    public void bitacora_modificar(){
-        String prov=txtbuscado.getText();
-        String descrip="Modificó la serie "+prov;
-       //Desciframos la fecha
-        java.util.Date fechaN = fecha.getDate();
-        long fecha = fechaN.getTime();
-        java.sql.Date dateN = new java.sql.Date(fecha);
-        
-        
-        //Obtenemos la hora
-                Calendar timec = Calendar.getInstance();
-                
-                int hora = timec.get(Calendar.HOUR_OF_DAY);
-                int minutos = timec.get(Calendar.MINUTE);
-                int segundos = timec.get(Calendar.SECOND);
-                
-                String time=hora+":"+minutos+":"+segundos;
-                
-        
-        try {
-            
-            Connection cn = DriverManager.getConnection(mdi_Principal.BD, mdi_Principal.Usuario, mdi_Principal.Contraseña);
-            //localhost es 127.0.0.1
-            PreparedStatement pst = cn.prepareStatement("insert into bitacora values(?,?,?,?,?)");
-
-            pst.setString(1, "0");
-            pst.setString(2, lbusu.getText().trim());
-            pst.setString(3, descrip);
-            pst.setString(4,dateN.toString().trim() );
-            pst.setString(5, time.trim());
-            
-            pst.executeUpdate();
-
-        } catch (SQLException e) {
-        }
-    }
-    public void bitacora_eliminar(){
-       String prov=txtbuscado.getText();
-        String descrip="Eliminó la serie "+prov;
-       //Desciframos la fecha
-        java.util.Date fechaN = fecha.getDate();
-        long fecha = fechaN.getTime();
-        java.sql.Date dateN = new java.sql.Date(fecha);
-        
-        
-        //Obtenemos la hora
-                Calendar timec = Calendar.getInstance();
-                
-                int hora = timec.get(Calendar.HOUR_OF_DAY);
-                int minutos = timec.get(Calendar.MINUTE);
-                int segundos = timec.get(Calendar.SECOND);
-                
-                String time=hora+":"+minutos+":"+segundos;
-                
-        
-        try {
-            
-            Connection cn = DriverManager.getConnection(mdi_Principal.BD, mdi_Principal.Usuario, mdi_Principal.Contraseña);
-            //localhost es 127.0.0.1
-            PreparedStatement pst = cn.prepareStatement("insert into bitacora values(?,?,?,?,?)");
-
-            pst.setString(1, "0");
-            pst.setString(2, lbusu.getText().trim());
-            pst.setString(3, descrip);
-            pst.setString(4,dateN.toString().trim() );
-            pst.setString(5, time.trim());
-            
-            pst.executeUpdate();
-
-        } catch (SQLException e) {
-        }
-    }
-    public void bitacora_buscar(){
-        String prov=txtbuscado.getText();
-        String descrip="Buscó la serie "+prov;
-       //Desciframos la fecha
-        java.util.Date fechaN = fecha.getDate();
-        long fecha = fechaN.getTime();
-        java.sql.Date dateN = new java.sql.Date(fecha);
-        
-        
-        //Obtenemos la hora
-                Calendar timec = Calendar.getInstance();
-                
-                int hora = timec.get(Calendar.HOUR_OF_DAY);
-                int minutos = timec.get(Calendar.MINUTE);
-                int segundos = timec.get(Calendar.SECOND);
-                
-                String time=hora+":"+minutos+":"+segundos;
-                
-        
-        try {
-            
-            Connection cn = DriverManager.getConnection(mdi_Principal.BD, mdi_Principal.Usuario, mdi_Principal.Contraseña);
-            //localhost es 127.0.0.1
-            PreparedStatement pst = cn.prepareStatement("insert into bitacora values(?,?,?,?,?)");
-
-            pst.setString(1, "0");
-            pst.setString(2, lbusu.getText().trim());
-            pst.setString(3, descrip);
-            pst.setString(4,dateN.toString().trim() );
-            pst.setString(5, time.trim());
-            
-            pst.executeUpdate();
-
-        } catch (SQLException e) {
-        }
-    }
 
     /**
      * Creates new form inf_Mantenimiento_Serie
@@ -306,8 +133,6 @@ public class inf_Mantenimiento_Serie extends javax.swing.JInternalFrame {
         tablas();
         iniciar_combo1();
         iniciar_combo2();
-        get_fecha();
-        get_usuario();
     }
 
     /**
@@ -319,8 +144,6 @@ public class inf_Mantenimiento_Serie extends javax.swing.JInternalFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        lbusu = new javax.swing.JLabel();
-        fecha = new com.toedter.calendar.JDateChooser();
         btnBuscar = new javax.swing.JButton();
         label1 = new javax.swing.JLabel();
         btnModificar = new javax.swing.JButton();
@@ -559,7 +382,7 @@ public class inf_Mantenimiento_Serie extends javax.swing.JInternalFrame {
         }
 
         // tablas();
-         bitacora_buscar();
+        // bitacora_busqueda();
     }//GEN-LAST:event_btnBuscarActionPerformed
 
     private void btnModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModificarActionPerformed
@@ -577,7 +400,7 @@ public class inf_Mantenimiento_Serie extends javax.swing.JInternalFrame {
 
             pst.executeUpdate();
 
-            bitacora_modificar();
+            //bitacora_modificar();
             JOptionPane.showMessageDialog(this, "¡MODIFICACION EXITOSA!", "Mensaje", JOptionPane.INFORMATION_MESSAGE);
             txt_tipo.setText("");
 
@@ -614,7 +437,7 @@ public class inf_Mantenimiento_Serie extends javax.swing.JInternalFrame {
             pst.setString(1, txtbuscado.getText().trim());
             pst.executeUpdate();
 
-             bitacora_eliminar();
+            // bitacora_eliminar();
             JOptionPane.showMessageDialog(this, "¡ELIMINACION EXITOSA!", "Mensaje", JOptionPane.INFORMATION_MESSAGE);
             txt_tipo.setText("");
 
@@ -671,7 +494,7 @@ public class inf_Mantenimiento_Serie extends javax.swing.JInternalFrame {
             pst.setString(4, txt_tipo.getText());
            
 
-            bitacora_guardar();
+            //bitacora_guardar();
             pst.executeUpdate();
 
             JOptionPane.showMessageDialog(this, "¡REGISTRO EXITOSO!", "Mensaje", JOptionPane.INFORMATION_MESSAGE);
@@ -724,7 +547,6 @@ public class inf_Mantenimiento_Serie extends javax.swing.JInternalFrame {
     private javax.swing.JButton btnRegistrar;
     private javax.swing.JComboBox<String> cbox_caja;
     private javax.swing.JComboBox<String> cbox_tipo_sucursal;
-    private com.toedter.calendar.JDateChooser fecha;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel label1;
     private javax.swing.JLabel label3;
@@ -732,7 +554,6 @@ public class inf_Mantenimiento_Serie extends javax.swing.JInternalFrame {
     private javax.swing.JLabel label8;
     private javax.swing.JLabel lb;
     private javax.swing.JLabel lb2;
-    private javax.swing.JLabel lbusu;
     private javax.swing.JTable tbl;
     private javax.swing.JTextField txt_tipo;
     private javax.swing.JTextField txtbuscado;

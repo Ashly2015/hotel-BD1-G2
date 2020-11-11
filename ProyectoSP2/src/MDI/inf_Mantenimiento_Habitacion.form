@@ -7,10 +7,6 @@
         <Property name="text" type="java.lang.String" value="jTextField1"/>
       </Properties>
     </Component>
-    <Component class="com.toedter.calendar.JDateChooser" name="fecha">
-    </Component>
-    <Component class="javax.swing.JLabel" name="lbusu">
-    </Component>
   </NonVisualComponents>
   <Properties>
     <Property name="closable" type="boolean" value="true"/>

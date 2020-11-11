@@ -13,7 +13,6 @@ import java.sql.SQLException;
 import java.util.Calendar;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
-import static MDI.mdi_Principal.labelusuario;
 
 /**
  *
@@ -24,180 +23,6 @@ public class Cot_Enc_Proveedor extends javax.swing.JInternalFrame {
     /**
      * Creates new form Cot_Enc_Proveedor
      */
-    public void get_fecha(){
-        //Obtenemos la fecha
-        Calendar c1 = Calendar.getInstance();
-                fecha.setCalendar(c1);
-    }
-    
-    public void get_usuario(){
-        try {
-            Connection cn = DriverManager.getConnection(mdi_Principal.BD, mdi_Principal.Usuario, mdi_Principal.Contraseña);
-            PreparedStatement pst = cn.prepareStatement("select * from usuario_hoteleria where nombre_usuario = ?");
-            pst.setString(1, labelusuario.getText().trim()); 
-
-            ResultSet rs = pst.executeQuery();
-
-            if (rs.next()) {
-
-                lbusu.setText(rs.getString("id_usuario"));
-                
-
-
-        }
-        }catch (Exception e) {
-
-        
-        }
-    }
-    
-    public void bitacora_guardar(){
-        String cliente=cbox_Cliente.getSelectedItem().toString();
-        String descrip="Ingresó un encabezado de cotización para el cliente "+cliente;
-       //Desciframos la fecha
-        java.util.Date fechaN = fecha.getDate();
-        long fecha = fechaN.getTime();
-        java.sql.Date dateN = new java.sql.Date(fecha);
-        
-        
-        //Obtenemos la hora
-                Calendar timec = Calendar.getInstance();
-                
-                int hora = timec.get(Calendar.HOUR_OF_DAY);
-                int minutos = timec.get(Calendar.MINUTE);
-                int segundos = timec.get(Calendar.SECOND);
-                
-                String time=hora+":"+minutos+":"+segundos;
-                
-        
-        try {
-            
-            Connection cn = DriverManager.getConnection(mdi_Principal.BD, mdi_Principal.Usuario, mdi_Principal.Contraseña);
-            //localhost es 127.0.0.1
-            PreparedStatement pst = cn.prepareStatement("insert into bitacora values(?,?,?,?,?)");
-
-            pst.setString(1, "0");
-            pst.setString(2, lbusu.getText().trim());
-            pst.setString(3, descrip);
-            pst.setString(4,dateN.toString().trim() );
-            pst.setString(5, time.trim());
-            
-            pst.executeUpdate();
-
-        } catch (SQLException e) {
-        }
-    }
-    public void bitacora_modificar(){
-        String cliente=cbox_Cliente.getSelectedItem().toString().trim();
-        String num=txtbuscado.getText();
-        String descrip="Modificó el encabezado de cotización número "+num+" correspondiente al cliente "+cliente;
-       //Desciframos la fecha
-        java.util.Date fechaN = fecha.getDate();
-        long fecha = fechaN.getTime();
-        java.sql.Date dateN = new java.sql.Date(fecha);
-        
-        
-        //Obtenemos la hora
-                Calendar timec = Calendar.getInstance();
-                
-                int hora = timec.get(Calendar.HOUR_OF_DAY);
-                int minutos = timec.get(Calendar.MINUTE);
-                int segundos = timec.get(Calendar.SECOND);
-                
-                String time=hora+":"+minutos+":"+segundos;
-                
-        
-        try {
-            
-            Connection cn = DriverManager.getConnection(mdi_Principal.BD, mdi_Principal.Usuario, mdi_Principal.Contraseña);
-            //localhost es 127.0.0.1
-            PreparedStatement pst = cn.prepareStatement("insert into bitacora values(?,?,?,?,?)");
-
-            pst.setString(1, "0");
-            pst.setString(2, lbusu.getText().trim());
-            pst.setString(3, descrip);
-            pst.setString(4,dateN.toString().trim() );
-            pst.setString(5, time.trim());
-            
-            pst.executeUpdate();
-
-        } catch (SQLException e) {
-        }
-    }
-    public void bitacora_eliminar(){
-        String cliente=cbox_Cliente.getSelectedItem().toString().trim();
-        String num=txtbuscado.getText();
-        String descrip="Eliminó el encabezado de cotización número "+num+" correspondiente al cliente "+cliente;;
-       //Desciframos la fecha
-        java.util.Date fechaN = fecha.getDate();
-        long fecha = fechaN.getTime();
-        java.sql.Date dateN = new java.sql.Date(fecha);
-        
-        
-        //Obtenemos la hora
-                Calendar timec = Calendar.getInstance();
-                
-                int hora = timec.get(Calendar.HOUR_OF_DAY);
-                int minutos = timec.get(Calendar.MINUTE);
-                int segundos = timec.get(Calendar.SECOND);
-                
-                String time=hora+":"+minutos+":"+segundos;
-                
-        
-        try {
-            
-            Connection cn = DriverManager.getConnection(mdi_Principal.BD, mdi_Principal.Usuario, mdi_Principal.Contraseña);
-            //localhost es 127.0.0.1
-            PreparedStatement pst = cn.prepareStatement("insert into bitacora values(?,?,?,?,?)");
-
-            pst.setString(1, "0");
-            pst.setString(2, lbusu.getText().trim());
-            pst.setString(3, descrip);
-            pst.setString(4,dateN.toString().trim() );
-            pst.setString(5, time.trim());
-            
-            pst.executeUpdate();
-
-        } catch (SQLException e) {
-        }
-    }
-    public void bitacora_buscar(){
-        String cliente=cbox_Cliente.getSelectedItem().toString().trim();
-        String num=txtbuscado.getText();
-        String descrip="Buscó el encabezado de cotización número "+num+" correspondiente al cliente "+cliente;
-       //Desciframos la fecha
-        java.util.Date fechaN = fecha.getDate();
-        long fecha = fechaN.getTime();
-        java.sql.Date dateN = new java.sql.Date(fecha);
-        
-        
-        //Obtenemos la hora
-                Calendar timec = Calendar.getInstance();
-                
-                int hora = timec.get(Calendar.HOUR_OF_DAY);
-                int minutos = timec.get(Calendar.MINUTE);
-                int segundos = timec.get(Calendar.SECOND);
-                
-                String time=hora+":"+minutos+":"+segundos;
-                
-        
-        try {
-            
-            Connection cn = DriverManager.getConnection(mdi_Principal.BD, mdi_Principal.Usuario, mdi_Principal.Contraseña);
-            //localhost es 127.0.0.1
-            PreparedStatement pst = cn.prepareStatement("insert into bitacora values(?,?,?,?,?)");
-
-            pst.setString(1, "0");
-            pst.setString(2, lbusu.getText().trim());
-            pst.setString(3, descrip);
-            pst.setString(4,dateN.toString().trim() );
-            pst.setString(5, time.trim());
-            
-            pst.executeUpdate();
-
-        } catch (SQLException e) {
-        }
-    }
     
     public void tablas() {
         try {
@@ -273,8 +98,6 @@ public class Cot_Enc_Proveedor extends javax.swing.JInternalFrame {
         initComponents();
         tablas();
         iniciar_combo();
-        get_usuario();
-        get_fecha();
     }
 
     /**
@@ -286,8 +109,6 @@ public class Cot_Enc_Proveedor extends javax.swing.JInternalFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        fecha = new com.toedter.calendar.JDateChooser();
-        lbusu = new javax.swing.JLabel();
         txt_fecha = new com.toedter.calendar.JDateChooser();
         label7 = new javax.swing.JLabel();
         txtbuscado = new javax.swing.JTextField();
@@ -608,7 +429,7 @@ public class Cot_Enc_Proveedor extends javax.swing.JInternalFrame {
             pst.setString(1, txtbuscado.getText().trim());
             pst.executeUpdate();
 
-             bitacora_eliminar();
+            // bitacora_eliminar();
             JOptionPane.showMessageDialog(this, "¡ELIMINACION EXITOSA!", "Mensaje", JOptionPane.INFORMATION_MESSAGE);
             txt_Total.setText("");
             txt_fecha.setDate(null);
@@ -644,8 +465,8 @@ public class Cot_Enc_Proveedor extends javax.swing.JInternalFrame {
             pst.setString(5, txt_Total.getText());
             pst.setString(6, fecha);
 
-            bitacora_guardar();
-           pst.executeUpdate();
+            //bitacora_guardar();
+            pst.executeUpdate();
 
             JOptionPane.showMessageDialog(this, "¡REGISTRO EXITOSO!", "Mensaje", JOptionPane.INFORMATION_MESSAGE);
             txt_Total.setText("");
@@ -690,7 +511,7 @@ public class Cot_Enc_Proveedor extends javax.swing.JInternalFrame {
         }
 
         // tablas();
-        bitacora_buscar();
+        // bitacora_busqueda();
     }//GEN-LAST:event_btnBuscarActionPerformed
 
     private void btnLimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimpiarActionPerformed
@@ -730,7 +551,7 @@ public class Cot_Enc_Proveedor extends javax.swing.JInternalFrame {
 
             pst.executeUpdate();
 
-            bitacora_modificar();
+            //bitacora_modificar();
             JOptionPane.showMessageDialog(this, "¡MODIFICACION EXITOSA!", "Mensaje", JOptionPane.INFORMATION_MESSAGE);
 
             txt_Total.setText("");
@@ -778,7 +599,6 @@ public class Cot_Enc_Proveedor extends javax.swing.JInternalFrame {
     private javax.swing.JComboBox<String> cbox_Cliente;
     private javax.swing.JComboBox<String> cbox_Proveedor;
     private javax.swing.JComboBox<String> cbox_Vendedor;
-    private com.toedter.calendar.JDateChooser fecha;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel label1;
     private javax.swing.JLabel label10;
@@ -790,7 +610,6 @@ public class Cot_Enc_Proveedor extends javax.swing.JInternalFrame {
     private javax.swing.JLabel lb1;
     private javax.swing.JLabel lb3;
     private javax.swing.JLabel lb4;
-    private javax.swing.JLabel lbusu;
     private javax.swing.JTable tbl;
     private javax.swing.JTextField txt_Total;
     private com.toedter.calendar.JDateChooser txt_fecha;

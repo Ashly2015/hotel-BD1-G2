@@ -7,9 +7,8 @@
 package MDI;
 
 import java.awt.Dimension;
-import java.sql.*;
-import java.util.Calendar;
-import javax.swing.JOptionPane;
+import java.sql.Connection;
+import java.sql.DriverManager;
 
 /**
  *
@@ -22,71 +21,6 @@ public class mdi_Principal extends javax.swing.JFrame {
     public static String BD = "jdbc:mysql://localhost/hotel_general";
     public static String Usuario = "root";
     public static String Contraseña = "6182";
-    
-    public void get_fecha(){
-        //Obtenemos la fecha
-        Calendar c1 = Calendar.getInstance();
-                fecha.setCalendar(c1);
-    }
-    
-    public void get_usuario(){
-        try {
-            Connection cn = DriverManager.getConnection(mdi_Principal.BD, mdi_Principal.Usuario, mdi_Principal.Contraseña);
-            PreparedStatement pst = cn.prepareStatement("select * from usuario_hoteleria where nombre_usuario = ?");
-            pst.setString(1, labelusuario.getText().trim()); 
-
-            ResultSet rs = pst.executeQuery();
-
-            if (rs.next()) {
-
-                lbusu.setText(rs.getString("id_usuario"));
-                
-
-
-        }
-        }catch (Exception e) {
-
-        
-        }
-    }
-    
-    public void bitacora_boton(){
-        get_usuario();
-        String boton=boton_press.getText();
-        String descrip="Ingresó a la seccion "+boton;
-       //Desciframos la fecha
-        java.util.Date fechaN = fecha.getDate();
-        long fecha = fechaN.getTime();
-        java.sql.Date dateN = new java.sql.Date(fecha);
-        
-        
-        //Obtenemos la hora
-                Calendar timec = Calendar.getInstance();
-                
-                int hora = timec.get(Calendar.HOUR_OF_DAY);
-                int minutos = timec.get(Calendar.MINUTE);
-                int segundos = timec.get(Calendar.SECOND);
-                
-                String time=hora+":"+minutos+":"+segundos;
-                
-        
-        try {
-            
-            Connection cn = DriverManager.getConnection(mdi_Principal.BD, mdi_Principal.Usuario, mdi_Principal.Contraseña);
-            //localhost es 127.0.0.1
-            PreparedStatement pst = cn.prepareStatement("insert into bitacora values(?,?,?,?,?)");
-
-            pst.setString(1, "0");
-            pst.setString(2, lbusu.getText().trim());
-            pst.setString(3, descrip);
-            pst.setString(4,dateN.toString().trim() );
-            pst.setString(5, time.trim());
-            
-            pst.executeUpdate();
-
-        } catch (SQLException e) {
-        }
-    }
 
     public static Connection getConeccion() {
         Connection cn = null;
@@ -100,7 +34,6 @@ public class mdi_Principal extends javax.swing.JFrame {
         return cn;
 
     }
-    
 
     public mdi_Principal() {
         initComponents();
@@ -111,11 +44,8 @@ public class mdi_Principal extends javax.swing.JFrame {
         labelusuario.setBounds(10, 10, 160, 51);
         c = labelc.getText().trim();
         u = labelusuario.getText().trim();
-        get_usuario();
-        get_fecha();
     }
 
-    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -126,24 +56,21 @@ public class mdi_Principal extends javax.swing.JFrame {
     private void initComponents() {
 
         labelc = new javax.swing.JLabel();
-        fecha = new com.toedter.calendar.JDateChooser();
-        boton_press = new javax.swing.JLabel();
-        lbusu = new javax.swing.JLabel();
         desktopPane = new javax.swing.JDesktopPane();
         labelusuario = new javax.swing.JLabel();
         menuBar = new javax.swing.JMenuBar();
         fileMenu = new javax.swing.JMenu();
-        MenuRegistroContable = new javax.swing.JMenuItem();
-        MenuMarcas = new javax.swing.JMenuItem();
-        MenuLineas = new javax.swing.JMenuItem();
-        MenuSucursal = new javax.swing.JMenuItem();
-        MenuBodega = new javax.swing.JMenuItem();
-        MenuTipoInven = new javax.swing.JMenuItem();
-        MenuInventarios = new javax.swing.JMenuItem();
-        MenuPiloto = new javax.swing.JMenuItem();
-        MenuVehiculos = new javax.swing.JMenuItem();
-        MenuTipCliente = new javax.swing.JMenuItem();
-        MenuCliente = new javax.swing.JMenuItem();
+        jMenuItem17 = new javax.swing.JMenuItem();
+        jMenuMarcas = new javax.swing.JMenuItem();
+        jMenuLineas = new javax.swing.JMenuItem();
+        jMenuItem11 = new javax.swing.JMenuItem();
+        jMenuItem2 = new javax.swing.JMenuItem();
+        jMenuTipoInven = new javax.swing.JMenuItem();
+        jMenuInventarios = new javax.swing.JMenuItem();
+        jMenuItem5 = new javax.swing.JMenuItem();
+        jMenuVehiculos = new javax.swing.JMenuItem();
+        jMenuItem1 = new javax.swing.JMenuItem();
+        openMenuItem = new javax.swing.JMenuItem();
         saveMenuItem = new javax.swing.JMenuItem();
         saveAsMenuItem = new javax.swing.JMenuItem();
         exitMenuItem = new javax.swing.JMenuItem();
@@ -166,7 +93,7 @@ public class mdi_Principal extends javax.swing.JFrame {
         jMenuCotDetProv = new javax.swing.JMenuItem();
         jMenuCotEncProveedores = new javax.swing.JMenuItem();
         jMenuCotEncClientes = new javax.swing.JMenuItem();
-        jMenuCreditoProv = new javax.swing.JMenuItem();
+        jMenuCotEncClientes1 = new javax.swing.JMenuItem();
         jmAdministracion = new javax.swing.JMenu();
         jMenuItem18 = new javax.swing.JMenuItem();
         jMenuItem19 = new javax.swing.JMenuItem();
@@ -174,176 +101,108 @@ public class mdi_Principal extends javax.swing.JFrame {
 
         labelc.setText("jLabel1");
 
-        boton_press.setText("nombre_boton");
-
-        lbusu.setText("jLabel1");
-
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         desktopPane.setBackground(new java.awt.Color(0, 0, 0));
 
         labelusuario.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        labelusuario.setText("zuzu");
         desktopPane.add(labelusuario);
         labelusuario.setBounds(900, 10, 80, 30);
 
         fileMenu.setMnemonic('f');
         fileMenu.setText("Mantenimientos");
 
-        MenuRegistroContable.setText("Registro Contable");
-        MenuRegistroContable.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                MenuRegistroContableMouseClicked(evt);
-            }
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                MenuRegistroContableMousePressed(evt);
-            }
-        });
-        MenuRegistroContable.addActionListener(new java.awt.event.ActionListener() {
+        jMenuItem17.setText("Registro Contable");
+        jMenuItem17.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                MenuRegistroContableActionPerformed(evt);
+                jMenuItem17ActionPerformed(evt);
             }
         });
-        fileMenu.add(MenuRegistroContable);
+        fileMenu.add(jMenuItem17);
 
-        MenuMarcas.setText("Mantenimiento Marcas");
-        MenuMarcas.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                MenuMarcasMousePressed(evt);
-            }
-        });
-        MenuMarcas.addActionListener(new java.awt.event.ActionListener() {
+        jMenuMarcas.setText("Mantenimiento Marcas");
+        jMenuMarcas.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                MenuMarcasActionPerformed(evt);
+                jMenuMarcasActionPerformed(evt);
             }
         });
-        fileMenu.add(MenuMarcas);
+        fileMenu.add(jMenuMarcas);
 
-        MenuLineas.setText("Mantenimiento Lineas");
-        MenuLineas.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                MenuLineasMousePressed(evt);
-            }
-        });
-        MenuLineas.addActionListener(new java.awt.event.ActionListener() {
+        jMenuLineas.setText("Mantenimiento Lineas");
+        jMenuLineas.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                MenuLineasActionPerformed(evt);
+                jMenuLineasActionPerformed(evt);
             }
         });
-        fileMenu.add(MenuLineas);
+        fileMenu.add(jMenuLineas);
 
-        MenuSucursal.setText("Mantenimiento Sucursal");
-        MenuSucursal.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                MenuSucursalMousePressed(evt);
-            }
-        });
-        MenuSucursal.addActionListener(new java.awt.event.ActionListener() {
+        jMenuItem11.setText("Mantenimiento Sucursal");
+        jMenuItem11.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                MenuSucursalActionPerformed(evt);
+                jMenuItem11ActionPerformed(evt);
             }
         });
-        fileMenu.add(MenuSucursal);
+        fileMenu.add(jMenuItem11);
 
-        MenuBodega.setText("Mantenimiento Bodega");
-        MenuBodega.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                MenuBodegaMousePressed(evt);
-            }
-        });
-        MenuBodega.addActionListener(new java.awt.event.ActionListener() {
+        jMenuItem2.setText("Mantenimiento Bodega");
+        jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                MenuBodegaActionPerformed(evt);
+                jMenuItem2ActionPerformed(evt);
             }
         });
-        fileMenu.add(MenuBodega);
+        fileMenu.add(jMenuItem2);
 
-        MenuTipoInven.setText("Mantenimiento Tipo De Inventarios");
-        MenuTipoInven.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                MenuTipoInvenMousePressed(evt);
-            }
-        });
-        MenuTipoInven.addActionListener(new java.awt.event.ActionListener() {
+        jMenuTipoInven.setText("Mantenimiento Tipo De Inventarios");
+        jMenuTipoInven.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                MenuTipoInvenActionPerformed(evt);
+                jMenuTipoInvenActionPerformed(evt);
             }
         });
-        fileMenu.add(MenuTipoInven);
+        fileMenu.add(jMenuTipoInven);
 
-        MenuInventarios.setText("Mantenimiento Inventarios");
-        MenuInventarios.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                MenuInventariosMousePressed(evt);
-            }
-        });
-        MenuInventarios.addActionListener(new java.awt.event.ActionListener() {
+        jMenuInventarios.setText("Mantenimiento Inventarios");
+        jMenuInventarios.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                MenuInventariosActionPerformed(evt);
+                jMenuInventariosActionPerformed(evt);
             }
         });
-        fileMenu.add(MenuInventarios);
+        fileMenu.add(jMenuInventarios);
 
-        MenuPiloto.setText("Mantenimiento Piloto");
-        MenuPiloto.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                MenuPilotoMousePressed(evt);
-            }
-        });
-        MenuPiloto.addActionListener(new java.awt.event.ActionListener() {
+        jMenuItem5.setText("Mantenimiento Piloto");
+        jMenuItem5.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                MenuPilotoActionPerformed(evt);
+                jMenuItem5ActionPerformed(evt);
             }
         });
-        fileMenu.add(MenuPiloto);
+        fileMenu.add(jMenuItem5);
 
-        MenuVehiculos.setText("Mantenimiento Vehiculos");
-        MenuVehiculos.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                MenuVehiculosMousePressed(evt);
-            }
-        });
-        MenuVehiculos.addActionListener(new java.awt.event.ActionListener() {
+        jMenuVehiculos.setText("Mantenimiento Vehiculos");
+        jMenuVehiculos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                MenuVehiculosActionPerformed(evt);
+                jMenuVehiculosActionPerformed(evt);
             }
         });
-        fileMenu.add(MenuVehiculos);
+        fileMenu.add(jMenuVehiculos);
 
-        MenuTipCliente.setText("Mantenimiento Tipo Cliente");
-        MenuTipCliente.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                MenuTipClienteMousePressed(evt);
-            }
-        });
-        MenuTipCliente.addActionListener(new java.awt.event.ActionListener() {
+        jMenuItem1.setText("Mantenimiento Tipo Cliente");
+        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                MenuTipClienteActionPerformed(evt);
+                jMenuItem1ActionPerformed(evt);
             }
         });
-        fileMenu.add(MenuTipCliente);
+        fileMenu.add(jMenuItem1);
 
-        MenuCliente.setMnemonic('o');
-        MenuCliente.setText("Mantenimiento Cliente");
-        MenuCliente.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                MenuClienteMousePressed(evt);
-            }
-        });
-        MenuCliente.addActionListener(new java.awt.event.ActionListener() {
+        openMenuItem.setMnemonic('o');
+        openMenuItem.setText("Mantenimiento Cliente");
+        openMenuItem.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                MenuClienteActionPerformed(evt);
+                openMenuItemActionPerformed(evt);
             }
         });
-        fileMenu.add(MenuCliente);
+        fileMenu.add(openMenuItem);
 
         saveMenuItem.setMnemonic('s');
         saveMenuItem.setText("Mantenimiento Tipo Precio");
-        saveMenuItem.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                saveMenuItemMousePressed(evt);
-            }
-        });
         saveMenuItem.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 saveMenuItemActionPerformed(evt);
@@ -353,11 +212,6 @@ public class mdi_Principal extends javax.swing.JFrame {
 
         saveAsMenuItem.setMnemonic('a');
         saveAsMenuItem.setText("Mantenimiento Lista Precios");
-        saveAsMenuItem.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                saveAsMenuItemMousePressed(evt);
-            }
-        });
         saveAsMenuItem.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 saveAsMenuItemActionPerformed(evt);
@@ -367,11 +221,6 @@ public class mdi_Principal extends javax.swing.JFrame {
 
         exitMenuItem.setMnemonic('x');
         exitMenuItem.setText("Mantenimiento Descuentos");
-        exitMenuItem.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                exitMenuItemMousePressed(evt);
-            }
-        });
         exitMenuItem.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 exitMenuItemActionPerformed(evt);
@@ -381,11 +230,6 @@ public class mdi_Principal extends javax.swing.JFrame {
 
         exitMenuItem1.setMnemonic('x');
         exitMenuItem1.setText("Mantenimiento Servicios");
-        exitMenuItem1.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                exitMenuItem1MousePressed(evt);
-            }
-        });
         exitMenuItem1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 exitMenuItem1ActionPerformed(evt);
@@ -394,11 +238,6 @@ public class mdi_Principal extends javax.swing.JFrame {
         fileMenu.add(exitMenuItem1);
 
         jMenuItem3.setText("Mantenimiento Impuesto");
-        jMenuItem3.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                jMenuItem3MousePressed(evt);
-            }
-        });
         jMenuItem3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMenuItem3ActionPerformed(evt);
@@ -407,11 +246,6 @@ public class mdi_Principal extends javax.swing.JFrame {
         fileMenu.add(jMenuItem3);
 
         jMenuItem4.setText("Mantenimiento Vendedor");
-        jMenuItem4.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                jMenuItem4MousePressed(evt);
-            }
-        });
         jMenuItem4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMenuItem4ActionPerformed(evt);
@@ -420,11 +254,6 @@ public class mdi_Principal extends javax.swing.JFrame {
         fileMenu.add(jMenuItem4);
 
         jMenuItem6.setText("Mantenimiento Cobrador");
-        jMenuItem6.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                jMenuItem6MousePressed(evt);
-            }
-        });
         jMenuItem6.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMenuItem6ActionPerformed(evt);
@@ -433,11 +262,6 @@ public class mdi_Principal extends javax.swing.JFrame {
         fileMenu.add(jMenuItem6);
 
         jMenuItem7.setText("Mantenimiento Proveedor");
-        jMenuItem7.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                jMenuItem7MousePressed(evt);
-            }
-        });
         jMenuItem7.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMenuItem7ActionPerformed(evt);
@@ -446,11 +270,6 @@ public class mdi_Principal extends javax.swing.JFrame {
         fileMenu.add(jMenuItem7);
 
         jMenuItem8.setText("Mantenimiento Caja");
-        jMenuItem8.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                jMenuItem8MousePressed(evt);
-            }
-        });
         jMenuItem8.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMenuItem8ActionPerformed(evt);
@@ -459,11 +278,6 @@ public class mdi_Principal extends javax.swing.JFrame {
         fileMenu.add(jMenuItem8);
 
         jMenuItem9.setText("Mantenimiento Prenda");
-        jMenuItem9.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                jMenuItem9MousePressed(evt);
-            }
-        });
         jMenuItem9.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMenuItem9ActionPerformed(evt);
@@ -472,11 +286,6 @@ public class mdi_Principal extends javax.swing.JFrame {
         fileMenu.add(jMenuItem9);
 
         jMenuItem10.setText("Mantenimiento Serie");
-        jMenuItem10.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                jMenuItem10MousePressed(evt);
-            }
-        });
         jMenuItem10.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMenuItem10ActionPerformed(evt);
@@ -485,11 +294,6 @@ public class mdi_Principal extends javax.swing.JFrame {
         fileMenu.add(jMenuItem10);
 
         jMenuParametros.setText("Mantenimiento Parametros");
-        jMenuParametros.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                jMenuParametrosMousePressed(evt);
-            }
-        });
         jMenuParametros.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMenuParametrosActionPerformed(evt);
@@ -498,11 +302,6 @@ public class mdi_Principal extends javax.swing.JFrame {
         fileMenu.add(jMenuParametros);
 
         jMenuItem12.setText("Mantenimiento Lavanderia");
-        jMenuItem12.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                jMenuItem12MousePressed(evt);
-            }
-        });
         jMenuItem12.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMenuItem12ActionPerformed(evt);
@@ -511,11 +310,6 @@ public class mdi_Principal extends javax.swing.JFrame {
         fileMenu.add(jMenuItem12);
 
         jMenuItem13.setText("Mantenimiento Tipo Habitación");
-        jMenuItem13.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                jMenuItem13MousePressed(evt);
-            }
-        });
         jMenuItem13.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMenuItem13ActionPerformed(evt);
@@ -524,11 +318,6 @@ public class mdi_Principal extends javax.swing.JFrame {
         fileMenu.add(jMenuItem13);
 
         jMenuItem14.setText("Mantenimineto Habitación");
-        jMenuItem14.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                jMenuItem14MousePressed(evt);
-            }
-        });
         jMenuItem14.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMenuItem14ActionPerformed(evt);
@@ -537,11 +326,6 @@ public class mdi_Principal extends javax.swing.JFrame {
         fileMenu.add(jMenuItem14);
 
         jMenuItem15.setText("Mantenimiento Salón");
-        jMenuItem15.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                jMenuItem15MousePressed(evt);
-            }
-        });
         jMenuItem15.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMenuItem15ActionPerformed(evt);
@@ -554,11 +338,6 @@ public class mdi_Principal extends javax.swing.JFrame {
         jMenu1.setText("Transacciones");
 
         jMenuItem16.setText("Compras");
-        jMenuItem16.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                jMenuItem16MousePressed(evt);
-            }
-        });
         jMenuItem16.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMenuItem16ActionPerformed(evt);
@@ -567,11 +346,6 @@ public class mdi_Principal extends javax.swing.JFrame {
         jMenu1.add(jMenuItem16);
 
         jMenuCotDetClientes.setText("Cotizacion Det. Clientes");
-        jMenuCotDetClientes.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                jMenuCotDetClientesMousePressed(evt);
-            }
-        });
         jMenuCotDetClientes.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMenuCotDetClientesActionPerformed(evt);
@@ -580,11 +354,6 @@ public class mdi_Principal extends javax.swing.JFrame {
         jMenu1.add(jMenuCotDetClientes);
 
         jMenuCotDetProv.setText("Cotizacion Det. Proveedores");
-        jMenuCotDetProv.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                jMenuCotDetProvMousePressed(evt);
-            }
-        });
         jMenuCotDetProv.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMenuCotDetProvActionPerformed(evt);
@@ -593,11 +362,6 @@ public class mdi_Principal extends javax.swing.JFrame {
         jMenu1.add(jMenuCotDetProv);
 
         jMenuCotEncProveedores.setText("Contizacion Enc. Proveedores");
-        jMenuCotEncProveedores.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                jMenuCotEncProveedoresMousePressed(evt);
-            }
-        });
         jMenuCotEncProveedores.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMenuCotEncProveedoresActionPerformed(evt);
@@ -606,11 +370,6 @@ public class mdi_Principal extends javax.swing.JFrame {
         jMenu1.add(jMenuCotEncProveedores);
 
         jMenuCotEncClientes.setText("Cotizacion Enc. Clientes");
-        jMenuCotEncClientes.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                jMenuCotEncClientesMousePressed(evt);
-            }
-        });
         jMenuCotEncClientes.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMenuCotEncClientesActionPerformed(evt);
@@ -618,29 +377,19 @@ public class mdi_Principal extends javax.swing.JFrame {
         });
         jMenu1.add(jMenuCotEncClientes);
 
-        jMenuCreditoProv.setText("Credito Proveedores");
-        jMenuCreditoProv.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                jMenuCreditoProvMousePressed(evt);
-            }
-        });
-        jMenuCreditoProv.addActionListener(new java.awt.event.ActionListener() {
+        jMenuCotEncClientes1.setText("Credito Proveedores");
+        jMenuCotEncClientes1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuCreditoProvActionPerformed(evt);
+                jMenuCotEncClientes1ActionPerformed(evt);
             }
         });
-        jMenu1.add(jMenuCreditoProv);
+        jMenu1.add(jMenuCotEncClientes1);
 
         menuBar.add(jMenu1);
 
         jmAdministracion.setText("Privacidad");
 
         jMenuItem18.setText("Mantenimiento Rol");
-        jMenuItem18.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                jMenuItem18MousePressed(evt);
-            }
-        });
         jMenuItem18.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMenuItem18ActionPerformed(evt);
@@ -649,11 +398,6 @@ public class mdi_Principal extends javax.swing.JFrame {
         jmAdministracion.add(jMenuItem18);
 
         jMenuItem19.setText("Mantenimento Usuario");
-        jMenuItem19.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                jMenuItem19MousePressed(evt);
-            }
-        });
         jMenuItem19.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMenuItem19ActionPerformed(evt);
@@ -694,23 +438,17 @@ public class mdi_Principal extends javax.swing.JFrame {
         Dimension desktopSize = desktopPane.getSize();
         Dimension FrameSize = ventana1.getSize();
         ventana1.setLocation((desktopSize.width - FrameSize.width) / 2, (desktopSize.height - FrameSize.height) / 2);
-        bitacora_boton();
-        
+
     }//GEN-LAST:event_exitMenuItemActionPerformed
 
-    private void MenuTipClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MenuTipClienteActionPerformed
-  inf_Mantenimiento_Tipo_Cliente ventana1 = new inf_Mantenimiento_Tipo_Cliente();
+    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+        inf_Mantenimiento_Tipo_Cliente ventana1 = new inf_Mantenimiento_Tipo_Cliente();
         desktopPane.add(ventana1);
         Dimension desktopSize = desktopPane.getSize();
         Dimension FrameSize = ventana1.getSize();
         ventana1.setLocation((desktopSize.width - FrameSize.width) / 2, (desktopSize.height - FrameSize.height) / 2);
-        bitacora_boton();
-        
-        
-
         // TODO add your handling code here:
-        
-    }//GEN-LAST:event_MenuTipClienteActionPerformed
+    }//GEN-LAST:event_jMenuItem1ActionPerformed
 
     private void exitMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exitMenuItem1ActionPerformed
         inf_Mantenimiento_Servicio ventana1 = new inf_Mantenimiento_Servicio();
@@ -718,18 +456,16 @@ public class mdi_Principal extends javax.swing.JFrame {
         Dimension desktopSize = desktopPane.getSize();
         Dimension FrameSize = ventana1.getSize();
         ventana1.setLocation((desktopSize.width - FrameSize.width) / 2, (desktopSize.height - FrameSize.height) / 2);        // TODO add your handling code here:
-        bitacora_boton();
     }//GEN-LAST:event_exitMenuItem1ActionPerformed
 
-    private void MenuClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MenuClienteActionPerformed
+    private void openMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_openMenuItemActionPerformed
         inf_Mantenimiento_Cliente1 ventana1 = new inf_Mantenimiento_Cliente1();
         desktopPane.add(ventana1);
         Dimension desktopSize = desktopPane.getSize();
         Dimension FrameSize = ventana1.getSize();
         ventana1.setLocation((desktopSize.width - FrameSize.width) / 2, (desktopSize.height - FrameSize.height) / 2);
-        bitacora_boton();
         // TODO add your handling code here:
-    }//GEN-LAST:event_MenuClienteActionPerformed
+    }//GEN-LAST:event_openMenuItemActionPerformed
 
     private void saveMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveMenuItemActionPerformed
         inf_Mantenimiento_Tipo_Precio ventana1 = new inf_Mantenimiento_Tipo_Precio();
@@ -737,7 +473,6 @@ public class mdi_Principal extends javax.swing.JFrame {
         Dimension desktopSize = desktopPane.getSize();
         Dimension FrameSize = ventana1.getSize();
         ventana1.setLocation((desktopSize.width - FrameSize.width) / 2, (desktopSize.height - FrameSize.height) / 2);
-        bitacora_boton();
         // TODO add your handling code here:
     }//GEN-LAST:event_saveMenuItemActionPerformed
 
@@ -747,7 +482,6 @@ public class mdi_Principal extends javax.swing.JFrame {
         Dimension desktopSize = desktopPane.getSize();
         Dimension FrameSize = ventana1.getSize();
         ventana1.setLocation((desktopSize.width - FrameSize.width) / 2, (desktopSize.height - FrameSize.height) / 2);
-        bitacora_boton();
         // TODO add your handling code here:
     }//GEN-LAST:event_saveAsMenuItemActionPerformed
 
@@ -756,15 +490,14 @@ public class mdi_Principal extends javax.swing.JFrame {
 // TODO add your handling code here:
     }//GEN-LAST:event_helpMenuMouseClicked
 
-    private void MenuBodegaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MenuBodegaActionPerformed
+    private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
         inf_Mantenimiento_Bodega ventana1 = new inf_Mantenimiento_Bodega();
         desktopPane.add(ventana1);
         Dimension desktopSize = desktopPane.getSize();
         Dimension FrameSize = ventana1.getSize();
         ventana1.setLocation((desktopSize.width - FrameSize.width) / 2, (desktopSize.height - FrameSize.height) / 2);
-        bitacora_boton();
 // TODO add your handling code here:
-    }//GEN-LAST:event_MenuBodegaActionPerformed
+    }//GEN-LAST:event_jMenuItem2ActionPerformed
 
     private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
         // TODO add your handling code here:
@@ -773,7 +506,6 @@ public class mdi_Principal extends javax.swing.JFrame {
         Dimension desktopSize = desktopPane.getSize();
         Dimension FrameSize = ventana1.getSize();
         ventana1.setLocation((desktopSize.width - FrameSize.width) / 2, (desktopSize.height - FrameSize.height) / 2);
-        bitacora_boton();
     }//GEN-LAST:event_jMenuItem3ActionPerformed
 
     private void jMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem4ActionPerformed
@@ -783,18 +515,16 @@ public class mdi_Principal extends javax.swing.JFrame {
         Dimension desktopSize = desktopPane.getSize();
         Dimension FrameSize = ventana1.getSize();
         ventana1.setLocation((desktopSize.width - FrameSize.width) / 2, (desktopSize.height - FrameSize.height) / 2);
-        bitacora_boton();
     }//GEN-LAST:event_jMenuItem4ActionPerformed
 
-    private void MenuPilotoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MenuPilotoActionPerformed
+    private void jMenuItem5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem5ActionPerformed
         // TODO add your handling code here:
         inf_Mantenimiento_Piloto ventana1 = new inf_Mantenimiento_Piloto();
         desktopPane.add(ventana1);
         Dimension desktopSize = desktopPane.getSize();
         Dimension FrameSize = ventana1.getSize();
         ventana1.setLocation((desktopSize.width - FrameSize.width) / 2, (desktopSize.height - FrameSize.height) / 2);
-        bitacora_boton();
-    }//GEN-LAST:event_MenuPilotoActionPerformed
+    }//GEN-LAST:event_jMenuItem5ActionPerformed
 
     private void jMenuItem6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem6ActionPerformed
         // TODO add your handling code here:
@@ -803,7 +533,6 @@ public class mdi_Principal extends javax.swing.JFrame {
         Dimension desktopSize = desktopPane.getSize();
         Dimension FrameSize = ventana1.getSize();
         ventana1.setLocation((desktopSize.width - FrameSize.width) / 2, (desktopSize.height - FrameSize.height) / 2);
-        bitacora_boton();
     }//GEN-LAST:event_jMenuItem6ActionPerformed
 
     private void jMenuItem7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem7ActionPerformed
@@ -813,7 +542,6 @@ public class mdi_Principal extends javax.swing.JFrame {
         Dimension desktopSize = desktopPane.getSize();
         Dimension FrameSize = ventana1.getSize();
         ventana1.setLocation((desktopSize.width - FrameSize.width) / 2, (desktopSize.height - FrameSize.height) / 2);
-        bitacora_boton();
     }//GEN-LAST:event_jMenuItem7ActionPerformed
 
     private void jMenuItem8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem8ActionPerformed
@@ -823,7 +551,6 @@ public class mdi_Principal extends javax.swing.JFrame {
         Dimension desktopSize = desktopPane.getSize();
         Dimension FrameSize = ventana1.getSize();
         ventana1.setLocation((desktopSize.width - FrameSize.width) / 2, (desktopSize.height - FrameSize.height) / 2);
-        bitacora_boton();
     }//GEN-LAST:event_jMenuItem8ActionPerformed
 
     private void jMenuItem9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem9ActionPerformed
@@ -833,7 +560,6 @@ public class mdi_Principal extends javax.swing.JFrame {
         Dimension desktopSize = desktopPane.getSize();
         Dimension FrameSize = ventana1.getSize();
         ventana1.setLocation((desktopSize.width - FrameSize.width) / 2, (desktopSize.height - FrameSize.height) / 2);
-        bitacora_boton();
     }//GEN-LAST:event_jMenuItem9ActionPerformed
 
     private void jMenuItem10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem10ActionPerformed
@@ -843,18 +569,16 @@ public class mdi_Principal extends javax.swing.JFrame {
         Dimension desktopSize = desktopPane.getSize();
         Dimension FrameSize = ventana1.getSize();
         ventana1.setLocation((desktopSize.width - FrameSize.width) / 2, (desktopSize.height - FrameSize.height) / 2);
-        bitacora_boton();
     }//GEN-LAST:event_jMenuItem10ActionPerformed
 
-    private void MenuSucursalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MenuSucursalActionPerformed
+    private void jMenuItem11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem11ActionPerformed
         // TODO add your handling code here:
         inf_Mantenimiento_Sucursal ventana1 = new inf_Mantenimiento_Sucursal();
         desktopPane.add(ventana1);
         Dimension desktopSize = desktopPane.getSize();
         Dimension FrameSize = ventana1.getSize();
         ventana1.setLocation((desktopSize.width - FrameSize.width) / 2, (desktopSize.height - FrameSize.height) / 2);
-        bitacora_boton();
-    }//GEN-LAST:event_MenuSucursalActionPerformed
+    }//GEN-LAST:event_jMenuItem11ActionPerformed
 
     private void jMenuItem12ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem12ActionPerformed
         // TODO add your handling code here:
@@ -863,26 +587,23 @@ public class mdi_Principal extends javax.swing.JFrame {
         Dimension desktopSize = desktopPane.getSize();
         Dimension FrameSize = ventana1.getSize();
         ventana1.setLocation((desktopSize.width - FrameSize.width) / 2, (desktopSize.height - FrameSize.height) / 2);
-        bitacora_boton();
     }//GEN-LAST:event_jMenuItem12ActionPerformed
 
-    private void MenuMarcasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MenuMarcasActionPerformed
+    private void jMenuMarcasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuMarcasActionPerformed
         Mantenimiento_Marca ventana = new Mantenimiento_Marca();
         desktopPane.add(ventana);
         Dimension desktopSize = desktopPane.getSize();
         Dimension FrameSize = ventana.getSize();
         ventana.setLocation((desktopSize.width - FrameSize.width) / 2, (desktopSize.height - FrameSize.height) / 2);
-        bitacora_boton();
-    }//GEN-LAST:event_MenuMarcasActionPerformed
+    }//GEN-LAST:event_jMenuMarcasActionPerformed
 
-    private void MenuLineasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MenuLineasActionPerformed
+    private void jMenuLineasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuLineasActionPerformed
         Matenimiento_Linea ventana = new Matenimiento_Linea();
         desktopPane.add(ventana);
         Dimension desktopSize = desktopPane.getSize();
         Dimension FrameSize = ventana.getSize();
         ventana.setLocation((desktopSize.width - FrameSize.width) / 2, (desktopSize.height - FrameSize.height) / 2);
-        bitacora_boton();
-    }//GEN-LAST:event_MenuLineasActionPerformed
+    }//GEN-LAST:event_jMenuLineasActionPerformed
 
     private void jMenuParametrosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuParametrosActionPerformed
         Mantenimiento_Parametros ventana = new Mantenimiento_Parametros();
@@ -890,35 +611,31 @@ public class mdi_Principal extends javax.swing.JFrame {
         Dimension desktopSize = desktopPane.getSize();
         Dimension FrameSize = ventana.getSize();
         ventana.setLocation((desktopSize.width - FrameSize.width) / 2, (desktopSize.height - FrameSize.height) / 2);
-        bitacora_boton();
     }//GEN-LAST:event_jMenuParametrosActionPerformed
 
-    private void MenuTipoInvenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MenuTipoInvenActionPerformed
+    private void jMenuTipoInvenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuTipoInvenActionPerformed
         Mantenimiento_TipoInvetario ventana = new Mantenimiento_TipoInvetario();
         desktopPane.add(ventana);
         Dimension desktopSize = desktopPane.getSize();
         Dimension FrameSize = ventana.getSize();
         ventana.setLocation((desktopSize.width - FrameSize.width) / 2, (desktopSize.height - FrameSize.height) / 2);
-        bitacora_boton();
-    }//GEN-LAST:event_MenuTipoInvenActionPerformed
+    }//GEN-LAST:event_jMenuTipoInvenActionPerformed
 
-    private void MenuInventariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MenuInventariosActionPerformed
+    private void jMenuInventariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuInventariosActionPerformed
         Matenimiento_Inventario ventana = new Matenimiento_Inventario();
         desktopPane.add(ventana);
         Dimension desktopSize = desktopPane.getSize();
         Dimension FrameSize = ventana.getSize();
         ventana.setLocation((desktopSize.width - FrameSize.width) / 2, (desktopSize.height - FrameSize.height) / 2);
-        bitacora_boton();
-    }//GEN-LAST:event_MenuInventariosActionPerformed
+    }//GEN-LAST:event_jMenuInventariosActionPerformed
 
-    private void MenuVehiculosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MenuVehiculosActionPerformed
+    private void jMenuVehiculosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuVehiculosActionPerformed
         Mantenimiento_Vehiculo ventana = new Mantenimiento_Vehiculo();
         desktopPane.add(ventana);
         Dimension desktopSize = desktopPane.getSize();
         Dimension FrameSize = ventana.getSize();
         ventana.setLocation((desktopSize.width - FrameSize.width) / 2, (desktopSize.height - FrameSize.height) / 2);
-        bitacora_boton();
-    }//GEN-LAST:event_MenuVehiculosActionPerformed
+    }//GEN-LAST:event_jMenuVehiculosActionPerformed
 
     private void jMenuItem13ActionPerformed(java.awt.event.ActionEvent evt) {
         inf_Mantenimiento_TipoHabitacion ventana = new inf_Mantenimiento_TipoHabitacion();
@@ -926,7 +643,6 @@ public class mdi_Principal extends javax.swing.JFrame {
         Dimension desktopSize = desktopPane.getSize();
         Dimension FrameSize = ventana.getSize();
         ventana.setLocation((desktopSize.width - FrameSize.width) / 2, (desktopSize.height - FrameSize.height) / 2);
-        bitacora_boton();
     }
 
     private void jMenuCotEncClientesActionPerformed(java.awt.event.ActionEvent evt) {
@@ -935,7 +651,6 @@ public class mdi_Principal extends javax.swing.JFrame {
         Dimension desktopSize = desktopPane.getSize();
         Dimension FrameSize = ventana.getSize();
         ventana.setLocation((desktopSize.width - FrameSize.width) / 2, (desktopSize.height - FrameSize.height) / 2);
-        bitacora_boton();
 
     }
 
@@ -945,7 +660,6 @@ public class mdi_Principal extends javax.swing.JFrame {
         Dimension desktopSize = desktopPane.getSize();
         Dimension FrameSize = ventana.getSize();
         ventana.setLocation((desktopSize.width - FrameSize.width) / 2, (desktopSize.height - FrameSize.height) / 2);
-        bitacora_boton();
     }
 
     private void jMenuCotDetClientesActionPerformed(java.awt.event.ActionEvent evt) {
@@ -954,7 +668,6 @@ public class mdi_Principal extends javax.swing.JFrame {
         Dimension desktopSize = desktopPane.getSize();
         Dimension FrameSize = ventana.getSize();
         ventana.setLocation((desktopSize.width - FrameSize.width) / 2, (desktopSize.height - FrameSize.height) / 2);
-        bitacora_boton();
 
         // TODO add your handling code here:
     }
@@ -965,7 +678,6 @@ public class mdi_Principal extends javax.swing.JFrame {
         Dimension desktopSize = desktopPane.getSize();
         Dimension FrameSize = ventana.getSize();
         ventana.setLocation((desktopSize.width - FrameSize.width) / 2, (desktopSize.height - FrameSize.height) / 2);
-        bitacora_boton();
     }
 
     private void jMenuCotEncProveedoresActionPerformed(java.awt.event.ActionEvent evt) {
@@ -975,7 +687,6 @@ public class mdi_Principal extends javax.swing.JFrame {
         Dimension desktopSize = desktopPane.getSize();
         Dimension FrameSize = ventana.getSize();
         ventana.setLocation((desktopSize.width - FrameSize.width) / 2, (desktopSize.height - FrameSize.height) / 2);
-        bitacora_boton();
 
         // TODO add your handling code here:
     }
@@ -987,7 +698,6 @@ public class mdi_Principal extends javax.swing.JFrame {
         Dimension desktopSize = desktopPane.getSize();
         Dimension FrameSize = ventana.getSize();
         ventana.setLocation((desktopSize.width - FrameSize.width) / 2, (desktopSize.height - FrameSize.height) / 2);
-        bitacora_boton();
     }//GEN-LAST:event_jMenuCotDetProvActionPerformed
 
     private void jMenuItem16ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem16ActionPerformed
@@ -997,28 +707,25 @@ public class mdi_Principal extends javax.swing.JFrame {
         Dimension desktopSize = desktopPane.getSize();
         Dimension FrameSize = ventana.getSize();
         ventana.setLocation((desktopSize.width - FrameSize.width) / 2, (desktopSize.height - FrameSize.height) / 2);
-        bitacora_boton();
     }//GEN-LAST:event_jMenuItem16ActionPerformed
 
-    private void jMenuCreditoProvActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuCreditoProvActionPerformed
+    private void jMenuCotEncClientes1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuCotEncClientes1ActionPerformed
         Credito_Proveedor ventana = new Credito_Proveedor();
         desktopPane.add(ventana);
         Dimension desktopSize = desktopPane.getSize();
         Dimension FrameSize = ventana.getSize();
         ventana.setLocation((desktopSize.width - FrameSize.width) / 2, (desktopSize.height - FrameSize.height) / 2);
-        bitacora_boton();
         // TODO add your handling code here:
-    }//GEN-LAST:event_jMenuCreditoProvActionPerformed
+    }//GEN-LAST:event_jMenuCotEncClientes1ActionPerformed
 
-    private void MenuRegistroContableActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MenuRegistroContableActionPerformed
+    private void jMenuItem17ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem17ActionPerformed
         // TODO add your handling code here:
         inf_RegistroPartida ventana = new inf_RegistroPartida();
         desktopPane.add(ventana);
         Dimension desktopSize = desktopPane.getSize();
         Dimension FrameSize = ventana.getSize();
         ventana.setLocation((desktopSize.width - FrameSize.width) / 2, (desktopSize.height - FrameSize.height) / 2);
-        bitacora_boton();
-    }//GEN-LAST:event_MenuRegistroContableActionPerformed
+    }//GEN-LAST:event_jMenuItem17ActionPerformed
 
     private void jMenuItem18ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem18ActionPerformed
         inf_Mantenimiento_Rol ventana = new inf_Mantenimiento_Rol();
@@ -1026,7 +733,6 @@ public class mdi_Principal extends javax.swing.JFrame {
         Dimension desktopSize = desktopPane.getSize();
         Dimension FrameSize = ventana.getSize();
         ventana.setLocation((desktopSize.width - FrameSize.width) / 2, (desktopSize.height - FrameSize.height) / 2);
-        bitacora_boton();
     }//GEN-LAST:event_jMenuItem18ActionPerformed
 
     private void jMenuItem19ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem19ActionPerformed
@@ -1035,224 +741,7 @@ public class mdi_Principal extends javax.swing.JFrame {
         Dimension desktopSize = desktopPane.getSize();
         Dimension FrameSize = ventana.getSize();
         ventana.setLocation((desktopSize.width - FrameSize.width) / 2, (desktopSize.height - FrameSize.height) / 2);
-        bitacora_boton();
     }//GEN-LAST:event_jMenuItem19ActionPerformed
-
-    private void MenuRegistroContableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_MenuRegistroContableMouseClicked
-        // TODO add your handling code here:
-        
-    }//GEN-LAST:event_MenuRegistroContableMouseClicked
-
-    private void MenuRegistroContableMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_MenuRegistroContableMousePressed
-        // TODO add your handling code here:
-        String nombre=MenuRegistroContable.getText();
-        boton_press.setText(nombre);
-    }//GEN-LAST:event_MenuRegistroContableMousePressed
-
-    private void MenuMarcasMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_MenuMarcasMousePressed
-        // TODO add your handling code here:
-        String nombre=MenuMarcas.getText();
-        boton_press.setText(nombre);
-    }//GEN-LAST:event_MenuMarcasMousePressed
-
-    private void MenuLineasMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_MenuLineasMousePressed
-        // TODO add your handling code here:
-        String nombre=MenuLineas.getText();
-        boton_press.setText(nombre);
-    }//GEN-LAST:event_MenuLineasMousePressed
-
-    private void MenuSucursalMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_MenuSucursalMousePressed
-        // TODO add your handling code here:
-        String nombre=MenuSucursal.getText();
-        boton_press.setText(nombre);
-    }//GEN-LAST:event_MenuSucursalMousePressed
-
-    private void MenuBodegaMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_MenuBodegaMousePressed
-        // TODO add your handling code here:
-        String nombre=MenuBodega.getText();
-        boton_press.setText(nombre);
-    }//GEN-LAST:event_MenuBodegaMousePressed
-
-    private void MenuTipoInvenMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_MenuTipoInvenMousePressed
-        // TODO add your handling code here:
-        String nombre=MenuTipoInven.getText();
-        boton_press.setText(nombre);
-    }//GEN-LAST:event_MenuTipoInvenMousePressed
-
-    private void MenuInventariosMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_MenuInventariosMousePressed
-        // TODO add your handling code here:
-        String nombre=MenuInventarios.getText();
-        boton_press.setText(nombre);
-    }//GEN-LAST:event_MenuInventariosMousePressed
-
-    private void MenuPilotoMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_MenuPilotoMousePressed
-        // TODO add your handling code here:
-        String nombre=MenuPiloto.getText();
-        boton_press.setText(nombre);
-    }//GEN-LAST:event_MenuPilotoMousePressed
-
-    private void MenuVehiculosMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_MenuVehiculosMousePressed
-        // TODO add your handling code here:
-        String nombre=MenuVehiculos.getText();
-        boton_press.setText(nombre);
-    }//GEN-LAST:event_MenuVehiculosMousePressed
-
-    private void MenuTipClienteMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_MenuTipClienteMousePressed
-        // TODO add your handling code here:
-        String nombre=MenuTipCliente.getText();
-        boton_press.setText(nombre);
-    }//GEN-LAST:event_MenuTipClienteMousePressed
-
-    private void MenuClienteMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_MenuClienteMousePressed
-        // TODO add your handling code here:
-        String nombre=MenuCliente.getText();
-        boton_press.setText(nombre);
-    }//GEN-LAST:event_MenuClienteMousePressed
-
-    private void saveMenuItemMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_saveMenuItemMousePressed
-        // TODO add your handling code here:
-        String nombre=saveMenuItem.getText();
-        boton_press.setText(nombre);
-    }//GEN-LAST:event_saveMenuItemMousePressed
-
-    private void saveAsMenuItemMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_saveAsMenuItemMousePressed
-        // TODO add your handling code here:
-        String nombre=saveAsMenuItem.getText();
-        boton_press.setText(nombre);
-    }//GEN-LAST:event_saveAsMenuItemMousePressed
-
-    private void exitMenuItemMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_exitMenuItemMousePressed
-        // TODO add your handling code here:
-        String nombre=exitMenuItem.getText();
-        boton_press.setText(nombre);
-    }//GEN-LAST:event_exitMenuItemMousePressed
-
-    private void exitMenuItem1MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_exitMenuItem1MousePressed
-        // TODO add your handling code here:
-        String nombre=exitMenuItem.getText();
-        boton_press.setText(nombre);
-    }//GEN-LAST:event_exitMenuItem1MousePressed
-
-    private void jMenuItem3MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenuItem3MousePressed
-        // TODO add your handling code here:
-        String nombre=jMenuItem3.getText();
-        boton_press.setText(nombre);
-    }//GEN-LAST:event_jMenuItem3MousePressed
-
-    private void jMenuItem4MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenuItem4MousePressed
-        // TODO add your handling code here:
-        String nombre=jMenuItem4.getText();
-        boton_press.setText(nombre);
-        
-    }//GEN-LAST:event_jMenuItem4MousePressed
-
-    private void jMenuItem6MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenuItem6MousePressed
-        // TODO add your handling code here:
-        String nombre=jMenuItem6.getText();
-        boton_press.setText(nombre);
-    }//GEN-LAST:event_jMenuItem6MousePressed
-
-    private void jMenuItem7MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenuItem7MousePressed
-        // TODO add your handling code here:
-        String nombre=jMenuItem7.getText();
-        boton_press.setText(nombre);
-    }//GEN-LAST:event_jMenuItem7MousePressed
-
-    private void jMenuItem8MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenuItem8MousePressed
-        // TODO add your handling code here:
-        String nombre=jMenuItem8.getText();
-        boton_press.setText(nombre);
-    }//GEN-LAST:event_jMenuItem8MousePressed
-
-    private void jMenuItem9MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenuItem9MousePressed
-        // TODO add your handling code here:
-        String nombre=jMenuItem9.getText();
-        boton_press.setText(nombre);
-    }//GEN-LAST:event_jMenuItem9MousePressed
-
-    private void jMenuItem10MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenuItem10MousePressed
-        // TODO add your handling code here:
-        String nombre=jMenuItem10.getText();
-        boton_press.setText(nombre);
-    }//GEN-LAST:event_jMenuItem10MousePressed
-
-    private void jMenuParametrosMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenuParametrosMousePressed
-        // TODO add your handling code here:
-        String nombre=jMenuParametros.getText();
-        boton_press.setText(nombre);
-    }//GEN-LAST:event_jMenuParametrosMousePressed
-
-    private void jMenuItem12MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenuItem12MousePressed
-        // TODO add your handling code here:
-        String nombre=jMenuItem12.getText();
-        boton_press.setText(nombre);
-    }//GEN-LAST:event_jMenuItem12MousePressed
-
-    private void jMenuItem13MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenuItem13MousePressed
-        // TODO add your handling code here:
-        String nombre=jMenuItem13.getText();
-        boton_press.setText(nombre);
-    }//GEN-LAST:event_jMenuItem13MousePressed
-
-    private void jMenuItem14MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenuItem14MousePressed
-        // TODO add your handling code here:
-        String nombre=jMenuItem14.getText();
-        boton_press.setText(nombre);
-    }//GEN-LAST:event_jMenuItem14MousePressed
-
-    private void jMenuItem15MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenuItem15MousePressed
-        // TODO add your handling code here:
-        String nombre=jMenuItem15.getText();
-        boton_press.setText(nombre);
-    }//GEN-LAST:event_jMenuItem15MousePressed
-
-    private void jMenuItem16MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenuItem16MousePressed
-        // TODO add your handling code here:
-        String nombre=jMenuItem16.getText();
-        boton_press.setText(nombre);
-    }//GEN-LAST:event_jMenuItem16MousePressed
-
-    private void jMenuCotDetClientesMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenuCotDetClientesMousePressed
-        // TODO add your handling code here:
-        String nombre=jMenuCotDetClientes.getText();
-        boton_press.setText(nombre);
-    }//GEN-LAST:event_jMenuCotDetClientesMousePressed
-
-    private void jMenuCotDetProvMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenuCotDetProvMousePressed
-        // TODO add your handling code here:
-        String nombre=jMenuCotDetProv.getText();
-        boton_press.setText(nombre);
-    }//GEN-LAST:event_jMenuCotDetProvMousePressed
-
-    private void jMenuCotEncProveedoresMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenuCotEncProveedoresMousePressed
-        // TODO add your handling code here:
-        String nombre=jMenuCotEncProveedores.getText();
-        boton_press.setText(nombre);
-    }//GEN-LAST:event_jMenuCotEncProveedoresMousePressed
-
-    private void jMenuCotEncClientesMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenuCotEncClientesMousePressed
-        // TODO add your handling code here:
-        String nombre=jMenuCotEncClientes.getText();
-        boton_press.setText(nombre);
-    }//GEN-LAST:event_jMenuCotEncClientesMousePressed
-
-    private void jMenuCreditoProvMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenuCreditoProvMousePressed
-        // TODO add your handling code here:
-        String nombre=jMenuCreditoProv.getText();
-        boton_press.setText(nombre);
-    }//GEN-LAST:event_jMenuCreditoProvMousePressed
-
-    private void jMenuItem18MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenuItem18MousePressed
-        // TODO add your handling code here:
-        String nombre=jMenuItem18.getText();
-        boton_press.setText(nombre);
-    }//GEN-LAST:event_jMenuItem18MousePressed
-
-    private void jMenuItem19MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenuItem19MousePressed
-        // TODO add your handling code here:
-        String nombre=jMenuItem19.getText();
-        boton_press.setText(nombre);
-    }//GEN-LAST:event_jMenuItem19MousePressed
 
     /**
      * @param args the command line arguments
@@ -1291,50 +780,47 @@ public class mdi_Principal extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JMenuItem MenuBodega;
-    private javax.swing.JMenuItem MenuCliente;
-    private javax.swing.JMenuItem MenuInventarios;
-    private javax.swing.JMenuItem MenuLineas;
-    private javax.swing.JMenuItem MenuMarcas;
-    private javax.swing.JMenuItem MenuPiloto;
-    private javax.swing.JMenuItem MenuRegistroContable;
-    private javax.swing.JMenuItem MenuSucursal;
-    private javax.swing.JMenuItem MenuTipCliente;
-    private javax.swing.JMenuItem MenuTipoInven;
-    private javax.swing.JMenuItem MenuVehiculos;
-    private javax.swing.JLabel boton_press;
     private javax.swing.JDesktopPane desktopPane;
     private javax.swing.JMenuItem exitMenuItem;
     private javax.swing.JMenuItem exitMenuItem1;
-    private com.toedter.calendar.JDateChooser fecha;
     private javax.swing.JMenu fileMenu;
     private javax.swing.JMenu helpMenu;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenuItem jMenuCotDetClientes;
     private javax.swing.JMenuItem jMenuCotDetProv;
     private javax.swing.JMenuItem jMenuCotEncClientes;
+    private javax.swing.JMenuItem jMenuCotEncClientes1;
     private javax.swing.JMenuItem jMenuCotEncProveedores;
-    private javax.swing.JMenuItem jMenuCreditoProv;
+    private javax.swing.JMenuItem jMenuInventarios;
+    private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem10;
+    private javax.swing.JMenuItem jMenuItem11;
     private javax.swing.JMenuItem jMenuItem12;
     private javax.swing.JMenuItem jMenuItem13;
     private javax.swing.JMenuItem jMenuItem14;
     private javax.swing.JMenuItem jMenuItem15;
     private javax.swing.JMenuItem jMenuItem16;
+    private javax.swing.JMenuItem jMenuItem17;
     private javax.swing.JMenuItem jMenuItem18;
     private javax.swing.JMenuItem jMenuItem19;
+    private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JMenuItem jMenuItem4;
+    private javax.swing.JMenuItem jMenuItem5;
     private javax.swing.JMenuItem jMenuItem6;
     private javax.swing.JMenuItem jMenuItem7;
     private javax.swing.JMenuItem jMenuItem8;
     private javax.swing.JMenuItem jMenuItem9;
+    private javax.swing.JMenuItem jMenuLineas;
+    private javax.swing.JMenuItem jMenuMarcas;
     private javax.swing.JMenuItem jMenuParametros;
+    private javax.swing.JMenuItem jMenuTipoInven;
+    private javax.swing.JMenuItem jMenuVehiculos;
     private javax.swing.JMenu jmAdministracion;
     public static javax.swing.JLabel labelc;
     public static javax.swing.JLabel labelusuario;
-    public static javax.swing.JLabel lbusu;
     private javax.swing.JMenuBar menuBar;
+    private javax.swing.JMenuItem openMenuItem;
     private javax.swing.JMenuItem saveAsMenuItem;
     private javax.swing.JMenuItem saveMenuItem;
     // End of variables declaration//GEN-END:variables
