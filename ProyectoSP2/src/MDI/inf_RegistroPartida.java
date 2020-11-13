@@ -5,7 +5,6 @@
  */
 package MDI;
 
-import static MDI.mdi_Principal.labelusuario;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -35,6 +34,7 @@ public class inf_RegistroPartida extends javax.swing.JInternalFrame {
             modelo.addColumn("Cuenta Abono");
             modelo.addColumn("Quien Carga");
             modelo.addColumn("Quien Abona");
+            modelo.addColumn("Cantidad");
             tbl1.setModel(modelo);
             String[] dato = new String[10];
             while (rss4.next()) {
@@ -43,9 +43,10 @@ public class inf_RegistroPartida extends javax.swing.JInternalFrame {
                 dato[2] = rss4.getString(3);
                 dato[3] = rss4.getString(4);
                 dato[4] = rss4.getString(5);
-                dato[5] = rss4.getString(6);
-                dato[6] = rss4.getString(7);
+                dato[5] = rss4.getString(7);
                 dato[6] = rss4.getString(8);
+                dato[7] = rss4.getString(6);
+
                 modelo.addRow(dato);
             }
 
@@ -92,19 +93,23 @@ public void get_fecha(){
     }
     
     public void iniciar_cboxquienc() {
-        String tabla=cbox_cargo.getSelectedItem().toString();
+        String tabla=cbox_cargo.getSelectedItem().toString().trim();
         String dato="nombre_"+tabla;
+
+        
         try {
                 cbox_quienc.removeAllItems();
             Connection cn = DriverManager.getConnection(mdi_Principal.BD, mdi_Principal.Usuario,mdi_Principal.Contraseña);
-            PreparedStatement pst = cn.prepareStatement("select"+dato+" from "+tabla);       
-            ResultSet rs = pst.executeQuery();
-            cbox_quienc.addItem("Seleccione una opción");
+            PreparedStatement pst = cn.prepareStatement("select "+dato+" from "+ tabla);
             
-           
+            ResultSet rs = pst.executeQuery();
+            
+
+            cbox_quienc.addItem("Seleccione una opción");
             while (rs.next()) {
                 cbox_quienc.addItem(rs.getString(dato));
             }
+            
 
         } catch (Exception e) {
             e.printStackTrace();
@@ -156,7 +161,7 @@ public void get_fecha(){
             Connection cn = DriverManager.getConnection(mdi_Principal.BD, mdi_Principal.Usuario, mdi_Principal.Contraseña);
             PreparedStatement pst = cn.prepareStatement("select nombre_cuenta from cuenta_contable where id_cuenta = ?");
 
-            pst.setString(1, lb2.getText().trim());
+            pst.setString(1, lb3.getText().trim());
 
             ResultSet rs = pst.executeQuery();
 
@@ -180,7 +185,7 @@ public void get_fecha(){
             Connection cn = DriverManager.getConnection(mdi_Principal.BD, mdi_Principal.Usuario, mdi_Principal.Contraseña);
             PreparedStatement pst = cn.prepareStatement("select nombre_cuenta from cuenta_contable where id_cuenta = ?");
 
-            pst.setString(1, lb3.getText().trim());
+            pst.setString(1, label.getText().trim());
 
             ResultSet rs = pst.executeQuery();
 
@@ -205,9 +210,9 @@ public void get_fecha(){
             String val="id_"+nombre_tabla;
 
             Connection cn = DriverManager.getConnection(mdi_Principal.BD, mdi_Principal.Usuario, mdi_Principal.Contraseña);
-            PreparedStatement pst = cn.prepareStatement("select "+dato+" from "+nombre_tabla+" where"+val+"= ?");
+            PreparedStatement pst = cn.prepareStatement("select * from "+nombre_tabla+" where "+val+"= ?");
 
-            pst.setString(1, label.getText().trim());
+            pst.setString(1, lb5.getText().trim());
 
             ResultSet rs = pst.executeQuery();
 
@@ -229,9 +234,9 @@ public void get_fecha(){
             String dato="nombre_"+nombre_tabla;
             String val="id_"+nombre_tabla;
             Connection cn = DriverManager.getConnection(mdi_Principal.BD, mdi_Principal.Usuario, mdi_Principal.Contraseña);
-            PreparedStatement pst = cn.prepareStatement("select "+dato+" from "+nombre_tabla+" where"+val+" = ?");
+            PreparedStatement pst = cn.prepareStatement("select * from "+nombre_tabla+" where "+val+" = ?");
 
-            pst.setString(1, lb5.getText().trim());
+            pst.setString(1, lb6.getText().trim());
 
             ResultSet rs = pst.executeQuery();
 
@@ -320,177 +325,6 @@ public void get_fecha(){
     /**
      * Creates new form inf_Mantenimiento_Cliente
      */
-        public void get_date(){
-        //Obtenemos la fecha
-        Calendar c1 = Calendar.getInstance();
-                fecha.setCalendar(c1);
-    }
-    
-    public void get_usuario(){
-        try {
-            Connection cn = DriverManager.getConnection(mdi_Principal.BD, mdi_Principal.Usuario, mdi_Principal.Contraseña);
-            PreparedStatement pst = cn.prepareStatement("select * from usuario_hoteleria where nombre_usuario = ?");
-            pst.setString(1, labelusuario.getText().trim()); 
-
-            ResultSet rs = pst.executeQuery();
-
-            if (rs.next()) {
-
-                lbusu.setText(rs.getString("id_usuario"));
-                
-
-
-        }
-        }catch (Exception e) {
-
-        
-        }
-    }
-    
-    public void bitacora_guardar(){
-        String descrip="Registró una partida en el libro diario ";
-       //Desciframos la fecha
-        java.util.Date fechaN = fecha.getDate();
-        long fecha = fechaN.getTime();
-        java.sql.Date dateN = new java.sql.Date(fecha);
-        
-        
-        //Obtenemos la hora
-                Calendar timec = Calendar.getInstance();
-                
-                int hora = timec.get(Calendar.HOUR_OF_DAY);
-                int minutos = timec.get(Calendar.MINUTE);
-                int segundos = timec.get(Calendar.SECOND);
-                
-                String time=hora+":"+minutos+":"+segundos;
-                
-        
-        try {
-            
-            Connection cn = DriverManager.getConnection(mdi_Principal.BD, mdi_Principal.Usuario, mdi_Principal.Contraseña);
-            //localhost es 127.0.0.1
-            PreparedStatement pst = cn.prepareStatement("insert into bitacora values(?,?,?,?,?)");
-
-            pst.setString(1, "0");
-            pst.setString(2, lbusu.getText().trim());
-            pst.setString(3, descrip);
-            pst.setString(4,dateN.toString().trim() );
-            pst.setString(5, time.trim());
-            
-            pst.executeUpdate();
-
-        } catch (SQLException e) {
-        }
-    }
-    public void bitacora_modificar(){
-        String prov=buscar.getText();
-        String descrip="Modificó la partida del libro diario número "+prov;
-       //Desciframos la fecha
-        java.util.Date fechaN = fecha.getDate();
-        long fecha = fechaN.getTime();
-        java.sql.Date dateN = new java.sql.Date(fecha);
-        
-        
-        //Obtenemos la hora
-                Calendar timec = Calendar.getInstance();
-                
-                int hora = timec.get(Calendar.HOUR_OF_DAY);
-                int minutos = timec.get(Calendar.MINUTE);
-                int segundos = timec.get(Calendar.SECOND);
-                
-                String time=hora+":"+minutos+":"+segundos;
-                
-        
-        try {
-            
-            Connection cn = DriverManager.getConnection(mdi_Principal.BD, mdi_Principal.Usuario, mdi_Principal.Contraseña);
-            //localhost es 127.0.0.1
-            PreparedStatement pst = cn.prepareStatement("insert into bitacora values(?,?,?,?,?)");
-
-            pst.setString(1, "0");
-            pst.setString(2, lbusu.getText().trim());
-            pst.setString(3, descrip);
-            pst.setString(4,dateN.toString().trim() );
-            pst.setString(5, time.trim());
-            
-            pst.executeUpdate();
-
-        } catch (SQLException e) {
-        }
-    }
-    public void bitacora_eliminar(){
-       String prov=buscar.getText();
-        String descrip="Eliminó la partida del libro diario número "+prov;
-       //Desciframos la fecha
-        java.util.Date fechaN = fecha.getDate();
-        long fecha = fechaN.getTime();
-        java.sql.Date dateN = new java.sql.Date(fecha);
-        
-        
-        //Obtenemos la hora
-                Calendar timec = Calendar.getInstance();
-                
-                int hora = timec.get(Calendar.HOUR_OF_DAY);
-                int minutos = timec.get(Calendar.MINUTE);
-                int segundos = timec.get(Calendar.SECOND);
-                
-                String time=hora+":"+minutos+":"+segundos;
-                
-        
-        try {
-            
-            Connection cn = DriverManager.getConnection(mdi_Principal.BD, mdi_Principal.Usuario, mdi_Principal.Contraseña);
-            //localhost es 127.0.0.1
-            PreparedStatement pst = cn.prepareStatement("insert into bitacora values(?,?,?,?,?)");
-
-            pst.setString(1, "0");
-            pst.setString(2, lbusu.getText().trim());
-            pst.setString(3, descrip);
-            pst.setString(4,dateN.toString().trim() );
-            pst.setString(5, time.trim());
-            
-            pst.executeUpdate();
-
-        } catch (SQLException e) {
-        }
-    }
-    public void bitacora_buscar(){
-        String prov=buscar.getText();
-        String descrip="Buscó la partida del libro diario número "+prov;
-       //Desciframos la fecha
-        java.util.Date fechaN = fecha.getDate();
-        long fecha = fechaN.getTime();
-        java.sql.Date dateN = new java.sql.Date(fecha);
-        
-        
-        //Obtenemos la hora
-                Calendar timec = Calendar.getInstance();
-                
-                int hora = timec.get(Calendar.HOUR_OF_DAY);
-                int minutos = timec.get(Calendar.MINUTE);
-                int segundos = timec.get(Calendar.SECOND);
-                
-                String time=hora+":"+minutos+":"+segundos;
-                
-        
-        try {
-            
-            Connection cn = DriverManager.getConnection(mdi_Principal.BD, mdi_Principal.Usuario, mdi_Principal.Contraseña);
-            //localhost es 127.0.0.1
-            PreparedStatement pst = cn.prepareStatement("insert into bitacora values(?,?,?,?,?)");
-
-            pst.setString(1, "0");
-            pst.setString(2, lbusu.getText().trim());
-            pst.setString(3, descrip);
-            pst.setString(4,dateN.toString().trim() );
-            pst.setString(5, time.trim());
-            
-            pst.executeUpdate();
-
-        } catch (SQLException e) {
-        }
-    }
-    
     public inf_RegistroPartida() {
         initComponents();
         tablas();
@@ -501,8 +335,6 @@ public void get_fecha(){
         btnRegistrar.setEnabled(true);
         btnModificar.setEnabled(false);
         btnEliminar.setEnabled(false);
-        get_usuario();
-        get_date();
     }
 
     /**
@@ -520,10 +352,8 @@ public void get_fecha(){
         ca = new javax.swing.JLabel();
         qc = new javax.swing.JLabel();
         oper = new javax.swing.JLabel();
-        lb5 = new javax.swing.JLabel();
         lb6 = new javax.swing.JLabel();
-        fecha = new com.toedter.calendar.JDateChooser();
-        lbusu = new javax.swing.JLabel();
+        lb5 = new javax.swing.JLabel();
         cbox_quienc = new javax.swing.JComboBox<>();
         carga = new javax.swing.JLabel();
         cbox_quiena = new javax.swing.JComboBox<>();
@@ -552,6 +382,8 @@ public void get_fecha(){
         jScrollPane1 = new javax.swing.JScrollPane();
         tbl1 = new javax.swing.JTable();
         label = new javax.swing.JLabel();
+        jLabel10 = new javax.swing.JLabel();
+        txt_codigo = new javax.swing.JTextField();
 
         lb2.setForeground(new java.awt.Color(204, 204, 204));
         lb2.setText(".");
@@ -566,9 +398,9 @@ public void get_fecha(){
 
         oper.setText("jLabel6");
 
-        lb5.setText("jLabel6");
-
         lb6.setText("jLabel10");
+
+        lb5.setText("jLabel6");
 
         setClosable(true);
         setIconifiable(true);
@@ -666,11 +498,11 @@ public void get_fecha(){
 
             },
             new String [] {
-                "ID", "Operacion", "Fecha", "Cuenta Cargo", "Cuenta Abono", "Quien Carga", "Quien Abona"
+                "ID", "Operacion", "Fecha", "Cuenta Cargo", "Cuenta Abono", "Quien Carga", "Quien Abona", "Cantidad"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false, true
+                false, false, false, false, false, false, true, true
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -679,6 +511,8 @@ public void get_fecha(){
         });
         jScrollPane1.setViewportView(tbl1);
 
+        jLabel10.setText("Codigo");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -686,9 +520,67 @@ public void get_fecha(){
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(25, 25, 25)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(cbox_quienc, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(carga, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(cbox_quiena, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(abona, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGap(53, 53, 53)
+                                        .addComponent(jLabel10)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(txt_codigo, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(38, 38, 38)
+                                        .addComponent(jLabel2)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(date_fecha, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGap(133, 133, 133)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addGroup(layout.createSequentialGroup()
+                                                .addComponent(jLabel4)
+                                                .addGap(199, 199, 199)
+                                                .addComponent(jLabel5))
+                                            .addGroup(layout.createSequentialGroup()
+                                                .addGap(9, 9, 9)
+                                                .addComponent(jLabel3))
+                                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 255, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addGroup(layout.createSequentialGroup()
+                                                    .addComponent(cbox_operacion, javax.swing.GroupLayout.PREFERRED_SIZE, 254, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                                    .addComponent(lb1, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGap(78, 78, 78)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                            .addComponent(jLabel8)
+                                            .addGroup(layout.createSequentialGroup()
+                                                .addComponent(cbox_cargo, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                                .addComponent(lb3, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(cbox_abono, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(label, javax.swing.GroupLayout.PREFERRED_SIZE, 19, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 9, Short.MAX_VALUE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 32, Short.MAX_VALUE)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 793, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
+                                .addGap(204, 204, 204)
+                                .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(25, 25, 25)
                                 .addComponent(btnRegistrar)
                                 .addGap(18, 18, 18)
                                 .addComponent(btnModificar)
@@ -701,63 +593,9 @@ public void get_fecha(){
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(buscar, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGap(281, 281, 281)
-                                        .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGap(67, 67, 67)
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                .addGroup(layout.createSequentialGroup()
-                                                    .addComponent(cbox_operacion, javax.swing.GroupLayout.PREFERRED_SIZE, 254, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                    .addComponent(lb1, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                                    .addGroup(layout.createSequentialGroup()
-                                                        .addComponent(jLabel4)
-                                                        .addGap(199, 199, 199)
-                                                        .addComponent(jLabel5))
-                                                    .addComponent(jLabel3))
-                                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                                    .addGap(12, 12, 12)
-                                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                                            .addComponent(jLabel2)
-                                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                            .addComponent(date_fecha, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                            .addGap(220, 220, 220))
-                                                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                                            .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 255, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                            .addGap(145, 145, 145))
-                                                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                                            .addComponent(jLabel8)
-                                                            .addGap(257, 257, 257)))))
-                                            .addGroup(layout.createSequentialGroup()
-                                                .addComponent(cbox_cargo, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                                .addComponent(lb3, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                .addComponent(cbox_abono, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addGap(18, 18, 18)
-                                                .addComponent(label, javax.swing.GroupLayout.PREFERRED_SIZE, 19, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addGap(15, 15, 15))
-                                            .addGroup(layout.createSequentialGroup()
-                                                .addComponent(cbox_quienc, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                                .addComponent(carga, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addGap(82, 82, 82)
-                                                .addComponent(cbox_quiena, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addGap(18, 18, 18)
-                                                .addComponent(abona, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 434, Short.MAX_VALUE))))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(256, 256, 256)
-                        .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(136, 136, 136)
-                        .addComponent(txt_cantidad, javax.swing.GroupLayout.PREFERRED_SIZE, 380, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addGap(78, 78, 78)
+                                .addComponent(txt_cantidad, javax.swing.GroupLayout.PREFERRED_SIZE, 380, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -765,23 +603,28 @@ public void get_fecha(){
             .addGroup(layout.createSequentialGroup()
                 .addGap(25, 25, 25)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 303, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
+                        .addGap(20, 20, 20)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(jLabel10)
+                                .addComponent(txt_codigo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jLabel2))
+                            .addComponent(date_fecha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(30, 30, 30)
                         .addComponent(jLabel1)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(cbox_operacion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(lb1, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(33, 33, 33)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel2)
-                            .addComponent(date_fecha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(37, 37, 37)
+                        .addGap(26, 26, 26)
                         .addComponent(jLabel3)
-                        .addGap(19, 19, 19)
+                        .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel4)
                             .addComponent(jLabel5))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jLabel8)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -798,13 +641,12 @@ public void get_fecha(){
                                 .addComponent(cbox_quienc)
                                 .addComponent(cbox_quiena, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addComponent(abona, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(carga, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 303, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                            .addComponent(carga, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addGap(36, 36, 36)
                 .addComponent(jLabel9)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(txt_cantidad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(44, 44, 44)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnLimpiar)
                     .addComponent(btnEliminar)
@@ -827,7 +669,7 @@ public void get_fecha(){
 
             Connection cn = DriverManager.getConnection(mdi_Principal.BD, mdi_Principal.Usuario, mdi_Principal.Contraseña);
 
-            PreparedStatement pst = cn.prepareStatement("select"+dato+" from "+tabla+" where "+val+"= ?");
+            PreparedStatement pst = cn.prepareStatement("select * from "+tabla+" where "+val+"= ?");
             pst.setString(1, cbox_quienc.getSelectedItem().toString().trim());
             ResultSet rs2 = pst.executeQuery();
 
@@ -857,7 +699,7 @@ public void get_fecha(){
 
             Connection cn = DriverManager.getConnection(mdi_Principal.BD, mdi_Principal.Usuario, mdi_Principal.Contraseña);
 
-            PreparedStatement pst = cn.prepareStatement("select"+dato+" from "+tabla+" where "+val+"= ?");
+            PreparedStatement pst = cn.prepareStatement("select * from "+tabla+" where "+val+"= ?");
             pst.setString(1, cbox_quiena.getSelectedItem().toString().trim());
             ResultSet rs2 = pst.executeQuery();
 
@@ -887,8 +729,8 @@ public void get_fecha(){
         remover();
 
         lb1.setText("");
-        lb2.setText("");
         lb3.setText("");
+        label.setText("");
         carga.setText("");
         abona.setText("");
         txt_cantidad.setText("");
@@ -912,11 +754,11 @@ public void get_fecha(){
             if (rs.next()) {
                 lb1.setText(rs.getString("codigo"));
                 date_fecha.setDate(rs.getDate("fecha_operacion"));
-                lb2.setText(rs.getString("cuenta_cargo"));
-                lb3.setText(rs.getString("cuenta_abono"));
+                lb3.setText(rs.getString("cuenta_cargo"));
+                label.setText(rs.getString("cuenta_abono"));
                 txt_cantidad.setText(rs.getString("cantidad"));
-                label.setText(rs.getString("quien_carga"));
-                lb5.setText(rs.getString("quien_abona"));
+                lb5.setText(rs.getString("quien_carga"));
+                lb6.setText(rs.getString("quien_abona"));
 
                 buscar_operacion();
                 buscar_nombrecc();
@@ -924,7 +766,7 @@ public void get_fecha(){
                 iniciar_busquedac();
                 iniciar_busquedaa();
 
-                bitacora_buscar();
+                //bitacora_busqueda();
 
                 btnEliminar.setEnabled(true);
                 btnModificar.setEnabled(true);
@@ -948,20 +790,21 @@ public void get_fecha(){
 
             pst2.setString(1, buscar.getText().trim());
             pst2.executeUpdate();
-            bitacora_eliminar();
 
             cbox_operacion.setSelectedIndex(0);
-            get_fecha();
-            cbox_cargo.setSelectedIndex(0);
-            cbox_abono.setSelectedIndex(0);
-            remover();
-            lb1.setText("");
-            lb2.setText("");
-            lb3.setText("");
-            carga.setText("");
-            abona.setText("");
-            txt_cantidad.setText("");
-            buscar.setText("");
+        cbox_cargo.setSelectedIndex(0);
+        cbox_abono.setSelectedIndex(0);
+        get_fecha();
+
+        remover();
+
+        lb1.setText("");
+        lb3.setText("");
+        label.setText("");
+        carga.setText("");
+        abona.setText("");
+        txt_cantidad.setText("");
+        buscar.setText("");
 
             btnRegistrar.setEnabled(true);
             btnModificar.setEnabled(false);
@@ -989,27 +832,29 @@ public void get_fecha(){
 
             pst2.setString(1, lb1.getText());
             pst2.setString(2, dateN.toString());
-            pst2.setString(3, lb2.getText());
-            pst2.setString(4, lb3.getText());
+            pst2.setString(3, lb3.getText());
+            pst2.setString(4, label.getText());
             pst2.setString(5, txt_cantidad.getText());
             pst2.setString(6, carga.getText());
             pst2.setString(7, abona.getText());
 
             pst2.executeUpdate();
 
-            bitacora_modificar();
+            //bitacora_modificar();
             cbox_operacion.setSelectedIndex(0);
-            cbox_cargo.setSelectedIndex(0);
-            cbox_abono.setSelectedIndex(0);
-            remover();
-            get_fecha();
-            txt_cantidad.setText("");
-            lb1.setText("");
-            lb2.setText("");
-            lb3.setText("");
-            carga.setText("");
-            abona.setText("");
-            buscar.setText("");
+        cbox_cargo.setSelectedIndex(0);
+        cbox_abono.setSelectedIndex(0);
+        get_fecha();
+
+        remover();
+
+        lb1.setText("");
+        lb3.setText("");
+        label.setText("");
+        carga.setText("");
+        abona.setText("");
+        txt_cantidad.setText("");
+        buscar.setText("");
 
             btnRegistrar.setEnabled(true);
             btnModificar.setEnabled(false);
@@ -1033,30 +878,32 @@ public void get_fecha(){
             //localhost es 127.0.0.1
             PreparedStatement pst2 = cn.prepareStatement("insert into registro_contable values(?,?,?,?,?,?,?,?)");
 
-            pst2.setString(1, "0");
+            pst2.setString(1, txt_codigo.getText());
             pst2.setString(2, lb1.getText());
             pst2.setString(3, dateN.toString());
-            pst2.setString(4, lb2.getText());
-            pst2.setString(5, lb3.getText());
+            pst2.setString(4, lb3.getText());
+            pst2.setString(5, label.getText());
             pst2.setString(6, txt_cantidad.getText());
             pst2.setString(7, carga.getText().trim());
             pst2.setString(8, abona.getText().trim());
 
             pst2.executeUpdate();
 
-            bitacora_guardar();
+            //bitacora_guardar();
             cbox_operacion.setSelectedIndex(0);
-            cbox_cargo.setSelectedIndex(0);
-            cbox_abono.setSelectedIndex(0);
-            remover();
-            get_fecha();
-            txt_cantidad.setText("");
-            lb1.setText("");
-            lb2.setText("");
-            lb3.setText("");
-            carga.setText("");
-            abona.setText("");
-            buscar.setText("");
+        cbox_cargo.setSelectedIndex(0);
+        cbox_abono.setSelectedIndex(0);
+        get_fecha();
+
+        remover();
+
+        lb1.setText("");
+        lb3.setText("");
+        label.setText("");
+        carga.setText("");
+        abona.setText("");
+        txt_cantidad.setText("");
+        buscar.setText("");
 
             JOptionPane.showMessageDialog(this, "¡REGISTRO EXITOSO!", "Mensaje", JOptionPane.INFORMATION_MESSAGE);
         } catch (Exception e) {
@@ -1115,8 +962,8 @@ public void get_fecha(){
         try {
             Connection cn = DriverManager.getConnection(mdi_Principal.BD, mdi_Principal.Usuario, mdi_Principal.Contraseña);
 
-            PreparedStatement pst = cn.prepareStatement("select codigo_cuenta from cuenta_contable where nombre_cuenta= ?");
-            pst.setString(1, cbox_abono.getSelectedItem().toString());
+            PreparedStatement pst = cn.prepareStatement("select id_cuenta from cuenta_contable where nombre_cuenta= ?");
+            pst.setString(1, cbox_abono.getSelectedItem().toString().trim());
             ResultSet rs2 = pst.executeQuery();
 
             if (rs2.next()) {
@@ -1154,8 +1001,8 @@ public void get_fecha(){
     private javax.swing.JComboBox<String> cbox_quienc;
     private javax.swing.JLabel cc;
     private com.toedter.calendar.JDateChooser date_fecha;
-    private com.toedter.calendar.JDateChooser fecha;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -1170,11 +1017,11 @@ public void get_fecha(){
     private javax.swing.JLabel lb3;
     private javax.swing.JLabel lb5;
     private javax.swing.JLabel lb6;
-    private javax.swing.JLabel lbusu;
     private javax.swing.JLabel oper;
     private javax.swing.JLabel qa;
     private javax.swing.JLabel qc;
     private javax.swing.JTable tbl1;
     private javax.swing.JTextField txt_cantidad;
+    private javax.swing.JTextField txt_codigo;
     // End of variables declaration//GEN-END:variables
 }
